@@ -1,5 +1,6 @@
-﻿param([string]$OutputZip)
+param([string]$OutputZip)
 $ErrorActionPreference='Stop'
+Import-Module (Join-Path $PSHOME 'Modules/Microsoft.PowerShell.Utility/Microsoft.PowerShell.Utility.psd1') -ErrorAction Stop
 $root=Split-Path -Parent $PSScriptRoot
 & (Join-Path $root 'tests/validate-public.ps1') -Root $root
 $m=Get-Content -LiteralPath (Join-Path $root 'config/versions.json') -Raw | ConvertFrom-Json
@@ -16,4 +17,5 @@ try {
   [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip,(Join-Path $root $rel),$rel.Replace('\','/'),[IO.Compression.CompressionLevel]::Optimal) | Out-Null
  }
 }finally{$zip.Dispose()}
+& (Join-Path $root 'tests/validate-public.ps1') -Root $root -ZipPath $OutputZip
 Get-FileHash -LiteralPath $OutputZip -Algorithm SHA256

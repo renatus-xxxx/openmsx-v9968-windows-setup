@@ -4,6 +4,10 @@
 
 [Home](../README.md)
 
+## Download
+
+Download the distribution ZIP from **Assets** on [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) and extract it completely into a new writable folder. Run the BATs below from that folder. Do not select the **Source code** archives.
+
 ## C-BIOS
 
 Run `setup-cbios-v9968.bat`. It downloads the official openMSX 21.0 Windows x64 ZIP and the V9968 fork **d884c4b**, then checks archive sizes/SHA-256 and executable SHA-256 before execution. C-BIOS **0.29** comes from the official ZIP. Network downloads total about 18 MB; allow around 200 MB per installed environment, plus any retained failed attempts.
@@ -39,7 +43,7 @@ runtime/cbios/   generated C-BIOS installation (private)
 runtime/fsa1gt/  generated FS-A1GT installation (private; contains BIOS)
 cache/           verified downloaded ZIPs (private)
 private/         locally joined BIOS (private)
-build/, dist/    local build/package output (private)
+build/          developer build output (excluded from Git)
 ```
 
 Launchers always target these standard runtime locations. Each installation separates user-v9968, user-standard and user-selftest. Its emulator files, ROM copies, config.json, installation.json and logs remain inside that installation. Root BAT files call the nested runtime launcher automatically.
@@ -49,3 +53,11 @@ Setup uses a fresh staging directory and commits it only after the C test report
 Hash provenance is in versions.json. The official ZIP matches the GitHub release API digest; the fork hashes are local measurements. No hash mismatch is ignored, and no automatic latest-version upgrade occurs.
 
 BAT files select standard Windows PowerShell modules. Execution-policy bypass and environment settings are process-local; no global PATH or registry setting is changed. Setup does not install dependencies with administrator privileges. Some detailed legacy console messages are Japanese; this guide and [troubleshooting](troubleshooting.md) explain the corresponding conditions in English.
+
+## Confirmation screen and limitations
+
+Expect **VDP ID=3 / V9968 IDENTIFIED** with V9968 and **ID=2** in the standard comparison. Identification does not guarantee all graphics features, games, FPS, sound, peripherals or R800 operation. The probe cartridge runs on the Z80.
+
+![C-BIOS](images/cbios-v9968.png)
+
+![FS-A1GT](images/fsa1gt-v9968.png)

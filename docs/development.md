@@ -15,7 +15,7 @@ tools\dev\build-probe.bat -Z88dk "D:\tools\z88dk"
 tools\dev\build-probe.bat -SelectZ88dk
 ```
 
-Environment changes are process-local. Builds use a fresh directory under build/probe and update probe/PROBE.rom only on success. Paths are quoted, but the compiler toolchain may impose restrictions; an ASCII installation path without spaces is recommended. See [verification](verification.md) for tested conditions.
+Environment changes are process-local. Builds use a fresh directory under build/probe and update probe/PROBE.rom only on success. Paths are quoted, but the compiler toolchain may impose restrictions; an ASCII installation path without spaces is recommended.
 
 ```text
 zcc +msx -subtype=rom -compiler=sccz80 -O2 -create-app probe.c -o PROBE
@@ -27,4 +27,16 @@ The V9968 fork should report ID=3, while the standard V9958 configuration report
 
 Rebuilds from changed source or a different toolchain may have another hash. Before releasing such a change, test it and update config/versions.json. The installer and launcher intentionally reject an unexpected probe hash.
 
-Run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1` to build an allowlisted release ZIP under dist. [Publishing](publishing.md) describes the checks. Use the verification BAT in tools/verifys to obtain test logs and screenshots; never commit the generated runtime directories.
+## Development and packaging commands
+
+These are not required for normal setup or launch. Run them from the repository root or extracted ZIP folder.
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
+```
+
+- `validate-public.ps1`: checks the public allowlist for duplicates, missing files and prohibited paths; paired documents and local links; the four root BATs and helper references; and the probe ROM hash. Supply `-ZipPath` to check an existing ZIP as well.
+- `package.ps1`: runs those checks, creates a Releases asset ZIP containing only allowlisted files, compares its entries with the source files, and prints SHA-256. It refuses to overwrite an existing output ZIP.
+
+See [maintainer instructions](publishing.md) for output paths, check coverage and attaching the ZIP to Releases.

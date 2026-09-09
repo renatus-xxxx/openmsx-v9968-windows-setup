@@ -10,4 +10,4 @@
 - Pinned downloads and hash verification.
 - V9968 launch/identification, standard comparison and BASIC startup.
 - BIOS joining and C probe build tools.
-- English/Japanese instructions and verification evidence.
+- English/Japanese setup and development instructions.

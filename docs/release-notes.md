@@ -6,6 +6,6 @@
 
 Initial release of unofficial Windows setup helpers for the V9968-enabled openMSX fork, using C-BIOS or user-owned FS-A1GT BIOS.
 
-Extract the whole ZIP into a new folder. Run the corresponding setup BAT and then launch BAT. Verification, BIOS joining and development helpers are in tools.
+Download the distribution ZIP from GitHub Releases Assets and extract it completely into a new folder. Run the corresponding setup BAT and then launch BAT. Verification, BIOS joining and development helpers are in tools.
 
-No BIOS or emulator executable is bundled. See [tested conditions and limitations](verification.md).
+No BIOS or emulator executable is bundled. See [setup and limitations](setup.md).

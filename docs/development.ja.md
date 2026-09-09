@@ -15,7 +15,7 @@ tools\dev\build-probe.bat -Z88dk "D:\tools\z88dk"
 tools\dev\build-probe.bat -SelectZ88dk
 ```
 
-環境変数は子プロセス内だけで変更します。ビルドは build/probe 内の新規フォルダで行い、成功時だけ probe/PROBE.rom を更新します。パスは引用符付きで扱いますが、ツールチェーン側の制約もあるため、空白のない英数字の配置先を推奨します。検証した条件は [検証記録](verification.ja.md) を参照してください。
+環境変数は子プロセス内だけで変更します。ビルドは build/probe 内の新規フォルダで行い、成功時だけ probe/PROBE.rom を更新します。パスは引用符付きで扱いますが、ツールチェーン側の制約もあるため、空白のない英数字の配置先を推奨します。
 
 ```text
 zcc +msx -subtype=rom -compiler=sccz80 -O2 -create-app probe.c -o PROBE
@@ -27,4 +27,16 @@ zcc +msx -subtype=rom -compiler=sccz80 -O2 -create-app probe.c -o PROBE
 
 ソースやツールチェーンを変更するとハッシュが変わる場合があります。配布更新時に動作確認して config/versions.json を更新してください。想定外の確認 ROM は、セットアップとランチャーで拒否します。
 
-`powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1` で、公開対象一覧に基づく ZIP を dist に作成できます。検査内容は[公開準備](publishing.ja.md)を参照してください。tools/verify の確認 BAT でログと画像を取得できますが、生成された runtime フォルダはコミットしないでください。
+## 開発・配布用のコマンド
+
+通常のセットアップ・起動には不要です。リポジトリまたは ZIP 展開先のルートで実行します。
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
+```
+
+- `validate-public.ps1`：公開対象一覧の重複・不足・禁止パス、日英文書とローカルリンク、4つのルート BAT と補助スクリプトへの参照、確認 ROM のハッシュを検査します。完成済み ZIP も検査するには `-ZipPath` を指定します。
+- `package.ps1`：上記検査後、公開対象一覧のファイルだけで Releases 添付用 ZIP を作成し、収録内容と元ファイルの一致を検査して SHA-256 を表示します。既存の出力 ZIP は上書きしません。
+
+出力先、検査範囲、Releases への添付方法は[公開担当者向け手順](publishing.ja.md)を参照してください。

@@ -1,5 +1,6 @@
-﻿param([string]$Root=(Split-Path -Parent $PSScriptRoot))
+param([string]$Root=(Split-Path -Parent $PSScriptRoot),[string]$ZipPath)
 $ErrorActionPreference='Stop'
+Import-Module (Join-Path $PSHOME 'Modules/Microsoft.PowerShell.Utility/Microsoft.PowerShell.Utility.psd1') -ErrorAction Stop
 $Root=[IO.Path]::GetFullPath($Root)
 $list=@(Get-Content -LiteralPath (Join-Path $Root 'config/PUBLIC_FILES.txt') | Where-Object {$_ -and !($_.StartsWith('#'))})
 if(@($list | Select-Object -Unique).Count -ne $list.Count){throw 'Duplicate public path'}
@@ -29,7 +30,7 @@ foreach($rel in $list){
 }
 $manifest=Get-Content -LiteralPath (Join-Path $Root 'config/versions.json') -Raw | ConvertFrom-Json
 if((Get-FileHash -LiteralPath (Join-Path $Root 'probe/PROBE.rom')).Hash -ne $manifest.probeSha256){throw 'Probe hash mismatch'}
-Write-Host "PASS: $($list.Count) public files; local links, language pairs, content and probe hash checked."
+
 
 $expectedRoot=@('setup-cbios-v9968.bat','setup-fsa1gt-v9968.bat','launch-cbios-v9968.bat','launch-fsa1gt-v9968.bat')
 $actualRoot=@(Get-ChildItem -LiteralPath $Root -Filter '*.bat' -File | ForEach-Object {$_.Name})
@@ -43,3 +44,19 @@ foreach($rel in $list | Where-Object {$_ -like '*.bat'}){
   if(!(Test-Path -LiteralPath (Join-Path (Split-Path -Parent $batPath) $Matches[1]))){throw "Missing BAT target: $rel"}
  }
 }
+
+if($ZipPath){
+ Add-Type -AssemblyName System.IO.Compression.FileSystem
+ $archive=[IO.Compression.ZipFile]::OpenRead([IO.Path]::GetFullPath($ZipPath))
+ try {
+  $names=@($archive.Entries | ForEach-Object {$_.FullName})
+  if($names.Count -ne $list.Count -or @($names | Select-Object -Unique).Count -ne $names.Count -or (Compare-Object $list $names -CaseSensitive)){throw 'ZIP entries differ from public allowlist'}
+  foreach($entry in $archive.Entries){
+   $stream=$entry.Open(); $sha=[Security.Cryptography.SHA256]::Create()
+   try {$hash=([BitConverter]::ToString($sha.ComputeHash($stream))).Replace('-','')}finally{$stream.Dispose();$sha.Dispose()}
+   if($hash -ne (Get-FileHash -LiteralPath (Join-Path $Root $entry.FullName) -Algorithm SHA256).Hash){throw "ZIP content mismatch: $($entry.FullName)"}
+  }
+ }finally{$archive.Dispose()}
+ Write-Host "PASS: ZIP entries and SHA-256 match $($list.Count) public files."
+}
+Write-Host "PASS: $($list.Count) public files; local links, language pairs, content, probe hash and BAT layout checked."
