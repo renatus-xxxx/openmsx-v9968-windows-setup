@@ -7,7 +7,7 @@
 Description:
 > Unofficial Windows setup scripts for the V9968-enabled openMSX fork, with C-BIOS and user-supplied FS-A1GT BIOS support.
 
-[公開対象一覧](../config/PUBLIC_FILES.txt)、[ライセンス](sources.ja.md)、[リリースノート案](release-notes.ja.md)を確認してください。
+[公開対象一覧](../config/PUBLIC_FILES.txt)、[ライセンス](sources.ja.md)、[リリースノート](release-notes.ja.md)を確認してください。
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1

@@ -1,6 +1,6 @@
 日本語 | [English](release-notes.md)
 
-# リリースノート案 — 0.5.0
+# リリースノート — 0.5.0
 
 [公開担当者向け手順](publishing.ja.md)
 

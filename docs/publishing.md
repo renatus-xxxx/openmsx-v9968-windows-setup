@@ -7,7 +7,7 @@ Repository name: openmsx-v9968-windows-setup
 Description:
 > Unofficial Windows setup scripts for the V9968-enabled openMSX fork, with C-BIOS and user-supplied FS-A1GT BIOS support.
 
-Review the [public allowlist](../config/PUBLIC_FILES.txt), [licenses](sources.md) and [release notes draft](release-notes.md).
+Review the [public allowlist](../config/PUBLIC_FILES.txt), [licenses](sources.md) and [release notes](release-notes.md).
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1

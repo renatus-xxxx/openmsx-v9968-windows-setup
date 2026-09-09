@@ -1,6 +1,6 @@
 [日本語](release-notes.ja.md) | English
 
-# Release notes draft — 0.5.0
+# Release notes — 0.5.0
 
 [Maintainer instructions](publishing.md)
 
