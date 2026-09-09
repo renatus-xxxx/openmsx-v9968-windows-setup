@@ -21,22 +21,12 @@ tools\dev\build-probe.bat -SelectZ88dk
 zcc +msx -subtype=rom -compiler=sccz80 -O2 -create-app probe.c -o PROBE
 ```
 
-16 KiB のカートリッジテストは [probe.c](../probe/probe.c) から生成します。起動直後に割り込みを止め、R#21=3Ah・R#15=1 を設定し、99h から S#1 の ID を読み、R#15=0・R#21=3Bh と割り込みを戻します。任意の状態を保存する汎用識別 API や、割り込みハンドラー用の関数ではありません。検証した両機種ではこのカートリッジを Z80 で実行しており、R800 の動作・性能は確認していません。
+16 KiB の確認 ROM は [probe.c](../probe/probe.c) から生成します。起動直後に割り込みを止め、R#21=3Ah・R#15=1 を設定し、99h から S#1 の ID を読み、R#15=0・R#21=3Bh と割り込みを戻します。任意の状態を保存する汎用識別 API や、割り込みハンドラー用の関数ではありません。検証した両機種ではこの ROM をカートリッジとして Z80 で実行しており、R800 の動作・性能は確認していません。
 
-派生版は ID=3、通常の V9958 構成は ID=2 が期待値です。初期の互換 ID を読むだけでは区別できません。[一次資料](sources.ja.md)に作者のサンプルとマニュアルを掲載しています。この C-BIOS 構成ではカートリッジを使い、BASIC の BLOAD 用プログラムとは交換できません。
+派生版は ID=3、通常の V9958 構成は ID=2 が期待値です。電源投入時の互換 ID を読むだけでは区別できないため、上記の手順が必要です。[一次資料](sources.ja.md)に作者のサンプルとマニュアルを掲載しています。この C-BIOS 構成ではカートリッジを使い、BASIC の BLOAD 用プログラムとは交換できません。
 
 ソースやツールチェーンを変更するとハッシュが変わる場合があります。配布更新時に動作確認して config/versions.json を更新してください。想定外の確認 ROM は、セットアップとランチャーで拒否します。
 
-## 開発・配布用のコマンド
+## 配布物の作成
 
-通常のセットアップ・起動には不要です。リポジトリまたは ZIP 展開先のルートで実行します。
-
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
-```
-
-- `validate-public.ps1`：公開対象一覧の重複・不足・禁止パス、日英文書とローカルリンク、4つのルート BAT と補助スクリプトへの参照、確認 ROM のハッシュを検査します。完成済み ZIP も検査するには `-ZipPath` を指定します。
-- `package.ps1`：上記検査後、公開対象一覧のファイルだけで Releases 添付用 ZIP を作成し、収録内容と元ファイルの一致を検査して SHA-256 を表示します。既存の出力 ZIP は上書きしません。
-
-出力先、検査範囲、Releases への添付方法は[公開担当者向け手順](publishing.ja.md)を参照してください。
+配布 ZIP の作成は C 開発とは別の作業です。検査・パッケージのコマンド、検査範囲、Releases への添付方法は[公開担当者向け手順](publishing.ja.md)にまとめています。

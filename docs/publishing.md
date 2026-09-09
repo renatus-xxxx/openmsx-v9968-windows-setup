@@ -16,7 +16,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
 
 The ZIP contains only allowlisted files, without an enclosing folder. Default output: dist/openmsx-v9968-windows-setup-0.5.0.zip. Existing ZIPs are not overwritten.
 
-Do not add runtime, cache, private, build, dist or owned BIOS to Git. The only published ROM is the custom probe/PROBE.rom application. Check Git's selected files and archive contents before publication. Preserve original third-party notices.
+Do not add runtime, cache, private, build, dist or owned BIOS to Git. The only published ROM is probe/PROBE.rom. Check Git's selected files and archive contents before publication. Preserve original third-party notices.
 
 config/PUBLIC_FILES.txt limits the files included in distribution. It is included in both the repository and ZIP so either can regenerate the package. See the [changelog](CHANGELOG.md).
 
@@ -31,7 +31,7 @@ Run from the repository root. `-NoProfile` skips personal PowerShell profiles; `
 - `validate-public.ps1`: checks the public allowlist for duplicates, missing files and prohibited paths; paired documents and local links; the four root BATs and helper references; and the probe ROM hash. Supply `-ZipPath` to check an existing ZIP as well.
 - `package.ps1`: runs those checks, creates a Releases asset ZIP containing only allowlisted files, compares its entries with the source files, and prints SHA-256. It refuses to overwrite an existing output ZIP.
 
-Validation uses `config/PUBLIC_FILES.txt`. It also rejects paths outside the root, prohibited installation/generated files and ROMs other than the custom probe, and checks specific personal-path/content patterns in text. It checks top language links in paired documents and BAT references to entry.ps1.
+Validation uses `config/PUBLIC_FILES.txt`. It also rejects paths outside the root, prohibited installation/generated files and ROMs other than the probe ROM, and checks specific personal-path/content patterns in text. It checks top language links in paired documents and BAT references to entry.ps1.
 
 With `-ZipPath`, it compares ZIP paths, duplicates and file count against the allowlist, and each entry's SHA-256 against its source file. Without this option it does not inspect an existing ZIP. These static checks do not check external URL availability, detect every possible secret or personal detail, execute the emulator, or inspect Git history. Review the public files and Git diff separately.
 
@@ -48,4 +48,4 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps
 3. Attach the ZIP, check its name, contents and SHA-256, then publish. Do not confuse it with the Source code archives.
 4. After publication, follow the README links and confirm that the downloaded ZIP's SHA-256 matches the final local ZIP.
 
-This preparation task does not commit, push, create tags or create a release. Before publication, the ZIP link is not yet available.
+The commands above only validate the public files and build the ZIP. Committing, pushing, tagging and creating the release stay manual steps performed by the maintainer on GitHub.

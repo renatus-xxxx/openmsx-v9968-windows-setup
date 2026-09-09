@@ -9,5 +9,5 @@
 - Setup using C-BIOS or user-owned FS-A1GT BIOS.
 - Pinned downloads and hash verification.
 - V9968 launch/identification, standard comparison and BASIC startup.
-- BIOS joining and C probe build tools.
+- BIOS joining and probe ROM build tools.
 - English/Japanese setup and development instructions.

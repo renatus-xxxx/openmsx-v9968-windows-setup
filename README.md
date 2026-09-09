@@ -4,7 +4,15 @@
 
 Unofficial Windows setup helpers for the V9968-enabled openMSX fork. Version **0.5.0**. This is an independent helper project, not the official openMSX or V9968 project.
 
-Choose **C-BIOS** to try cartridge-based C programs without a physical machine BIOS, or **FS-A1GT** to use ROMs dumped from your own machine. Both options download tested emulator versions, check hashes, and run a V9968 identification test.
+V9968 is an MSX video display processor (VDP). The fork emulates it in place of a machine's built-in VDP. These helpers build a ready-to-run environment for it: they download tested emulator versions, verify hashes, and run a V9968 identification test.
+
+## Which setup to choose
+
+| | C-BIOS | FS-A1GT |
+|---|---|---|
+| What you need first | Nothing; everything is downloaded | Two ROM images dumped from your own FS-A1GT ([how to dump](docs/bios-dump.md)) |
+| What you can run | Cartridge images | A machine environment with BASIC and disk |
+| Time | A few minutes | Plan for the dump first |
 
 ## Quick start
 
@@ -12,14 +20,20 @@ Choose **C-BIOS** to try cartridge-based C programs without a physical machine B
 2. Run `setup-cbios-v9968.bat`, or drag your FS-A1GT BIOS folder onto `setup-fsa1gt-v9968.bat`.
 3. Run `launch-cbios-v9968.bat` or `launch-fsa1gt-v9968.bat` in **the same top-level folder**.
 
-Expected screen: **VDP ID=3 / V9968 IDENTIFIED**.
-
 | Mode | Setup | Launch |
 |---|---|---|
 | C-BIOS | `setup-cbios-v9968.bat` | `launch-cbios-v9968.bat` |
 | FS-A1GT | `setup-fsa1gt-v9968.bat` | `launch-fsa1gt-v9968.bat` |
 
-[0.5.0 ZIP](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases/download/v0.5.0/openmsx-v9968-windows-setup-0.5.0.zip). **Source code (zip)** / **Source code (tar.gz)** are not the distribution ZIP. The root has two `setup-*` BATs to create environments and two `launch-*` BATs to start them.
+The root holds exactly these four files: two `setup-*` BATs that create an environment, and two `launch-*` BATs that start one.
+
+Success looks like this — **VDP ID=3 / V9968 IDENTIFIED** on screen:
+
+![C-BIOS running the probe ROM](docs/images/cbios-v9968.png)
+
+If you see anything else, see [troubleshooting](docs/troubleshooting.md).
+
+Download the [0.5.0 ZIP](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases/download/v0.5.0/openmsx-v9968-windows-setup-0.5.0.zip) from Assets. **Source code (zip)** and **Source code (tar.gz)** are GitHub's own archives of the repository, not the distribution ZIP.
 
 ## Additional tools
 
@@ -35,9 +49,15 @@ Paths below are relative to the extracted ZIP folder.
 | Start FS-A1GT BASIC | `tools\bios\launch-fsa1gt-basic.bat` |
 | Rebuild C ROM | `tools\dev\build-probe.bat` |
 
+## Requirements and limits
+
 Requires Windows 10/11 x64, built-in Windows PowerShell 5.1 and curl.exe, network access, and a working graphics driver. Setup needs no administrator privileges, 7-Zip, Python, Git or z88dk.
 
-C-BIOS does **not** provide BASIC, Disk BASIC or normal disk boot in this configuration. The FS-A1GT option requires a 4 MiB firmware image and 256 KiB Kanji font ROM. Neither is supplied. The bundled `probe/PROBE.rom` is our test application, not a BIOS.
+C-BIOS does **not** provide BASIC, Disk BASIC or normal disk boot in this configuration. The FS-A1GT option requires a 4 MiB firmware image and a 256 KiB Kanji font ROM; neither is supplied. The bundled `probe/PROBE.rom` is this project's probe ROM for the identification test, not a BIOS.
+
+**VDP ID=3 confirms that the emulated machine reports a V9968.** It does not guarantee that any particular game, graphics feature, frame rate, sound device, peripheral or R800 code will work.
+
+Setup and launch print progress and error messages, and some of the detailed messages are Japanese. [Troubleshooting](docs/troubleshooting.md) describes the same conditions in English.
 
 ## Documentation
 
@@ -46,21 +66,10 @@ C-BIOS does **not** provide BASIC, Disk BASIC or normal disk boot in this config
 - [C development](docs/development.md)
 - [Troubleshooting and removal](docs/troubleshooting.md)
 - [Sources and third-party licenses](docs/sources.md)
-
-Do not publish generated `runtime/`, `cache/` or `private/` directories. FS-A1GT runtime directories contain your BIOS.
-
 - [Changelog](docs/CHANGELOG.md)
 
-## Development and packaging commands
+The generated `runtime/`, `cache/` and `private/` directories stay on your PC. Do not share or publish them: an FS-A1GT runtime directory contains a copy of your BIOS.
 
-These are not required for normal setup or launch. Run them from the repository root or extracted ZIP folder.
+## For maintainers
 
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
-```
-
-- `validate-public.ps1`: checks the public allowlist for duplicates, missing files and prohibited paths; paired documents and local links; the four root BATs and helper references; and the probe ROM hash. Supply `-ZipPath` to check an existing ZIP as well.
-- `package.ps1`: runs those checks, creates a Releases asset ZIP containing only allowlisted files, compares its entries with the source files, and prints SHA-256. It refuses to overwrite an existing output ZIP.
-
-See [maintainer instructions](docs/publishing.md) for output paths, check coverage and attaching the ZIP to Releases.
+Packaging, validation and release steps are in the [maintainer instructions](docs/publishing.md). They are not needed for normal setup or launch.

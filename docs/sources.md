@@ -24,10 +24,10 @@ URLs, archive sizes and hashes have a single machine-readable source: [config/ve
 
 ## Licenses
 
-- Newly written scripts and test source: [MIT LICENSE](../LICENSE).
+- Newly written scripts and the probe ROM source: [MIT LICENSE](../LICENSE).
 - Reference machine XML derives from official openMSX 21.0 and retains GPL terms: [original GPL](../licenses/GPL-openMSX.txt). Changes to VDP/display name and their date are marked in the XML. Setup applies the same transformation to downloaded official definitions.
 - C-BIOS is 2-clause BSD: [original notice](../licenses/C-BIOS.txt). The BIOS is downloaded with official openMSX, not redistributed in this package.
-- The compiled test uses z88dk library code: [original z88dk license](../licenses/z88dk.txt). This notice does not replace file-specific upstream terms.
-- Third-party dump utilities are linked, not redistributed. Your physical-machine ROMs and installed environments are excluded.
+- The compiled probe ROM uses z88dk library code: [original z88dk license](../licenses/z88dk.txt). This notice does not replace file-specific upstream terms.
+- Third-party dump utilities are linked, not redistributed. Your physical-machine ROMs and generated installations are excluded.
 
 Original legal texts are preserved unchanged. The Japanese companion is an explanatory guide, not a translated replacement license. If you distribute a separately assembled emulator package, assess that package's own source/notice obligations; this helper distribution does not do that for you.

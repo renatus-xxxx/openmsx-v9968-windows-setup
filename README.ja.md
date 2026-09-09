@@ -4,7 +4,15 @@
 
 V9968 対応 openMSX 派生版を Windows にセットアップする非公式の補助ツールです。バージョンは **0.5.0**。openMSX 本体や V9968 開発元の公式プロジェクトではありません。
 
-実機 BIOS なしでカートリッジ形式の C プログラムを試す **C-BIOS 版**と、所有実機から取得した ROM を利用する **FS-A1GT 版**を選べます。どちらも検証済みのバージョンをダウンロードし、ハッシュ検査と V9968 の識別まで実行します。
+V9968 は MSX 用の VDP（映像表示プロセッサー）です。派生版 openMSX は、本体内蔵の VDP を V9968 に置き換えて動作します。この補助ツールは、検証済みのバージョンをダウンロードし、ハッシュを検査し、V9968 の識別テストまで行って、すぐ動く環境を作ります。
+
+## どちらを選ぶか
+
+| | C-BIOS | FS-A1GT |
+|---|---|---|
+| 事前に必要なもの | なし（すべて自動取得） | 所有する実機から取得した ROM 2本（[取得手順](docs/bios-dump.ja.md)） |
+| 動かせるもの | カートリッジ形式のプログラム | BASIC・ディスクを含む実機相当の環境 |
+| 所要時間 | 数分 | 先に ROM の取得作業が必要 |
 
 ## 最短の使い方
 
@@ -12,32 +20,44 @@ V9968 対応 openMSX 派生版を Windows にセットアップする非公式�
 2. `setup-cbios-v9968.bat` を実行するか、所有 BIOS フォルダを `setup-fsa1gt-v9968.bat` へドラッグします。
 3. **同じ直下のフォルダ**にある `launch-cbios-v9968.bat` または `launch-fsa1gt-v9968.bat` を実行します。
 
-画面の期待値は **VDP ID=3 / V9968 IDENTIFIED**。
-
 | 方式 | セットアップ | 起動 |
 |---|---|---|
 | C-BIOS | `setup-cbios-v9968.bat` | `launch-cbios-v9968.bat` |
 | FS-A1GT | `setup-fsa1gt-v9968.bat` | `launch-fsa1gt-v9968.bat` |
 
-[0.5.0 の ZIP](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases/download/v0.5.0/openmsx-v9968-windows-setup-0.5.0.zip)。**Source code (zip)** / **Source code (tar.gz)** は配布用 ZIP ではありません。直下には環境を作成する `setup-*` が2つ、作成済み環境を起動する `launch-*` が2つあります。
+直下にあるのはこの4つだけです。環境を作成する `setup-*` が2つ、作成済み環境を起動する `launch-*` が2つです。
 
-## 補助機能
+成功すると、画面に **VDP ID=3 / V9968 IDENTIFIED** が表示されます。
+
+![C-BIOS で確認 ROM を実行した画面](docs/images/cbios-v9968.png)
+
+これ以外が表示された場合は[トラブル対処](docs/troubleshooting.ja.md)を参照してください。
+
+ダウンロードするのは Assets の [0.5.0 の ZIP](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases/download/v0.5.0/openmsx-v9968-windows-setup-0.5.0.zip) です。**Source code (zip)** と **Source code (tar.gz)** は GitHub が自動生成するリポジトリの控えで、配布用 ZIP ではありません。
+
+## 補助ツール
 
 以下のパスは ZIP 展開先からの相対パスです。
 
 | 用途 | ファイル |
 |---|---|
-| C-BIOS 自動確認 | `tools\verify\verify-cbios-v9968.bat` |
-| FS-A1GT 自動確認 | `tools\verify\verify-fsa1gt-v9968.bat` |
+| C-BIOS 確認 | `tools\verify\verify-cbios-v9968.bat` |
+| FS-A1GT 確認 | `tools\verify\verify-fsa1gt-v9968.bat` |
 | C-BIOS 通常版比較 | `tools\verify\launch-cbios-standard.bat` |
 | FS-A1GT 通常版比較 | `tools\verify\launch-fsa1gt-standard.bat` |
 | BIOS 結合 | `tools\bios\join-fsa1gt-dump.bat` |
 | FS-A1GT BASIC 起動 | `tools\bios\launch-fsa1gt-basic.bat` |
 | C ROM 再ビルド | `tools\dev\build-probe.bat` |
 
+## 動作条件と制限
+
 Windows 10/11 x64、標準の Windows PowerShell 5.1 と curl.exe、ネット接続、動作する画面ドライバーが必要です。セットアップには管理者権限・7-Zip・Python・Git・z88dk は不要です。
 
-この構成の C-BIOS は BASIC・Disk BASIC・通常のディスク起動を提供しません。FS-A1GT 版には4 MiBの統合ファームウェアと256 KiBの漢字 ROM が必要で、どちらも同梱しません。`probe/PROBE.rom` は自作の確認アプリで、BIOS ではありません。
+この構成の C-BIOS は BASIC・Disk BASIC・通常のディスク起動を提供しません。FS-A1GT 版には 4 MiB の統合ファームウェアと 256 KiB の漢字 ROM が必要で、どちらも同梱しません。同梱の `probe/PROBE.rom` は識別テスト用の確認 ROM で、BIOS ではありません。
+
+**VDP ID=3 は、エミュレートした機種が V9968 を返したことの確認です。** 個別のゲーム、描画機能、フレームレート、音源、周辺機器、R800 のコードが動作することを保証するものではありません。
+
+セットアップと起動は進行状況とエラーを表示しますが、詳細なメッセージの一部は日本語です。同じ条件は[トラブル対処](docs/troubleshooting.ja.md)にも記載しています。
 
 ## 説明書
 
@@ -46,21 +66,10 @@ Windows 10/11 x64、標準の Windows PowerShell 5.1 と curl.exe、ネット接
 - [C 開発](docs/development.ja.md)
 - [トラブル対処・削除](docs/troubleshooting.ja.md)
 - [一次資料と第三者ライセンス](docs/sources.ja.md)
-
-生成される `runtime/`、`cache/`、`private/` は公開しないでください。FS-A1GT 環境には所有 BIOS が含まれます。
-
 - [変更履歴](docs/CHANGELOG.ja.md)
 
-## 開発・配布用のコマンド
+生成される `runtime/`、`cache/`、`private/` は手元に残ります。FS-A1GT の環境には所有 BIOS の複製が含まれるため、配布・公開しないでください。
 
-通常のセットアップ・起動には不要です。リポジトリまたは ZIP 展開先のルートで実行します。
+## 公開担当者向け
 
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
-```
-
-- `validate-public.ps1`：公開対象一覧の重複・不足・禁止パス、日英文書とローカルリンク、4つのルート BAT と補助スクリプトへの参照、確認 ROM のハッシュを検査します。完成済み ZIP も検査するには `-ZipPath` を指定します。
-- `package.ps1`：上記検査後、公開対象一覧のファイルだけで Releases 添付用 ZIP を作成し、収録内容と元ファイルの一致を検査して SHA-256 を表示します。既存の出力 ZIP は上書きしません。
-
-出力先、検査範囲、Releases への添付方法は[公開担当者向け手順](docs/publishing.ja.md)を参照してください。
+パッケージ作成・検査・リリース手順は[公開担当者向け手順](docs/publishing.ja.md)にあります。通常のセットアップ・起動には不要です。

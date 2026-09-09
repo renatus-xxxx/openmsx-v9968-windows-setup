@@ -21,22 +21,12 @@ Environment changes are process-local. Builds use a fresh directory under build/
 zcc +msx -subtype=rom -compiler=sccz80 -O2 -create-app probe.c -o PROBE
 ```
 
-The 16 KiB cartridge test is built from [probe.c](../probe/probe.c). At fresh startup it disables interrupts, writes R#21=3Ah and R#15=1, reads the ID from S#1 via port 99h, restores R#15=0/R#21=3Bh, and enables interrupts. It is not a general saved-state detection API or an interrupt-handler routine. Both tested machine configurations run this cartridge with the Z80 active; this does not test R800 execution or throughput.
+The 16 KiB probe ROM is built from [probe.c](../probe/probe.c). At fresh startup it disables interrupts, writes R#21=3Ah and R#15=1, reads the ID from S#1 via port 99h, restores R#15=0/R#21=3Bh, and enables interrupts. It is not a general saved-state detection API or an interrupt-handler routine. Both tested machine configurations run this ROM as a cartridge with the Z80 active; this does not test R800 execution or throughput.
 
-The V9968 fork should report ID=3, while the standard V9958 configuration reports ID=2. The initial compatibility ID alone is insufficient. See [primary references](sources.md) for the author's sample and manual. C-BIOS requires a cartridge route here; a BASIC BLOAD program is not interchangeable with it.
+The V9968 fork should report ID=3, while the standard V9958 configuration reports ID=2. Reading the power-on compatibility ID alone does not tell them apart, which is why the sequence above is needed. See [primary references](sources.md) for the author's sample and manual. C-BIOS requires a cartridge route here; a BASIC BLOAD program is not interchangeable with it.
 
 Rebuilds from changed source or a different toolchain may have another hash. Before releasing such a change, test it and update config/versions.json. The installer and launcher intentionally reject an unexpected probe hash.
 
-## Development and packaging commands
+## Packaging
 
-These are not required for normal setup or launch. Run them from the repository root or extracted ZIP folder.
-
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
-```
-
-- `validate-public.ps1`: checks the public allowlist for duplicates, missing files and prohibited paths; paired documents and local links; the four root BATs and helper references; and the probe ROM hash. Supply `-ZipPath` to check an existing ZIP as well.
-- `package.ps1`: runs those checks, creates a Releases asset ZIP containing only allowlisted files, compares its entries with the source files, and prints SHA-256. It refuses to overwrite an existing output ZIP.
-
-See [maintainer instructions](publishing.md) for output paths, check coverage and attaching the ZIP to Releases.
+Building the distribution ZIP is a separate task from C development. The [maintainer instructions](publishing.md) cover the validation and packaging commands, what they check, and how the ZIP is attached to Releases.

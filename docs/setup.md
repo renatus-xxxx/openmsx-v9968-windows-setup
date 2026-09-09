@@ -10,7 +10,7 @@ Download the distribution ZIP from **Assets** on [GitHub Releases](https://githu
 
 ## C-BIOS
 
-Run `setup-cbios-v9968.bat`. It downloads the official openMSX 21.0 Windows x64 ZIP and the V9968 fork **d884c4b**, then checks archive sizes/SHA-256 and executable SHA-256 before execution. C-BIOS **0.29** comes from the official ZIP. Network downloads total about 18 MB; allow around 200 MB per installed environment, plus any retained failed attempts.
+Run `setup-cbios-v9968.bat`. It downloads the official openMSX 21.0 Windows x64 ZIP and the V9968 fork **d884c4b**, then checks archive sizes/SHA-256 and executable SHA-256 before execution. C-BIOS **0.29** comes from the official ZIP. Network downloads total about 18 MB; allow around 200 MB per installation, plus any retained failed attempts.
 
 The generated C-BIOS_MSX2+_JP derivative uses an internal V9968 and a Japanese 60 Hz configuration. It runs cartridge images; it supplies no BASIC or disk environment.
 
@@ -29,34 +29,38 @@ The official FS-A1GT machine keeps its CPU, 512 KiB RAM, disk and other devices,
 ## Directory map
 
 ```text
-repository root: four setup / launch BAT files
+(root)           four setup / launch BAT files
 tools/verify/    verification and standard comparison BATs
 tools/bios/      BIOS joining and BASIC launcher
 tools/dev/       C build BAT
 scripts/         implementation and runtime templates
-probe/           C source and compiled test application
+probe/           C source and compiled probe ROM
 config/          pinned versions and reference machine XML
 licenses/        unchanged third-party notices
-docs/           paired English/Japanese guides and images
-tests/          packaging/link validation
+docs/            paired English/Japanese guides and images
+tests/           packaging/link validation
 runtime/cbios/   generated C-BIOS installation (private)
 runtime/fsa1gt/  generated FS-A1GT installation (private; contains BIOS)
 cache/           verified downloaded ZIPs (private)
 private/         locally joined BIOS (private)
-build/          developer build output (excluded from Git)
+build/           developer build output (excluded from Git)
 ```
 
 Launchers always target these standard runtime locations. Each installation separates user-v9968, user-standard and user-selftest. Its emulator files, ROM copies, config.json, installation.json and logs remain inside that installation. Root BAT files call the nested runtime launcher automatically.
 
-Setup uses a fresh staging directory and commits it only after the C test reports ID=3. Interrupted attempts and partial downloads remain for diagnosis. Re-running validates managed files, keeps user settings and reuses valid cache; it stops if a managed file changed. Re-running does not automatically rerun the boot test: use the verification BAT in tools/verify.
+Setup builds into a fresh staging directory and moves it into place only after the probe ROM reports ID=3, so a failed attempt never becomes an installation.
+
+- Interrupted attempts and partial downloads are kept for diagnosis.
+- Re-running validates the managed files, keeps your settings and reuses a valid cache. It stops if a managed file changed.
+- Re-running does not repeat the boot test. Run the verification BAT in tools/verify when you want to check again.
 
 Hash provenance is in versions.json. The official ZIP matches the GitHub release API digest; the fork hashes are local measurements. No hash mismatch is ignored, and no automatic latest-version upgrade occurs.
 
-BAT files select standard Windows PowerShell modules. Execution-policy bypass and environment settings are process-local; no global PATH or registry setting is changed. Setup does not install dependencies with administrator privileges. Some detailed legacy console messages are Japanese; this guide and [troubleshooting](troubleshooting.md) explain the corresponding conditions in English.
+BAT files select standard Windows PowerShell modules. Execution-policy bypass and environment settings are process-local; no global PATH or registry setting is changed. Setup does not install dependencies with administrator privileges. Some of the detailed console messages are Japanese; this guide and [troubleshooting](troubleshooting.md) describe the same conditions in English.
 
 ## Confirmation screen and limitations
 
-Expect **VDP ID=3 / V9968 IDENTIFIED** with V9968 and **ID=2** in the standard comparison. Identification does not guarantee all graphics features, games, FPS, sound, peripherals or R800 operation. The probe cartridge runs on the Z80.
+Expect **VDP ID=3 / V9968 IDENTIFIED** in the V9968 configuration, and **ID=2** in the standard comparison. Identification does not guarantee that any particular graphics feature, game, frame rate, sound device, peripheral or R800 code works. The probe ROM runs on the Z80.
 
 ![C-BIOS](images/cbios-v9968.png)
 
