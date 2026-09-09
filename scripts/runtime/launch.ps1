@@ -9,8 +9,8 @@ foreach($v in $vars){$saved[$v]=[Environment]::GetEnvironmentVariable($v,'Proces
 Push-Location $root
 try {
     $cfg=Get-Content -LiteralPath (Join-Path $root 'config.json') -Raw | ConvertFrom-Json
-    if($Basic -and $cfg.mode -ne 'fsa1gt'){throw 'この C-BIOS 構成は BASIC を提供しません。'}
-    if($Basic -and $Verify){throw 'Basic と Verify は同時指定できません。'}
+    if($Basic -and $cfg.mode -ne 'fsa1gt'){throw 'This C-BIOS configuration does not provide BASIC / この C-BIOS 構成は BASIC を提供しません。'}
+    if($Basic -and $Verify){throw 'Basic and Verify cannot be used together / Basic と Verify は同時指定できません。'}
     $kind=if($Verify){'selftest'}elseif($Standard){'standard'}else{'v9968'}
     # Official 21.0 cannot resolve Japanese absolute data paths reliably.
     # Use ASCII relative names with an explicit Unicode-capable process working directory.
@@ -19,9 +19,9 @@ try {
     $env:OPENMSX_SYSTEM_DATA='emulator/share'
     $exe=Join-Path $root $(if($Standard){'emulator/openmsx-standard.exe'}else{'emulator/openmsx.exe'})
     $expected=if($Standard){$cfg.standardSha256}else{$cfg.forkSha256}
-    if((Get-FileHash -LiteralPath $exe).Hash -ne $expected){throw 'openMSX 実行ファイルの SHA-256 が一致しません。'}
+    if((Get-FileHash -LiteralPath $exe).Hash -ne $expected){throw 'SHA-256 of the openMSX executable does not match / openMSX 実行ファイルの SHA-256 が一致しません。'}
     $probe=Join-Path $root 'probe/PROBE.rom'
-    if((Get-FileHash -LiteralPath $probe).Hash -ne $cfg.probeSha256){throw '確認 ROM が変更されています。'}
+    if((Get-FileHash -LiteralPath $probe).Hash -ne $cfg.probeSha256){throw 'The probe ROM has been modified / 確認 ROM が変更されています。'}
     $machine=if($Standard){$cfg.standardMachine}else{$cfg.machine}
     $argv=@('-machine',$machine)
     if(!$Basic){$argv+=@('-cart','probe/PROBE.rom')}
@@ -34,16 +34,19 @@ try {
         $argv+=@('-script','verify.tcl')
         $p=Start-Process -FilePath $exe -ArgumentList $argv -WorkingDirectory $root -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $logs "$tag-stdout.txt") -RedirectStandardError (Join-Path $logs "$tag-stderr.txt")
         $processHandle=$p.Handle
-        if(!$p.WaitForExit(60000)){$p.Kill(); $p.WaitForExit(); throw "起動テストが60秒で完了しません。ログ: $logs"}
-        if($p.ExitCode -ne 0){throw "openMSX 起動失敗 (終了コード $($p.ExitCode))。ログ: $logs"}
-        if(!(Test-Path -LiteralPath $env:V9968_TEST_LOG)){throw "確認結果を取得できません。DLL・画面ドライバー・ROM を確認してください。ログ: $logs"}
+        if(!$p.WaitForExit(60000)){$p.Kill(); $p.WaitForExit(); throw "The boot test did not finish within 60 seconds / 起動テストが60秒で完了しません。Log / ログ: $logs"}
+        if($p.ExitCode -ne 0){throw "openMSX failed to start (exit code $($p.ExitCode)) / openMSX 起動失敗 (終了コード $($p.ExitCode))。Log / ログ: $logs"}
+        if(!(Test-Path -LiteralPath $env:V9968_TEST_LOG)){throw "Could not read the verification result. Check the runtime DLLs, graphics driver and ROM files. Log: $logs`n確認結果を取得できません。DLL・画面ドライバー・ROM を確認してください。ログ: $logs"}
         $result=Get-Content -LiteralPath $env:V9968_TEST_LOG -Raw
-        if($result -notmatch 'SELFTEST=PASS'){throw "C プログラムの VDP ID が期待値と異なります。ログ: $logs"}
-        Write-Host "起動確認 OK: $machine / VDP ID=$env:V9968_EXPECT_ID"
-        Write-Host "結果と画像: $(Join-Path $root $env:V9968_TEST_LOG)"
+        if($result -notmatch 'SELFTEST=PASS'){
+            $seen=if($result -match 'VDP ID=(\d+)'){$Matches[1]}else{'unknown'}
+            throw "VDP ID mismatch: expected $($env:V9968_EXPECT_ID), got $seen / VDP ID が一致しません（期待値 $($env:V9968_EXPECT_ID)、実測 $seen）。Log / ログ: $logs"
+        }
+        Write-Host "Boot check OK / 起動確認 OK: $machine / VDP ID=$env:V9968_EXPECT_ID"
+        Write-Host "Result and screenshot / 結果と画像: $(Join-Path $root $env:V9968_TEST_LOG)"
     } else {
         $p=Start-Process -FilePath $exe -ArgumentList $argv -WorkingDirectory $root -WindowStyle Normal -Wait -PassThru
-        if($p.ExitCode -ne 0){throw "openMSX の終了コード: $($p.ExitCode)"}
+        if($p.ExitCode -ne 0){throw "openMSX exit code / openMSX の終了コード: $($p.ExitCode)"}
     }
 } finally {
     Pop-Location

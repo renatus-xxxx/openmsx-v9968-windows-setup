@@ -57,7 +57,7 @@ C-BIOS does **not** provide BASIC, Disk BASIC or normal disk boot in this config
 
 **VDP ID=3 confirms that the emulated machine reports a V9968.** It does not guarantee that any particular game, graphics feature, frame rate, sound device, peripheral or R800 code will work.
 
-Setup and launch print progress and error messages, and some of the detailed messages are Japanese. [Troubleshooting](docs/troubleshooting.md) describes the same conditions in English.
+Setup and launch print progress and error messages in English and Japanese. [Troubleshooting](docs/troubleshooting.md) explains what each condition means.
 
 ## Documentation
 

@@ -56,7 +56,7 @@ Setup builds into a fresh staging directory and moves it into place only after t
 
 Hash provenance is in versions.json. The official ZIP matches the GitHub release API digest; the fork hashes are local measurements. No hash mismatch is ignored, and no automatic latest-version upgrade occurs.
 
-BAT files select standard Windows PowerShell modules. Execution-policy bypass and environment settings are process-local; no global PATH or registry setting is changed. Setup does not install dependencies with administrator privileges. Some of the detailed console messages are Japanese; this guide and [troubleshooting](troubleshooting.md) describe the same conditions in English.
+BAT files select standard Windows PowerShell modules. Execution-policy bypass and environment settings are process-local; no global PATH or registry setting is changed. Setup does not install dependencies with administrator privileges. Progress and error messages are printed in English and Japanese; see [troubleshooting](troubleshooting.md) for what each condition means.
 
 ## Confirmation screen and limitations
 
