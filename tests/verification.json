@@ -1,0 +1,33 @@
+{
+  "release": "0.5.0",
+  "date": "2026-09-09",
+  "os": "Windows 10 x64 build 19045",
+  "currentChecks": [
+    "No fixed candidate with empty environment/PATH",
+    "Explicit toolchain",
+    "Z88DK",
+    "ZCCCFG",
+    "PATH",
+    "Skip invalid automatic candidate",
+    "Reject invalid explicit path",
+    "Simulated picker selection/cancel/invalid input"
+  ],
+  "retainedSameDateEvidence": {
+    "forkId": 3,
+    "standardId": 2,
+    "basicPrompt": true,
+    "joinRoundTrip": true,
+    "japaneseSpacePath": true,
+    "outsideRepositoryCwd": true,
+    "negativeCases": [
+      "missing/wrong BIOS",
+      "unmanaged output",
+      "modified cache",
+      "unreachable proxy",
+      "modified managed config/ROM"
+    ],
+    "rerunPreservesSettings": true
+  },
+  "manualNativePicker": "Unverified",
+  "probeHashSource": "../config/versions.json"
+}

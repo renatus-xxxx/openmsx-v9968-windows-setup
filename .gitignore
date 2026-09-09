@@ -1,0 +1,24 @@
+# Local installations and user-owned data
+/runtime/
+/cache/
+/private/
+/build/
+/dist/
+*.part
+*.setup.lock
+*.staging-*/
+*.log
+*.dsk
+*.DSK
+*.exe
+*.dll
+*.rom
+*.ROM
+!/probe/PROBE.rom
+*.000
+*.001
+*.01F
+A1GTFIRM.*
+A1GT*.ROM
+KANJI.ROM
+# Keep all dumps outside the repository or under /private/.

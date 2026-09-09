@@ -1,0 +1,41 @@
+{
+  "release": "0.5.0",
+  "checked": "2026-09-09",
+  "hashOrigin": "Official ZIP: GitHub release API asset digest, matched locally. Fork ZIP/executables/probe: local SHA-256 measurements (no publisher checksum found for fork). BIOS SHA-1: official openMSX 21.0 machine XML.",
+  "downloads": [
+    {
+      "file": "official.zip",
+      "url": "https://github.com/openMSX/openMSX/releases/download/RELEASE_21_0/openmsx-21.0-windows-vc-x64-bin.zip",
+      "size": 13406976,
+      "sha256": "0A41664E7B2E3BDD195DD6BC804B9CA2E51BC6B02FB3B5507849E9EDD22D7FE4",
+      "hashSource": "https://api.github.com/repos/openMSX/openMSX/releases/tags/RELEASE_21_0 (assets[].digest)"
+    },
+    {
+      "file": "v9968.zip",
+      "url": "https://buppu3.github.io/openMSX/derived/openmsx-21.0-v9968-d884c4b-x64-VC-Release.zip",
+      "size": 4746404,
+      "sha256": "6C44F0AE3C58C6FBE6F7F450BE44B89997062F795F2D333DB721D4FB38130F95",
+      "hashSource": "Local measurement of HTTPS download; matched the previously tested archive."
+    }
+  ],
+  "officialExeSha256": "18831E49ACFA38F9F18EFA7129415A6798842CA4DA3F90A7F03A0294A6FC7F9F",
+  "forkExeSha256": "B5DE3932C0E486002C2CA1FB0D858AD27FC10E97BC5A6B1B277F988F7B7454B9",
+  "probeSha256": "5AED0B7A2707625CE1B61EC049D21365CC79CF88195AE700692B1F0395EE7D79",
+  "bios": [
+    {
+      "name": "fs-a1gt_firmware.rom",
+      "size": 4194304,
+      "sha1": [
+        "e779c338eb91a7dea3ff75f3fde76b8af22c4a3a",
+        "5fa3aa79aeba2c0441f349e78e9a16d9d64422ea"
+      ]
+    },
+    {
+      "name": "fs-a1gt_kanjifont.rom",
+      "size": 262144,
+      "sha1": [
+        "5aff2d9b6efc723bc395b0f96f0adfa83cc54a49"
+      ]
+    }
+  ]
+}

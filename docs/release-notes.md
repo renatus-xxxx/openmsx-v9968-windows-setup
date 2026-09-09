@@ -1,0 +1,11 @@
+[日本語](release-notes.ja.md) | English
+
+# Release notes draft — 0.5.0
+
+[Maintainer instructions](publishing.md)
+
+Initial release of unofficial Windows setup helpers for the V9968-enabled openMSX fork, using C-BIOS or user-owned FS-A1GT BIOS.
+
+Extract the whole ZIP into a new folder. Run the corresponding setup BAT and then launch BAT. Verification, BIOS joining and development helpers are in tools.
+
+No BIOS or emulator executable is bundled. See [tested conditions and limitations](verification.md).
