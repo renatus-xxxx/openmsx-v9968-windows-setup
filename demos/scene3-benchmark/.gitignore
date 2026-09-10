@@ -1,0 +1,4 @@
+build/
+test-output/
+user/
+*.log

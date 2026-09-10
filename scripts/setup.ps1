@@ -207,7 +207,7 @@ try {
         $stage=$null
     }
     Say "Done / 完了: $Destination"
-    Say "Launch / 起動: $(Join-Path $RepoRoot ('launch-'+$Mode+'-v9968.bat'))"
+    Say "Launch / 起動: $(Join-Path $RepoRoot ('launch-v9968-tech-demo-'+$Mode+'.bat'))"
     Say "Verify / 確認: $(Join-Path $RepoRoot ('tools/verify/verify-'+$Mode+'-v9968.bat'))"
     Say "Log / ログ: $log"
 } catch {

@@ -22,3 +22,8 @@ A1GTFIRM.*
 A1GT*.ROM
 KANJI.ROM
 # Keep all dumps outside the repository or under /private/.
+
+!/demos/v9968-tech-demo/V9968-TECH-DEMO.rom
+**/__pycache__/
+
+!/demos/scene3-benchmark/SCENE3-BENCHMARK.rom

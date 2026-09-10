@@ -4,3 +4,10 @@
 *.md text eol=lf
 *.rom binary
 *.png binary
+
+*.gif binary
+*.bin binary
+
+*.pptx binary
+
+*.pdf binary

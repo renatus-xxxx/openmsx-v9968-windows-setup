@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$Toolchain)
+﻿param([Parameter(Mandatory=$true)][string]$Toolchain)
 $ErrorActionPreference='Stop'
 . "$PSScriptRoot/../scripts/find-z88dk.ps1"
 $Toolchain=[IO.Path]::GetFullPath($Toolchain)

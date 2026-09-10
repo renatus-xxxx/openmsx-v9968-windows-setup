@@ -35,6 +35,7 @@ tools/bios/      BIOS 結合・BASIC 起動
 tools/dev/       C ビルド
 scripts/         実装とランチャーのテンプレート
 probe/           C ソースと確認 ROM
+demos/v9968-tech-demo/  デモ・素材・ビルド手順
 config/          固定バージョンと参考機種 XML
 licenses/        第三者の原文ライセンス
 docs/            日英の説明と画像

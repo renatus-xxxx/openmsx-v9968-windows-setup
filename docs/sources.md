@@ -20,14 +20,16 @@ Version and hash facts were checked on 2026-09-09. The configuration is pinned a
 | Drawing samples | [HRA! test_pattern](https://github.com/hra1129/V9968_Cartridge/tree/main/fpga/V9968_Cartridge_TangNano20K/src/v9968/test_pattern) |
 | V9968 programming manual | [HRA! manual](https://github.com/hra1129/V9968_Cartridge/tree/main/fpga/V9968_Cartridge_TangNano20K/src/v9968/manual) |
 
-URLs, archive sizes and hashes have a single machine-readable source: [config/versions.json](../config/versions.json). SHA-256 measurements do not replace a publisher's digital signature. No ROM download source is provided.
+URLs, archive sizes and hashes have a single machine-readable source: [config/versions.json](../config/versions.json). SHA-256 measurements do not replace a publisher's digital signature. No proprietary BIOS ROM download source is provided.
 
 ## Licenses
 
-- Newly written scripts and the probe ROM source: [MIT LICENSE](../LICENSE).
+- Newly written scripts, probe ROM source and demo source: [MIT LICENSE](../LICENSE).
 - Reference machine XML derives from official openMSX 21.0 and retains GPL terms: [original GPL](../licenses/GPL-openMSX.txt). Changes to VDP/display name and their date are marked in the XML. Setup applies the same transformation to downloaded official definitions.
 - C-BIOS is 2-clause BSD: [original notice](../licenses/C-BIOS.txt). The BIOS is downloaded with official openMSX, not redistributed in this package.
-- The compiled probe ROM uses z88dk library code: [original z88dk license](../licenses/z88dk.txt). This notice does not replace file-specific upstream terms.
+- The compiled probe and demo ROMs use z88dk library code: [original z88dk license](../licenses/z88dk.txt). This notice does not replace file-specific upstream terms.
 - Third-party dump utilities are linked, not redistributed. Your physical-machine ROMs and generated installations are excluded.
 
 Original legal texts are preserved unchanged. The Japanese companion is an explanatory guide, not a translated replacement license. If you distribute a separately assembled emulator package, assess that package's own source/notice obligations; this helper distribution does not do that for you.
+
+- The demo uses MSX 8x8 font by 1re1. See [font sources and terms](../demos/v9968-tech-demo/third-party/fonts/README.md). These terms are separate from the repository MIT license.

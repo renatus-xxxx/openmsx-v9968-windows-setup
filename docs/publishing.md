@@ -14,15 +14,15 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
 ```
 
-The ZIP contains only allowlisted files, without an enclosing folder. Default output: dist/openmsx-v9968-windows-setup-0.5.0.zip. Existing ZIPs are not overwritten.
+The ZIP contains only allowlisted files, without an enclosing folder. Default output: dist/openmsx-v9968-windows-setup-0.6.0.zip. Existing ZIPs are not overwritten.
 
-Do not add runtime, cache, private, build, dist or owned BIOS to Git. The only published ROM is probe/PROBE.rom. Check Git's selected files and archive contents before publication. Preserve original third-party notices.
+Do not add runtime, cache, private, build, dist or owned BIOS to Git. The published ROMs are probe/PROBE.rom and demos/v9968-tech-demo/V9968-TECH-DEMO.rom. Check Git's selected files and archive contents before publication. Preserve original third-party notices.
 
 config/PUBLIC_FILES.txt limits the files included in distribution. It is included in both the repository and ZIP so either can regenerate the package. See the [changelog](CHANGELOG.md).
 
 LICENSE stays unchanged at the root, following the conventional location described by [GitHub's licensing guide](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
 
-.gitattributes stays at the root to apply across the tree: CRLF for BAT/PowerShell, LF for Markdown, and binary handling for ROM/PNG. It does not specify encoding or BOM. ZIP extraction does not apply Git attributes, but the file is included for subsequent Git use. See the [official Git specification](https://git-scm.com/docs/gitattributes). References checked 2026-09-09.
+.gitattributes stays at the root to apply across the tree: CRLF for BAT/PowerShell, LF for Markdown, and binary handling for ROM/PNG/GIF/BIN. It does not specify encoding or BOM. ZIP extraction does not apply Git attributes, but the file is included for subsequent Git use. See the [official Git specification](https://git-scm.com/docs/gitattributes). References checked 2026-09-09.
 
 ## Command behavior and check coverage
 
@@ -38,13 +38,13 @@ With `-ZipPath`, it compares ZIP paths, duplicates and file count against the al
 Packaging derives the default ZIP name from the release field in `config/versions.json`. Use `-OutputZip` for another output path. Preserve an existing ZIP outside the repository or choose another filename.
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1 -ZipPath dist\openmsx-v9968-windows-setup-0.5.0.zip
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1 -ZipPath dist\openmsx-v9968-windows-setup-0.6.0.zip
 ```
 
 ## Distribution through GitHub Releases
 
-1. Prepare the validated `dist/openmsx-v9968-windows-setup-0.5.0.zip` as the release asset. `dist/` is local output and stays outside Git tracking.
-2. After reviewing the final commit, the maintainer selects the target commit, tag `v0.5.0`, title `0.5.0`, and English/Japanese release text on the release creation page.
+1. Prepare the validated `dist/openmsx-v9968-windows-setup-0.6.0.zip` as the release asset. `dist/` is local output and stays outside Git tracking.
+2. After reviewing the final commit, the maintainer selects the target commit, tag `v0.6.0`, title `0.6.0`, and English/Japanese release text on the release creation page.
 3. Attach the ZIP, check its name, contents and SHA-256, then publish. Do not confuse it with the Source code archives.
 4. After publication, follow the README links and confirm that the downloaded ZIP's SHA-256 matches the final local ZIP.
 

@@ -2,9 +2,15 @@
 
 # openmsx-v9968-windows-setup
 
-V9968 対応 openMSX 派生版を Windows にセットアップする非公式の補助ツールです。バージョンは **0.5.0**。openMSX 本体や V9968 開発元の公式プロジェクトではありません。
+V9968 対応 openMSX 派生版を Windows にセットアップする非公式の補助ツールです。バージョンは **0.6.0**。openMSX 本体や V9968 開発元の公式プロジェクトではありません。
 
-V9968 は MSX 用の VDP（映像表示プロセッサー）です。派生版 openMSX は、本体内蔵の VDP を V9968 に置き換えて動作します。この補助ツールは、検証済みのバージョンをダウンロードし、ハッシュを検査し、V9968 の識別テストまで行って、すぐ動く環境を作ります。
+V9968 は MSX 用の VDP（映像表示プロセッサー）です。派生版 openMSX は、本体内蔵の VDP を V9968 に置き換えて動作します。この補助ツールは、検証済みのバージョンをダウンロードし、ハッシュを検査し、V9968 の識別テストまで行って、**V9968 TECH DEMO がすぐ動く環境を作ります。**
+
+| VDPコマンド高速モードを使い、フレームごとのパターン更新とスクリーン変形を高速実行 |
+| --- |
+| ![V9968 TECH DEMO — 水中の揺らぎ](demos/v9968-tech-demo/water-preview.gif) |
+
+[SCENE3 の速度・画質を比較するデモ](demos/scene3-benchmark/README.ja.md)では、F キーで高速化とパレットを切り替え、通常 V9958 とも比較できます。
 
 ## どちらを選ぶか
 
@@ -16,24 +22,17 @@ V9968 は MSX 用の VDP（映像表示プロセッサー）です。派生版 o
 
 ## 最短の使い方
 
-1. [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) の **Assets** から `openmsx-v9968-windows-setup-0.5.0.zip` をダウンロードし、ZIP **全体**を新しい書込み可能なフォルダへ展開します。ZIP 内から直接 BAT を実行しないでください。
+1. [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) の **Assets** から `openmsx-v9968-windows-setup-0.6.0.zip` をダウンロードし、ZIP **全体**を新しい書込み可能なフォルダへ展開します。ZIP 内から直接 BAT を実行しないでください。
 2. `setup-cbios-v9968.bat` を実行するか、所有 BIOS フォルダを `setup-fsa1gt-v9968.bat` へドラッグします。
-3. **同じ直下のフォルダ**にある `launch-cbios-v9968.bat` または `launch-fsa1gt-v9968.bat` を実行します。
+3. デモを起動します。
+   - FS-A1GT / R800：`launch-v9968-tech-demo-fsa1gt.bat`
+   - C-BIOS / Z80：`launch-v9968-tech-demo-cbios.bat`
 
-| 方式 | セットアップ | 起動 |
-|---|---|---|
-| C-BIOS | `setup-cbios-v9968.bat` | `launch-cbios-v9968.bat` |
-| FS-A1GT | `setup-fsa1gt-v9968.bat` | `launch-fsa1gt-v9968.bat` |
+ルートの BAT は、セットアップ用2つとデモ起動用2つです。起動前に対応するセットアップを完了してください。
 
-直下にあるのはこの4つだけです。環境を作成する `setup-*` が2つ、作成済み環境を起動する `launch-*` が2つです。
+V9968 の識別画面を開く場合は `tools/verify/launch-cbios-v9968.bat` または `tools/verify/launch-fsa1gt-v9968.bat` を使います。自動確認は同フォルダの `verify-*-v9968.bat` です。識別成功時は **VDP ID=3 / V9968 IDENTIFIED** を表示します。
 
-成功すると、画面に **VDP ID=3 / V9968 IDENTIFIED** が表示されます。
-
-![C-BIOS で確認 ROM を実行した画面](docs/images/cbios-v9968.png)
-
-これ以外が表示された場合は[トラブル対処](docs/troubleshooting.ja.md)を参照してください。
-
-ダウンロードするのは Assets の [0.5.0 の ZIP](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases/download/v0.5.0/openmsx-v9968-windows-setup-0.5.0.zip) です。**Source code (zip)** と **Source code (tar.gz)** は GitHub が自動生成するリポジトリの控えで、配布用 ZIP ではありません。
+[デモの操作・シーン・制限](demos/v9968-tech-demo/README.ja.md)
 
 ## 補助ツール
 
@@ -73,3 +72,7 @@ Windows 10/11 x64、標準の Windows PowerShell 5.1 と curl.exe、ネット接
 ## 公開担当者向け
 
 パッケージ作成・検査・リリース手順は[公開担当者向け手順](docs/publishing.ja.md)にあります。通常のセットアップ・起動には不要です。
+
+## 謝辞
+
+V9968 TECH DEMO のタイトルとシーン番号には、1re1 さんの **MSX 8x8 font** を使用しています。素晴らしいフォントを公開してくださった作者に感謝します。[出典・利用条件・変換方法](demos/v9968-tech-demo/third-party/fonts/README.ja.md)。

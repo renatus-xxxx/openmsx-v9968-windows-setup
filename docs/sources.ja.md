@@ -20,14 +20,16 @@
 | 描画サンプル | [HRA! test_pattern](https://github.com/hra1129/V9968_Cartridge/tree/main/fpga/V9968_Cartridge_TangNano20K/src/v9968/test_pattern) |
 | プログラミングマニュアル | [HRA! manual](https://github.com/hra1129/V9968_Cartridge/tree/main/fpga/V9968_Cartridge_TangNano20K/src/v9968/manual) |
 
-URL・ZIP サイズ・ハッシュは [config/versions.json](../config/versions.json) を単一の機械処理用情報として管理します。SHA-256 の照合は配布元の電子署名の代わりにはなりません。ROM 本体のダウンロード先は提供しません。
+URL・ZIP サイズ・ハッシュは [config/versions.json](../config/versions.json) を単一の機械処理用情報として管理します。SHA-256 の照合は配布元の電子署名の代わりにはなりません。実機 BIOS ROM のダウンロード先は提供しません。
 
 ## ライセンス
 
-- 新規スクリプトと確認 ROM のソース：[MIT LICENSE](../LICENSE)。
+- 新規スクリプト・確認 ROM・デモのソース：[MIT LICENSE](../LICENSE)。
 - 参考機種 XML は公式 openMSX 21.0 由来で GPL を保持：[GPL 原文](../licenses/GPL-openMSX.txt)。VDP・表示名の変更内容と日付を XML に記載しています。セットアップでも公式定義へ同じ変換を適用します。
 - C-BIOS は2条項BSD：[原文表示](../licenses/C-BIOS.txt)。BIOS は公式 openMSX とともに取得し、この配布 ZIP には同梱しません。
-- 確認 ROM には z88dk のライブラリコードを利用：[z88dk 原文](../licenses/z88dk.txt)。個別ファイルの条件がある場合に、この説明が置き換えるものではありません。
+- 確認 ROM とデモ ROM には z88dk のライブラリコードを利用：[z88dk 原文](../licenses/z88dk.txt)。個別ファイルの条件がある場合に、この説明が置き換えるものではありません。
 - 第三者のダンプツールはリンクのみで再配布しません。所有実機の ROM と導入済み環境も除外します。
 
 原文ライセンスは変更せず保持しています。この日本語説明は補足であり、ライセンスの翻訳正文ではありません。別途エミュレーター一式を再配布する場合は、そのパッケージのソース提供・表示等の条件を確認してください。本ツールの公開準備は、その別パッケージの条件確認を代行するものではありません。
+
+- デモの MSX 8x8 font は 1re1 さんの作品です。[出典・利用条件](../demos/v9968-tech-demo/third-party/fonts/README.ja.md)を参照してください。フォントの条件はリポジトリの MIT ライセンスとは別です。

@@ -2,9 +2,15 @@
 
 # openmsx-v9968-windows-setup
 
-Unofficial Windows setup helpers for the V9968-enabled openMSX fork. Version **0.5.0**. This is an independent helper project, not the official openMSX or V9968 project.
+Unofficial Windows setup helpers for the V9968-enabled openMSX fork. Version **0.6.0**. This is an independent helper project, not the official openMSX or V9968 project.
 
-V9968 is an MSX video display processor (VDP). The fork emulates it in place of a machine's built-in VDP. These helpers build a ready-to-run environment for it: they download tested emulator versions, verify hashes, and run a V9968 identification test.
+V9968 is an MSX video display processor (VDP). The fork emulates it in place of a machine's built-in VDP. These helpers build a ready-to-run environment for it: they download tested emulator versions, verify hashes, and run a V9968 identification test. We make an environment where you can run `V9968 TECH DEMO` right away.
+
+| VDP fast command mode enables high-speed frame-by-frame pattern updates and screen distortion. |
+| --- |
+| ![V9968 TECH DEMO — underwater distortion](demos/v9968-tech-demo/water-preview.gif) |
+
+[The SCENE3 benchmark](demos/scene3-benchmark/README.md) lets you switch command speed and palette with F and compare against a standard V9958.
 
 ## Which setup to choose
 
@@ -16,24 +22,17 @@ V9968 is an MSX video display processor (VDP). The fork emulates it in place of 
 
 ## Quick start
 
-1. Download `openmsx-v9968-windows-setup-0.5.0.zip` from **Assets** on [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases). Extract the **whole ZIP** into a new writable folder. Do not run BAT files inside a ZIP viewer.
+1. Download `openmsx-v9968-windows-setup-0.6.0.zip` from **Assets** on [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases). Extract the **whole ZIP** into a new writable folder. Do not run BAT files inside a ZIP viewer.
 2. Run `setup-cbios-v9968.bat`, or drag your FS-A1GT BIOS folder onto `setup-fsa1gt-v9968.bat`.
-3. Run `launch-cbios-v9968.bat` or `launch-fsa1gt-v9968.bat` in **the same top-level folder**.
+3. Start the demo:
+   - FS-A1GT / R800: `launch-v9968-tech-demo-fsa1gt.bat`
+   - C-BIOS / Z80: `launch-v9968-tech-demo-cbios.bat`
 
-| Mode | Setup | Launch |
-|---|---|---|
-| C-BIOS | `setup-cbios-v9968.bat` | `launch-cbios-v9968.bat` |
-| FS-A1GT | `setup-fsa1gt-v9968.bat` | `launch-fsa1gt-v9968.bat` |
+The root contains two setup BATs and two demo launch BATs. Complete the corresponding setup before launching.
 
-The root holds exactly these four files: two `setup-*` BATs that create an environment, and two `launch-*` BATs that start one.
+For the identification screen, use `tools/verify/launch-cbios-v9968.bat` or `tools/verify/launch-fsa1gt-v9968.bat`. Automated checks are the `verify-*-v9968.bat` files in the same directory. A successful identification displays **VDP ID=3 / V9968 IDENTIFIED**.
 
-Success looks like this — **VDP ID=3 / V9968 IDENTIFIED** on screen:
-
-![C-BIOS running the probe ROM](docs/images/cbios-v9968.png)
-
-If you see anything else, see [troubleshooting](docs/troubleshooting.md).
-
-Download the [0.5.0 ZIP](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases/download/v0.5.0/openmsx-v9968-windows-setup-0.5.0.zip) from Assets. **Source code (zip)** and **Source code (tar.gz)** are GitHub's own archives of the repository, not the distribution ZIP.
+[Demo controls, scenes and limitations](demos/v9968-tech-demo/README.md)
 
 ## Additional tools
 
@@ -73,3 +72,7 @@ The generated `runtime/`, `cache/` and `private/` directories stay on your PC. D
 ## For maintainers
 
 Packaging, validation and release steps are in the [maintainer instructions](docs/publishing.md). They are not needed for normal setup or launch.
+
+## Acknowledgments
+
+V9968 TECH DEMO uses **MSX 8x8 font** by **1re1** for its title and scene labels. Thank you to the author for making this font available. See [sources, terms and conversion](demos/v9968-tech-demo/third-party/fonts/README.md).

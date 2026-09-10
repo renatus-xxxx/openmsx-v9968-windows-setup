@@ -32,7 +32,7 @@
 
 | 条件 | 対処 |
 |---|---|
-| 直下の起動 BAT が Not installed / 未セットアップと表示 | 対応するセットアップ BAT を先に実行 |
+| 確認用 BAT（tools/verify）が Not installed / 未セットアップと表示 | 対応するセットアップ BAT を先に実行 |
 | 既存環境が変更済み | 上書きせず停止します。新しいフォルダへ導入 |
 | DLL 不足 | Windows・VC ランタイムを確認。自動インストールは行いません。クリーン OS VM は未検証 |
 | 機種 XML が読めない | XML は UTF-8 BOM なし。PowerShell は5.1で日本語を読める BOM 付き |
@@ -52,3 +52,11 @@
 3. 今回作成した runtime・cache・private・build・dist のフォルダだけを、エクスプローラーで削除します。
 
 失敗時の staging・lock・part ファイルも、関連プロセスの終了後に削除できます。元の BIOS フォルダや別のエミュレーターは削除しないでください。レジストリの復旧や管理者アンインストーラーは不要です。
+
+## デモの起動エラー
+
+- `Run setup-... first`：対応するルートの setup BAT を実行してください。
+- `Emulator hash mismatch`：エミュレーターが検証済みのものと異なります。別フォルダに全体を展開してセットアップし直してください。
+- `Demo ROM is missing` / `Expected a 1 MiB ASCII16-X ROM`：ZIP全体を展開してください。開発者はデモを再ビルドできます。
+- `Cached demo ROM hash mismatch` / `Local BIOS copy differs`：既存のデモ用コピーと元データが一致しません。`runtime/<mode>/user-tech-demo/` の該当フォルダをバックアップしてから別名へ変更し、再起動してください。所有BIOSの元ファイルや runtime 全体は削除しないでください。
+- パスが長すぎる場合は、短い書き込み可能な場所へZIP全体を展開してください。

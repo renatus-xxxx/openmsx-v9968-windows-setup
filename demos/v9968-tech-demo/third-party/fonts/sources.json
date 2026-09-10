@@ -1,0 +1,14 @@
+{
+  "checked": "2026-09-10",
+  "hash_kind": "locally calculated SHA-256",
+  "sources": [
+    {
+      "name": "msx8x8 source page",
+      "url": "https://msxpen.com/codes/-Nq8q6wabU6mJ4onDmYE",
+      "sha256": "67837912b1ee57238760180aae0aa48c59833692228093070ac02a8bfc86cf4f"
+    }
+  ],
+  "included": {
+    "msx8x8-ascii.asm": "4c9274cb72cf96a446e4ccef7fd1c4af546121efb4020e257f732a54cdadfe60"
+  }
+}

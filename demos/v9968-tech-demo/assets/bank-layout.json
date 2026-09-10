@@ -1,0 +1,68 @@
+{
+  "BACKGROUND": {
+    "bank": 1,
+    "bytes": 24576,
+    "stride": 0
+  },
+  "ORB": {
+    "bank": 3,
+    "bytes": 3200,
+    "stride": 0
+  },
+  "PANEL": {
+    "bank": 4,
+    "bytes": 16384,
+    "stride": 0
+  },
+  "CORE": {
+    "bank": 5,
+    "bytes": 32768,
+    "stride": 128
+  },
+  "SHARDS": {
+    "bank": 7,
+    "bytes": 32768,
+    "stride": 128
+  },
+  "ROTATION": {
+    "bank": 9,
+    "bytes": 2048,
+    "stride": 8
+  },
+  "MESH": {
+    "bank": 10,
+    "bytes": 524288,
+    "stride": 4096
+  },
+  "FLOOR": {
+    "bank": 42,
+    "bytes": 65536,
+    "stride": 512
+  },
+  "WATER": {
+    "bank": 46,
+    "bytes": 131072,
+    "stride": 512
+  },
+  "IDENTITY": {
+    "bank": 54,
+    "bytes": 384,
+    "stride": 0
+  },
+  "LABELS": {
+    "bank": 55,
+    "bytes": 1120,
+    "stride": 0
+  },
+  "SEABED": {
+    "bank": 56,
+    "bytes": 24576,
+    "stride": 0
+  },
+  "summary": {
+    "rom_bytes": 1048576,
+    "allocated_bytes": 950272,
+    "mesh_max_spans": 354,
+    "mesh_mean_spans": 257.140625
+  }
+}

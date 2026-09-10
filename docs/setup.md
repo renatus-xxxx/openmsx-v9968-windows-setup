@@ -35,6 +35,7 @@ tools/bios/      BIOS joining and BASIC launcher
 tools/dev/       C build BAT
 scripts/         implementation and runtime templates
 probe/           C source and compiled probe ROM
+demos/v9968-tech-demo/  demo, assets and build instructions
 config/          pinned versions and reference machine XML
 licenses/        unchanged third-party notices
 docs/            paired English/Japanese guides and images

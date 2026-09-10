@@ -1,0 +1,129 @@
+{
+  "release": "0.6.0",
+  "date": "2026-09-10",
+  "host": "Windows 10 x64 / Windows PowerShell 5.1",
+  "emulator": "buppu3/openMSX d884c4b",
+  "rom_sha256": "704f7628ad307a80778c7d3d37694776d9e7c9113382501b804da103a526dfb4",
+  "tests": {
+    "cbios": {
+      "cpu": "z80",
+      "five_scenes_controls_labels": "PASS",
+      "water_identity_and_wave": [
+        {
+          "mode": "identity",
+          "pass": true,
+          "edgeFixture": false,
+          "mismatchedBytes": 0,
+          "sourceSha256": "D522422ABA04F6DE9E8F827E564C265BD528238CC0126A1DDCAB10E0242EA77A",
+          "actualSha256": "D522422ABA04F6DE9E8F827E564C265BD528238CC0126A1DDCAB10E0242EA77A"
+        },
+        {
+          "mode": "wave",
+          "pass": true,
+          "edgeFixture": true,
+          "mismatchedBytes": 0,
+          "sourceSha256": "AEB522E1DCFBE90D5221858913B862BFFB9EFEC85354F89256461E76227EA09F",
+          "actualSha256": "CC68590A43430C052DBB8098C586F5343FBFCAD6A94B9049BB638571ADDDB58A"
+        }
+      ],
+      "actual_root_bat": "PASS: current ROM launched using the root BAT, correct emulator window, normal close and exit 0",
+      "extracted_zip": {
+        "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
+        "result": {
+          "path_condition": "Japanese characters and spaces",
+          "fresh_setup": "PASS (verified download cache reused)",
+          "vdp_id": 3,
+          "actual_root_bat": "PASS: correct emulator window opened, normal close, exit 0",
+          "repeat_setup": "PASS: managed files verified, existing settings retained"
+        },
+        "status": "Carried forward; launcher code unchanged"
+      },
+      "keyboard_toggle": {
+        "result": "PASS",
+        "keys": "W (row 5, bit 4); Y is ignored",
+        "hold": "One toggle per press; release and re-press toggles back",
+        "display": "OFF body matches captured source VRAM; ON differs at completed-frame boundary",
+        "method": "Emulator key matrix injection, not physical keyboard input"
+      },
+      "water_identity_and_wave_origin_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e"
+    },
+    "fsa1gt": {
+      "cpu": "r800",
+      "five_scenes_controls_labels": "PASS",
+      "water_identity_and_wave": [
+        {
+          "mode": "identity",
+          "pass": true,
+          "edgeFixture": false,
+          "mismatchedBytes": 0,
+          "sourceSha256": "6C2630356960068800771D32FE183F31AE8ACF799FC387864AFA1A87CBD85B13",
+          "actualSha256": "6C2630356960068800771D32FE183F31AE8ACF799FC387864AFA1A87CBD85B13"
+        },
+        {
+          "mode": "wave",
+          "pass": true,
+          "edgeFixture": true,
+          "mismatchedBytes": 0,
+          "sourceSha256": "C66C85AAEF7D0E2D4622558256C13764227E5A8DD1F35FAF3816966E4F2087CA",
+          "actualSha256": "1C398E8284A6B1CFA621FB24B0245579DF60C431DEAD001445EF09ADFCD04DEE"
+        }
+      ],
+      "actual_root_bat": "PASS: current ROM launched using the root BAT, correct emulator window, normal close and exit 0",
+      "extracted_zip": {
+        "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
+        "result": {
+          "path_condition": "Japanese characters and spaces",
+          "fresh_setup": "PASS (verified download cache reused)",
+          "vdp_id": 3,
+          "actual_root_bat": "PASS: correct emulator window opened, normal close, exit 0",
+          "repeat_setup": "PASS: managed files verified, existing settings retained"
+        },
+        "status": "Carried forward; launcher code unchanged"
+      },
+      "keyboard_toggle": {
+        "result": "PASS",
+        "keys": "W (row 5, bit 4); Y is ignored",
+        "hold": "One toggle per press; release and re-press toggles back",
+        "display": "OFF body matches captured source VRAM; ON differs at completed-frame boundary",
+        "method": "Emulator key matrix injection, not physical keyboard input"
+      },
+      "water_identity_and_wave_origin_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e"
+    }
+  },
+  "unverified": [
+    "physical hardware",
+    "Windows 11",
+    "clean OS VM",
+    "audio quality",
+    "long playback beyond 18 minutes"
+  ],
+  "notes": [
+    "All scene/control checks use emulator Tcl automation, not manual physical keyboard input.",
+    "CPU and keyboard code are independent implementations; scene timings remain tick based.",
+    "Scene 1 geometry below the text is excluded from stationary-title checks; Scene 3 checks full restored header."
+  ],
+  "teaser": {
+    "file": "water-preview.gif",
+    "width": 640,
+    "height": 480,
+    "frames": 16,
+    "duration_ms": 2080,
+    "loop": 0,
+    "source": "Current demo ROM in FS-A1GT / R800 emulator, Scene 3",
+    "capture": "PASS",
+    "synthetic_frames": false,
+    "rom_sha256": "704f7628ad307a80778c7d3d37694776d9e7c9113382501b804da103a526dfb4"
+  },
+  "review": {
+    "reviewer": "Claude Code",
+    "scope": "Read-only source and bilingual documentation review (before the W-key and README teaser update)",
+    "blocking_findings": 0,
+    "resolution": "Reported wording, links, launcher messages and packaging findings addressed; final Japanese probe-launcher wording checked locally."
+  },
+  "keyboard_regression": {
+    "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
+    "previous_rom_corrected_keyboard_test": "FAIL (CONTROLS=0), reproduced on C-BIOS",
+    "current_rom": "PASS on both machines",
+    "note": "Earlier keyboard checks injected Y and did not establish W-key behavior; superseded by these checks."
+  }
+}

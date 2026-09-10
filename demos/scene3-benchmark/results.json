@@ -1,0 +1,178 @@
+{
+  "date": "2026-09-10",
+  "os": "Windows-10-10.0.19045-SP0",
+  "rom_sha256": "81826e23d3b9913ca0738a895f40419c157711fd44f07f2b9db6adc3dc42a047",
+  "conditions": "60 Hz, fixed pose via P, all drawing including HUD and PSG, completed flips, nominal 12 s sample, emulated time. Independent instances. Not physical hardware.",
+  "records": [
+    {
+      "machine": "cbios",
+      "emulator": "v9968",
+      "checks": [
+        "VDP=3 CPU=0",
+        "mode-0=PASS",
+        "fault-0=PASS",
+        "R20-0=PASS",
+        "frames-0=PASS",
+        "SAMPLE 0 72 720 6.0",
+        "mode-1=PASS",
+        "fault-1=PASS",
+        "R20-1=PASS",
+        "frames-1=PASS",
+        "SAMPLE 1 72 720 6.0",
+        "mode-2=PASS",
+        "fault-2=PASS",
+        "R20-2=PASS",
+        "frames-2=PASS",
+        "SAMPLE 2 23 713 1.935483870967742",
+        "mode-0=PASS",
+        "fault-0=PASS",
+        "R20-0=PASS",
+        "pause=PASS",
+        "escape=PASS",
+        "TEST=PASS"
+      ],
+      "samples": [
+        {
+          "mode": 0,
+          "frames": 72,
+          "ticks": 720,
+          "fps": 6.0
+        },
+        {
+          "mode": 1,
+          "frames": 72,
+          "ticks": 720,
+          "fps": 6.0
+        },
+        {
+          "mode": 2,
+          "frames": 23,
+          "ticks": 713,
+          "fps": 1.935483870967742
+        }
+      ]
+    },
+    {
+      "machine": "cbios",
+      "emulator": "standard",
+      "checks": [
+        "VDP=2 CPU=0",
+        "mode-2=PASS",
+        "fault-2=PASS",
+        "frames-2=PASS",
+        "SAMPLE 2 20 720 1.6666666666666667",
+        "mode-2=PASS",
+        "fault-2=PASS",
+        "pause=PASS",
+        "escape=PASS",
+        "TEST=PASS"
+      ],
+      "samples": [
+        {
+          "mode": 2,
+          "frames": 20,
+          "ticks": 720,
+          "fps": 1.6666666666666667
+        }
+      ]
+    },
+    {
+      "machine": "fsa1gt",
+      "emulator": "v9968",
+      "checks": [
+        "VDP=3 CPU=1",
+        "mode-0=PASS",
+        "fault-0=PASS",
+        "R20-0=PASS",
+        "frames-0=PASS",
+        "SAMPLE 0 90 720 7.5",
+        "mode-1=PASS",
+        "fault-1=PASS",
+        "R20-1=PASS",
+        "frames-1=PASS",
+        "SAMPLE 1 90 720 7.5",
+        "mode-2=PASS",
+        "fault-2=PASS",
+        "R20-2=PASS",
+        "frames-2=PASS",
+        "SAMPLE 2 25 725 2.0689655172413794",
+        "mode-0=PASS",
+        "fault-0=PASS",
+        "R20-0=PASS",
+        "pause=PASS",
+        "escape=PASS",
+        "TEST=PASS"
+      ],
+      "samples": [
+        {
+          "mode": 0,
+          "frames": 90,
+          "ticks": 720,
+          "fps": 7.5
+        },
+        {
+          "mode": 1,
+          "frames": 90,
+          "ticks": 720,
+          "fps": 7.5
+        },
+        {
+          "mode": 2,
+          "frames": 25,
+          "ticks": 725,
+          "fps": 2.0689655172413794
+        }
+      ]
+    },
+    {
+      "machine": "fsa1gt",
+      "emulator": "standard",
+      "checks": [
+        "VDP=2 CPU=1",
+        "mode-2=PASS",
+        "fault-2=PASS",
+        "frames-2=PASS",
+        "SAMPLE 2 21 714 1.7647058823529411",
+        "mode-2=PASS",
+        "fault-2=PASS",
+        "pause=PASS",
+        "escape=PASS",
+        "TEST=PASS"
+      ],
+      "samples": [
+        {
+          "mode": 2,
+          "frames": 21,
+          "ticks": 714,
+          "fps": 1.7647058823529411
+        }
+      ]
+    }
+  ],
+  "image_check": {
+    "region": [
+      32,
+      40,
+      288,
+      200
+    ],
+    "full_vs_fast_different": true,
+    "fast_vs_compatible_identical": true
+  },
+  "unverified": [
+    "Physical hardware",
+    "V9938 execution",
+    "Other fork revisions",
+    "Windows 11",
+    "Clean OS installation"
+  ],
+  "launcher_checks": {
+    "cbios_standard_bat": "PASS",
+    "fsa1gt_v9968_bat": "PASS",
+    "outside_repository_working_directory": "PASS",
+    "japanese_and_space_test_work_path": "PASS",
+    "keyboard_input": "Emulator keymatrix injection, not physical keyboard",
+    "original_demo_rebuild_sha256": "704f7628ad307a80778c7d3d37694776d9e7c9113382501b804da103a526dfb4",
+    "presentation": "9 slides; rendered and package validated; personal identifiers and local paths absent"
+  }
+}

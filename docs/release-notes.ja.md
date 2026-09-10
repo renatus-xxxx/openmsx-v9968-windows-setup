@@ -1,11 +1,13 @@
-日本語 | [English](release-notes.md)
+[English](release-notes.md)
 
-# リリースノート — 0.5.0
+# リリースノート — 0.6.0
 
-[トップ](../README.ja.md)
+[ホーム](../README.ja.md)
 
-Windows 向け V9968 対応 openMSX セットアップ補助ツールの初回リリースです。C-BIOS と所有 FS-A1GT BIOS の2方式に対応します。
+MSX 8x8 fontを使用する5シーンのV9968 TECH DEMOを追加しました。立体、遠近感のある床、水中の揺らぎ、回転する大型パネルをPSG BGMとともに再生します。
 
-GitHub Releases の **Assets** から配布 ZIP を取得し、ZIP 全体を新しいフォルダへ展開してください。対応する setup BAT を実行し、続いて launch BAT を実行します。確認・BIOS 結合・開発用の補助ツールは tools にあります。
+ReleasesのAssetsから0.6.0のZIP全体を展開し、対応するsetup BATを実行してください。起動は `launch-v9968-tech-demo-fsa1gt.bat` または `launch-v9968-tech-demo-cbios.bat` です。識別画面は `tools/verify/launch-*-v9968.bat` に移動しました。
 
-BIOS とエミュレーター実行ファイルは同梱しません。[セットアップと制限](setup.ja.md)を参照してください。
+0.5.0の環境はそのまま残せます。0.6.0は別フォルダへ展開してセットアップしてください。既存環境を使う上級者はデモBATへ `-Runtime "既存runtimeの機種フォルダ"` を指定できます。旧環境の移動や上書きは行いません。
+
+BIOS・エミュレーター実行ファイルは同梱しません。[デモの制限](../demos/v9968-tech-demo/README.ja.md)も参照してください。

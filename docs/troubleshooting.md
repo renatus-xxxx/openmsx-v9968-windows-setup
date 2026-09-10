@@ -32,7 +32,7 @@ Find your situation below. Setup and launch write a log, and the message on scre
 
 | Condition | Action |
 |---|---|
-| Root launcher says Not installed / 未セットアップ | Run the matching setup BAT first |
+| Probe launcher says Not installed / 未セットアップ | Run the matching setup BAT first |
 | Existing installation changed | Setup stops instead of overwriting it. Use a new folder for a fresh environment |
 | Missing runtime DLL | Check Windows/VC runtime status. No runtime installer is run automatically; clean OS VMs are untested |
 | Machine XML fails | Use UTF-8 without BOM for XML. PowerShell scripts use UTF-8 with BOM for Windows PowerShell 5.1 |
@@ -52,3 +52,11 @@ Find your situation below. Setup and launch write a log, and the message on scre
 3. With Explorer, delete only the folders this project generated: runtime, cache, private, build and dist.
 
 Failed staging directories and lock/part files can also be deleted once all related processes have stopped. Do not delete your original BIOS directory or another emulator installation. No registry repair or administrator uninstaller is needed.
+
+## Demo launch errors
+
+- `Run setup-... first`: run the matching root setup BAT.
+- `Emulator hash mismatch`: the emulator differs from the verified version. Extract the entire ZIP into another folder and set it up again.
+- `Demo ROM is missing` / `Expected a 1 MiB ASCII16-X ROM`: extract the whole ZIP. Developers can rebuild the demo.
+- `Cached demo ROM hash mismatch` / `Local BIOS copy differs`: an existing demo copy differs from its source. Back up and rename the affected folder under `runtime/<mode>/user-tech-demo/`, then relaunch. Do not delete the original owned BIOS or the entire runtime.
+- If the path is too long, extract the entire ZIP into a shorter writable location.

@@ -1,4 +1,4 @@
-param([string]$OutputZip)
+﻿param([string]$OutputZip)
 $ErrorActionPreference='Stop'
 Import-Module (Join-Path $PSHOME 'Modules/Microsoft.PowerShell.Utility/Microsoft.PowerShell.Utility.psd1') -ErrorAction Stop
 $root=Split-Path -Parent $PSScriptRoot
