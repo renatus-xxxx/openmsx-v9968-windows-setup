@@ -4,6 +4,14 @@
 
 # Changelog
 
+## 0.6.1
+
+- Declare the tech demo ROM as standard ASCII16 instead of ASCII16-X. The bank switching code is unchanged, and the same ROM still runs on ASCII16-X hardware.
+- Use the shipped demo ROM by default; developers select their own build with `-UseBuild`.
+- Generate frame counts into the bank layout and mask frame indices with them, so a changed count cannot read into the following asset.
+- Stop the asset generator when a ROM would exceed the 256-bank ASCII16 limit, naming ASCII16-X as the replacement.
+- Match the mapper-failure screen to the V9968-missing screen, and remove an unreachable branch from the demo launcher.
+
 ## 0.6.0
 
 - Add V9968 TECH DEMO with MSX 8x8 font, five scenes and PSG music.

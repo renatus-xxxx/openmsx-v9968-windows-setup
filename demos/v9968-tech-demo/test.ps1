@@ -67,7 +67,7 @@ try{
  $machine=if($Standard){$cfg.standardMachine}else{$cfg.machine}
  $expected=if($Standard){$cfg.standardSha256}else{$cfg.forkSha256}
  if((Get-FileHash -LiteralPath $exe).Hash -ne $expected){throw 'Emulator hash mismatch'}
- $p=Start-Process -FilePath $exe -ArgumentList @('-machine',$machine,'-cart','V9968-TECH-DEMO.rom','-romtype','ASCII16-X','-script','capture.tcl') -WorkingDirectory $work -WindowStyle Hidden -PassThru -RedirectStandardOutput "$work/stdout.log" -RedirectStandardError "$work/stderr.log"
+ $p=Start-Process -FilePath $exe -ArgumentList @('-machine',$machine,'-cart','V9968-TECH-DEMO.rom','-romtype','ASCII16','-script','capture.tcl') -WorkingDirectory $work -WindowStyle Hidden -PassThru -RedirectStandardOutput "$work/stdout.log" -RedirectStandardError "$work/stderr.log"
  $handle=$p.Handle
  if(!$p.WaitForExit(60000)){$p.Kill();throw 'Emulator test timed out'}
  if($p.ExitCode -ne 0){throw 'Emulator failed; inspect test logs'}

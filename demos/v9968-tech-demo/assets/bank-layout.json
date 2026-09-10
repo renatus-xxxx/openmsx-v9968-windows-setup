@@ -17,32 +17,38 @@
   "CORE": {
     "bank": 5,
     "bytes": 32768,
-    "stride": 128
+    "stride": 128,
+    "frames": 256
   },
   "SHARDS": {
     "bank": 7,
     "bytes": 32768,
-    "stride": 128
+    "stride": 128,
+    "frames": 256
   },
   "ROTATION": {
     "bank": 9,
     "bytes": 2048,
-    "stride": 8
+    "stride": 8,
+    "frames": 256
   },
   "MESH": {
     "bank": 10,
     "bytes": 524288,
-    "stride": 4096
+    "stride": 4096,
+    "frames": 128
   },
   "FLOOR": {
     "bank": 42,
     "bytes": 65536,
-    "stride": 512
+    "stride": 512,
+    "frames": 128
   },
   "WATER": {
     "bank": 46,
     "bytes": 131072,
-    "stride": 512
+    "stride": 512,
+    "frames": 256
   },
   "IDENTITY": {
     "bank": 54,
@@ -62,6 +68,8 @@
   "summary": {
     "rom_bytes": 1048576,
     "allocated_bytes": 950272,
+    "mapper": "ASCII16",
+    "rom_banks": 64,
     "mesh_max_spans": 354,
     "mesh_mean_spans": 257.140625
   }

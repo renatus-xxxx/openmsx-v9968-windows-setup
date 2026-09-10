@@ -20,7 +20,24 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File build.ps1 -Z88dk "C:\z88
 
 SCREEN 5・256×192・16色で、拡張パレット、HS、LRMMを使用します。ページ0/1で描画と表示を切り替え、ページ3は背景と56×8のシーンラベル、ページ2はテクスチャまたは水の変形元です。Scene 3の上部16行を復元して文字を固定します。
 
-回転・投影、立体の走査線、床・回転パネル・水のパラメーターを事前計算します。固定コードは4000–7FFF、バンク窓は8000–BFFF、64バンクのASCII16-Xです。割り込みはバンクを変更しません。CF00以降は検証情報、D000–D100とD1D1–D1D3はIM2予約領域です。
+回転・投影、立体の走査線、床・回転パネル・水のパラメーターを事前計算します。固定コードは 4000–7FFF、バンク窓は 8000–BFFF で、7000H のレジスタで切り替える 64 バンクの ASCII16 です。バンク番号はすべて 256 未満のため、書き込みは標準 ASCII16 として成立し、ASCII16-X 対応ハードでも同じ動作になります。割り込みはバンクを変更しません。CF00 以降は検証情報、D000–D100 と D1D1–D1D3 は IM2 予約領域です。
+
+stride で参照する資産は `bank-layout.h` に `FRAMES_<名前>` を出力します。実行時は `FRAMES_<名前>-1` でフレーム番号をマスクするため、生成側のフレーム数を変更しても次の資産を読み込むことはありません。生成スクリプトは各フレーム数が 256 以下の2のべき乗であることを検査します。
+
+## マッパーの選択と 1 MiB を超える場合
+
+`bank_select()` はバンク番号の下位8ビットをデータとして、上位ビットを A8–A11 に載せて書き込みます。これは ASCII16-X の符号化そのものです。64 バンクでは上位ビットが常に 0 になるため、書き込み先は必ず 7000H、データはバンク番号となり、標準 ASCII16 として成立します。**1つの実装が両方のマッパーを同時に満たしており、この ROM は ASCII16-X 対応ハードでもそのまま動作します。**
+
+ASCII16 を宣言しているのは、対応環境が圧倒的に広く、このデモが拡張機能を必要としないためです。ただし現時点で実際に動かせるのはエミュレーター利用者です。V9968 は実機としては HRA! 氏の FPGA カートリッジしか存在しないため、マッパーの対応範囲は今すぐ効く利点ではなく、将来のための余地と位置づけています。
+
+8ビットのレジスタにより ASCII16 は 256 バンク＝4 MiB が上限です。これを超える場合は次の手順です。
+
+1. `generate-megarom.py` の `ROM_BANKS` を増やす。`MAPPER` が `ASCII16` のまま 256 を超えると生成が停止し、エラーメッセージが切り替え先を示します。
+2. 同ファイルの `MAPPER` を `ASCII16-X` にする。
+3. `launch.ps1`・`test.ps1`・`test-water.ps1` の `-romtype` を変更する。
+4. `launch.ps1` と `tests/validate-public.ps1` の 1,048,576 バイト検査、`config/versions.json` の `demo` 項目を更新する。
+
+**`mapper.c`・`mapper.h` および描画コードの変更は不要です。** なお ASCII16-X は 8000H–BFFFH のデータ窓内にもレジスタのミラーを持ちます。このデモは当該領域を読むだけなので影響しませんが、将来この窓へ書き込むコードを追加する場合は注意が必要です。
 
 `platform.c` は独立した実装です。カートリッジ起動時にページ0のBIOSを呼び、turbo Rでのみ CHGCPU(0180h)、A=81h によりR800 ROMモードを選びます。キーボードはPPIのAAh/A9hを使用し、選択レジスターを読み取り後に復元します。ライブラリ由来のコードは含みません。
 
@@ -40,8 +57,8 @@ W キーはキーマトリクスの行5・ビット4です。テストでは Y �
 ## 参考資料
 
 - [Pinned VDP command implementation](https://github.com/buppu3/openMSX/blob/d884c4b/src/video/VDPCmdEngine.cc)
-- [Pinned ASCII16-X implementation](https://github.com/buppu3/openMSX/blob/d884c4b/src/memory/RomAscii16X.cc)
-- [ASCII16-X](https://www.grauw.nl/projects/ascii-x/ascii16-x/)
+- [openMSX の ASCII16 実装](https://github.com/openMSX/openMSX/blob/RELEASE_21_0/src/memory/RomAscii16kB.cc)
+- [ASCII16-X](https://www.grauw.nl/projects/ascii-x/ascii16-x/)：この ROM がそのまま動作する上位互換仕様
 - [PPI / keyboard register overview](https://map.grauw.nl/resources/msx_io_ports.php)
 - [Keyboard matrices](https://map.grauw.nl/articles/keymatrix.php)
 

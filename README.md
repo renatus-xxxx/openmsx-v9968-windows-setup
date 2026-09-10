@@ -2,7 +2,7 @@
 
 # openmsx-v9968-windows-setup
 
-Unofficial Windows setup helpers for the V9968-enabled openMSX fork. Version **0.6.0**. This is an independent helper project, not the official openMSX or V9968 project.
+Unofficial Windows setup helpers for the V9968-enabled openMSX fork. Version **0.6.1**. This is an independent helper project, not the official openMSX or V9968 project.
 
 V9968 is an MSX video display processor (VDP). The fork emulates it in place of a machine's built-in VDP. These helpers build a ready-to-run environment for it: they download tested emulator versions, verify hashes, and run a V9968 identification test. We make an environment where you can run `V9968 TECH DEMO` right away.
 
@@ -22,7 +22,7 @@ V9968 is an MSX video display processor (VDP). The fork emulates it in place of 
 
 ## Quick start
 
-1. Download `openmsx-v9968-windows-setup-0.6.0.zip` from **Assets** on [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases). Extract the **whole ZIP** into a new writable folder. Do not run BAT files inside a ZIP viewer.
+1. Download `openmsx-v9968-windows-setup-0.6.1.zip` from **Assets** on [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases). Extract the **whole ZIP** into a new writable folder. Do not run BAT files inside a ZIP viewer.
 2. Run `setup-cbios-v9968.bat`, or drag your FS-A1GT BIOS folder onto `setup-fsa1gt-v9968.bat`.
 3. Start the demo:
    - FS-A1GT / R800: `launch-v9968-tech-demo-fsa1gt.bat`

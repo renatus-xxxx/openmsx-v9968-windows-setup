@@ -14,7 +14,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
 ```
 
-The ZIP contains only allowlisted files, without an enclosing folder. Default output: dist/openmsx-v9968-windows-setup-0.6.0.zip. Existing ZIPs are not overwritten.
+The ZIP contains only allowlisted files, without an enclosing folder. Default output: dist/openmsx-v9968-windows-setup-0.6.1.zip. Existing ZIPs are not overwritten.
 
 Do not add runtime, cache, private, build, dist or owned BIOS to Git. The published ROMs are probe/PROBE.rom and demos/v9968-tech-demo/V9968-TECH-DEMO.rom. Check Git's selected files and archive contents before publication. Preserve original third-party notices.
 
@@ -38,13 +38,13 @@ With `-ZipPath`, it compares ZIP paths, duplicates and file count against the al
 Packaging derives the default ZIP name from the release field in `config/versions.json`. Use `-OutputZip` for another output path. Preserve an existing ZIP outside the repository or choose another filename.
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1 -ZipPath dist\openmsx-v9968-windows-setup-0.6.0.zip
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1 -ZipPath dist\openmsx-v9968-windows-setup-0.6.1.zip
 ```
 
 ## Distribution through GitHub Releases
 
-1. Prepare the validated `dist/openmsx-v9968-windows-setup-0.6.0.zip` as the release asset. `dist/` is local output and stays outside Git tracking.
-2. After reviewing the final commit, the maintainer selects the target commit, tag `v0.6.0`, title `0.6.0`, and English/Japanese release text on the release creation page.
+1. Prepare the validated `dist/openmsx-v9968-windows-setup-0.6.1.zip` as the release asset. `dist/` is local output and stays outside Git tracking.
+2. After reviewing the final commit, the maintainer selects the target commit, tag `v0.6.1`, title `0.6.1`, and English/Japanese release text on the release creation page.
 3. Attach the ZIP, check its name, contents and SHA-256, then publish. Do not confuse it with the Source code archives.
 4. After publication, follow the README links and confirm that the downloaded ZIP's SHA-256 matches the final local ZIP.
 

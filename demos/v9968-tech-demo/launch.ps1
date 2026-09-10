@@ -1,28 +1,15 @@
 ﻿param(
     [ValidateSet('fsa1gt','cbios')]
     [string]$Mode = 'fsa1gt',
-    [string]$Runtime
+    [string]$Runtime,
+    [switch]$UseBuild
 )
 
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding=New-Object Text.UTF8Encoding($false)
 
 function Get-Sha256([string]$Path) {
-    if (Get-Command -Name Get-FileHash -ErrorAction SilentlyContinue) {
-        return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash
-    }
-
-    $alg = [System.Security.Cryptography.SHA256]::Create()
-    $fs  = [System.IO.File]::OpenRead((Resolve-Path -LiteralPath $Path))
-    try {
-        $bytes = $alg.ComputeHash($fs)
-    }
-    finally {
-        $fs.Dispose()
-        $alg.Dispose()
-    }
-
-    return ($bytes | ForEach-Object { $_.ToString('X2') }) -join ''
+    return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash
 }
 
 
@@ -48,24 +35,27 @@ if ((Get-Sha256 -Path $exe) -ne $cfg.forkSha256) {
     throw 'Emulator hash mismatch. / エミュレーターのハッシュが一致しません。'
 }
 
-$romCandidates = @(
-    (Join-Path $PSScriptRoot "build/V9968-TECH-DEMO.rom")
-    (Join-Path $PSScriptRoot "V9968-TECH-DEMO.rom")
-)
-
-$rom = $null
-foreach ($candidate in $romCandidates) {
-    if (Test-Path -LiteralPath $candidate) {
-        $rom = $candidate
-        break
+# The shipped ROM is used by default so that a stale build/ output cannot be
+# picked up silently after an upgrade. Developers select their own build
+# explicitly with -UseBuild.
+$shipped = Join-Path $PSScriptRoot 'V9968-TECH-DEMO.rom'
+$built = Join-Path $PSScriptRoot 'build/V9968-TECH-DEMO.rom'
+if ($UseBuild) {
+    if (-not (Test-Path -LiteralPath $built)) {
+        throw 'No build output found; run build.ps1 first. / ビルド成果物がありません。先に build.ps1 を実行してください。'
     }
+    $rom = $built
 }
-if (-not $rom) {
+elseif (Test-Path -LiteralPath $shipped) {
+    $rom = $shipped
+}
+else {
     throw 'Demo ROM is missing. Extract the whole ZIP or rebuild. / デモ ROM がありません。ZIP全体を展開するか再ビルドしてください。'
 }
 if ((Get-Item -LiteralPath $rom).Length -ne 1048576) {
-    throw 'Expected a 1 MiB ASCII16-X ROM. / ROM のサイズが不正です。ZIPを再展開するか再ビルドしてください。'
+    throw 'Expected a 1 MiB ASCII16 ROM. / ROM のサイズが不正です。ZIPを再展開するか再ビルドしてください。'
 }
+Write-Host ('ROM / 使用 ROM: ' + $rom)
 
 $romHash = (Get-Sha256 -Path $rom)
 $workRelative = 'user-tech-demo/' + $romHash.Substring(0,12)
@@ -112,7 +102,7 @@ try {
     $arg = @(
         '-machine', $cfg.machine,
         '-cart', ($workRelative + '/' + $romName),
-        '-romtype', 'ASCII16-X'
+        '-romtype', 'ASCII16'
     )
     $p = Start-Process -FilePath $exe -ArgumentList $arg -WorkingDirectory $Runtime -WindowStyle Normal -PassThru
     $null = $p.Handle

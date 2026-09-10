@@ -57,6 +57,6 @@
 
 - `Run setup-... first`：対応するルートの setup BAT を実行してください。
 - `Emulator hash mismatch`：エミュレーターが検証済みのものと異なります。別フォルダに全体を展開してセットアップし直してください。
-- `Demo ROM is missing` / `Expected a 1 MiB ASCII16-X ROM`：ZIP全体を展開してください。開発者はデモを再ビルドできます。
+- `Demo ROM is missing` / `Expected a 1 MiB ASCII16 ROM`：ZIP 全体を展開してください。開発者はデモを再ビルドし、`-UseBuild` を付けてそのビルドを起動できます。
 - `Cached demo ROM hash mismatch` / `Local BIOS copy differs`：既存のデモ用コピーと元データが一致しません。`runtime/<mode>/user-tech-demo/` の該当フォルダをバックアップしてから別名へ変更し、再起動してください。所有BIOSの元ファイルや runtime 全体は削除しないでください。
 - パスが長すぎる場合は、短い書き込み可能な場所へZIP全体を展開してください。

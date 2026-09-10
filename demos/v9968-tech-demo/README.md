@@ -2,7 +2,7 @@
 
 # V9968 TECH DEMO
 
-A C technical demo for V9968-enabled openMSX, supplied as a 1 MiB ASCII16-X ROM. Five scenes show a solid, perspective-style floor, underwater distortion and large panels, repeating in roughly 75 seconds.
+A C technical demo for V9968-enabled openMSX, supplied as a 1 MiB ASCII16 ROM. Five scenes show a solid, perspective-style floor, underwater distortion and large panels, repeating in roughly 75 seconds.
 
 After completing the corresponding setup at the repository root, run `launch-v9968-tech-demo-fsa1gt.bat` (FS-A1GT / R800) or `launch-v9968-tech-demo-cbios.bat` (C-BIOS / Z80). The ROM is `V9968-TECH-DEMO.rom`, using MSX 8x8 font. Normal launch requires neither z88dk nor Python.
 
@@ -27,7 +27,7 @@ Projection, draw order, solid scanlines and deformation parameters are precomput
 
 Rendering uses SCREEN 5 at 256×192 with 16 colors, five-bit RGB components, HS and LRMM. Water strip transfers use HMMM: the technique is not exclusive to V9968, but benefits from its accelerated commands.
 
-The target is pinned `buppu3/openMSX d884c4b`. The launcher specifies `-romtype ASCII16-X`; select that type when opening the ROM separately. Physical hardware and other emulators remain untested.
+The target is pinned `buppu3/openMSX d884c4b`. The launcher specifies `-romtype ASCII16`; select that type when opening the ROM separately. All bank numbers stay below 256, so the same ROM also runs unchanged on ASCII16-X hardware. Physical hardware and other emulators remain untested.
 
 The original three-voice PSG score is included. Timing results for earlier builds are not performance measurements of 0.6.0.
 

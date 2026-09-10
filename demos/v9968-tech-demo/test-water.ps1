@@ -68,7 +68,7 @@ after time 85 {exit 1}
   [IO.File]::WriteAllText("$work/water.tcl",$tcl)
   $exe="$Runtime/emulator/openmsx.exe"
   if((Get-FileHash $exe).Hash -ne $cfg.forkSha256){throw 'Emulator hash mismatch'}
-  $p=Start-Process -FilePath $exe -ArgumentList @('-machine',$cfg.machine,'-cart','V9968-TECH-DEMO.rom','-romtype','ASCII16-X','-script','water.tcl') -WorkingDirectory $work -WindowStyle Hidden -PassThru -RedirectStandardOutput "$work/stdout.log" -RedirectStandardError "$work/stderr.log"
+  $p=Start-Process -FilePath $exe -ArgumentList @('-machine',$cfg.machine,'-cart','V9968-TECH-DEMO.rom','-romtype','ASCII16','-script','water.tcl') -WorkingDirectory $work -WindowStyle Hidden -PassThru -RedirectStandardOutput "$work/stdout.log" -RedirectStandardError "$work/stderr.log"
   $handle=$p.Handle;if(!$p.WaitForExit(60000)){$p.Kill();throw "Water test timed out: $work"}
   if($p.ExitCode -ne 0){throw "Water test failed: $work"}
   $src=[IO.File]::ReadAllBytes("$work/source.bin");$params=[IO.File]::ReadAllBytes("$work/parameters.bin");$actual=[IO.File]::ReadAllBytes("$work/actual.bin")

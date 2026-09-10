@@ -5,6 +5,8 @@
 #include "mapper.h"
 #include "bank-layout.h"
 static u8 angle;
+/* Read from runtime-math.asm: selects the R800 MULUW path over the Z80
+   software multiply. Not static; the assembly references it as _use_r800. */
 u8 use_r800;
 static void core(u8 a){
     const u8 *p=bank_record(BANK_CORE,a,128);
@@ -19,7 +21,9 @@ static void core(u8 a){
         }
     }
 }
-static void mesh(u8 a){stream_spans(bank_record(BANK_MESH,a&127,4096));}
+/* Assets with fewer than 256 frames must be masked; bank_record() takes the
+   index as an unsigned char, so the 256-frame tables are already bounded. */
+static void mesh(u8 a){stream_spans(bank_record(BANK_MESH,a&(FRAMES_MESH-1),4096));}
 static void triangle(int x0,int y0,int x1,int y1,int x2,int y2,u8 col){
     int tmp,dl,ds1,ds2,xl,xs,y,left,right;
     if(y1<y0){tmp=y0;y0=y1;y1=tmp;tmp=x0;x0=x1;x1=tmp;}
@@ -49,7 +53,7 @@ static void shards(u8 a){
 }
 int main(void){
     u8 scene,row,key,previous=255,manual=0,wave=1,was_w=0;u16 frame=0,now;
-    if(!mapper_check()){puts("ASCII16-X REQUIRED");for(;;){inp(0xa9);}}
+    if(!mapper_check()){puts("ASCII16 REQUIRED\nReset to exit.");for(;;){inp(0xa9);}}
     *((volatile u8*)0xcf07)=1;
     /* MSX BIOS generation byte: 3 = turbo R; CHGCPU, R800 ROM mode. */
     if(*((u8*)0x002d)==3){
@@ -79,11 +83,11 @@ int main(void){
         if(previous==2 && scene!=2){textures_load();background_load(BANK_BACKGROUND);}
         if(previous!=2 && scene==2)background_load(BANK_SEABED);
         if(scene!=2)background();
-        if(scene==0)mesh((now>>1)&127);
-        if(scene==1){floor_draw((const int*)bank_record(BANK_FLOOR,(now>>1)&127,512));core(angle);}
+        if(scene==0)mesh((u8)(now>>1));
+        if(scene==1){floor_draw((const int*)bank_record(BANK_FLOOR,(now>>1)&(FRAMES_FLOOR-1),512));core(angle);}
         if(scene==2){
             /* Same pose clock as Scene 1; capture clean geometry every frame. */
-            background();mesh((now>>1)&127);water_capture();
+            background();mesh((u8)(now>>1));water_capture();
             /* Q8 phase: 522/256 steps/tick, ~3.003 rad/s at 60 Hz. */
             if(wave)water_draw(bank_record(BANK_WATER,(u8)(((unsigned long)now*522)>>8),512));
             else{bank_select(BANK_IDENTITY);water_draw((const u8*)0x8000);}
@@ -99,7 +103,8 @@ int main(void){
         *((volatile u16*)0xcf00)=frame;*((volatile u16*)0xcf02)=ticks;
         *((volatile u8*)0xcf04)=scene;
         *((volatile u8*)0xcf08)=wave;
-        row=inp(0xaa);key=platform_keyboard_row(7);outp(0xaa,row);
+        /* platform_keyboard_row() saves and restores the PPI row select. */
+        key=platform_keyboard_row(7);
         if(!(key&4)){video_stop();for(;;){inp(0xa9);}}
         key=platform_keyboard_row(0);
         for(row=0;row<6;++row)if(!(key&(1<<row)))manual=row;

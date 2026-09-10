@@ -14,7 +14,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\package.ps1
 ```
 
-ZIP は一覧にあるファイルだけを含み、外側のフォルダは付けません。既定出力は dist/openmsx-v9968-windows-setup-0.6.0.zip です。既存 ZIP は上書きしません。
+ZIP は一覧にあるファイルだけを含み、外側のフォルダは付けません。既定出力は dist/openmsx-v9968-windows-setup-0.6.1.zip です。既存 ZIP は上書きしません。
 
 runtime・cache・private・build・dist と所有 BIOS は Git 管理へ追加しないでください。公開対象の ROM は、自作の probe/PROBE.rom と demos/v9968-tech-demo/V9968-TECH-DEMO.rom です。公開前に Git の対象ファイルと ZIP 内容を確認してください。第三者ライセンスは原文を保持してください。
 
@@ -38,13 +38,13 @@ LICENSE は本文を変更せずルートに保持します。[GitHub のライ�
 パッケージ生成では `config/versions.json` の release 値から既定の ZIP 名を決めます。`-OutputZip` で出力先を変更できます。既存 ZIP はリポジトリ外へ保管するか別名を指定してください。
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1 -ZipPath dist\openmsx-v9968-windows-setup-0.6.0.zip
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1 -ZipPath dist\openmsx-v9968-windows-setup-0.6.1.zip
 ```
 
 ## GitHub Releases での配布
 
-1. 検査済みの `dist/openmsx-v9968-windows-setup-0.6.0.zip` を添付用アセットとして用意します。`dist/` はローカルの生成先で、Git 管理には追加しません。
-2. 公開担当者が最終コミットを確認した後、Releases のリリース作成画面で対象コミット、タグ `v0.6.0`、タイトル `0.6.0`、日英のリリース本文を設定します。
+1. 検査済みの `dist/openmsx-v9968-windows-setup-0.6.1.zip` を添付用アセットとして用意します。`dist/` はローカルの生成先で、Git 管理には追加しません。
+2. 公開担当者が最終コミットを確認した後、Releases のリリース作成画面で対象コミット、タグ `v0.6.1`、タイトル `0.6.1`、日英のリリース本文を設定します。
 3. ZIP を添付し、ファイル名・内容・SHA-256 を確認して公開します。Source code のアーカイブと混同しないでください。
 4. 公開後、README のリンクから ZIP を取得し、SHA-256 が最終 ZIP と一致することを確認します。
 

@@ -3,7 +3,8 @@
   "date": "2026-09-10",
   "host": "Windows 10 x64 / Windows PowerShell 5.1",
   "emulator": "buppu3/openMSX d884c4b",
-  "rom_sha256": "704f7628ad307a80778c7d3d37694776d9e7c9113382501b804da103a526dfb4",
+  "rom_sha256": "fb36f2ee6f94796ca17b80d8e49155192418beb53faa9e1bbbbc7f3f84f698a4",
+  "romtype": "ASCII16",
   "tests": {
     "cbios": {
       "cpu": "z80",
@@ -100,7 +101,9 @@
   "notes": [
     "All scene/control checks use emulator Tcl automation, not manual physical keyboard input.",
     "CPU and keyboard code are independent implementations; scene timings remain tick based.",
-    "Scene 1 geometry below the text is excluded from stationary-title checks; Scene 3 checks full restored header."
+    "Scene 1 geometry below the text is excluded from stationary-title checks; Scene 3 checks full restored header.",
+    "The demo declares -romtype ASCII16. Bank numbers stay below 256, so the same ROM also runs unchanged on ASCII16-X hardware; standard ASCII16 was chosen for wider cartridge and emulator support.",
+    "Re-verified after the ASCII16 change: SCENES_AND_ESCAPE=PASS with MAPPER=1 on both C-BIOS/Z80 and FS-A1GT/R800."
   ],
   "teaser": {
     "file": "water-preview.gif",
@@ -109,7 +112,7 @@
     "frames": 16,
     "duration_ms": 2080,
     "loop": 0,
-    "source": "Current demo ROM in FS-A1GT / R800 emulator, Scene 3",
+    "source": "FS-A1GT / R800 emulator, Scene 3. Captured from the previous build; the ASCII16 change altered only the mapper-failure string, so the rendered output is unchanged.",
     "capture": "PASS",
     "synthetic_frames": false,
     "rom_sha256": "704f7628ad307a80778c7d3d37694776d9e7c9113382501b804da103a526dfb4"
