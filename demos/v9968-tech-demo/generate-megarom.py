@@ -35,14 +35,7 @@ def proj(x,y,z,a,tilt,scale=160):
     return round(128+xx*scale/d),round(96+yy*scale/d),d
 
 font = json.loads((OUT/'fonts.json').read_text(encoding='utf-8'))['msx8x8']
-def titled_background(path):
-    im=Image.open(path).copy()
-    for pos,char in enumerate('V9968 TECH DEMO'):
-        for y,bits in enumerate(font[char]):
-            for x in range(8):
-                if bits & (128>>x):im.putpixel((73+pos*8+x,5+y),12)
-    return packed(im)
-add('BACKGROUND',titled_background(OUT/'chamber-256.png'))
+add('BACKGROUND',packed(Image.open(OUT/'chamber-256.png').copy()))
 add('ORB',packed(Image.open(OUT/'metal-80.png')))
 texture=Image.new('P',(256,128));px=texture.load()
 for y in range(128):
@@ -137,14 +130,45 @@ add('IDENTITY',identity)
 
 # Small opaque HUD labels, uploaded below the background in VRAM page 3.
 font = json.loads((OUT/'fonts.json').read_text(encoding='utf-8'))['msx8x8']
-labels = Image.new('P',(56,40))
-for scene in range(5):
+SCENES=6
+# The whole header line, shadow and text already composited, one strip per
+# scene. The runtime draws it with a single transparent blit: the VDP skips
+# source colour 0, so every non-zero pixel here lands on the picture and
+# nothing else is touched.
+#
+# The shadow is index 1 rather than 0 because on this VDP transparency means
+# "colour 0 is not written", and 0 is black: a black glyph is exactly what a
+# transparent blit throws away. Index 1 is (1,2,3) of 31, which is black to the
+# eye. Writing a true black shadow instead would mean clearing it with an
+# opaque AND from an inverse mask, which is a second blit per string.
+HUD_W,HUD_H,HUD_SHADOW=186,9,1
+hud=Image.new('P',(HUD_W,HUD_H*SCENES))
+def hud_line(text,ox,oy,colour):
+    for pos,char in enumerate(text):
+        for y,bits in enumerate(font[char]):
+            for x in range(8):
+                if bits & (128>>x):hud.putpixel((ox+pos*8+x,oy+y),colour)
+for scene in range(SCENES):
+    top=scene*HUD_H
+    # Shadow first, one dot down and right, then the text over it. Baking the
+    # two here gives exactly what two runtime passes would have produced.
+    for text,ox,colour in (('SCENE '+str(scene+1),0,14),('V9968 TECH DEMO',65,12)):
+        hud_line(text,ox+1,top+1,HUD_SHADOW)
+    for text,ox,colour in (('SCENE '+str(scene+1),0,14),('V9968 TECH DEMO',65,12)):
+        hud_line(text,ox,top,colour)
+assert len(packed(hud))==HUD_W//2*HUD_H*SCENES
+add('HUDLINE',packed(hud))
+
+# The Scene 3 benchmark overwrites this bank with its own font atlas, so the
+# bank has to stay even though the demo no longer uploads it.
+labels = Image.new('P',(56,8*SCENES))
+for scene in range(SCENES):
     for pos,char in enumerate('SCENE '+str(scene+1)):
         for y,bits in enumerate(font[char]):
             for x in range(8):
                 if bits & (128>>x): labels.putpixel((pos*8+x,scene*8+y),14)
 add('LABELS',packed(labels))
-add('SEABED',titled_background(OUT/'seabed-256.png'))
+add('SEABED',packed(Image.open(OUT/'seabed-256.png').copy()))
 
 # The ROM is declared as -romtype ASCII16, whose bank register is eight bits
 # wide, so bank numbers must stay below 256. bank_select() already places the

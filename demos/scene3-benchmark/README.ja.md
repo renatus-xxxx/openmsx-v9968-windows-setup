@@ -2,7 +2,7 @@
 
 # SCENE3 BENCHMARK
 
-海底遺跡、動く立体、水の揺らぎを、V9968 と従来の VDP で比較する独立したデモです。既存の5シーンのデモとは別に起動します。同じ1 MiB ROM を ASCII16 として使用します。
+海底遺跡、動く立体、水の揺らぎを、V9968 と従来の VDP で比較する独立したデモです。既存の6シーンのデモとは別に起動します。同じ1 MiB ROM を ASCII16 として使用します。
 
 ## 起動
 
@@ -62,7 +62,7 @@ V9968 の COMPAT と通常 V9958 の速度は同一ではありません。比�
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File demos\scene3-benchmark\build.ps1 -Z88dk "<z88dk のフォルダ>"
 ```
 
-main.c は SCENE3 のみを描画します。既存デモの v9968.c・mapper.c・platform.c・music.c と事前計算データを共用し、SCENE3_BENCHMARK 定義時だけ通常パレットと従来 VDP の起動処理を追加します。再ビルドは比較 ROM と rom.json を更新します。既存デモの ROM は更新しません。
+main.c は SCENE3 のみを描画します。既存デモの v9968.c・mapper.c・platform.c・music.c と事前計算データを共用し、SCENE3_BENCHMARK 定義時だけ通常パレットと従来 VDP の起動処理を追加します。再ビルドは比較 ROM と rom.json を更新します。既存デモの ROM は更新しません。同梱の比較 ROM は掲載している測定値を取得した当のものです。results.json にそのハッシュを記録しています。現行ソースから再ビルドすると、共有コードとアセットも現在の内容を取り込むため、ハッシュの異なる ROM になります。再ビルド版の測定値は掲載していません。同梱 ROM のビルド元コミットとツールチェーンは記録していないため、再現を試みるのではなく、ROM と results.json の対を基準として扱ってください。
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File demos\scene3-benchmark\test.ps1 -Runtime runtime\cbios

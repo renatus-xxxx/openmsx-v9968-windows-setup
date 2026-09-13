@@ -2,7 +2,7 @@
 
 # openmsx-v9968-windows-setup
 
-V9968 対応 openMSX 派生版を Windows にセットアップする非公式の補助ツールです。バージョンは **0.6.1**。openMSX 本体や V9968 開発元の公式プロジェクトではありません。
+V9968 対応 openMSX 派生版を Windows にセットアップする非公式の補助ツールです。バージョンは **0.7.0**。openMSX 本体や V9968 開発元の公式プロジェクトではありません。
 
 V9968 は MSX 用の VDP（映像表示プロセッサー）です。派生版 openMSX は、本体内蔵の VDP を V9968 に置き換えて動作します。この補助ツールは、検証済みのバージョンをダウンロードし、ハッシュを検査し、V9968 の識別テストまで行って、**V9968 TECH DEMO がすぐ動く環境を作ります。**
 
@@ -22,7 +22,7 @@ V9968 は MSX 用の VDP（映像表示プロセッサー）です。派生版 o
 
 ## 最短の使い方
 
-1. [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) の **Assets** から `openmsx-v9968-windows-setup-0.6.1.zip` をダウンロードし、ZIP **全体**を新しい書込み可能なフォルダへ展開します。ZIP 内から直接 BAT を実行しないでください。
+1. [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) の **Assets** から `openmsx-v9968-windows-setup-0.7.0.zip` をダウンロードし、ZIP **全体**を、OneDrive などの同期フォルダの外にある新しい書込み可能なフォルダ（例: `C:\MSX`）へ展開します。ZIP 内から直接 BAT を実行しないでください。
 2. `setup-cbios-v9968.bat` を実行するか、所有 BIOS フォルダを `setup-fsa1gt-v9968.bat` へドラッグします。
 3. デモを起動します。
    - FS-A1GT / R800：`launch-v9968-tech-demo-fsa1gt.bat`
@@ -63,6 +63,7 @@ Windows 10/11 x64、標準の Windows PowerShell 5.1 と curl.exe、ネット接
 - [セットアップと構成](docs/setup.ja.md)
 - [FS-A1GT ROM の取得・結合](docs/bios-dump.ja.md)
 - [C 開発](docs/development.ja.md)
+- [V9968 実装間の食い違い](docs/v9968-divergence.ja.md)
 - [トラブル対処・削除](docs/troubleshooting.ja.md)
 - [一次資料と第三者ライセンス](docs/sources.ja.md)
 - [変更履歴](docs/CHANGELOG.ja.md)

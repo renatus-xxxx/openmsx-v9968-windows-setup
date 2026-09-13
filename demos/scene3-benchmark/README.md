@@ -2,7 +2,7 @@
 
 # SCENE3 BENCHMARK
 
-A separate demo comparing the underwater ruins, moving geometry and water distortion on V9968 and conventional VDPs. It uses the same 1 MiB ROM with the ASCII16 mapper on both emulators. The existing five-scene demo remains available separately.
+A separate demo comparing the underwater ruins, moving geometry and water distortion on V9968 and conventional VDPs. It uses the same 1 MiB ROM with the ASCII16 mapper on both emulators. The existing six-scene demo remains available separately.
 
 ## Launch
 
@@ -62,7 +62,7 @@ Run from the repository root, replacing the z88dk placeholder with your installa
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File demos\scene3-benchmark\build.ps1 -Z88dk "<z88dk directory>"
 ```
 
-main.c renders only Scene 3. The benchmark shares v9968.c, mapper.c, platform.c, music.c and precomputed data with the existing demo. SCENE3_BENCHMARK enables the standard palette and conventional VDP startup paths. Rebuilding updates the benchmark ROM and rom.json, but does not replace the existing demo ROM.
+main.c renders only Scene 3. The benchmark shares v9968.c, mapper.c, platform.c, music.c and precomputed data with the existing demo. SCENE3_BENCHMARK enables the standard palette and conventional VDP startup paths. Rebuilding updates the benchmark ROM and rom.json, but does not replace the existing demo ROM. The shipped ROM is the one the published measurements were taken on, and results.json records its hash. A rebuild from the current sources picks up the shared code and assets as they are now, so it produces a ROM with a different hash; no measurements are published for a rebuilt one. The commit and toolchain the shipped ROM was built from are not recorded, so treat the pair of ROM and results.json as the reference rather than trying to reproduce it.
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File demos\scene3-benchmark\test.ps1 -Runtime runtime\cbios

@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-13",
+  "rom_sha256": "cae4052139f7f250d8f526b054aa6a184fb69cb984fb9cbaecb2f820f842c7a0",
+  "compiler": "sccz80 via z88dk; +msx -subtype=rom -O2 -create-app",
+  "method": "Isolated emulator instances; screen text and VDP registers read through Tcl. Not a physical keyboard or FPGA test.",
+  "conditions": "Probe CPU: Z80 on both machine configurations; SCREEN 5, display blanked, interrupts disabled during experiments; selected R20=0x31 on pinned fork.",
+  "records": [
+    {"machine": "C-BIOS MSX2+", "emulator": "V9968 d884c4b", "result": "PASS"},
+    {"machine": "FS-A1GT", "emulator": "V9968 d884c4b", "result": "PASS"},
+    {"machine": "C-BIOS MSX2+", "emulator": "openMSX 21.0 V9958", "result": "PASS; ID=2, experiments skipped"},
+    {"machine": "FS-A1GT", "emulator": "openMSX 21.0 V9958", "result": "PASS; ID=2, experiments skipped"}
+  ],
+  "v9968_output": ["VDP ID=3", "R20B5  off=0 on=1", "R20SEL value=31", "LRMMOP timp=ff imp=00", "LRMMST d0=1 d1=2", "CE     rise=0 fall=15", "CESEEN value=1", "VRAM   a1 a2 a3 a4"],
+  "restoration": "R14=0 and R20=0 after BIOS INITXT; complete report visible",
+  "negative_test": "A separate ROM with the HMMV busy-poll budget reduced from 60000 to 1 reported PROBE ERROR code=1, discarded partial results, and returned to text with R14=0/R20=0. Mutant ROM is not distributed.",
+  "vram_addresses": ["0x8000", "0x10000", "0x18000", "0x1c000"],
+  "unverified": ["Physical FPGA hardware and its 0x11 path", "R800 execution", "256 KiB capacity", "A guaranteed real-hardware CE start bound", "External VDP cartridge on ports 88h/89h"]
+}

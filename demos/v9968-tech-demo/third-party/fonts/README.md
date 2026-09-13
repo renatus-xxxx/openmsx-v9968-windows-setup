@@ -7,4 +7,4 @@
 
 Checked 2026-09-10. `sources.json` records locally calculated SHA-256 hashes. MSX8x8 uses ASCII glyphs.
 
-Run `python generate-fonts.py` from the demo directory (also run automatically by `build.ps1`). It converts upstream rows to `assets/fonts.json`. `generate-megarom.py` uses this single data source for both the title and scene labels. The title is composed into background ROM assets before compilation; the existing header restoration keeps it stationary in Scene 3. Original background PNGs remain editable and unchanged.
+Run `python generate-fonts.py` from the demo directory (also run automatically by `build.ps1`). It converts upstream rows to `assets/fonts.json`. `generate-megarom.py` uses this single data source for both the title and scene labels. The title and scene labels are composed into shadowed header strips in the HUDLINE ROM asset. Each frame overlays its strip onto the finished picture; the Scene 3 background beneath the stationary text remains distorted. Original background PNGs remain editable and unchanged.

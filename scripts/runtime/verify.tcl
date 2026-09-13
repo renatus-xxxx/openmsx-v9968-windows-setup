@@ -11,7 +11,11 @@ after time 10 {
     puts $f [machine_info config_name]
     puts $f [get_active_cpu]
     puts $f $result
-    if {[string first "VDP ID=$env(V9968_EXPECT_ID)" $result] >= 0} {
+    set expected $env(V9968_EXPECT_ID)
+    set id_ok [regexp -line "^ *VDP ID=$expected *$" $result]
+    set completed [expr {[string first "REPORT THESE LINES" $result] >= 0}]
+    set failed [expr {[string first "PROBE ERROR" $result] >= 0}]
+    if {$id_ok && $completed && !$failed} {
         puts $f "SELFTEST=PASS"
     } else {
         puts $f "SELFTEST=FAIL"

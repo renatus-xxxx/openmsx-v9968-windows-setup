@@ -4,6 +4,7 @@
 /private/
 /build/
 /dist/
+/demos/v9968-tech-demo/notes/
 *.part
 *.setup.lock
 *.staging-*/

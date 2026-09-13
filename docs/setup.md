@@ -6,7 +6,7 @@
 
 ## Download
 
-Download the distribution ZIP from **Assets** on [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) and extract it completely into a new writable folder. Run the BATs below from that folder. Do not select the **Source code** archives.
+Download the distribution ZIP from **Assets** on [GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) and extract it completely into a new writable folder outside OneDrive or any other synced folder, for example `C:\MSX`. Setup stops rather than installing into a synced folder, and a synced folder would also upload your own BIOS dump. Run the BATs below from that folder. Do not select the **Source code** archives.
 
 ## C-BIOS
 

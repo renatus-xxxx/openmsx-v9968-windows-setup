@@ -6,4 +6,4 @@
 
 確認日：2026-09-10。`sources.json` に取得データの SHA-256（ローカル計算値）を記録しています。MSX8x8 は ASCII の字形を使用します。
 
-デモのフォルダで `python generate-fonts.py` を実行すると `assets/fonts.json` を生成します。`build.ps1` からも自動実行します。`generate-megarom.py` はこの共通データからタイトルとシーン番号を生成します。タイトルはビルド時に背景の ROM データへ合成し、Scene 3では従来の上部領域の復元処理で固定表示します。編集用の背景 PNG は変更しません。
+デモのフォルダで `python generate-fonts.py` を実行すると `assets/fonts.json` を生成します。`build.ps1` からも自動実行します。`generate-megarom.py` はこの共通データからタイトルとシーン番号を生成します。タイトルとシーン番号は、ビルド時に影付きヘッダー帯として HUDLINE の ROM データへ合成します。毎フレーム、完成した画面へ帯を重ね、Scene 3 では文字を固定したまま、その背後の背景が歪みます。編集用の背景 PNG は変更しません。

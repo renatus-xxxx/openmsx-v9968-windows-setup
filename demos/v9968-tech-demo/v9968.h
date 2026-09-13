@@ -25,8 +25,14 @@ void textures_load(void);
 void stream_spans(const u8 *packets) __z88dk_fastcall;
 void floor_draw(const int *parameters);
 void water_capture(void);
-void scene_label(u8 scene);
-void title_restore(void);
+void palette_glow(void);
+void stream_spans_glow(const u8 *packets) __z88dk_fastcall;
+void trail_clear(void);
+void trail_decay(u8 mask,u8 page);
+void feedback_shift(int dx,int dy);
+void feedback_warp(int vx,int vy);
+void feedback_capture(void);
+void header_shadow(u8 scene);
 void water_draw(const u8 *parameters);
 #endif
 

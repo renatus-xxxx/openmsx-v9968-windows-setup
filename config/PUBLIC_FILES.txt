@@ -1,4 +1,4 @@
-.gitattributes
+﻿.gitattributes
 .gitignore
 LICENSE
 README.ja.md
@@ -88,6 +88,8 @@ docs/sources.ja.md
 docs/sources.md
 docs/troubleshooting.ja.md
 docs/troubleshooting.md
+docs/v9968-divergence.ja.md
+docs/v9968-divergence.md
 launch-v9968-tech-demo-cbios.bat
 launch-v9968-tech-demo-fsa1gt.bat
 licenses/C-BIOS.txt
@@ -95,6 +97,7 @@ licenses/GPL-openMSX.txt
 licenses/z88dk.txt
 probe/PROBE.rom
 probe/probe.c
+probe/verification.json
 scripts/build-probe.ps1
 scripts/entry.ps1
 scripts/find-z88dk.ps1
@@ -106,6 +109,7 @@ scripts/setup.ps1
 setup-cbios-v9968.bat
 setup-fsa1gt-v9968.bat
 tests/test-z88dk.ps1
+tests/test-probe.ps1
 tests/validate-public.ps1
 tools/benchmark/launch-cbios-standard.bat
 tools/benchmark/launch-cbios-v9968.bat

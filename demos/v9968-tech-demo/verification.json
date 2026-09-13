@@ -1,33 +1,33 @@
 {
-  "release": "0.6.0",
-  "date": "2026-09-10",
+  "release": "0.7.0",
+  "date": "2026-09-12",
   "host": "Windows 10 x64 / Windows PowerShell 5.1",
   "emulator": "buppu3/openMSX d884c4b",
-  "rom_sha256": "fb36f2ee6f94796ca17b80d8e49155192418beb53faa9e1bbbbc7f3f84f698a4",
+  "rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6",
   "romtype": "ASCII16",
   "tests": {
     "cbios": {
       "cpu": "z80",
-      "five_scenes_controls_labels": "PASS",
+      "six_scenes_controls_labels": "PASS",
       "water_identity_and_wave": [
         {
           "mode": "identity",
           "pass": true,
           "edgeFixture": false,
           "mismatchedBytes": 0,
-          "sourceSha256": "D522422ABA04F6DE9E8F827E564C265BD528238CC0126A1DDCAB10E0242EA77A",
-          "actualSha256": "D522422ABA04F6DE9E8F827E564C265BD528238CC0126A1DDCAB10E0242EA77A"
+          "sourceSha256": "6F59CF811DD8DD7781F414231D7E3FB1870EB9AA10E77FB87470DEB44FA71F43",
+          "actualSha256": "6F59CF811DD8DD7781F414231D7E3FB1870EB9AA10E77FB87470DEB44FA71F43"
         },
         {
           "mode": "wave",
           "pass": true,
           "edgeFixture": true,
           "mismatchedBytes": 0,
-          "sourceSha256": "AEB522E1DCFBE90D5221858913B862BFFB9EFEC85354F89256461E76227EA09F",
-          "actualSha256": "CC68590A43430C052DBB8098C586F5343FBFCAD6A94B9049BB638571ADDDB58A"
+          "sourceSha256": "2169AE4CA2A6D2EED6AC3E58F0A8C5146C48D79E570C4B6DADFB9CBE621FB32E",
+          "actualSha256": "397FDE092C89BDBFDA27330E23083DB136F37C43404F7510D52E84DC9B317A51"
         }
       ],
-      "actual_root_bat": "PASS: current ROM launched using the root BAT, correct emulator window, normal close and exit 0",
+      "actual_root_bat": "Carried forward from 0.6.1; the launcher scripts are unchanged in 0.7.0",
       "extracted_zip": {
         "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
         "result": {
@@ -46,30 +46,30 @@
         "display": "OFF body matches captured source VRAM; ON differs at completed-frame boundary",
         "method": "Emulator key matrix injection, not physical keyboard input"
       },
-      "water_identity_and_wave_origin_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e"
+      "water_identity_and_wave_origin_rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6"
     },
     "fsa1gt": {
       "cpu": "r800",
-      "five_scenes_controls_labels": "PASS",
+      "six_scenes_controls_labels": "PASS",
       "water_identity_and_wave": [
         {
           "mode": "identity",
           "pass": true,
           "edgeFixture": false,
           "mismatchedBytes": 0,
-          "sourceSha256": "6C2630356960068800771D32FE183F31AE8ACF799FC387864AFA1A87CBD85B13",
-          "actualSha256": "6C2630356960068800771D32FE183F31AE8ACF799FC387864AFA1A87CBD85B13"
+          "sourceSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449",
+          "actualSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449"
         },
         {
           "mode": "wave",
           "pass": true,
           "edgeFixture": true,
           "mismatchedBytes": 0,
-          "sourceSha256": "C66C85AAEF7D0E2D4622558256C13764227E5A8DD1F35FAF3816966E4F2087CA",
-          "actualSha256": "1C398E8284A6B1CFA621FB24B0245579DF60C431DEAD001445EF09ADFCD04DEE"
+          "sourceSha256": "EFDB3F3566CF5427E2B5D4D43ABA195FE993FA6FF3566E9EAADE7543C9F14552",
+          "actualSha256": "1EDC51099C36DE3A9CFA6A4D3537B22435779CDB78A79DE86C65F2B4406AE2AD"
         }
       ],
-      "actual_root_bat": "PASS: current ROM launched using the root BAT, correct emulator window, normal close and exit 0",
+      "actual_root_bat": "Carried forward from 0.6.1; the launcher scripts are unchanged in 0.7.0",
       "extracted_zip": {
         "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
         "result": {
@@ -88,7 +88,7 @@
         "display": "OFF body matches captured source VRAM; ON differs at completed-frame boundary",
         "method": "Emulator key matrix injection, not physical keyboard input"
       },
-      "water_identity_and_wave_origin_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e"
+      "water_identity_and_wave_origin_rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6"
     }
   },
   "unverified": [
@@ -101,9 +101,17 @@
   "notes": [
     "All scene/control checks use emulator Tcl automation, not manual physical keyboard input.",
     "CPU and keyboard code are independent implementations; scene timings remain tick based.",
-    "Scene 1 geometry below the text is excluded from stationary-title checks; Scene 3 checks full restored header.",
     "The demo declares -romtype ASCII16. Bank numbers stay below 256, so the same ROM also runs unchanged on ASCII16-X hardware; standard ASCII16 was chosen for wider cartridge and emulator support.",
-    "Re-verified after the ASCII16 change: SCENES_AND_ESCAPE=PASS with MAPPER=1 on both C-BIOS/Z80 and FS-A1GT/R800."
+    "The scene-6 sample selects the scene with key 6 rather than relying on the automatic cycle: interrupts are disabled while drawing, so the tick clock drifts behind real time by a machine-dependent amount.",
+    "Scene 6 runs the decay trail and the recursive feedback as one scene. Its first 180 ticks deliberately draw no header, scene label or top rule; the header appears at tick 180 and stays, and the capture test samples well after that point.",
+    "The Scene 6 opening runs a greyscale popcount palette. Indices 5 and 10 are unreachable by its decay, so the bottom rule and the active indicator keep the ordinary colours and the bottom HUD is identical to every other scene; the indicator is drawn at index 10 there rather than 15.",
+    "Frame rate measured per scene against a build whose header is the single opaque blit it used to be. Composited strip, one blit: Scene 1 16.74 -> 16.69, Scene 3 7.77 -> 7.78, Scene 5 4.17 -> 4.16, Scene 6 15.05 -> 15.00, Scenes 2 and 4 unchanged. The earlier four-blit version, with an inverse mask for a true black shadow, cost up to 3% (Scene 1 16.25).",
+    "Every scene draws its header onto the picture with one transparent blit from a 186x9 strip holding the drop shadow behind the text. Nothing is restored behind a header any more, Scene 3 included: its header band is part of the water distortion now. TITLE_STABLE is gone with the restored strips it checked. SCENE_LABELS is the whole header check, verifying per pixel that every non-zero pixel of the strip appears on the back page; it was confirmed to fail on a one-dot displacement in each of the four directions. WATER_HEADER_OFF/ON check that rows 0-4 match the clean source under the identity table and differ from it under the wave, the same test the body rows get.",
+    "Bit 5 of R20 is chosen at boot rather than hard coded: r20_select() writes 0x11, runs one 1:1 LRMM between two small rectangles on page 0 and reads the destination back, adding the bit only if the transfer did not happen. On the pinned fork the read-back is 0x00 under 0x11 and 0xff under 0x31, so the probe was confirmed to discriminate in both directions; it selects 0x31 and the rendered frames are pixel-identical to the build that wrote 0x31 unconditionally, in the opening and in both LRMM phases. R20_SELECTED/R20_LIVE/R20_OK in capture.tcl assert this. The 0x11 branch exists for FPGA builds whose map uses bit 5 for flat interlace and has not been run on hardware here.",
+    "Re-verified for 0.7.0 on the current ROM: SCENES_AND_ESCAPE=PASS with MAPPER=1 and R20_OK=1 on both C-BIOS/Z80 and FS-A1GT/R800, and test-water.ps1 PASS on both.",
+    "The probe waits for CE in S#2 to rise and then clear before reading the destination back, rather than only checking that it is clear. On the fork the transfer is immediate so the distinction does not show, but on FPGA hardware LRMM takes real time and a read that beat CE going high would report that nothing moved and set bit 5, which that map uses for flat interlace. Raised by MSX Barcelona from testing on a MSXimus. The probe is run a second time under the byte it selected and the outcome is reported at 0xcf0a, so a wrong choice fails the capture test instead of silently costing Scene 6 its feedback. The spin count is a bound, not a guarantee that CE has been seen; the confirmation is what makes the result trustworthy.",
+    "The Scene 6 opening magnifies the held page about 5% per frame before the decay, so the fading copies move out from under the solid rather than being redrawn over. Measured in the opening: 18.17 frames per second before, 15.96 after, on FS-A1GT/R800. The destination is cleared first because the transform is issued as a transparent copy, so destination pixels whose source is colour 0 are never written and would keep what the back page held two frames ago. An opaque copy removes the need for the clear; measured in the opening at 16.3 against 16.2 frames per second, inside the resolution of the measurement, so both halves keep the same transform.",
+    "trail_present() was removed when the opening moved onto the capture path; it had no callers left."
   ],
   "teaser": {
     "file": "water-preview.gif",
@@ -112,16 +120,17 @@
     "frames": 16,
     "duration_ms": 2080,
     "loop": 0,
-    "source": "FS-A1GT / R800 emulator, Scene 3. Captured from the previous build; the ASCII16 change altered only the mapper-failure string, so the rendered output is unchanged.",
+    "source": "FS-A1GT / R800 emulator, Scene 3. Recaptured for 0.7.0: the header is drawn onto the picture now, so the earlier capture no longer matched what the demo renders.",
     "capture": "PASS",
     "synthetic_frames": false,
-    "rom_sha256": "704f7628ad307a80778c7d3d37694776d9e7c9113382501b804da103a526dfb4"
+    "rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6",
+    "sha256": "bd3c7d7123866972277fbf1d9e6cd0a420605b7972874d8a08f442cac4853bee"
   },
   "review": {
-    "reviewer": "Claude Code",
-    "scope": "Read-only source and bilingual documentation review (before the W-key and README teaser update)",
+    "reviewer": "Codex",
+    "scope": "Static review of the uncommitted 0.7.0 diff, then a second pass over v9968.c as a whole, the shared benchmark assets, the public checks and the bilingual documents. No emulator runs, measurements or rebuilds.",
     "blocking_findings": 0,
-    "resolution": "Reported wording, links, launcher messages and packaging findings addressed; final Japanese probe-launcher wording checked locally."
+    "resolution": "The Scene 6 clear is explained by the transparent LRMM and the documents were corrected; the header check now also tests that the strip is present and that the picture under it survives; the R20 probe confirms its own choice and its wait is no longer described as sufficient; validate-public.ps1 checks results.json against the shipped benchmark ROM and that BAT targets are published; package.ps1 builds under a working name. Documented errors about the LRMM step order, index 8 under the decay masks, the AND preserving brightness order, the unchanged setup tooling and the OneDrive wording were corrected."
   },
   "keyboard_regression": {
     "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",

@@ -6,7 +6,7 @@
 
 ## ダウンロード
 
-[GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) の **Assets** から配布 ZIP を取得し、全体を新しい書込み可能なフォルダへ展開してください。以降の BAT は展開先から実行します。**Source code** のアーカイブは選択しません。
+[GitHub Releases](https://github.com/renatus-xxxx/openmsx-v9968-windows-setup/releases) の **Assets** から配布 ZIP を取得し、全体を、OneDrive などの同期フォルダの外にある新しい書込み可能なフォルダ（例: `C:\MSX`）へ展開してください。同期フォルダへはインストールせず停止します。同期フォルダではご自身の BIOS も同期対象になります。以降の BAT は展開先から実行します。**Source code** のアーカイブは選択しません。
 
 ## C-BIOS
 

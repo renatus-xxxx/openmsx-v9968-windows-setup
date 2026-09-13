@@ -55,19 +55,24 @@
     "bytes": 384,
     "stride": 0
   },
-  "LABELS": {
+  "HUDLINE": {
     "bank": 55,
-    "bytes": 1120,
+    "bytes": 5022,
+    "stride": 0
+  },
+  "LABELS": {
+    "bank": 56,
+    "bytes": 1344,
     "stride": 0
   },
   "SEABED": {
-    "bank": 56,
+    "bank": 57,
     "bytes": 24576,
     "stride": 0
   },
   "summary": {
     "rom_bytes": 1048576,
-    "allocated_bytes": 950272,
+    "allocated_bytes": 966656,
     "mapper": "ASCII16",
     "rom_banks": 64,
     "mesh_max_spans": 354,

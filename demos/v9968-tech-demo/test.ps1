@@ -1,5 +1,6 @@
 ﻿param([Parameter(Mandatory=$true)][string]$Runtime,[switch]$SlowCommands,[switch]$Trace,[switch]$DiagnosticTest,[switch]$Standard,[string]$CaptureScript)
 $ErrorActionPreference='Stop'
+$Runtime=[IO.Path]::GetFullPath($Runtime)
 $cfg=Get-Content "$Runtime/config.json" -Raw|ConvertFrom-Json
 $work=Join-Path $PSScriptRoot ('test-output/'+$cfg.mode+'-'+(Get-Date -Format 'yyyyMMdd-HHmmss'))
 [IO.Directory]::CreateDirectory($work)|Out-Null
@@ -53,6 +54,8 @@ after time 10 {
 }
 if($SlowCommands){Add-Content "$work/capture.tcl" 'after time 8 {debug write "VDP regs" 20 48}'}
 if($Trace){Add-Content "$work/capture.tcl" 'set vdpcmdtrace true'}
+$saved=@{};foreach($v in @('OPENMSX_HOME','OPENMSX_USER_DATA','OPENMSX_SYSTEM_DATA')){$saved[$v]=[Environment]::GetEnvironmentVariable($v,'Process')}
+try{
 $env:OPENMSX_HOME=Join-Path $work 'user'
 $env:OPENMSX_USER_DATA=Join-Path $work 'user/share'
 $env:OPENMSX_SYSTEM_DATA=Join-Path $Runtime 'emulator/share'
@@ -78,3 +81,5 @@ try{
  Write-Host $work
 }
 finally{Pop-Location}
+
+}finally{foreach($v in $saved.Keys){[Environment]::SetEnvironmentVariable($v,$saved[$v],'Process')}}

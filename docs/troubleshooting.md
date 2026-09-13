@@ -12,6 +12,8 @@ Find your situation below. Setup and launch write a log, and the message on scre
 |---|---|
 | Missing curl.exe | Update Windows and check System32/curl.exe; old Windows 10 releases may lack it |
 | Windows policy blocks execution | Follow your organization's policy. These tools do not bypass AppLocker/WDAC |
+| Destination is inside OneDrive | Setup stops rather than installing into a synced folder. Extract into a local folder outside the synced tree, such as C:\MSX. On Windows 11 with a Microsoft account, Desktop and Documents are usually synced |
+| Destination contains a link or junction | Use an ordinary local folder. The path must not redirect anywhere |
 
 ## Download and verification
 

@@ -1,5 +1,5 @@
 {
-  "release": "0.6.1",
+  "release": "0.7.0",
   "checked": "2026-09-09",
   "hashOrigin": "Official ZIP: GitHub release API asset digest, matched locally. Fork ZIP/executables/probe: local SHA-256 measurements (no publisher checksum found for fork). BIOS SHA-1: official openMSX 21.0 machine XML.",
   "downloads": [
@@ -20,7 +20,7 @@
   ],
   "officialExeSha256": "18831E49ACFA38F9F18EFA7129415A6798842CA4DA3F90A7F03A0294A6FC7F9F",
   "forkExeSha256": "B5DE3932C0E486002C2CA1FB0D858AD27FC10E97BC5A6B1B277F988F7B7454B9",
-  "probeSha256": "5AED0B7A2707625CE1B61EC049D21365CC79CF88195AE700692B1F0395EE7D79",
+  "probeSha256": "CAE4052139F7F250D8F526B054AA6A184FB69CB984FB9CBAECB2F820F842C7A0",
   "bios": [
     {
       "name": "fs-a1gt_firmware.rom",
@@ -41,6 +41,6 @@
   "demo": {
     "file": "demos/v9968-tech-demo/V9968-TECH-DEMO.rom",
     "size": 1048576,
-    "sha256": "fb36f2ee6f94796ca17b80d8e49155192418beb53faa9e1bbbbc7f3f84f698a4"
+    "sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6"
   }
 }

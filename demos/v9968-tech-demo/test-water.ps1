@@ -1,5 +1,6 @@
 ﻿param([Parameter(Mandatory=$true)][string]$Runtime)
 $ErrorActionPreference='Stop'
+$Runtime=[IO.Path]::GetFullPath($Runtime)
 $cfg=Get-Content "$Runtime/config.json" -Raw|ConvertFrom-Json
 $map=Get-Content "$PSScriptRoot/build/V9968-TECH-DEMO.map" -Raw
 function Symbol($name){

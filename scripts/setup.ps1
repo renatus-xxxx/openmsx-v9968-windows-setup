@@ -24,7 +24,16 @@ function CheckReparse([string]$Path) {
     $p=$Path
     while($p){
         if(Test-Path -LiteralPath $p){
-            if((Get-Item -LiteralPath $p -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw "Destination contains a link or junction, which is not supported / リンク・ジャンクションを含む配置先は使用できません: $p"}
+            $item=Get-Item -LiteralPath $p -Force
+            if($item.Attributes -band [IO.FileAttributes]::ReparsePoint){
+                # A junction or symlink redirects the path and reports a
+                # LinkType. Other reparse points need not expose LinkType; a
+                # cloud sync client is a common reason, but not the only
+                # possible one, so the message names it as the likely cause
+                # rather than as a finding.
+                if($item.LinkType){throw "Destination contains a link or junction, which is not supported: $p`nUse an ordinary local folder instead, for example C:\MSX.`nリンク・ジャンクションを含む配置先は使用できません: $p`n通常のローカルフォルダ（例: C:\MSX）を使用してください。"}
+                throw "Destination is inside a folder this script cannot use: $p`nThe folder is a reparse point of a kind setup does not support, which usually means a cloud sync client such as OneDrive.`nExtract the ZIP into an ordinary local folder outside any synced tree, for example C:\MSX, and run setup again. Note that a synced folder would also upload your own BIOS dump.`n配置先がこのスクリプトで使用できないフォルダの中にあります: $p`n未対応の再解析ポイントで、多くは OneDrive などのクラウド同期フォルダです。`n同期対象外の通常のローカルフォルダ（例: C:\MSX）へ ZIP を展開してから、もう一度実行してください。同期フォルダではご自身の BIOS も同期対象になります。"
+            }
         }
         $p=Split-Path -Parent $p
     }
@@ -119,6 +128,9 @@ try {
     $Destination=[IO.Path]::GetFullPath($Destination).TrimEnd('\')
     if(!$CacheDir){$CacheDir=Join-Path $RepoRoot 'cache'}
     $CacheDir=[IO.Path]::GetFullPath($CacheDir)
+    if($CacheDir.TrimEnd('\') -eq $Destination -or $CacheDir.StartsWith($Destination+'\',[StringComparison]::OrdinalIgnoreCase)){
+        throw 'Cache must be outside the installation destination / キャッシュは導入先の外に指定してください。'
+    }
     CheckReparse $Destination; CheckReparse $CacheDir
     $parent=Split-Path -Parent $Destination
     if(!$parent -or $Destination -eq [IO.Path]::GetFullPath($RepoRoot).TrimEnd('\')){throw "Choose a dedicated subfolder, not the folder that holds the setup files.`nセットアップ資料と異なる専用サブフォルダを指定してください。"}
