@@ -40,6 +40,7 @@ demos/v9968-tech-demo/DEVELOPMENT.md
 demos/v9968-tech-demo/README.ja.md
 demos/v9968-tech-demo/README.md
 demos/v9968-tech-demo/V9968-TECH-DEMO.rom
+demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom
 demos/v9968-tech-demo/assets/PROMPT.txt
 demos/v9968-tech-demo/assets/bank-layout.h
 demos/v9968-tech-demo/assets/bank-layout.json

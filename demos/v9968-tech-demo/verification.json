@@ -1,27 +1,37 @@
 {
-  "release": "0.7.2",
-  "date": "2026-09-15",
-  "rom_sha256": "0b51479522fc4b76cb5b396f15dbfc6b798aaa4d7210b804bcd0604960c54a83",
-  "status": "Default octahedron radius88; both CPUs retested on 2026-09-15",
+  "release": "0.7.3",
+  "date": "2026-09-18",
+  "rom_sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
+  "status": "Final internal ROM; Windows/WSL reproducible profiles; final external hardware retest not run",
   "tests_current_rom": true,
   "tests": {
     "cbios": {
       "six_scenes_controls_headers": "PASS",
       "water_identity_wave": "PASS",
       "all_128_mesh_poses_cache_reentry": "PASS",
-      "all_128_glow_poses_pages_0_1": "PASS"
+      "all_128_glow_poses_pages_0_1": "PASS",
+      "SCENES_AND_ESCAPE": "PASS",
+      "R20_OK": 1,
+      "FAULT": 0,
+      "R20_SELECTED": "0x31",
+      "cpu": "Z80"
     },
     "fsa1gt": {
       "six_scenes_controls_headers": "PASS",
       "water_identity_wave": "PASS",
       "all_128_mesh_poses_cache_reentry": "PASS",
-      "all_128_glow_poses_pages_0_1": "PASS"
+      "all_128_glow_poses_pages_0_1": "PASS",
+      "SCENES_AND_ESCAPE": "PASS",
+      "R20_OK": 1,
+      "FAULT": 0,
+      "R20_SELECTED": "0x31",
+      "cpu": "R800"
     }
   },
   "teaser": {
     "file": "water-preview.gif",
-    "rom_sha256": "0b51479522fc4b76cb5b396f15dbfc6b798aaa4d7210b804bcd0604960c54a83",
-    "sha256": "96f649b4499b4fc5fb4fcfc43701ff2ca00953c1d0a5caba6c2fb69376851176",
+    "rom_sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
+    "sha256": "54e1ce1f82426aa48960491b905a12f166d1a931e06f4a349a1f13820dbf37ea",
     "width": 640,
     "height": 480,
     "frames": 60,
@@ -293,5 +303,100 @@
       "capture": "PASS",
       "synthetic_frames": false
     }
+  },
+  "historical_0_7_2": {
+    "release": "0.7.2",
+    "date": "2026-09-15",
+    "rom_sha256": "0b51479522fc4b76cb5b396f15dbfc6b798aaa4d7210b804bcd0604960c54a83",
+    "status": "Default octahedron radius88; both CPUs retested on 2026-09-15",
+    "tests_current_rom": true,
+    "tests": {
+      "cbios": {
+        "six_scenes_controls_headers": "PASS",
+        "water_identity_wave": "PASS",
+        "all_128_mesh_poses_cache_reentry": "PASS",
+        "all_128_glow_poses_pages_0_1": "PASS"
+      },
+      "fsa1gt": {
+        "six_scenes_controls_headers": "PASS",
+        "water_identity_wave": "PASS",
+        "all_128_mesh_poses_cache_reentry": "PASS",
+        "all_128_glow_poses_pages_0_1": "PASS"
+      }
+    },
+    "teaser": {
+      "file": "water-preview.gif",
+      "rom_sha256": "0b51479522fc4b76cb5b396f15dbfc6b798aaa4d7210b804bcd0604960c54a83",
+      "sha256": "96f649b4499b4fc5fb4fcfc43701ff2ca00953c1d0a5caba6c2fb69376851176",
+      "width": 640,
+      "height": 480,
+      "frames": 60,
+      "duration_ms": 3990,
+      "loop": 0,
+      "source": "FS-A1GT / R800; current Scene 3 emulator capture",
+      "capture": "PASS",
+      "synthetic_frames": false
+    },
+    "unverified": [
+      "FPGA",
+      "CStream build with new OBJ",
+      "performance remeasurement"
+    ]
+  },
+  "external": {
+    "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+    "size": 1048576,
+    "sha256": "6c96dafaf4a76e946ce70791bd55b68c386f68f61c8de3ff4ae4ceda3097848f",
+    "profile": "external-0x88",
+    "vdp_base": "0x88",
+    "hardware_pre_release_retest": "NOT REQUIRED / NOT RUN",
+    "contributor_tested_bitstream": {
+      "commit": "ceeecd7e3c2d25c20045f797617af0f70ca228c1",
+      "path": "fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs",
+      "sha256": "9ba903e7929bd9a6ef4b13fc6b1b49676015af05a52d97d8fa02c143643c6511",
+      "scope": "Contributor reports on earlier builds; not a final 0.7.3 ROM hardware PASS"
+    }
+  },
+  "reproducibility": {
+    "source_commit": "93ed3a328dd2b3bbac9f71db8f8093c32774868b",
+    "z88dk": "26008-578fd73267-20260917",
+    "z88dk_source_revision": "578fd732677dec9b15262bc9858092edb6973dc2",
+    "zsdcc": "4.6.0 #16639",
+    "windows": {
+      "python": "3.11.9",
+      "pillow": "12.1.1",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File demos/v9968-tech-demo/build.ps1 -Z88dk C:/z88dk"
+    },
+    "wsl": {
+      "distribution": "Ubuntu 24.04",
+      "python": "3.12.3",
+      "pillow": "10.2.0",
+      "command": "python3 demos/v9968-tech-demo/build.py --z88dk ~/z88dk"
+    },
+    "profiles": {
+      "internal-0x98": {
+        "size": 1048576,
+        "sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
+        "windows_wsl_byte_for_byte": "PASS"
+      },
+      "external-0x88": {
+        "size": 1048576,
+        "sha256": "6c96dafaf4a76e946ce70791bd55b68c386f68f61c8de3ff4ae4ceda3097848f",
+        "windows_wsl_byte_for_byte": "PASS"
+      }
+    }
+  },
+  "test_commands": [
+    "test.ps1 -Runtime <runtime>",
+    "test-water.ps1 -Runtime <runtime>",
+    "test-water-work.ps1 -Runtime <runtime>",
+    "test-glow-stream.ps1 -Runtime <runtime>"
+  ],
+  "emulator": {
+    "executable_sha256": "B5DE3932C0E486002C2CA1FB0D858AD27FC10E97BC5A6B1B277F988F7B7454B9",
+    "configurations": [
+      "C-BIOS / Z80",
+      "FS-A1GT / R800"
+    ]
   }
 }

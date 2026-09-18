@@ -2,6 +2,8 @@
 
 # V9968 TECH DEMO
 
+Release ZIP には外付け HRA! V9968 カートリッジ用の `V9968-TECH-DEMO-external-0x88.rom` も同梱しています。openMSX では従来どおり `V9968-TECH-DEMO.rom` を使用します。[プロファイルと実機検証の範囲](DEVELOPMENT.ja.md)を参照してください。
+
 V9968 対応 openMSX で動く、1 MiB ASCII16 ROM の C 製テクニカルデモです。立体、遠近感のある床、水中の揺らぎ、大型パネル、フィードバックの6シーンを約90秒で繰り返します。
 
 リポジトリ直下で対応するセットアップを完了してから、`launch-v9968-tech-demo-fsa1gt.bat`（FS-A1GT / R800）または `launch-v9968-tech-demo-cbios.bat`（C-BIOS / Z80）を実行してください。ROM は `V9968-TECH-DEMO.rom`、フォントは MSX 8x8 font です。通常の起動に z88dk・Python は不要です。

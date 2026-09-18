@@ -13,7 +13,7 @@ MESHは4,096バイト刻みを維持し、4092から外接矩形の4バイトを
 
 ## ビルド
 
-Python 3 と z88dk が必要です。通常のセットアップ・起動には不要です。このフォルダで実行します。
+Python 3・Pillow と z88dk が必要です。通常のセットアップ・起動には不要です。このフォルダで実行します。
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File build.ps1 -Z88dk "C:\z88dk"
@@ -31,9 +31,9 @@ python3 build.py --z88dk ~/z88dk --profile-filter '^internal-0x98$'
 
 `external-0x88` は `VDP_BASE=0x88`、`internal-0x98` は既定の `0x98` でビルドします。フィルタを省略すると両方を作ります。`-Z88dk` には実際の配置先を指定します。`generate-fonts.py` と `generate-megarom.py` を毎回実行し、zsdcc で C をコンパイルします。固定領域が16 KiB以内、BSSがCF00未満、ROMが1 MiBであることを検査します。プロファイル名付き ROM は `V9968-TECH-DEMO-external-0x88.rom` と `V9968-TECH-DEMO-internal-0x98.rom` です。Windows / Linux の internal ビルドでは、既存の `test.ps1` / `launch.ps1` 用に `build/V9968-TECH-DEMO.rom`・`.map` と配布用 `V9968-TECH-DEMO.rom` も更新します。アセンブリで使う引数の warning 85 と PSG の最適化 warning 110 は残ります。
 
-外付け HRA! V9968 カートリッジ（I/O base 0x88）には `V9968-TECH-DEMO-external-0x88.rom` を使用します。既存のopenMSX起動・テストスクリプトはcanonical internal ROMを使用し、外付けカートリッジを選択しません。投稿者から、試験に使用したbitstreamは HRA! commit `ceeecd7e3c2d25c20045f797617af0f70ca228c1` の [`fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs`](https://github.com/hra1129/V9968_Cartridge/blob/ceeecd7e3c2d25c20045f797617af0f70ca228c1/fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs) と確認されました。SHA-256 は `9ba903e7929bd9a6ef4b13fc6b1b49676015af05a52d97d8fa02c143643c6511` で、2026-09-18にそのcommitから取得したファイルとも一致しました。これは投稿者が使用したbitstreamの確認であり、今回再ビルドしたROMの実機試験結果ではありません。今回の統合ビルドは最終リリース成果物ではありません。
+外付け HRA! V9968 カートリッジ（I/O base 0x88）には `V9968-TECH-DEMO-external-0x88.rom` を使用します。既存のopenMSX起動・テストスクリプトはcanonical internal ROMを使用し、外付けカートリッジを選択しません。コントリビューターが試験に使用した bitstream は HRA! commit `ceeecd7e3c2d25c20045f797617af0f70ca228c1` の [`fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs`](https://github.com/hra1129/V9968_Cartridge/blob/ceeecd7e3c2d25c20045f797617af0f70ca228c1/fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs) と確認されました。SHA-256 は `9ba903e7929bd9a6ef4b13fc6b1b49676015af05a52d97d8fa02c143643c6511` で、2026-09-18にそのcommitから取得したファイルとも一致しました。これはコントリビューターが使用した bitstreamの確認であり、今回再ビルドしたROMの実機試験結果ではありません。0.7.3 には両プロファイルの最終 ROM を同梱しています。
 
-正式リリース前には、最終 `external-0x88` release candidate を外付け V9968 カートリッジ実機で確認し、使用した `.fs` bitstream のパス／ハッシュと対応する `hra1129/V9968_Cartridge` の RTL commit を記録します。
+最終 0.7.3 external ROM の公開前の実機再確認は行っていません（リリース条件にはしていません）。公開 ROM での動作報告を歓迎します。報告時は ROM の SHA-256、機種、使用した bitstream のパス／ハッシュと RTL commit を添えてください。
 
 ## 素材と描画
 

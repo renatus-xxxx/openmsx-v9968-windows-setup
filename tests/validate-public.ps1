@@ -20,7 +20,7 @@ foreach($rel in $list){
   if($parseErrors.Count){throw "PowerShell syntax error: $rel"}
  }
  if($rel -match '^(runtime|cache|private|build|dist)/|(^|/)(cache|private|build|build-c|dist|user|test-output|__pycache__)/|^demos/[^/]+/runtime/' -or $rel -match '\.(exe|dll|dsk|part|zip|log|pptx)$'){throw "Private/generated path: $rel"}
- if($rel -match '\.rom$' -and $rel -cnotin @('probe/PROBE.rom','demos/v9968-tech-demo/V9968-TECH-DEMO.rom','demos/scene3-benchmark/SCENE3-BENCHMARK.rom','demos/scene3-benchmark/SCENE3-BENCHMARK-OPTIMIZED.rom')){throw "Unexpected ROM: $rel"}
+ if($rel -match '\.rom$' -and $rel -cnotin @('probe/PROBE.rom','demos/v9968-tech-demo/V9968-TECH-DEMO.rom','demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom','demos/scene3-benchmark/SCENE3-BENCHMARK.rom','demos/scene3-benchmark/SCENE3-BENCHMARK-OPTIMIZED.rom')){throw "Unexpected ROM: $rel"}
  if($rel -notmatch '\.(png|rom|gif|bin|pptx|pdf)$'){
   $text=[IO.File]::ReadAllText($full)
   if($text -match 'C:\\Users\\' -or $text -match ('MSX'+'PLAYer')){throw "Personal path or unrelated product reference: $rel"}
@@ -58,6 +58,13 @@ $demoPath=Join-Path $Root 'demos/v9968-tech-demo/V9968-TECH-DEMO.rom'
 if((Get-Item -LiteralPath $demoPath).Length -ne 1048576 -or (Get-FileHash -LiteralPath $demoPath).Hash -ne $manifest.demo.sha256){throw 'Demo ROM size/hash mismatch'}
 $demoResults=Get-Content -LiteralPath (Join-Path $Root 'demos/v9968-tech-demo/verification.json') -Raw | ConvertFrom-Json
 if($demoResults.rom_sha256 -ne $manifest.demo.sha256 -or $demoResults.teaser.rom_sha256 -ne $manifest.demo.sha256){throw 'Current demo verification/teaser names a different ROM'}
+$externalRel='demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom'
+if($list -cnotcontains $externalRel -or $manifest.demoExternal.file -cne $externalRel -or $demoResults.external.file -cne $externalRel){throw 'External demo path/allowlist mismatch'}
+$externalPath=Join-Path $Root $externalRel
+if($manifest.demoExternal.size -ne 1048576 -or $demoResults.external.size -ne 1048576 -or (Get-Item -LiteralPath $externalPath).Length -ne 1048576 -or (Get-FileHash -LiteralPath $externalPath).Hash -ne $manifest.demoExternal.sha256 -or $demoResults.external.sha256 -ne $manifest.demoExternal.sha256){throw 'External demo ROM size/hash/verification mismatch'}
+if($demoResults.external.profile -cne 'external-0x88' -or $demoResults.external.vdp_base -cne '0x88'){throw 'External demo profile mismatch'}
+if($demoResults.release -ne $manifest.release){throw 'Demo release version mismatch'}
+if((Get-FileHash -LiteralPath (Join-Path $Root 'demos/v9968-tech-demo/water-preview.gif')).Hash -ne $demoResults.teaser.sha256){throw 'Demo teaser hash mismatch'}
 $benchmarkPath=Join-Path $Root 'demos/scene3-benchmark/SCENE3-BENCHMARK.rom'
 $benchmarkInfo=Get-Content -LiteralPath (Join-Path $Root 'demos/scene3-benchmark/rom.json') -Raw | ConvertFrom-Json
 if((Get-Item -LiteralPath $benchmarkPath).Length -ne 1048576 -or (Get-FileHash -LiteralPath $benchmarkPath).Hash -ne $benchmarkInfo.sha256){throw 'Benchmark ROM size/hash mismatch'}
