@@ -74,6 +74,8 @@ Windows 10/11 x64、標準の Windows PowerShell 5.1 と curl.exe、ネット接
 
 パッケージ作成・検査・リリース手順は[公開担当者向け手順](docs/publishing.ja.md)にあります。通常のセットアップ・起動には不要です。
 
+V9968 TECH DEMO の再ビルドでは、`internal-0x98`（内蔵 VDP）と `external-0x88`（外付けカートリッジ VDP）の2つのビルドプロファイルを使用します。詳しくは[デモの開発・検証手順](demos/v9968-tech-demo/DEVELOPMENT.ja.md)を参照してください。
+
 ## 謝辞
 
 V9968 TECH DEMO のタイトルとシーン番号には、1re1 さんの **MSX 8x8 font** を使用しています。素晴らしいフォントを公開してくださった作者に感謝します。[出典・利用条件・変換方法](demos/v9968-tech-demo/third-party/fonts/README.ja.md)。
