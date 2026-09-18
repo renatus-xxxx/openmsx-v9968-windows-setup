@@ -74,6 +74,8 @@ The generated `runtime/`, `cache/` and `private/` directories stay on your PC. D
 
 Packaging, validation and release steps are in the [maintainer instructions](docs/publishing.md). They are not needed for normal setup or launch.
 
+For V9968 TECH DEMO rebuilds, the build profiles are `internal-0x98` (internal VDP) and `external-0x88` (external cartridge VDP). See [demo development and verification](demos/v9968-tech-demo/DEVELOPMENT.md).
+
 ## Acknowledgments
 
 V9968 TECH DEMO uses **MSX 8x8 font** by **1re1** for its title and scene labels. Thank you to the author for making this font available. See [sources, terms and conversion](demos/v9968-tech-demo/third-party/fonts/README.md).

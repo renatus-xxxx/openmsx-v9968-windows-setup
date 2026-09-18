@@ -54,6 +54,7 @@ demos/v9968-tech-demo/assets/seabed-256.png
 demos/v9968-tech-demo/assets/seabed-source.png
 demos/v9968-tech-demo/assets/torus.obj
 demos/v9968-tech-demo/build.ps1
+demos/v9968-tech-demo/build.py
 demos/v9968-tech-demo/capture-water.tcl
 demos/v9968-tech-demo/capture.tcl
 demos/v9968-tech-demo/convert-assets.py

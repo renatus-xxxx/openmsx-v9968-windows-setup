@@ -17,6 +17,10 @@ parser.add_argument("--meshradius", type=float, help="numeric radius for the mes
 parser.add_argument("--profile-filter", type=str, default="", help="Regex pattern to filter profiles")
 
 args = parser.parse_args()
+profiles = [p for p in ["external-0x88", "internal-0x98"]
+            if not args.profile_filter or re.search(args.profile_filter, p)]
+if not profiles:
+    parser.error("No profiles match --profile-filter. Use internal-0x98 or external-0x88.")
 
 ps_script_root = Path(__file__).parent.resolve()
 
@@ -73,10 +77,7 @@ try:
 
     with chdir(out_dir):
 
-        for profile in ['legacy','legacy-internal']:
-
-            if args.profile_filter and not re.search(args.profile_filter, profile):
-                continue
+        for profile in profiles:
 
             extra_args = []
             if args.cstream:
@@ -84,8 +85,10 @@ try:
             if args.diagnostic:
                 extra_args.append("-DV9968_DEMO_DIAGNOSTIC")
 
-            if not profile.endswith("internal"):
+            if profile == 'external-0x88':
                 extra_args.append("-DVDP_BASE=136") # decimal to please asm section
+            else:
+                extra_args.append("-DVDP_BASE=152")
 
             name = f"V9968-TECH-DEMO-{profile}"
             if args.diagnostic:
@@ -134,6 +137,13 @@ try:
 
             if not args.diagnostic and not args.cstream:
                 shutil.copy(rom_path, ps_script_root / f"{name}.rom")
+
+            if profile == "internal-0x98":
+                compat = "V9968-TECH-DEMO-DIAGNOSTIC" if args.diagnostic else "V9968-TECH-DEMO"
+                shutil.copy(rom_path, out_dir / f"{compat}.rom")
+                shutil.copy(map_path, out_dir / f"{compat}.map")
+                if not args.diagnostic and not args.cstream:
+                    shutil.copy(rom_path, ps_script_root / "V9968-TECH-DEMO.rom")
 
             sha256_hash = sha256(rom_buffer).hexdigest()
             print(f"\nSHA256 hash of {name}.rom: {sha256_hash.upper()}")

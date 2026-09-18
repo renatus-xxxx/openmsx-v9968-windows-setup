@@ -17,9 +17,23 @@ Python 3 with Pillow and z88dk are required for rebuilding, not for normal setup
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File build.ps1 -Z88dk "C:\z88dk"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File build.ps1 -Z88dk "C:\z88dk" -ProfileFilter '^external-0x88$'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File build.ps1 -Z88dk "C:\z88dk" -ProfileFilter '^internal-0x98$'
 ```
 
-Pass your actual z88dk location. The build always runs `generate-fonts.py` and `generate-megarom.py`, then compiles C with zsdcc. It checks the fixed bank fits 16 KiB, BSS stays below CF00 and the final ROM is 1 MiB. Outputs are `build/V9968-TECH-DEMO.rom` and the distribution copy `V9968-TECH-DEMO.rom`. Warning 85 for assembly-consumed arguments and PSG optimizer warning 110 remain.
+Linux / WSL uses the same profile names:
+
+```bash
+python3 build.py --z88dk ~/z88dk
+python3 build.py --z88dk ~/z88dk --profile-filter '^external-0x88$'
+python3 build.py --z88dk ~/z88dk --profile-filter '^internal-0x98$'
+```
+
+`external-0x88` builds with `VDP_BASE=0x88`; `internal-0x98` uses the default `0x98` base. Omitting the profile filter builds both. Pass your actual z88dk location. The build always runs `generate-fonts.py` and `generate-megarom.py`, then compiles C with zsdcc. It checks the fixed bank fits 16 KiB, BSS stays below CF00 and the final ROM is 1 MiB. Profile-named ROMs are written as `V9968-TECH-DEMO-external-0x88.rom` and `V9968-TECH-DEMO-internal-0x98.rom`; both Windows and Linux internal builds also refresh the existing `build/V9968-TECH-DEMO.rom`, `.map` and distribution `V9968-TECH-DEMO.rom` aliases used by the current test/launch scripts. Warning 85 for assembly-consumed arguments and PSG optimizer warning 110 remain.
+
+Use `V9968-TECH-DEMO-external-0x88.rom` with the external HRA! V9968 cartridge (I/O base 0x88). The existing openMSX launch/test scripts continue to use the canonical internal ROM; they do not select the external cartridge. The contributor identified the tested bitstream as [`fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs`](https://github.com/hra1129/V9968_Cartridge/blob/ceeecd7e3c2d25c20045f797617af0f70ca228c1/fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs) at HRA! commit `ceeecd7e3c2d25c20045f797617af0f70ca228c1`. Its SHA-256 is `9ba903e7929bd9a6ef4b13fc6b1b49676015af05a52d97d8fa02c143643c6511`; a download from that commit matched on 2026-09-18. This identifies the contributor's bitstream, not a hardware test of the ROMs rebuilt here. These integration builds are not final release artifacts.
+
+Before an official release, test the final `external-0x88` release candidate on the external V9968 cartridge and record the exact `.fs` bitstream used (path/hash) together with the corresponding `hra1129/V9968_Cartridge` RTL commit.
 
 ## Assets and rendering
 
