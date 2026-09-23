@@ -1,0 +1,20 @@
+[
+  {
+    "variant": "a",
+    "cpu": "cbios",
+    "pass": true,
+    "frames": 385
+  },
+  {
+    "variant": "b",
+    "cpu": "cbios",
+    "pass": true,
+    "frames": 385
+  },
+  {
+    "variant": "reference",
+    "cpu": "cbios",
+    "pass": true,
+    "frames": 385
+  }
+]

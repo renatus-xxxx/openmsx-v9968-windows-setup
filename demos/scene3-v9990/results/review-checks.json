@@ -1,0 +1,152 @@
+{
+  "final_all_pass": true,
+  "final_checks": [
+    {
+      "name": "integration-a-cbios",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "integration-a-fsa1gt",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "edges-a",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "capture-a",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "missing-a",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "missing-a-r800",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "integration-b-cbios",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "integration-b-fsa1gt",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "edges-b",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "capture-b",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "missing-b",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "missing-b-r800",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "integration-reference-cbios",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "integration-reference-fsa1gt",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "edges-reference",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "capture-reference",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "missing-reference",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "missing-reference-r800",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "fault-cbios-1",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "fault-cbios-3",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "fault-fsa1gt-1",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "fault-fsa1gt-3",
+      "pass_": true,
+      "exit": 0
+    },
+    {
+      "name": "palette-negative",
+      "pass_": true,
+      "exit": 1
+    }
+  ],
+  "final_bat_launches": [
+    {
+      "bat": "launch-scene3-v9968-reference-cbios.bat",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "bat": "launch-scene3-v9968-reference-fsa1gt.bat",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "bat": "launch-scene3-v9990-a-cbios.bat",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "bat": "launch-scene3-v9990-a-fsa1gt.bat",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "bat": "launch-scene3-v9990-b-cbios.bat",
+      "exit": 0,
+      "pass": true
+    },
+    {
+      "bat": "launch-scene3-v9990-b-fsa1gt.bat",
+      "exit": 0,
+      "pass": true
+    }
+  ]
+}

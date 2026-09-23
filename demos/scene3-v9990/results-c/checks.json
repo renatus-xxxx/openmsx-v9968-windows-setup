@@ -1,0 +1,67 @@
+[
+  {
+    "name": "integration-c-cbios",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "integration-c-fsa1gt",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "edges-c",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "capture-c",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "missing-c",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "missing-c-r800",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "fault-cbios-1",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "fault-cbios-3",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "fault-fsa1gt-1",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "fault-fsa1gt-3",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "fault-stream-cbios",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "fault-stream-fsa1gt",
+    "pass_": true,
+    "exit": 0
+  },
+  {
+    "name": "palette-negative",
+    "pass_": true,
+    "exit": 1
+  }
+]

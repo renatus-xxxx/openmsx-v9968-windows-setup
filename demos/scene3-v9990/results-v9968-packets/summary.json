@@ -1,0 +1,118 @@
+[
+  {
+    "cpu": "cbios",
+    "mode": "animated",
+    "means_of_three_runs": {
+      "reference": {
+        "fps": 15.815521800243431,
+        "draw_mean_ms": 54.86179905016209,
+        "sync_mean_ms": 7.685396783303946,
+        "frame_median_ms": 66.05811632483949,
+        "frame_p95_ms": 67.54014825906651
+      },
+      "reference-packets": {
+        "fps": 16.56095682256771,
+        "draw_mean_ms": 50.04645286495413,
+        "sync_mean_ms": 9.653651152551358,
+        "frame_median_ms": 64.63335423915595,
+        "frame_p95_ms": 67.53120857538875
+      },
+      "c": {
+        "fps": 15.129883732212713,
+        "draw_mean_ms": 57.250707724444716,
+        "sync_mean_ms": 8.160828502906474,
+        "frame_median_ms": 66.06593854805709,
+        "frame_p95_ms": 82.72001050412925
+      }
+    },
+    "fps_improvement_percent": 4.71331285644212,
+    "new_v9968_over_v9990": 1.0945858617081194
+  },
+  {
+    "cpu": "cbios",
+    "mode": "sequence",
+    "means_of_three_runs": {
+      "reference": {
+        "fps": 15.527540555199115,
+        "draw_mean_ms": 55.60332868772432,
+        "sync_mean_ms": 7.741486697331566,
+        "frame_median_ms": 65.69005278603868,
+        "frame_p95_ms": 67.14372916110634
+      },
+      "reference-packets": {
+        "fps": 16.33785664889162,
+        "draw_mean_ms": 50.49091871313258,
+        "sync_mean_ms": 9.65973634568075,
+        "frame_median_ms": 65.67762103842689,
+        "frame_p95_ms": 67.14568471691251
+      },
+      "c": {
+        "fps": 14.765305757441679,
+        "draw_mean_ms": 58.03021163478885,
+        "sync_mean_ms": 8.63923631529985,
+        "frame_median_ms": 65.69326548486032,
+        "frame_p95_ms": 82.38980093838677
+      }
+    },
+    "fps_improvement_percent": 5.218573352372835,
+    "new_v9968_over_v9990": 1.1065031037814697
+  },
+  {
+    "cpu": "fsa1gt",
+    "mode": "animated",
+    "means_of_three_runs": {
+      "reference": {
+        "fps": 15.930859879055731,
+        "draw_mean_ms": 54.13814164256676,
+        "sync_mean_ms": 8.304942756130044,
+        "frame_median_ms": 66.41249097301483,
+        "frame_p95_ms": 67.05558946737789
+      },
+      "reference-packets": {
+        "fps": 16.311975296687464,
+        "draw_mean_ms": 52.033760076849376,
+        "sync_mean_ms": 8.942574248619586,
+        "frame_median_ms": 66.41193224278652,
+        "frame_p95_ms": 67.05363391157348
+      },
+      "c": {
+        "fps": 20.752331086885423,
+        "draw_mean_ms": 37.550114542167364,
+        "sync_mean_ms": 10.307835249624606,
+        "frame_median_ms": 49.731879331030626,
+        "frame_p95_ms": 50.359612744077964
+      }
+    },
+    "fps_improvement_percent": 2.3923091441710786,
+    "new_v9968_over_v9990": 0.7860309874776394
+  },
+  {
+    "cpu": "fsa1gt",
+    "mode": "sequence",
+    "means_of_three_runs": {
+      "reference": {
+        "fps": 15.73456024519006,
+        "draw_mean_ms": 54.570395272828065,
+        "sync_mean_ms": 7.957437568007903,
+        "frame_median_ms": 65.71910675798165,
+        "frame_p95_ms": 66.35172906053555
+      },
+      "reference-packets": {
+        "fps": 16.064105696066225,
+        "draw_mean_ms": 52.51797234355209,
+        "sync_mean_ms": 8.706097881329734,
+        "frame_median_ms": 65.71784961496618,
+        "frame_p95_ms": 66.34781794892852
+      },
+      "c": {
+        "fps": 20.455310159569713,
+        "draw_mean_ms": 37.75085186717161,
+        "sync_mean_ms": 10.109610757966438,
+        "frame_median_ms": 49.032418924753074,
+        "frame_p95_ms": 49.6651110685864
+      }
+    },
+    "fps_improvement_percent": 2.0944052184547424,
+    "new_v9968_over_v9990": 0.7853269185728221
+  }
+]

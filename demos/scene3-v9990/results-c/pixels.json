@@ -1,0 +1,14 @@
+[
+  {
+    "variant": "c",
+    "cpu": "cbios",
+    "pass": true,
+    "frames": 385
+  },
+  {
+    "variant": "c",
+    "cpu": "fsa1gt",
+    "pass": true,
+    "frames": 385
+  }
+]

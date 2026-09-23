@@ -1,0 +1,10 @@
+/build/
+/test-output/
+
+# The comparison ROMs are kept outside the repository. They are not distributed
+# (config/PUBLIC_FILES.txt does not list this directory), so committing them
+# would add several megabytes to the history for no distribution benefit.
+# Rebuild them with build.py --variant a/b/c/reference/reference-packets.
+# roms.json and results*/provenance.json still pin the hashes the published
+# measurements were taken on, so a rebuild can be checked against them.
+/SCENE3-V9968-PACKETS-C.rom

@@ -1,0 +1,21 @@
+{
+  "scope": "32 diagnostic samples, pose=i*4, phase=i*8. CE polling includes status-read overhead and interrupts; other_draw includes OUT/OTIR, CPU code and non-stream CE waits. No isolated pure VDP busy or pure transfer time is claimed. Emulator time, debugger breakpoints without ROM instrumentation.",
+  "results": [
+    {
+      "cpu": "z80",
+      "samples": 32,
+      "draw_mean_ms": 57.7090017725716,
+      "stream_ce_poll_mean_ms": 15.596971821837723,
+      "other_draw_mean_ms": 42.11202995073388,
+      "stream_command_mean": 338.125
+    },
+    {
+      "cpu": "r800",
+      "samples": 32,
+      "draw_mean_ms": 37.76688535135053,
+      "stream_ce_poll_mean_ms": 15.888454398533147,
+      "other_draw_mean_ms": 21.878430952817386,
+      "stream_command_mean": 338.125
+    }
+  ]
+}

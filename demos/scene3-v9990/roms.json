@@ -1,0 +1,50 @@
+{
+  "a": {
+    "file": "SCENE3-V9990-A.rom",
+    "size": 1048576,
+    "sha256": "250de59ad893414e0c9198b6b8b4ade7dff221c6dfa8ded459a71aadc824f30e",
+    "payload_sha256": "7b70525491da4fe80b401c3cc8c8a1057a618c5679ae2c721eb3fc07974e8124",
+    "bss_end": "0xc075",
+    "fixed_bytes": 16384
+  },
+  "reference": {
+    "file": "SCENE3-V9968-REFERENCE.rom",
+    "size": 1048576,
+    "sha256": "2b714bf7e3c4ccd9c4ea99fea06f50cd457fac3db2ed28b081d2f98117085869",
+    "payload_sha256": "7b70525491da4fe80b401c3cc8c8a1057a618c5679ae2c721eb3fc07974e8124",
+    "bss_end": "0xc086",
+    "fixed_bytes": 16384
+  },
+  "b": {
+    "file": "SCENE3-V9990-B.rom",
+    "size": 1048576,
+    "sha256": "51b3dec62ebf51c9ec07aa556a83aa33e439a5176e243f04deff337459ef73d4",
+    "payload_sha256": "7b70525491da4fe80b401c3cc8c8a1057a618c5679ae2c721eb3fc07974e8124",
+    "bss_end": "0xc075",
+    "fixed_bytes": 16384
+  },
+  "c": {
+    "file": "SCENE3-V9990-C.rom",
+    "size": 2097152,
+    "sha256": "7137778fb8e66ca8aa8bcbcf80d5d2f95f566ef52723e962d1560900e64550d0",
+    "payload_sha256": "1d441e1b2de9bcd30483f49ee5fe67eac1e3eabc1d1123264a2c497df480e65c",
+    "bss_end": "0xc075",
+    "fixed_bytes": 16384
+  },
+  "reference-packets": {
+    "file": "SCENE3-V9968-PACKETS.rom",
+    "size": 2097152,
+    "sha256": "132206220b7577d44afffd5464b53b039de97048e0ba2fb615c4bf78438bf06a",
+    "payload_sha256": "a421872b9557adf06d3b5a0bf7864af13efd9aeb4896deef913535f81d6784db",
+    "bss_end": "0xc077",
+    "fixed_bytes": 16384
+  },
+  "reference-packets-c": {
+    "file": "SCENE3-V9968-PACKETS-C.rom",
+    "size": 2097152,
+    "sha256": "cf2158c4837b9654259b9e3a96488299b294e51c7eaff95f7ab10ce095523bb2",
+    "payload_sha256": "a421872b9557adf06d3b5a0bf7864af13efd9aeb4896deef913535f81d6784db",
+    "bss_end": "0xc077",
+    "fixed_bytes": 16384
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "date": "2026-09-20",
+  "base_commit": "1f38cd5e0c80c7d221811972007c086249b84188",
+  "new_sources": "Uncommitted. Identify by hashes below.",
+  "rom": {
+    "file": "SCENE3-V9990-C.rom",
+    "size": 2097152,
+    "sha256": "7137778fb8e66ca8aa8bcbcf80d5d2f95f566ef52723e962d1560900e64550d0",
+    "payload_sha256": "1d441e1b2de9bcd30483f49ee5fe67eac1e3eabc1d1123264a2c497df480e65c",
+    "bss_end": "0xc075",
+    "fixed_bytes": 16384
+  },
+  "baseline_roms": {
+    "reference": {
+      "file": "SCENE3-V9968-REFERENCE.rom",
+      "size": 1048576,
+      "sha256": "2b714bf7e3c4ccd9c4ea99fea06f50cd457fac3db2ed28b081d2f98117085869",
+      "payload_sha256": "7b70525491da4fe80b401c3cc8c8a1057a618c5679ae2c721eb3fc07974e8124",
+      "bss_end": "0xc086",
+      "fixed_bytes": 16384
+    },
+    "b": {
+      "file": "SCENE3-V9990-B.rom",
+      "size": 1048576,
+      "sha256": "51b3dec62ebf51c9ec07aa556a83aa33e439a5176e243f04deff337459ef73d4",
+      "payload_sha256": "7b70525491da4fe80b401c3cc8c8a1057a618c5679ae2c721eb3fc07974e8124",
+      "bss_end": "0xc075",
+      "fixed_bytes": 16384
+    }
+  },
+  "baseline_results_sha256": "beceb1a03988d118bed538bac7c57976ac6c4127c75fe2875bf7c002d5d8a970",
+  "baseline_reuse": "B/reference hashes unchanged; same pinned emulator and machine XML, clocks, RAM, VSync, warmup and sampling. Baseline retained unchanged.",
+  "emulator": {
+    "version": "openMSX 21.0 V9968 fork d884c4b",
+    "sha256": "b5de3932c0e486002c2ca1fb0d858ad27fc10e97bc5a6b1b277f988f7b7454b9",
+    "url": "https://buppu3.github.io/openMSX/derived/openmsx-21.0-v9968-d884c4b-x64-VC-Release.zip",
+    "machine_xml_sha256": {
+      "C-BIOS_V9968_JP": "99b1f8cccb829b230f325fac30a3b3cd21834721d30d8df6b80616c060ce0360",
+      "C-BIOS_MSX2+_JP": "d203727f270ffcbb6965661eb81a63c0bfac1158bf13ad965aece49361a956a1",
+      "gfx9000.xml": "966a2f5a107e1f339e03dacb1ee53d2c1f61c3e5b0b99c81447a2ccdc6f443f7",
+      "Panasonic_FS-A1GT_V9968": "6adc2a34e263b3f7564a650802ebea9c260600bde1bae992abba77b2c4bd9457",
+      "Panasonic_FS-A1GT": "f5df8e254a3f81c7173950842b09ad446b5e856358395b87c7238e6263be56a2"
+    },
+    "reference_timing_xml": "The inherited V9968 machine XML contains timing=0. This fork-specific setting is part of the reference configuration; its isolated performance effect was not measured."
+  },
+  "toolchain": {
+    "z88dk": "26008-578fd73267-20260917",
+    "sdcc": "4.6.0 #16639",
+    "zcc_sha256": "ebeca21ef1748ac6c70cd65bc9a5be9d6b28c9534b82b1a28e2ab6f87c959101",
+    "python": "3.11.9"
+  },
+  "conditions": {
+    "warmup_emulated_seconds": 5,
+    "normal_target_seconds": 15,
+    "fixed_sequence_frames": 256,
+    "independent_starts": 3,
+    "vblank_sync": true,
+    "cmdtiming": "real",
+    "maxframeskip": 0,
+    "renderer": "none",
+    "sound_driver": "null (PSG calculation enabled)",
+    "throttle": false,
+    "frame_time_definition": "frame_start to frame_done; CPU loop/request gap excluded",
+    "fps_definition": "completed_frames/(last_frame_done-first_frame_start); gaps included",
+    "draw_definition": "frame_start to draw_done after CE completion",
+    "sync_definition": "draw_done to frame_done",
+    "fixed_sequence_request_delay_seconds": 0.001,
+    "separate_command_and_ce_times": "not measured",
+    "recorder": "off",
+    "actual_hardware": "not tested",
+    "fps_excluding_request_gaps": "Frames divided by sum of draw-start-to-display-switch intervals; excludes all inter-frame work, including input in animated mode."
+  },
+  "host": "Windows-10-10.0.19045-SP0",
+  "hardware_conditions": {
+    "z80_hz": 3579545,
+    "r800_hz": 7159090,
+    "ram_kib": 512,
+    "speed_setting": 100.0,
+    "frequency_source": "machine_info z80_freq / r800_freq in isolated startup; RAM from machine XML"
+  },
+  "tests": {
+    "final_measure_runs": 12,
+    "final_pixel_samples": 770,
+    "edge_samples": 385,
+    "integration_sessions": 2,
+    "missing_device": 2,
+    "ce_and_vblank_faults": 4,
+    "asm_stream_timeout_faults": 2,
+    "palette_negative": 1,
+    "c_reference_pixels": 385,
+    "c_reference_measure_runs": 6,
+    "full_pose_phase_cartesian_product": false,
+    "actual_hardware": false
+  },
+  "screenshot": {
+    "pose": 37,
+    "phase": 37,
+    "stable_frames": 2,
+    "b_c_rgb_equal": true,
+    "png_sha256": "8fec1c40bd7c9bdde31ac2e85143ef7b79b77969fe2d76e35784e6be21e1c6ff",
+    "rgb_sha256": "6ed0cbb4a31b7a6dcb496caf5f61913ea70de8154c61bd811ca18bfd0edbe05e"
+  },
+  "build_warnings": "Assembly parameters and one C-only local unused in asm configuration; inherited music optimizer notices. Link succeeded.",
+  "source_sha256": {
+    "build.ps1": "3de080c62a2e44305673913cd08658d4ca0bb5f0bdd2a8fd3b7de98a6f034059",
+    "build.py": "047a0ae4e1f9c242e74b0d90f4d05e59e663a47c948710b3de9d47b03ec5f2a8",
+    "edge-fixture.tcl": "ec273f986ade9b6aaf7181a88d7b8228bd8abd496c03ead6731316173e909e6e",
+    "fault-stream.tcl": "7125490441c2792b9dd7c81cbcee01d4302a4d4ece1cd291d7c8078e43e6483b",
+    "fault.tcl": "2bc5f03111e2c4e948698a60e1004f6bfca48e16fda96dc80de1f00ebd6110de",
+    "generate-c-packets.py": "f2c41b4f43bde8c21ed048525881f1821c6f767028c0b9e918ff4fb8eb67b654",
+    "integration.tcl": "7a5533f224ab4b0c0a7e2205843a6daf8eca384b22a32eda97abee60243f0c75",
+    "launch.ps1": "50306da75ec19610792b34ec8327f8422696d1438353c55800b6940fadb8988d",
+    "main.c": "f409381054bfa3f607755a8fbc1fb0a505b568d7a944ff98e1d248fb85a53fab",
+    "measure.tcl": "f2ca4453af7e0646704a86e3931381739b7f5f10770d41c835da6e164a98186f",
+    "missing-device.tcl": "80e2b5f90bc6456fbc5acaf8d50ec02f0ee7c0f100ab7e804ff5bed575455121",
+    "profile-c.tcl": "61dbffeef9becb60a4203b9d9b9b770fa2d43d3c391be3c5bb12c48507150ee6",
+    "run-test.py": "aba7c54515cce5f2325d3cf734395865eda15ec64d43aa85975b6dbabfdabfb9",
+    "screenshot.tcl": "d629d7a1726d0d0e83bff87b17a921572bde2dbc10014d56271dedbddc988345",
+    "smoke.tcl": "a0c521c5b16e3c21f283f2dcb726be52dbbf6e0e606158995def92d66ecfa301",
+    "suite.py": "fe86a2974b8a3540d95e94ff71e7a09520909704125276df5798d8eac2bc9190",
+    "v9990.c": "75d0bddf1a695808f57b8863812d43d884427e864e2e1bcbae5ad8c09a80b4d6",
+    "v9990.h": "42a617a2196262f30aac818912578a75a9c6f3ed649e68c2fd544eb6127733f8",
+    "verify.py": "f1e909fc3fd34f603b847f4e77aa54843fa7afc0186cb66f1f88d58d4c0ab1fe",
+    "verify.tcl": "f99ab734163cc1f4295be8e4cbbf2d80b8abd9aa331d679bf54b6970e92fa8de"
+  },
+  "shared_inputs_sha256": {
+    "V9968-TECH-DEMO.rom": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
+    "assets/bank-layout.h": "194a5de97d4db0906d8113e9e6bf08003747361935b36ecd388902effea67f3e",
+    "assets/bank-layout.json": "81e3ee2da403fdfcff457c87999d14a816e350593e5d79be8f7822b9a66784cf",
+    "v9968.c": "2ec90f642a0c90c40edcf8c869fd11dc41992b359e1924beaaa363d6734ba872",
+    "platform.c": "75a31d4cf80e462e0cc5aad2e4b112fde8febbbad4468fb7f27da8a86a8f9b89",
+    "mapper.c": "28c74c4497f9f37404e2d5a01d2f7ba6c477a68ddf8f3117ec189aee999e8e70",
+    "music.c": "04b02f94b59a32201e9184c2a2635dbade1b3bfe547b83cc5fee0cc629efbed8",
+    "runtime-math.asm": "eb741adfa92214727649600c7242d9ecefaaadde581146dd41830a2b641b9d53"
+  },
+  "deployment_checks": {
+    "launches": [
+      {
+        "bat": "launch-scene3-v9990-c-cbios.bat",
+        "exit": 0,
+        "pass": true
+      },
+      {
+        "bat": "launch-scene3-v9990-c-fsa1gt.bat",
+        "exit": 0,
+        "pass": true
+      }
+    ],
+    "powershell": "Windows PowerShell5.1",
+    "cwd": "outside repository",
+    "private_user_root": "Japanese characters and spaces",
+    "existing_public_validation": "PASS147 files; C is not in the release manifest",
+    "protected_baseline_files": 54,
+    "baseline_preserved": true,
+    "tracked_changes": 0,
+    "publication": "No commit/push/tag/release/ZIP updates"
+  }
+}

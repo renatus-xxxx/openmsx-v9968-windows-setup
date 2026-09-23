@@ -1,0 +1,108 @@
+[
+  {
+    "variant": "a",
+    "cpu": "cbios",
+    "checks": [
+      "PASS palette_rgb5",
+      "CPU z80",
+      "PASS continuous",
+      "PASS water_off",
+      "PASS water_on",
+      "PASS pause",
+      "PASS psg_changes",
+      "PASS resume",
+      "PASS escape",
+      "PASS muted"
+    ],
+    "palette_readback_rgb5": true,
+    "pass": true
+  },
+  {
+    "variant": "a",
+    "cpu": "fsa1gt",
+    "checks": [
+      "PASS palette_rgb5",
+      "CPU r800",
+      "PASS continuous",
+      "PASS water_off",
+      "PASS water_on",
+      "PASS pause",
+      "PASS psg_changes",
+      "PASS resume",
+      "PASS escape",
+      "PASS muted"
+    ],
+    "palette_readback_rgb5": true,
+    "pass": true
+  },
+  {
+    "variant": "b",
+    "cpu": "cbios",
+    "checks": [
+      "PASS palette_rgb5",
+      "CPU z80",
+      "PASS continuous",
+      "PASS water_off",
+      "PASS water_on",
+      "PASS pause",
+      "PASS psg_changes",
+      "PASS resume",
+      "PASS escape",
+      "PASS muted"
+    ],
+    "palette_readback_rgb5": true,
+    "pass": true
+  },
+  {
+    "variant": "b",
+    "cpu": "fsa1gt",
+    "checks": [
+      "PASS palette_rgb5",
+      "CPU r800",
+      "PASS continuous",
+      "PASS water_off",
+      "PASS water_on",
+      "PASS pause",
+      "PASS psg_changes",
+      "PASS resume",
+      "PASS escape",
+      "PASS muted"
+    ],
+    "palette_readback_rgb5": true,
+    "pass": true
+  },
+  {
+    "variant": "reference",
+    "cpu": "cbios",
+    "checks": [
+      "CPU z80",
+      "PASS continuous",
+      "PASS water_off",
+      "PASS water_on",
+      "PASS pause",
+      "PASS psg_changes",
+      "PASS resume",
+      "PASS escape",
+      "PASS muted"
+    ],
+    "palette_readback_rgb5": false,
+    "pass": true
+  },
+  {
+    "variant": "reference",
+    "cpu": "fsa1gt",
+    "checks": [
+      "CPU r800",
+      "PASS continuous",
+      "PASS water_off",
+      "PASS water_on",
+      "PASS pause",
+      "PASS psg_changes",
+      "PASS resume",
+      "PASS escape",
+      "PASS muted"
+    ],
+    "palette_readback_rgb5": false,
+    "pass": true
+  }
+]

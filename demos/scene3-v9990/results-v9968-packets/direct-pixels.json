@@ -1,0 +1,34 @@
+[
+  {
+    "cpu": "cbios",
+    "comparison": "old_vs_new",
+    "pass": true,
+    "samples": 385,
+    "compared_bytes": 50462720,
+    "mismatched_bytes": 0
+  },
+  {
+    "cpu": "cbios",
+    "comparison": "asm_vs_c",
+    "pass": true,
+    "samples": 385,
+    "compared_bytes": 50462720,
+    "mismatched_bytes": 0
+  },
+  {
+    "cpu": "fsa1gt",
+    "comparison": "old_vs_new",
+    "pass": true,
+    "samples": 385,
+    "compared_bytes": 50462720,
+    "mismatched_bytes": 0
+  },
+  {
+    "cpu": "fsa1gt",
+    "comparison": "asm_vs_c",
+    "pass": true,
+    "samples": 385,
+    "compared_bytes": 50462720,
+    "mismatched_bytes": 0
+  }
+]

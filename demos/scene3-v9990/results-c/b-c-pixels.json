@@ -1,0 +1,12 @@
+[
+  {
+    "cpu": "cbios",
+    "samples": 385,
+    "captured_vram_bytes_identical": true
+  },
+  {
+    "cpu": "fsa1gt",
+    "samples": 385,
+    "captured_vram_bytes_identical": true
+  }
+]

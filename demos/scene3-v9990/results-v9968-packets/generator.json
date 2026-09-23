@@ -1,0 +1,20 @@
+{
+  "pass": true,
+  "wave_phases": 256,
+  "identity_records": 1,
+  "pixels_checked": 12632064,
+  "overlaps": 0,
+  "holes": 0,
+  "negative_geometry_rejected": true,
+  "layout": {
+    "rom_bytes": 2097152,
+    "record_bytes": 4096,
+    "command_bytes": 15,
+    "water_commands_min": 111,
+    "water_commands_max": 137,
+    "water_commands_mean": 123.2734375,
+    "identity_commands": 1,
+    "reserved_wave_bytes": 1048576,
+    "used_wave_bytes": 473882
+  }
+}

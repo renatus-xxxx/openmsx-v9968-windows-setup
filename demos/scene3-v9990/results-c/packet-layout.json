@@ -1,0 +1,12 @@
+{
+  "mesh_commands_min": 104,
+  "mesh_commands_max": 296,
+  "mesh_commands_mean": 215.390625,
+  "water_commands_min": 111,
+  "water_commands_max": 137,
+  "water_commands_mean": 123.2734375,
+  "rom_bytes": 2097152,
+  "new_water_packet_bytes": 1048576,
+  "mesh_record_bytes": 10,
+  "water_record_bytes": 12
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "cpu": "cbios",
+    "rgb_screenshot_identical": true,
+    "palette_identical": true,
+    "conditions": [
+      "CPU=z80 SPEED=100.0",
+      "z80_freq=3579545",
+      "r800_freq=unavailable (No info on: r800_freq)",
+      "R20=49 FAULT=0"
+    ]
+  },
+  {
+    "cpu": "fsa1gt",
+    "rgb_screenshot_identical": true,
+    "palette_identical": true,
+    "conditions": [
+      "CPU=r800 SPEED=100.0",
+      "z80_freq=3579545",
+      "r800_freq=7159090",
+      "R20=49 FAULT=0"
+    ]
+  }
+]

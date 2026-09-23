@@ -1,0 +1,107 @@
+{
+  "pass": true,
+  "oracle_sessions": [
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "pass": true,
+      "frames": 385
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "pass": true,
+      "frames": 385
+    },
+    {
+      "variant": "reference",
+      "cpu": "cbios",
+      "pass": true,
+      "frames": 385
+    },
+    {
+      "variant": "reference",
+      "cpu": "fsa1gt",
+      "pass": true,
+      "frames": 385
+    },
+    {
+      "variant": "reference-packets-c",
+      "cpu": "cbios",
+      "pass": true,
+      "frames": 385
+    },
+    {
+      "variant": "reference-packets-c",
+      "cpu": "fsa1gt",
+      "pass": true,
+      "frames": 385
+    }
+  ],
+  "extra_sessions": [
+    {
+      "kind": "edge",
+      "cpu": "cbios",
+      "variant": "reference-packets",
+      "pass": true
+    },
+    {
+      "kind": "edge",
+      "cpu": "fsa1gt",
+      "variant": "reference-packets",
+      "pass": true
+    },
+    {
+      "kind": "integration",
+      "cpu": "cbios",
+      "variant": "reference-packets",
+      "pass": true
+    },
+    {
+      "kind": "integration",
+      "cpu": "fsa1gt",
+      "variant": "reference-packets",
+      "pass": true
+    },
+    {
+      "kind": "fault",
+      "cpu": "cbios",
+      "variant": "reference-packets-c",
+      "pass": true
+    },
+    {
+      "kind": "fault",
+      "cpu": "fsa1gt",
+      "variant": "reference-packets",
+      "pass": true
+    },
+    {
+      "kind": "fault",
+      "cpu": "fsa1gt",
+      "variant": "reference-packets-c",
+      "pass": true
+    },
+    {
+      "kind": "fault",
+      "cpu": "cbios",
+      "variant": "reference-packets",
+      "pass": true
+    }
+  ],
+  "launch_checks": {
+    "both_cpus": true,
+    "outside_repo_cwd": true,
+    "japanese_space_user_path": true
+  },
+  "rebuild_reproducible_sha256": true,
+  "direct_vram_comparison": "direct-pixels.json",
+  "rgb_palette_comparison": "screenshots.json",
+  "coverage": "128 poses + 256 phases + one repeated sample per session, not 128x256 combinations",
+  "initial_capture_failures": "First-frame captures black. First diagnostic also queried missing r800_freq on Z80 and timed out; settled two-frame capture and optional frequency query passed. No ROM change required.",
+  "not_verified": [
+    "Physical hardware",
+    "Listening-based audio equality",
+    "V9968 VBlank timeout (not implemented in inherited code)",
+    "Separate CPU versus CE timing"
+  ]
+}

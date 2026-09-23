@@ -1,0 +1,92 @@
+{
+  "description": "Diagnostic build with V9990_C_STREAM_REFERENCE, not production C ROM; same generated payload.",
+  "rom_sha256": "afb7c77c0a645dff8cbd176dcd3063644cc5da7932963bdb959dbaaee0fd13cd",
+  "pixel_check_cbios_samples": 385,
+  "pixel_check_pass": true,
+  "measurements": [
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 0,
+      "frames": 256,
+      "elapsed_seconds": 33.70898089002932,
+      "fps": 7.594415293513707,
+      "fps_excluding_request_gaps": 7.6558644501806,
+      "frame_median_ms": 132.44350888171752,
+      "frame_p95_ms": 149.15079989216196,
+      "draw_mean_ms": 121.81428282959139,
+      "sync_mean_ms": 8.804539709306912
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 1,
+      "frames": 256,
+      "elapsed_seconds": 33.70898089002932,
+      "fps": 7.594415293513707,
+      "fps_excluding_request_gaps": 7.6558644501806,
+      "frame_median_ms": 132.44350888171752,
+      "frame_p95_ms": 149.15079989216196,
+      "draw_mean_ms": 121.81428282959139,
+      "sync_mean_ms": 8.804539709306912
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 2,
+      "frames": 256,
+      "elapsed_seconds": 33.70898089002932,
+      "fps": 7.594415293513707,
+      "fps_excluding_request_gaps": 7.6558644501806,
+      "frame_median_ms": 132.44350888171752,
+      "frame_p95_ms": 149.15079989216196,
+      "draw_mean_ms": 121.81428282959139,
+      "sync_mean_ms": 8.804539709306912
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 0,
+      "frames": 256,
+      "elapsed_seconds": 19.791111440141137,
+      "fps": 12.935099717581823,
+      "fps_excluding_request_gaps": 13.109160061219491,
+      "frame_median_ms": 82.39881046334041,
+      "frame_p95_ms": 83.03220101996445,
+      "draw_mean_ms": 67.12534671829809,
+      "sync_mean_ms": 9.157191242183046
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 1,
+      "frames": 256,
+      "elapsed_seconds": 19.791111440141137,
+      "fps": 12.935099717581823,
+      "fps_excluding_request_gaps": 13.109160061219491,
+      "frame_median_ms": 82.39881046334041,
+      "frame_p95_ms": 83.03220101996445,
+      "draw_mean_ms": 67.12534671829809,
+      "sync_mean_ms": 9.157191242183046
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 2,
+      "frames": 256,
+      "elapsed_seconds": 19.791111440141137,
+      "fps": 12.935099717581823,
+      "fps_excluding_request_gaps": 13.109160061219491,
+      "frame_median_ms": 82.39881046334041,
+      "frame_p95_ms": 83.03220101996445,
+      "draw_mean_ms": 67.12534671829809,
+      "sync_mean_ms": 9.157191242183046
+    }
+  ]
+}
