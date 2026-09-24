@@ -1,4 +1,4 @@
-﻿param([Parameter(Mandatory=$true)][string]$Runtime,[switch]$SlowCommands,[switch]$Trace,[switch]$DiagnosticTest,[switch]$Standard,[string]$CaptureScript,[switch]$CStream,[switch]$PassThru)
+﻿param([Parameter(Mandatory=$true)][string]$Runtime,[switch]$SlowCommands,[switch]$Trace,[switch]$DiagnosticTest,[switch]$Standard,[string]$CaptureScript,[switch]$CStream,[switch]$PassThru,[ValidateSet('11','31')][string]$ExpectedR20='11',[ValidateRange(60,900)][int]$TimeoutSeconds=180)
 $buildDir=if($CStream){'build-c'}else{'build'}
 $ErrorActionPreference='Stop'
 $Runtime=[IO.Path]::GetFullPath($Runtime)
@@ -11,6 +11,7 @@ Copy-Item "$PSScriptRoot/capture.tcl" $work
 $mapText=Get-Content "$PSScriptRoot/$buildDir/V9968-TECH-DEMO.map" -Raw
 if($mapText -notmatch '(?m)^_flip\s*=\s*\$([0-9A-Fa-f]+)'){throw 'Missing flip symbol'}
 ('set flip_address 0x'+$Matches[1]) | Set-Content "$work/test-symbols.tcl" -Encoding ascii
+('set expected_r20 0x'+$ExpectedR20) | Add-Content "$work/test-symbols.tcl" -Encoding ascii
 $layout=Get-Content "$PSScriptRoot/assets/bank-layout.json" -Raw|ConvertFrom-Json
 $payload=[IO.File]::ReadAllBytes("$PSScriptRoot/assets/megarom-data.bin")
 foreach($name in @('BACKGROUND','SEABED')){
@@ -73,7 +74,7 @@ try{
  if((Get-FileHash -LiteralPath $exe).Hash -ne $expected){throw 'Emulator hash mismatch'}
  $p=Start-Process -FilePath $exe -ArgumentList @('-machine',$machine,'-cart','V9968-TECH-DEMO.rom','-romtype','ASCII16','-script','capture.tcl') -WorkingDirectory $work -WindowStyle Hidden -PassThru -RedirectStandardOutput "$work/stdout.log" -RedirectStandardError "$work/stderr.log"
  $handle=$p.Handle
- if(!$p.WaitForExit(60000)){$p.Kill();throw 'Emulator test timed out'}
+ if(!$p.WaitForExit($TimeoutSeconds*1000)){$p.Kill();throw 'Emulator test timed out'}
  if($p.ExitCode -ne 0){throw 'Emulator failed; inspect test logs'}
  if($CaptureScript){if((Get-Content "$work/telemetry.txt" -Raw) -notmatch 'CAPTURE=PASS'){throw 'Capture failed'}}
  elseif($Standard){if((Get-Content "$work/telemetry.txt" -Raw) -notmatch 'V9968 REQUIRED'){throw 'Unsupported VDP check failed'}}

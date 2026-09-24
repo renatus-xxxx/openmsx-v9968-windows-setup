@@ -4,7 +4,7 @@
 
 [Home](../README.md)
 
-Version and hash facts were checked on 2026-09-09. The configuration is pinned and does not track the latest release.
+Current download and hash facts were checked on 2026-09-24. Historical verification dates and hashes are retained. The configuration is pinned and does not track the latest release.
 
 | Subject | Primary source |
 |---|---|

@@ -58,6 +58,8 @@ C-BIOS does **not** provide BASIC, Disk BASIC or normal disk boot in this config
 
 Setup and launch print progress and error messages in English and Japanese. [Troubleshooting](docs/troubleshooting.md) explains what each condition means.
 
+This source tree uses V9968-enabled openMSX **14215c7 (2026-09-24)**. Existing published ZIPs are unchanged. See [changes, validation and safe update instructions](docs/emulator-update-20260924.md).
+
 ## Documentation
 
 - [Setup and layout](docs/setup.md)

@@ -47,7 +47,7 @@ OBJ vertex positions and polygon faces are used; texture coordinates, supplied n
 
 Rendering uses SCREEN 5 at 256×192 with 16 colors, five-bit RGB components, HS and LRMM. Water strip transfers use HMMM: the technique is not exclusive to V9968, but benefits from its accelerated commands.
 
-The target is pinned `buppu3/openMSX d884c4b`. The launcher specifies `-romtype ASCII16`; select that type when opening the ROM separately. All bank numbers stay below 256, so the same ROM also runs unchanged on ASCII16-X hardware. Physical hardware and other emulators remain untested.
+The current source tree targets pinned `buppu3/openMSX 14215c7`; earlier measurements on d884c4b remain historical records. See the [emulator update record](../../docs/emulator-update-20260924.md). The launcher specifies `-romtype ASCII16`; select that type when opening the ROM separately. All bank numbers stay below 256, so the same ROM also runs unchanged on ASCII16-X hardware. Physical hardware and other emulators remain untested.
 
 The original three-voice PSG score is included. Timing results for earlier builds are not performance measurements of 0.7.2.
 

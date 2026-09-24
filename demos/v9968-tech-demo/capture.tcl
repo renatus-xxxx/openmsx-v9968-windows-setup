@@ -188,16 +188,13 @@ after time 89 {
 after time 90 {keymatrixup 0 1;keymatrixdown 7 4}
 after time 93 {
     set f [open telemetry.txt a]
-    # Bit 5 of R20 is picked at boot by running one LRMM without it and seeing
-    # whether the transfer happened. On this fork it does not, so the byte must
-    # come out 0x31 and R20 must actually hold it. The probe then runs again
-    # under the chosen byte and reports at 0xcf0a whether LRMM worked, so a
-    # wrong choice shows up here instead of silently losing Scene 6's feedback,
-    # which is the only thing bit 5 gates.
+    # Assert the map selected for this test, never merely accept either byte.
+    # The probe selects 0x31 on old d884c4b, 0x11 on new 14215c7.
+    # Both require successful LRMM readback at 0xcf0a.
     set r20_selected [debug read memory 0xcf09]
     set r20_live [debug read "VDP regs" 20]
     set r20_confirmed [debug read memory 0xcf0a]
-    set r20_ok [expr {$r20_selected == 0x31 && $r20_live == 0x31 && $r20_confirmed == 1}]
+    set r20_ok [expr {$r20_selected == $expected_r20 && $r20_live == $expected_r20 && $r20_confirmed == 1}]
     puts $f "R20_SELECTED=$r20_selected R20_LIVE=$r20_live R20_CONFIRMED=$r20_confirmed R20_OK=$r20_ok"
     puts $f "CONTROLS=$controls_ok MAPPER=[debug read memory 0xcf07] WATER_POLYGON_MOVES=$water_motion_ok"
     puts $f "WATER_OFF_VISIBLE=$water_off_visible WATER_ON_VISIBLE=$water_on_visible"

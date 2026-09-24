@@ -1,5 +1,7 @@
 [日本語](README.ja.md) | English
 
+**2026-09-24 update:** The pinned-fork specifications and measurements below describe d884c4b. With current 14215c7, the same Revision 2 ROM reports off=1/on=1 and R20SEL=11. See the [new emulator validation](../docs/emulator-update-20260924.md). Original tables and source references are retained as historical evidence.
+
 # V9968 PROBE Revision 2
 
 Revision 2 is included in release 0.7.1. FPGA hardware retesting remains pending.

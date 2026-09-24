@@ -10,9 +10,12 @@ Download the distribution ZIP from **Assets** on [GitHub Releases](https://githu
 
 ## C-BIOS
 
-Run `setup-cbios-v9968.bat`. It downloads the official openMSX 21.0 Windows x64 ZIP and the V9968 fork **d884c4b**, then checks archive sizes/SHA-256 and executable SHA-256 before execution. C-BIOS **0.29** comes from the official ZIP. Network downloads total about 18 MB; allow around 200 MB per installation, plus any retained failed attempts.
+Run `setup-cbios-v9968.bat`. It downloads the official openMSX 21.0 Windows x64 ZIP and the V9968 fork **14215c7** (2026-09-24), then checks archive sizes/SHA-256 and executable SHA-256 before execution. C-BIOS **0.29** comes from the official ZIP. Network downloads total about 18 MB; allow around 200 MB per installation, plus any retained failed attempts.
 
 The generated C-BIOS_MSX2+_JP derivative uses an internal V9968 and a Japanese 60 Hz configuration. It runs cartridge images; it supplies no BASIC or disk environment.
+
+
+This source tree pins the updated fork. Install in a separate folder using the [update and rollback steps](troubleshooting.md#update-and-rollback), without overwriting an existing environment. See [changes and validation](emulator-update-20260924.md).
 
 ## FS-A1GT
 
@@ -62,6 +65,8 @@ BAT files select standard Windows PowerShell modules. Execution-policy bypass an
 ## Confirmation screen and limitations
 
 Expect **VDP ID=3 / V9968 IDENTIFIED** in the V9968 configuration, and **ID=2** in the standard comparison. Identification does not guarantee that any particular graphics feature, game, frame rate, sound device, peripheral or R800 code works. The probe ROM runs on the Z80.
+
+These screenshots were captured with the previous environment. See the update record for current probe results.
 
 ![C-BIOS](images/cbios-v9968.png)
 

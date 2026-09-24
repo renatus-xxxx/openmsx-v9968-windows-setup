@@ -47,6 +47,16 @@ Find your situation below. Setup and launch write a log, and the message on scre
 | Verification fails or times out | Inspect runtime/MODE/logs, graphics drivers and the desktop session. No full game compatibility is implied |
 | BASIC/BLOAD does not work in C-BIOS | Use a cartridge image or your own compatible FS-A1GT BIOS environment |
 
+## Update and rollback
+
+1. Close the old openMSX and keep its entire folder. You do not need to move or delete BIOS, settings or saves.
+2. Put the updated tool tree in a **different, new folder** outside synced locations. Existing published ZIPs do not yet contain this local update.
+3. Run the setup BAT there. For FS-A1GT, select your original owned BIOS directory. Create fresh runtime/cache directories instead of copying the old ones.
+4. Test with the new folder's launch BAT. Compatibility of old save states is untested; do not copy the entire old user configuration into the new environment.
+5. To roll back, close the new openMSX and use the launch BAT in the retained old folder. Do not copy new files over it.
+
+Overlaying new configuration on an existing runtime is rejected by manifest/managed-file checks. Do not replace only the EXE or disable hash verification. Both versions use the cache filename `v9968.zip`. Reusing the old cache also causes a size/hash mismatch; use a fresh cache for the update. See the [version table and validation](emulator-update-20260924.md).
+
 ## Remove
 
 1. Close openMSX and its BAT window. Process-local settings expire, and your original emulator still starts through its original shortcut.

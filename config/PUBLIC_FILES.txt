@@ -39,8 +39,8 @@ demos/v9968-tech-demo/DEVELOPMENT.ja.md
 demos/v9968-tech-demo/DEVELOPMENT.md
 demos/v9968-tech-demo/README.ja.md
 demos/v9968-tech-demo/README.md
-demos/v9968-tech-demo/V9968-TECH-DEMO.rom
 demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom
+demos/v9968-tech-demo/V9968-TECH-DEMO.rom
 demos/v9968-tech-demo/assets/PROMPT.txt
 demos/v9968-tech-demo/assets/bank-layout.h
 demos/v9968-tech-demo/assets/bank-layout.json
@@ -95,6 +95,8 @@ docs/bios-dump.ja.md
 docs/bios-dump.md
 docs/development.ja.md
 docs/development.md
+docs/emulator-update-20260924.ja.md
+docs/emulator-update-20260924.md
 docs/images/cbios-v9968.png
 docs/images/fsa1gt-v9968.png
 docs/publishing.ja.md
@@ -129,6 +131,7 @@ scripts/runtime/verify.tcl
 scripts/setup.ps1
 setup-cbios-v9968.bat
 setup-fsa1gt-v9968.bat
+tests/emulator-update-20260924.json
 tests/test-probe.ps1
 tests/test-z88dk.ps1
 tests/validate-public.ps1

@@ -58,6 +58,8 @@ Windows 10/11 x64、標準の Windows PowerShell 5.1 と curl.exe、ネット接
 
 セットアップと起動は、進行状況とエラーを英日併記で表示します。各条件の意味は[トラブル対処](docs/troubleshooting.ja.md)を参照してください。
 
+このソースツリーは V9968 対応 openMSX **14215c7（2026-09-24）**を使用します。既存の公開 ZIP の内容は変更していません。[変更点・検証結果・安全な更新方法](docs/emulator-update-20260924.ja.md)を参照してください。
+
 ## 説明書
 
 - [セットアップと構成](docs/setup.ja.md)

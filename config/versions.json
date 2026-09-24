@@ -1,6 +1,6 @@
 {
   "release": "0.7.3",
-  "checked": "2026-09-09",
+  "checked": "2026-09-24",
   "hashOrigin": "Official ZIP: GitHub release API asset digest, matched locally. Fork ZIP/executables/probe: local SHA-256 measurements (no publisher checksum found for fork). BIOS SHA-1: official openMSX 21.0 machine XML.",
   "downloads": [
     {
@@ -12,14 +12,14 @@
     },
     {
       "file": "v9968.zip",
-      "url": "https://buppu3.github.io/openMSX/derived/openmsx-21.0-v9968-d884c4b-x64-VC-Release.zip",
-      "size": 4746404,
-      "sha256": "6C44F0AE3C58C6FBE6F7F450BE44B89997062F795F2D333DB721D4FB38130F95",
-      "hashSource": "Local measurement of HTTPS download; matched the previously tested archive."
+      "url": "https://buppu3.github.io/openMSX/derived/openmsx-21.0-v9968-14215c7-x64-VC-Release.zip",
+      "size": 4788114,
+      "sha256": "489281c373089ccd71a06cc0fb5e7772b6473e38c6417ad567c306b2cf65a548",
+      "hashSource": "Local SHA-256 of the HTTPS download on 2026-09-24; no publisher checksum found."
     }
   ],
   "officialExeSha256": "18831E49ACFA38F9F18EFA7129415A6798842CA4DA3F90A7F03A0294A6FC7F9F",
-  "forkExeSha256": "B5DE3932C0E486002C2CA1FB0D858AD27FC10E97BC5A6B1B277F988F7B7454B9",
+  "forkExeSha256": "d6d451a3311528b61c928fa11420ce65979dbee7c2543ca52368bac682f53e88",
   "probeSha256": "3527684d4cdaf58659ff7a6363d4cdce263e10959686dc93f091d918ea8287d2",
   "bios": [
     {

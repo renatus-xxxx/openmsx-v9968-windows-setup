@@ -1,5 +1,9 @@
 [日本語](v9968-divergence.ja.md) | English
 
+## 2026-09-24: Emulator update
+
+The earlier emulator observations below describe d884c4b. With the currently pinned 14215c7, Revision 2 reports off=1/on=1 and R20SEL=11. See the [new validation](emulator-update-20260924.md); FPGA hardware was not retested.
+
 ## 2026-09-14: Revision 2 diagnostic correction
 
 The old probe restored R21=0x3b after identification. The public FPGA source disables new commands in that mode, so Revision 2 retains 0x3a during experiments. The tester reported off=0/on=0 for the old probe while the demo succeeded with 0x11. The revised ROM has not yet been retested on hardware.

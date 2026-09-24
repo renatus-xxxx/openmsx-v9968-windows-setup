@@ -1,0 +1,695 @@
+{
+  "checked": "2026-09-24",
+  "host": "Windows 10 Pro 22H2 build 19045.7725, x64",
+  "source_base_commit": "df922d62415cb9b0eb9da74c6df30f9640cceb07",
+  "uncommitted_update": true,
+  "upstream_old": {
+    "commit": "d884c4b29d7e736d6e488aca5f28e124a410c19f",
+    "date": "2026-01-18",
+    "zip_sha256": "6c44f0ae3c58c6fbe6f7f450be44b89997062f795f2d333db721d4fb38130f95",
+    "exe_sha256": "b5de3932c0e486002c2ca1fb0d858ad27fc10e97bc5a6b1b277f988f7b7454b9"
+  },
+  "upstream_new": {
+    "commit": "14215c7395649c3981fcc56733d0720acc11c1fd",
+    "date": "2026-09-24",
+    "url": "https://buppu3.github.io/openMSX/derived/openmsx-21.0-v9968-14215c7-x64-VC-Release.zip",
+    "zip_bytes": 4788114,
+    "zip_sha256": "489281c373089ccd71a06cc0fb5e7772b6473e38c6417ad567c306b2cf65a548",
+    "exe_sha256": "d6d451a3311528b61c928fa11420ce65979dbee7c2543ca52368bac682f53e88",
+    "reported_version": "openMSX 21.0-unknown",
+    "hash_origin": "Locally calculated from HTTPS download; no publisher checksum found"
+  },
+  "roms": {
+    "probe/PROBE.rom": {
+      "sha256": "3527684d4cdaf58659ff7a6363d4cdce263e10959686dc93f091d918ea8287d2",
+      "bytes": 16384
+    },
+    "demos/v9968-tech-demo/V9968-TECH-DEMO.rom": {
+      "sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
+      "bytes": 1048576
+    },
+    "demos/scene3-v9990/SCENE3-V9968-PACKETS.rom": {
+      "sha256": "132206220b7577d44afffd5464b53b039de97048e0ba2fb615c4bf78438bf06a",
+      "bytes": 2097152
+    },
+    "demos/scene3-v9990/SCENE3-V9990-C.rom": {
+      "sha256": "7137778fb8e66ca8aa8bcbcf80d5d2f95f566ef52723e962d1560900e64550d0",
+      "bytes": 2097152
+    }
+  },
+  "runtime_files_sha256": {
+    "cbios": {
+      "emulator/openmsx.exe": "d6d451a3311528b61c928fa11420ce65979dbee7c2543ca52368bac682f53e88",
+      "emulator/share/machines/C-BIOS_V9968_JP.xml": "99b1f8cccb829b230f325fac30a3b3cd21834721d30d8df6b80616c060ce0360",
+      "emulator/share/machines/C-BIOS_MSX2+_JP.xml": "d203727f270ffcbb6965661eb81a63c0bfac1158bf13ad965aece49361a956a1",
+      "emulator/share/extensions/gfx9000.xml": "966a2f5a107e1f339e03dacb1ee53d2c1f61c3e5b0b99c81447a2ccdc6f443f7"
+    },
+    "fsa1gt": {
+      "emulator/openmsx.exe": "d6d451a3311528b61c928fa11420ce65979dbee7c2543ca52368bac682f53e88",
+      "emulator/share/machines/Panasonic_FS-A1GT_V9968.xml": "6adc2a34e263b3f7564a650802ebea9c260600bde1bae992abba77b2c4bd9457",
+      "emulator/share/machines/Panasonic_FS-A1GT.xml": "f5df8e254a3f81c7173950842b09ad446b5e856358395b87c7238e6263be56a2",
+      "emulator/share/extensions/gfx9000.xml": "966a2f5a107e1f339e03dacb1ee53d2c1f61c3e5b0b99c81447a2ccdc6f443f7"
+    }
+  },
+  "checks": [
+    {
+      "version": "new",
+      "cpu": "cbios",
+      "test": "scenes",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "new",
+      "cpu": "cbios",
+      "test": "water",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "new",
+      "cpu": "cbios",
+      "test": "work",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "new",
+      "cpu": "cbios",
+      "test": "glow",
+      "exit_code": 1,
+      "pass": false
+    },
+    {
+      "version": "new",
+      "cpu": "cbios",
+      "test": "probe",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "old",
+      "cpu": "cbios",
+      "test": "scenes",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "new",
+      "cpu": "fsa1gt",
+      "test": "scenes",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "new",
+      "cpu": "fsa1gt",
+      "test": "water",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "new",
+      "cpu": "fsa1gt",
+      "test": "work",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "new",
+      "cpu": "fsa1gt",
+      "test": "glow",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "new",
+      "cpu": "fsa1gt",
+      "test": "probe",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "version": "old",
+      "cpu": "fsa1gt",
+      "test": "scenes",
+      "exit_code": 0,
+      "pass": true
+    }
+  ],
+  "retry": {
+    "test": "new-cbios-glow",
+    "result": "PASS",
+    "samples": 128,
+    "note": "Parallel attempt timed out after 127 samples; isolated rerun passed with identical script, ROM and timeout. Initial failure retained."
+  },
+  "comparison_pixels": [
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "pass": true,
+      "frames": 385
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "pass": true,
+      "frames": 385
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "pass": true,
+      "frames": 385
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "pass": true,
+      "frames": 385
+    }
+  ],
+  "extra_checks": [
+    {
+      "cpu": "cbios",
+      "test": "fault",
+      "variant": "reference-packets",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "cpu": "cbios",
+      "test": "integration",
+      "variant": "c",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "cpu": "fsa1gt",
+      "test": "fault",
+      "variant": "reference-packets",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "cpu": "fsa1gt",
+      "test": "integration",
+      "variant": "c",
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "measurements_new": [
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "mode": "animated",
+      "repeat": 0,
+      "frames": 248,
+      "elapsed_seconds": 14.98528835368741,
+      "fps": 16.54956475622139,
+      "fps_excluding_request_gaps": 16.73872646757817,
+      "frame_median_ms": 64.63349392171303,
+      "frame_p95_ms": 67.5312085753923,
+      "draw_mean_ms": 50.06308807764766,
+      "sync_mean_ms": 9.678613415410098
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "mode": "animated",
+      "repeat": 1,
+      "frames": 248,
+      "elapsed_seconds": 14.98528835368741,
+      "fps": 16.54956475622139,
+      "fps_excluding_request_gaps": 16.73872646757817,
+      "frame_median_ms": 64.63349392171303,
+      "frame_p95_ms": 67.5312085753923,
+      "draw_mean_ms": 50.06308807764766,
+      "sync_mean_ms": 9.678613415410098
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "mode": "animated",
+      "repeat": 2,
+      "frames": 248,
+      "elapsed_seconds": 14.98528835368741,
+      "fps": 16.54956475622139,
+      "fps_excluding_request_gaps": 16.73872646757817,
+      "frame_median_ms": 64.63349392171303,
+      "frame_p95_ms": 67.5312085753923,
+      "draw_mean_ms": 50.06308807764766,
+      "sync_mean_ms": 9.678613415410098
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 0,
+      "frames": 256,
+      "elapsed_seconds": 15.652453314597246,
+      "fps": 16.355263603390416,
+      "fps_excluding_request_gaps": 16.642947222230767,
+      "frame_median_ms": 65.67580516518046,
+      "frame_p95_ms": 67.14372916110989,
+      "draw_mean_ms": 50.46780779749937,
+      "sync_mean_ms": 9.61770389986713
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 1,
+      "frames": 256,
+      "elapsed_seconds": 15.652453314597246,
+      "fps": 16.355263603390416,
+      "fps_excluding_request_gaps": 16.642947222230767,
+      "frame_median_ms": 65.67580516518046,
+      "frame_p95_ms": 67.14372916110989,
+      "draw_mean_ms": 50.46780779749937,
+      "sync_mean_ms": 9.61770389986713
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 2,
+      "frames": 256,
+      "elapsed_seconds": 15.652453314597246,
+      "fps": 16.355263603390416,
+      "fps_excluding_request_gaps": 16.642947222230767,
+      "frame_median_ms": 65.67580516518046,
+      "frame_p95_ms": 67.14372916110989,
+      "draw_mean_ms": 50.46780779749937,
+      "sync_mean_ms": 9.61770389986713
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "mode": "animated",
+      "repeat": 0,
+      "frames": 244,
+      "elapsed_seconds": 14.96957406597766,
+      "fps": 16.299728965205155,
+      "fps_excluding_request_gaps": 16.387462346772896,
+      "frame_median_ms": 66.41165287767059,
+      "frame_p95_ms": 67.05391327668764,
+      "draw_mean_ms": 52.05081014852848,
+      "sync_mean_ms": 8.9714505797731
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "mode": "animated",
+      "repeat": 1,
+      "frames": 244,
+      "elapsed_seconds": 14.96957406597766,
+      "fps": 16.299728965205155,
+      "fps_excluding_request_gaps": 16.387462346772896,
+      "frame_median_ms": 66.41165287767059,
+      "frame_p95_ms": 67.05391327668764,
+      "draw_mean_ms": 52.05081014852848,
+      "sync_mean_ms": 8.9714505797731
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "mode": "animated",
+      "repeat": 2,
+      "frames": 244,
+      "elapsed_seconds": 14.96957406597766,
+      "fps": 16.299728965205155,
+      "fps_excluding_request_gaps": 16.387462346772896,
+      "frame_median_ms": 66.41165287767059,
+      "frame_p95_ms": 67.05391327668764,
+      "draw_mean_ms": 52.05081014852848,
+      "sync_mean_ms": 8.9714505797731
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 0,
+      "frames": 256,
+      "elapsed_seconds": 15.95285224798124,
+      "fps": 16.04728709453168,
+      "fps_excluding_request_gaps": 16.316077000277712,
+      "frame_median_ms": 65.7188273928675,
+      "frame_p95_ms": 65.73195755326466,
+      "draw_mean_ms": 52.57536114052205,
+      "sync_mean_ms": 8.713881364461217
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 1,
+      "frames": 256,
+      "elapsed_seconds": 15.95285224798124,
+      "fps": 16.04728709453168,
+      "fps_excluding_request_gaps": 16.316077000277712,
+      "frame_median_ms": 65.7188273928675,
+      "frame_p95_ms": 65.73195755326466,
+      "draw_mean_ms": 52.57536114052205,
+      "sync_mean_ms": 8.713881364461217
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 2,
+      "frames": 256,
+      "elapsed_seconds": 15.95285224798124,
+      "fps": 16.04728709453168,
+      "fps_excluding_request_gaps": 16.316077000277712,
+      "frame_median_ms": 65.7188273928675,
+      "frame_p95_ms": 65.73195755326466,
+      "draw_mean_ms": 52.57536114052205,
+      "sync_mean_ms": 8.713881364461217
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "animated",
+      "repeat": 0,
+      "frames": 227,
+      "elapsed_seconds": 15.00341998773587,
+      "fps": 15.129883732212713,
+      "fps_excluding_request_gaps": 15.287823183425862,
+      "frame_median_ms": 66.06593854805709,
+      "frame_p95_ms": 82.72001050412925,
+      "draw_mean_ms": 57.250707724444716,
+      "sync_mean_ms": 8.160828502906474
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "animated",
+      "repeat": 1,
+      "frames": 227,
+      "elapsed_seconds": 15.00341998773587,
+      "fps": 15.129883732212713,
+      "fps_excluding_request_gaps": 15.287823183425862,
+      "frame_median_ms": 66.06593854805709,
+      "frame_p95_ms": 82.72001050412925,
+      "draw_mean_ms": 57.250707724444716,
+      "sync_mean_ms": 8.160828502906474
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "animated",
+      "repeat": 2,
+      "frames": 227,
+      "elapsed_seconds": 15.00341998773587,
+      "fps": 15.129883732212713,
+      "fps_excluding_request_gaps": 15.287823183425862,
+      "frame_median_ms": 66.06593854805709,
+      "frame_p95_ms": 82.72001050412925,
+      "draw_mean_ms": 57.250707724444716,
+      "sync_mean_ms": 8.160828502906474
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 0,
+      "frames": 256,
+      "elapsed_seconds": 17.337940995294094,
+      "fps": 14.765305757441679,
+      "fps_excluding_request_gaps": 14.999374237336387,
+      "frame_median_ms": 65.69326548486032,
+      "frame_p95_ms": 82.38980093838677,
+      "draw_mean_ms": 58.03021163478885,
+      "sync_mean_ms": 8.63923631529985
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 1,
+      "frames": 256,
+      "elapsed_seconds": 17.337940995294094,
+      "fps": 14.765305757441679,
+      "fps_excluding_request_gaps": 14.999374237336387,
+      "frame_median_ms": 65.69326548486032,
+      "frame_p95_ms": 82.38980093838677,
+      "draw_mean_ms": 58.03021163478885,
+      "sync_mean_ms": 8.63923631529985
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "repeat": 2,
+      "frames": 256,
+      "elapsed_seconds": 17.337940995294094,
+      "fps": 14.765305757441679,
+      "fps_excluding_request_gaps": 14.999374237336387,
+      "frame_median_ms": 65.69326548486032,
+      "frame_p95_ms": 82.38980093838677,
+      "draw_mean_ms": 58.03021163478885,
+      "sync_mean_ms": 8.63923631529985
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "animated",
+      "repeat": 0,
+      "frames": 311,
+      "elapsed_seconds": 14.986268226827711,
+      "fps": 20.752331086885423,
+      "fps_excluding_request_gaps": 20.8951700678893,
+      "frame_median_ms": 49.731879331030626,
+      "frame_p95_ms": 50.359612744077964,
+      "draw_mean_ms": 37.550114542167364,
+      "sync_mean_ms": 10.307835249624606
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "animated",
+      "repeat": 1,
+      "frames": 311,
+      "elapsed_seconds": 14.986268226827711,
+      "fps": 20.752331086885423,
+      "fps_excluding_request_gaps": 20.8951700678893,
+      "frame_median_ms": 49.731879331030626,
+      "frame_p95_ms": 50.359612744077964,
+      "draw_mean_ms": 37.550114542167364,
+      "sync_mean_ms": 10.307835249624606
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "animated",
+      "repeat": 2,
+      "frames": 311,
+      "elapsed_seconds": 14.986268226827711,
+      "fps": 20.752331086885423,
+      "fps_excluding_request_gaps": 20.8951700678893,
+      "frame_median_ms": 49.731879331030626,
+      "frame_p95_ms": 50.359612744077964,
+      "draw_mean_ms": 37.550114542167364,
+      "sync_mean_ms": 10.307835249624606
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 0,
+      "frames": 256,
+      "elapsed_seconds": 12.515087671757165,
+      "fps": 20.455310159569713,
+      "fps_excluding_request_gaps": 20.894073002018263,
+      "frame_median_ms": 49.032418924753074,
+      "frame_p95_ms": 49.6651110685864,
+      "draw_mean_ms": 37.75085186717161,
+      "sync_mean_ms": 10.109610757966438
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 1,
+      "frames": 256,
+      "elapsed_seconds": 12.515087671757165,
+      "fps": 20.455310159569713,
+      "fps_excluding_request_gaps": 20.894073002018263,
+      "frame_median_ms": 49.032418924753074,
+      "frame_p95_ms": 49.6651110685864,
+      "draw_mean_ms": 37.75085186717161,
+      "sync_mean_ms": 10.109610757966438
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "repeat": 2,
+      "frames": 256,
+      "elapsed_seconds": 12.515087671757165,
+      "fps": 20.455310159569713,
+      "fps_excluding_request_gaps": 20.894073002018263,
+      "frame_median_ms": 49.032418924753074,
+      "frame_p95_ms": 49.6651110685864,
+      "draw_mean_ms": 37.75085186717161,
+      "sync_mean_ms": 10.109610757966438
+    }
+  ],
+  "performance_summary": [
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "mode": "animated",
+      "old_fps": 16.56095682256771,
+      "new_fps": 16.54956475622139,
+      "percent_change": -0.06878869662166887,
+      "draw_mean_ms": 50.06308807764766,
+      "sync_mean_ms": 9.678613415410098
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "old_fps": 16.33785664889162,
+      "new_fps": 16.355263603390416,
+      "percent_change": 0.10654368484728227,
+      "draw_mean_ms": 50.46780779749937,
+      "sync_mean_ms": 9.61770389986713
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "mode": "animated",
+      "old_fps": 16.311975296687464,
+      "new_fps": 16.299728965205155,
+      "percent_change": -0.07507571130760393,
+      "draw_mean_ms": 52.05081014852848,
+      "sync_mean_ms": 8.9714505797731
+    },
+    {
+      "variant": "reference-packets",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "old_fps": 16.064105696066225,
+      "new_fps": 16.04728709453168,
+      "percent_change": -0.10469678084018552,
+      "draw_mean_ms": 52.57536114052205,
+      "sync_mean_ms": 8.713881364461217
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "animated",
+      "old_fps": 15.129883732212713,
+      "new_fps": 15.129883732212713,
+      "percent_change": 0.0,
+      "draw_mean_ms": 57.250707724444716,
+      "sync_mean_ms": 8.160828502906474
+    },
+    {
+      "variant": "c",
+      "cpu": "cbios",
+      "mode": "sequence",
+      "old_fps": 14.765305757441679,
+      "new_fps": 14.765305757441679,
+      "percent_change": 0.0,
+      "draw_mean_ms": 58.03021163478885,
+      "sync_mean_ms": 8.63923631529985
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "animated",
+      "old_fps": 20.752331086885423,
+      "new_fps": 20.752331086885423,
+      "percent_change": 0.0,
+      "draw_mean_ms": 37.550114542167364,
+      "sync_mean_ms": 10.307835249624606
+    },
+    {
+      "variant": "c",
+      "cpu": "fsa1gt",
+      "mode": "sequence",
+      "old_fps": 20.455310159569713,
+      "new_fps": 20.455310159569713,
+      "percent_change": 0.0,
+      "draw_mean_ms": 37.75085186717161,
+      "sync_mean_ms": 10.109610757966438
+    }
+  ],
+  "old_measurement_source": "demos/scene3-v9990/results-v9968-packets/measurements.json",
+  "old_results_reused": true,
+  "old_rom_hashes_matched": true,
+  "measurement_conditions": {
+    "warmup_emulated_seconds": 5,
+    "animated_emulated_seconds": 15,
+    "fixed_sequence_frames": 256,
+    "independent_runs": 3,
+    "throttle": false,
+    "maxframeskip": 0,
+    "cmdtiming": "real",
+    "sound_driver": "null",
+    "fps_clock": "machine_info time, not host wall time",
+    "recording": false
+  },
+  "limits": [
+    "Current Windows host only; no physical MSX/FPGA or clean OS testing in this update",
+    "128 poses and 256 phases separately, not their Cartesian product",
+    "Audio state/PSG activity checked; listening quality not assessed",
+    "LFMC, SP3, SpriteMode2 EPAL and every V58 combination not exhaustively tested",
+    "External 0x88 cartridge profile not retested",
+    "Old save states and in-place migration not tested; separate installation required",
+    "Published ZIP unchanged",
+    "Pixel oracles were checked; no whole-scene old/new screenshot pixel-equivalence claim"
+  ],
+  "additional_validation": {
+    "setup_rerun_cbios": "PASS: managed files match; user configuration retained",
+    "probe_default_r20_11": "PASS",
+    "full_scenes_default_r20_11_and_180_second_watchdog": "PASS",
+    "public_validation": "PASS: 150 allowlisted files, links, language pairs, ROM hashes and BAT layout",
+    "baseline_machine_xml_and_measure_tcl_hashes_match": true,
+    "strengthened_probe_assertions": {
+      "new_cbios": "PASS",
+      "new_fsa1gt": "PASS",
+      "old_cbios_expected_31_isolated_copy": "PASS",
+      "actual_assertion_block_mutations": [
+        {
+          "test": "real new-fork output",
+          "result": "PASS"
+        },
+        {
+          "test": "R20B5  off=0 on=1",
+          "result": "correctly rejected"
+        },
+        {
+          "test": "LRRAW off=00 on=ff",
+          "result": "correctly rejected"
+        },
+        {
+          "test": "R20SEL value=31",
+          "result": "correctly rejected"
+        },
+        {
+          "test": "CESEEN value=0",
+          "result": "correctly rejected"
+        }
+      ],
+      "harness_note": "Initial old-copy attempt stopped before emulator start because config copy was incomplete; completed copy and reran successfully. Initial log retained privately."
+    }
+  },
+  "source_sha256": {
+    "config/versions.json": "b3fee1113944395f452660abff0d0c46cc79c70f250df8cab7a73467f5363a9d",
+    "scripts/setup.ps1": "bfb008cbcc479ecc7585cb88872ad8c8c42eb3b3bfd697788273a67bab619789",
+    "demos/v9968-tech-demo/test.ps1": "6ea970ae1040b927955fed1b4d5a0b019896dd8acc1df474da13d021be714906",
+    "demos/v9968-tech-demo/capture.tcl": "1ee69118b2adae67652b01bfe743eff0fe95bd14c3d5c4d2db1f1af9fa239b6d",
+    "tests/test-probe.ps1": "b3ee25d12e5cfca98d5eb5335c1058832d2c4e329cbffb6059b27368b1a06742",
+    "demos/scene3-v9990/measure.tcl": "f2ca4453af7e0646704a86e3931381739b7f5f10770d41c835da6e164a98186f",
+    "demos/scene3-v9990/suite.py": "240dadb9006db3c161fc994d48978f6b09521ea7a45849bdc5ff696bd361c037",
+    "demos/scene3-v9990/run-test.py": "4ef3b3d682d0c633b2e73fcbe837f9f433d965adcd27df6a22fda2f15e1bb99f",
+    "demos/v9968-tech-demo/main.c": "d54c052a4f4bc8208c599df114b6b5f57fdc9980bc69e492242699b23136d26e",
+    "demos/v9968-tech-demo/v9968.c": "2ec90f642a0c90c40edcf8c869fd11dc41992b359e1924beaaa363d6734ba872",
+    "probe/probe.c": "31d57ce10b41d77ef859d5c83223bf34537110272d837674f93a95a76950ed3a"
+  }
+}

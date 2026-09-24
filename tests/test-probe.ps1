@@ -1,6 +1,6 @@
 ﻿param([Parameter(Mandatory=$true)][string]$Runtime,[switch]$Standard,
  [string]$ProbeRom,[ValidateSet(0,1,2,3)][int]$ExpectedError=0,
- [ValidateSet("31","11","none")][string]$ExpectedR20="31",
+ [ValidateSet("31","11","none")][string]$ExpectedR20="11",
  [ValidateSet(0,1)][int]$ExpectedHigh=1)
 $ErrorActionPreference='Stop'
 $repo=Split-Path -Parent $PSScriptRoot
@@ -58,6 +58,8 @@ try{
   else{
    $required+=@("R20SEL value=$ExpectedR20","LRHIGH ok=$ExpectedHigh")
    if($ExpectedR20 -eq '31'){$required+=@('R20B5  off=0 on=1','LRRAW off=00 on=ff')}
+   # The pinned 14215c7 fork transfers under both settings and prefers 0x11.
+   if($ExpectedR20 -eq '11'){$required+=@('R20B5  off=1 on=1','LRRAW off=ff on=ff')}
    if($ExpectedHigh){$required+=@('LRMMOP timp=ff imp=00','LRMMST d0=1 d1=2')}
    else{$required+='LRMM TESTS SKIPPED'}
   }
