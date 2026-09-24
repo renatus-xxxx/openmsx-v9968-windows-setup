@@ -1,14 +1,14 @@
 日本語 | [English](release-notes.md)
 
-# リリースノート — 0.7.3
+# リリースノート — 0.7.4
 
-既存の internal `0x98` プロファイルに加え、I/O base `0x88` の外付け HRA! V9968 カートリッジに対応しました。コード提供と実機報告をいただいた @herraa1（ahmsx）さんに感謝します。
+V9968 対応 openMSX を **14215c7（2026-09-24）**へ更新し、ZIP・実行ファイルのハッシュを固定しました。通常版 openMSX 21.0 と C-BIOS 0.29 は維持します。
 
-- Release ZIP に `V9968-TECH-DEMO-external-0x88.rom` を同梱します。ルートの起動 BAT は引き続き internal の `V9968-TECH-DEMO.rom` を openMSX で使用します。
-- Windows の `build.ps1` と Linux の `build.py` で `internal-0x98` / `external-0x88` のプロファイルを統一しました。`VDP_BASE` の指定、PORT#4 の初期化、外付けカートリッジ使用時の内蔵 VDP 割り込み処理に対応します。
-- 同一の z88dk ツールチェーンで Windows と WSL Ubuntu 24.04 から各1 MiBの ROM を再生成し、両プロファイルともバイト単位で一致しました。
-- 最終 internal ROM を固定バージョンの openMSX 派生版上の C-BIOS/Z80 と FS-A1GT/R800 で再検証しました。既存のベンチマーク ROM と測定値は保持しています。
+- 既存デモ・プローブ ROM は変更していません。新レジスターマップでは自動判定が R20=0x11 を選びます。
+- 両機種で全シーン・水面・ヘッダー・プローブを検証し、R20/LRMM の回帰検査を強化しました。[更新内容と検証](emulator-update-20260924.ja.md)。
+- V9968/V9990 の Scene 3 比較用ソース・測定記録をリポジトリに追加しました。比較 ROM と比較用ディレクトリは配布 ZIP の対象外です。
+- 新旧の仕様差、過去の測定値、更新・復旧手順を日英で整理しました。
 
-コントリビューターが試験した HRA! bitstream のリビジョン・パス・SHA-256 は[開発手順](../demos/v9968-tech-demo/DEVELOPMENT.ja.md)に記載しています。最終 0.7.3 external ROM の公開前の実機再確認は依頼していません。公開 ROM を使用した実機での動作報告を歓迎します。
+旧環境を上書きせず、ZIP全体を別のフォルダへ展開してセットアップしてください。旧 runtime・cache を流用しないでください。[更新と復旧](troubleshooting.ja.md#更新と復旧)。
 
-Release Assets から `openmsx-v9968-windows-setup-0.7.3.zip` を取得し、新しいフォルダへ展開してください。Windows/openMSX では対応する setup BAT、続いてデモ起動 BAT を実行します。Linux 対応はデモ ROM の再ビルドを対象とし、Windows 用セットアップツールの対応 OS を変更するものではありません。
+実機 FPGA、外付け0x88構成、クリーンOS、旧セーブステート互換性は今回未検証です。外付け ROM は0.7.3と同じバイナリを維持します。性能測定はエミュレーターの結果で、実機性能を示すものではありません。

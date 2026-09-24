@@ -63,7 +63,9 @@ if($list -cnotcontains $externalRel -or $manifest.demoExternal.file -cne $extern
 $externalPath=Join-Path $Root $externalRel
 if($manifest.demoExternal.size -ne 1048576 -or $demoResults.external.size -ne 1048576 -or (Get-Item -LiteralPath $externalPath).Length -ne 1048576 -or (Get-FileHash -LiteralPath $externalPath).Hash -ne $manifest.demoExternal.sha256 -or $demoResults.external.sha256 -ne $manifest.demoExternal.sha256){throw 'External demo ROM size/hash/verification mismatch'}
 if($demoResults.external.profile -cne 'external-0x88' -or $demoResults.external.vdp_base -cne '0x88'){throw 'External demo profile mismatch'}
-if($demoResults.release -ne $manifest.release){throw 'Demo release version mismatch'}
+# Retain the original verification release when shipping unchanged ROMs again.
+$distributionRelease=if($demoResults.PSObject.Properties.Name -contains 'distribution_release'){$demoResults.distribution_release}else{$demoResults.release}
+if($distributionRelease -ne $manifest.release){throw 'Demo distribution release version mismatch'}
 if((Get-FileHash -LiteralPath (Join-Path $Root 'demos/v9968-tech-demo/water-preview.gif')).Hash -ne $demoResults.teaser.sha256){throw 'Demo teaser hash mismatch'}
 $benchmarkPath=Join-Path $Root 'demos/scene3-benchmark/SCENE3-BENCHMARK.rom'
 $benchmarkInfo=Get-Content -LiteralPath (Join-Path $Root 'demos/scene3-benchmark/rom.json') -Raw | ConvertFrom-Json

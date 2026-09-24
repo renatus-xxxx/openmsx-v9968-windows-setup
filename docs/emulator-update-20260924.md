@@ -4,7 +4,7 @@
 
 [Home](../README.md) | [Update and rollback](troubleshooting.md#update-and-rollback)
 
-The unchanged probe and demo ROMs work with the newly pinned fork on both C-BIOS/Z80 and FS-A1GT/R800. The automatic R20 selection now chooses **0x11**, instead of 0x31 on the former fork. No ROM rebuild or machine XML change was required. This is a local source-tree update; the project version and published release ZIPs have not changed.
+The unchanged probe and demo ROMs work with the newly pinned fork on both C-BIOS/Z80 and FS-A1GT/R800. The automatic R20 selection now chooses **0x11**, instead of 0x31 on the former fork. No ROM rebuild or machine XML change was required. This update is included in 0.7.4, based on the validation performed on 2026-09-24. Measurement dates and values below remain the original records.
 
 ## Exact downloads
 
@@ -90,4 +90,4 @@ python demos/scene3-v9990/suite.py --kind measure --variants reference-packets c
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\validate-public.ps1
 ```
 
-Repeat the first two commands with `fsa1gt`; the suites run both machines. For a retained d884c4b runtime use `-ExpectedR20 31`. Run rendering regressions, including water and glow, individually to avoid host watchdog timeouts. The separate `test-water.ps1` watchdog remains 60 seconds. Existing water/glow scripts remain in the demo directory. No release ZIP was created or modified for this update. The current allowlist has 150 entries, while the published 0.7.3 ZIP has 147; `-ZipPath` validation against that old ZIP therefore fails. Before releasing this change, select a release version separately and create the corresponding package instead of replacing the published 0.7.3 asset under the same name. Do not copy raw runtime or capture directories into a public package; they can contain owned BIOS files.
+Repeat the first two commands with `fsa1gt`; the suites run both machines. For a retained d884c4b runtime use `-ExpectedR20 31`. Run rendering regressions, including water and glow, individually to avoid host watchdog timeouts. The separate `test-water.ps1` watchdog remains 60 seconds. Existing water/glow scripts remain in the demo directory. The 0.7.4 ZIP contains 150 files. The retained 0.7.3 ZIP contains 147 and does not match the current allowlist; use the matching source version when validating an older ZIP with `-ZipPath`. Do not copy raw runtime or capture directories into a public package; they can contain owned BIOS files.

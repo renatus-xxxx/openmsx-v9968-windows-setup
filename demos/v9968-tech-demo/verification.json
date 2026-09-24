@@ -1,5 +1,6 @@
 {
   "release": "0.7.3",
+  "distribution_release": "0.7.4",
   "date": "2026-09-18",
   "rom_sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
   "status": "Final internal ROM; Windows/WSL reproducible profiles; final external hardware retest not run",

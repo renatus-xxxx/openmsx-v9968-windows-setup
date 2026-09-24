@@ -50,7 +50,7 @@ Find your situation below. Setup and launch write a log, and the message on scre
 ## Update and rollback
 
 1. Close the old openMSX and keep its entire folder. You do not need to move or delete BIOS, settings or saves.
-2. Put the updated tool tree in a **different, new folder** outside synced locations. Existing published ZIPs do not yet contain this local update.
+2. Extract the complete 0.7.4 Release ZIP into a **different, new folder** outside synced locations.
 3. Run the setup BAT there. For FS-A1GT, select your original owned BIOS directory. Create fresh runtime/cache directories instead of copying the old ones.
 4. Test with the new folder's launch BAT. Compatibility of old save states is untested; do not copy the entire old user configuration into the new environment.
 5. To roll back, close the new openMSX and use the launch BAT in the retained old folder. Do not copy new files over it.
