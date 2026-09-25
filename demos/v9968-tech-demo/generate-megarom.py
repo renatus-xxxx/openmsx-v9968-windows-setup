@@ -318,7 +318,7 @@ add('IDENTITY',merge_water(identity)[0])
 
 # Small opaque HUD labels, uploaded below the background in VRAM page 3.
 font = json.loads((OUT/'fonts.json').read_text(encoding='utf-8'))['msx8x8']
-SCENES=6
+SCENES=7
 # The whole header line, shadow and text already composited, one strip per
 # scene. The runtime draws it with a single transparent blit: the VDP skips
 # source colour 0, so every non-zero pixel here lands on the picture and
@@ -357,15 +357,27 @@ for scene in range(SCENES):
                 if bits & (128>>x): labels.putpixel((pos*8+x,scene*8+y),14)
 add('LABELS',packed(labels))
 add('SEABED',packed(Image.open(OUT/'seabed-256.png').copy()))
+import importlib.util
+_spec=importlib.util.spec_from_file_location('shallow',P/'generate-shallow.py')
+_shallow=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(_shallow)
+_shallow_floor,_shallow_atlas,_shallow_wave,_shallow_full,_shallow_delta=_shallow.make_assets(OUT)
+add('SHALLOW',packed(_shallow_floor))
+add('CAUSTICS',b''.join(_shallow_full[i*32768:(i+1)*32768] for i in range(0,128,8)))
+layout['CAUSTICS'].update(stride=32768,frames=16,key_step=8,logical_frames=128,banks_per_frame=2)
+add('CAUSTIC_DELTA',_shallow_delta,16384)
+add('SHALLOW_WAVE',_shallow_wave,256)
+_surface_pattern,_surface_attrs=_shallow.surface_assets()
+add('SURFACE_PATTERN',_surface_pattern)
+add('SURFACE_ATTRS',_surface_attrs,512)
+add('CAUSTIC_JUMP2',_shallow.jump_deltas(_shallow_full,2))
+add('CAUSTIC_JUMP3',_shallow.jump_deltas(_shallow_full,3))
 
-# The ROM is declared as -romtype ASCII16, whose bank register is eight bits
-# wide, so bank numbers must stay below 256. bank_select() already places the
-# high bits on A8-A11, which is exactly what ASCII16-X decodes, so growing past
-# this limit needs no mapper code change: raise ROM_BANKS and switch the
-# declared romtype in the launchers. See DEVELOPMENT.md.
-MAPPER='ASCII16'
-MAPPER_BANK_LIMIT=256
-ROM_BANKS=64
+
+
+# ASCII16-X uses 12 bank bits; bank_record carries 16-bit first-bank values.
+MAPPER='ASCII16-X'
+MAPPER_BANK_LIMIT=4096
+ROM_BANKS=512
 assert len(banks)<=ROM_BANKS,f'{len(banks)} banks do not fit the {ROM_BANKS}-bank ROM'
 assert ROM_BANKS<=MAPPER_BANK_LIMIT,(
     f'{ROM_BANKS} banks exceed the {MAPPER_BANK_LIMIT}-bank limit of {MAPPER}; '
@@ -384,9 +396,9 @@ for name,entry in layout.items():
     # away from the number of records actually generated.
     if 'frames' in entry:header+=f'#define FRAMES_{name} {entry["frames"]}\n'
 header+='#define MESH_BBOX_OFFSET 4092\n'
-header+='#define MEGAROM_BYTES 1048576UL\n'
+header+=f'#define MEGAROM_BYTES {ROM_BANKS*BANK}UL\n'
 (OUT/'bank-layout.h').write_text(header,encoding='ascii')
-layout['summary']={'rom_bytes':1048576,'allocated_bytes':used,'mapper':MAPPER,'rom_banks':ROM_BANKS,
+layout['summary']={'rom_bytes':ROM_BANKS*BANK,'allocated_bytes':used,'mapper':MAPPER,'rom_banks':ROM_BANKS,
                    'mesh_obj':mesh_obj_path.name,'mesh_obj_sha256':mesh_obj_sha256,'mesh_radius':args.mesh_radius,
                    'mesh_vertices':len(mesh_vertices_raw),'mesh_faces':len(mesh_faces),'mesh_triangles':len(mesh_triangles),
                    'water_mean_runs':sum(water_counts)/256,'water_min_runs':min(water_counts),'water_max_runs':max(water_counts),

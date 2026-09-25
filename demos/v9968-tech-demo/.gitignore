@@ -6,3 +6,8 @@ assets/megarom-data.bin
 
 # Isolated C-reference build output
 build-c/
+
+# Regenerated caustic delta statistics
+assets/shallow-delta-stats.json
+
+assets/shallow-wave-stats.json

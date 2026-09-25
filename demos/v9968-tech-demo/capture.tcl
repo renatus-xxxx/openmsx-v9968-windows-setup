@@ -111,7 +111,7 @@ proc sample {n} {
     puts $f "CPU=[get_active_cpu]"
     lappend seen [lindex $d 4]
     set scene [lindex $d 4]
-    set expected_name [expr {$scene == 2 ? {SEABED.bin} : {BACKGROUND.bin}}]
+    set expected_name [expr {$scene == 2 ? {SEABED.bin} : ($scene == 6 ? {SHALLOW.bin} : {BACKGROUND.bin})}]
     set expected_file [open $expected_name rb]
     set expected [read $expected_file];close $expected_file
     if {$expected ne [debug read_block VRAM 100352 22528]} {set labels_ok 0}
@@ -185,8 +185,17 @@ after time 89 {
  if {[debug read memory 0xcf04] != 0} {set controls_ok 0}
  keymatrixdown 0 1
 }
-after time 90 {keymatrixup 0 1;keymatrixdown 7 4}
-after time 93 {
+after time 90 {keymatrixup 0 1;keymatrixdown 0 128}
+after time 91 {keymatrixup 0 128}
+after time 93 {set throttle true}
+after time 94 {sample 6;keymatrixdown 0 64}
+after time 95 {keymatrixup 0 64}
+after time 98 {set throttle true}
+after time 99 {sample 5;keymatrixdown 0 8}
+after time 100 {keymatrixup 0 8}
+after time 101 {set throttle true}
+after time 102 {sample 2;keymatrixdown 7 4}
+after time 105 {
     set f [open telemetry.txt a]
     # Assert the map selected for this test, never merely accept either byte.
     # The probe selects 0x31 on old d884c4b, 0x11 on new 14215c7.
@@ -199,7 +208,7 @@ after time 93 {
     puts $f "CONTROLS=$controls_ok MAPPER=[debug read memory 0xcf07] WATER_POLYGON_MOVES=$water_motion_ok"
     puts $f "WATER_OFF_VISIBLE=$water_off_visible WATER_ON_VISIBLE=$water_on_visible"
     puts $f "WATER_HEADER_OFF=$water_header_off WATER_HEADER_ON=$water_header_on"
-    set ok [expr {[lsort -unique $seen] eq "0 1 2 3 4 5" && [debug read memory 0xcf06] == 0 && [debug read "VDP regs" 1] == 0 && $water_off_visible && $water_on_visible && $water_header_off && $water_header_on && $r20_ok && $controls_ok && $labels_ok && $water_motion_ok && [debug read memory 0xcf07] == 1}]
+    set ok [expr {[lsort -unique $seen] eq "0 1 2 3 4 5 6" && [debug read memory 0xcf06] == 0 && [debug read "VDP regs" 1] == 0 && $water_off_visible && $water_on_visible && $water_header_off && $water_header_on && $r20_ok && $controls_ok && $labels_ok && $water_motion_ok && [debug read memory 0xcf07] == 1}]
     puts $f "SCENES_AND_ESCAPE=[expr {$ok ? {PASS} : {FAIL}}]"
     close $f
     exit

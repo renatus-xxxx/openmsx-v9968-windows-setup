@@ -1,3 +1,4 @@
+import json
 import argparse
 import os
 import re
@@ -56,6 +57,7 @@ run_command(megarom_cmd, "ROM data generation failed")
 
 # Ejecución del nuevo script de verificación de modelo de agua
 run_command([sys.executable, str(ps_script_root / "verify-water-model.py")], "Water model verification failed")
+run_command([sys.executable, str(ps_script_root / "verify-shallow.py")], "Shallow model verification failed")
 
 out_dirname = "build-c" if args.cstream else "build"
 out_dir = ps_script_root / out_dirname
@@ -96,6 +98,9 @@ try:
 
             print(f"\n-- Building profile {profile} ".ljust(80, "-"))
 
+            rom_layout = json.loads((ps_script_root / "assets/bank-layout.json").read_text())
+            rom_bytes = rom_layout["summary"]["rom_bytes"]
+            extra_args.append(f"-DDEMO_SIGNATURE_BANK={rom_layout['summary']['rom_banks']-1}")
             compilation_cmd = [
                 str(zcc_binary), "+msx", "-subtype=rom", "-compiler=sdcc", "-SO3",
                 "--max-allocs-per-node20000"
@@ -126,10 +131,10 @@ try:
 
             payload_path = ps_script_root / "assets" / "megarom-data.bin"
             payload = payload_path.read_bytes()
-            if len(payload) != 1032192:
+            if len(payload) != rom_bytes-16384:
                 sys.exit("Error: wrong payload size")
 
-            rom_buffer = bytearray(1048576)
+            rom_buffer = bytearray(rom_bytes)
             rom_buffer[0:len(fixed_bank)] = fixed_bank
             rom_buffer[16384:16384 + len(payload)] = payload
 

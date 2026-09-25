@@ -29,7 +29,7 @@ python3 build.py --z88dk ~/z88dk --profile-filter '^external-0x88$'
 python3 build.py --z88dk ~/z88dk --profile-filter '^internal-0x98$'
 ```
 
-`external-0x88` builds with `VDP_BASE=0x88`; `internal-0x98` uses the default `0x98` base. Omitting the profile filter builds both. Pass your actual z88dk location. The build always runs `generate-fonts.py` and `generate-megarom.py`, then compiles C with zsdcc. It checks the fixed bank fits 16 KiB, BSS stays below CF00 and the final ROM is 1 MiB. Profile-named ROMs are written as `V9968-TECH-DEMO-external-0x88.rom` and `V9968-TECH-DEMO-internal-0x98.rom`; both Windows and Linux internal builds also refresh the existing `build/V9968-TECH-DEMO.rom`, `.map` and distribution `V9968-TECH-DEMO.rom` aliases used by the current test/launch scripts. Warning 85 for assembly-consumed arguments and PSG optimizer warning 110 remain.
+`external-0x88` builds with `VDP_BASE=0x88`; `internal-0x98` uses the default `0x98` base. Omitting the profile filter builds both. Pass your actual z88dk location. The build always runs `generate-fonts.py` and `generate-megarom.py`, then compiles C with zsdcc. It checks the fixed bank fits 16 KiB, BSS stays below CF00 and the final ROM matches the generated layout (currently 8 MiB). Profile-named ROMs are written as `V9968-TECH-DEMO-external-0x88.rom` and `V9968-TECH-DEMO-internal-0x98.rom`; both Windows and Linux internal builds also refresh the existing `build/V9968-TECH-DEMO.rom`, `.map` and distribution `V9968-TECH-DEMO.rom` aliases used by the current test/launch scripts. Warning 85 for assembly-consumed arguments and PSG optimizer warning 110 remain.
 
 Use `V9968-TECH-DEMO-external-0x88.rom` with the external HRA! V9968 cartridge (I/O base 0x88). The existing openMSX launch/test scripts continue to use the canonical internal ROM; they do not select the external cartridge. The contributor identified the tested bitstream as [`fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs`](https://github.com/hra1129/V9968_Cartridge/blob/ceeecd7e3c2d25c20045f797617af0f70ca228c1/fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs) at HRA! commit `ceeecd7e3c2d25c20045f797617af0f70ca228c1`. Its SHA-256 is `9ba903e7929bd9a6ef4b13fc6b1b49676015af05a52d97d8fa02c143643c6511`; a download from that commit matched on 2026-09-18. This identifies the contributor's bitstream, not a hardware test of the ROMs rebuilt here. The final ROMs for both profiles are included in 0.7.3.
 
@@ -43,9 +43,9 @@ The shared solid is geometry-only OBJ input. `generate-megarom.py --mesh-obj <fi
 
 Scene 1, Scene 3 and Scene 6 all read `BANK_MESH`; changing the OBJ therefore changes all three. Keeping a different Scene-1 octahedron while Scene 3/6 use another model would require a second mesh asset (or a new runtime representation) and is not done here because another 128x4096-byte table would add 512 KiB. A single 4096-byte record allows at most 371 merged rectangles after its two-byte count and four-byte bbox are reserved. The generator checks this for every pose and reports the offending frame. For complex models, simplify/triangulate the OBJ or lower `--mesh-radius`.
 
-SCREEN 5 uses 256×192 with 16 colors, the extended palette, HS and LRMM. Pages 0/1 alternate drawing/display; page 3 stores backgrounds and the six header strips; page 2 holds textures or the water source.
+SCREEN 5 uses 256×192 with 16 colors, the extended palette, HS and LRMM. Pages 0/1 alternate drawing/display; page 3 stores backgrounds and the seven header strips; page 2 holds textures or the water source.
 
-Rotation/projection, solid spans, floor/panel/water parameters are precomputed. Fixed code uses 4000–7FFF; 8000–BFFF is the data window for 64 ASCII16 banks, selected through the register at 7000H. Because every bank number stays below 256, the write is plain ASCII16 and behaves identically on ASCII16-X hardware. The interrupt never switches banks. CF00 onward holds telemetry; D000–D100 and D1D1–D1D3 are reserved for IM2.
+Rotation/projection, solid spans, floor/panel/water parameters are precomputed. Fixed code uses 4000–7FFF; 8000–BFFF is the data window for 512 ASCII16-X banks. Bank selection writes the low eight bits to the value and encodes the upper bits in the mapper register address. Plain ASCII16 is insufficient for Scene 7. The interrupt never switches banks. CF00 onward holds telemetry; D000–D100 and D1D1–D1D3 are reserved for IM2.
 
 Stride-addressed assets emit a `FRAMES_<NAME>` constant into `bank-layout.h`. The runtime masks frame indices with `FRAMES_<NAME>-1`, so a change to the generated frame count cannot silently read into the next asset. The generator asserts that each count is a power of two of at most 256.
 
@@ -89,22 +89,13 @@ Measured on the earlier d884c4b fork: the read-back is 0x00 under 0x11 and 0xff 
 
 The current 14215c7 uses the new register map: V58 in R21 bit 0 controls extended commands and related features. The demo uses R21=0x3a and the unchanged ROM selects R20=0x11 automatically. Both machines passed full-scene checks using `test.ps1 -Runtime <new-runtime> -ExpectedR20 11`. Use `-ExpectedR20 31` for old d884c4b. The default is 11; the check does not silently accept either value. See the [update record](../../docs/emulator-update-20260924.md).
 
-## Mapper choice, and growing past 1 MiB
+## Mapper capacity
 
-`bank_select()` writes the low eight bits of the bank number as data and the high bits on A8–A11. That is the ASCII16-X encoding. With 64 banks the high bits are always zero, so every write lands on 7000H with the bank number as data — which is plain ASCII16. One implementation therefore satisfies both mappers, and the ROM runs unchanged on ASCII16-X hardware.
+The launcher selects ASCII16-X. This build is 8 MiB (512 banks); Scene 7 uses asset banks above 255. The build derives its byte count and mapper-signature bank from `assets/bank-layout.json`; the signature is currently in bank 511. Shared benchmark builds keep their default bank-63 signature and existing ROMs are not rebuilt.
 
-ASCII16 is declared because it is the far more widely implemented of the two, and nothing in this demo needs the extension. Note that the practical audience is currently emulator users: V9968 itself exists in hardware only as HRA!'s FPGA cartridge, so the wider mapper support matters as future headroom rather than as something users can exercise today.
+`bank_select()` encodes twelve bank bits. `bank_record()` now accepts a sixteen-bit first-bank argument so Scene 7 can address banks above 255. The full light mask uses two explicit bank selections per frame; the other existing asset loaders still serve banks below 256. The build and tests cover the current 8 MiB image, not the mapper's maximum capacity.
 
-The eight-bit register caps ASCII16 at 256 banks, or 4 MiB. To go beyond that:
-
-1. Raise `ROM_BANKS` in `generate-megarom.py`. The generator refuses any value above 256 while `MAPPER` is `ASCII16`, and the assertion message names the replacement.
-2. Set `MAPPER` to `ASCII16-X` in the same file.
-3. Change `-romtype` in `launch.ps1`, `test.ps1` and `test-water.ps1`.
-4. Update the 1,048,576-byte size checks in `launch.ps1` and `tests/validate-public.ps1`, and the `demo` entry in `config/versions.json`.
-
-No change to `mapper.c`, `mapper.h` or any drawing code is required. Note that ASCII16-X also decodes register mirrors inside the 8000H–BFFFH data window; this demo only reads that window, so the mirrors are harmless here, but any future code that writes into it must avoid them.
-
-`platform.c` is independently implemented. At cartridge startup the BIOS is mapped in page 0; turbo R alone calls CHGCPU (0180h) with A=81h for R800 ROM mode. Keyboard reads use PPI AAh/A9h and restore the selector after each read. No copied library implementation is included.
+The interrupt does not switch banks. The data window is read-only in this demo; avoid writes to ASCII16-X register mirrors when adding new code.
 
 ## Tests
 
@@ -113,9 +104,9 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File test.ps1 -Runtime "C:\pa
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File test-water.ps1 -Runtime "C:\path\to\runtime\fsa1gt"
 ```
 
-Use `cbios` instead for C-BIOS. `test.ps1` checks six scenes, keys 1/3/0/W/Esc, VDP faults, banking, backgrounds, the header of every scene pixel by pixel, that the Scene 3 header rows move with the water, and that the R20 probe selected the byte this fork needs. Scene 6 is selected with its key rather than by waiting for the automatic cycle: interrupts are disabled while drawing, so the tick clock drifts behind real time by an amount that differs between Z80 and R800. `test-water.ps1` compares identity and normal water distortion against an independent reference. `test-output/` may contain owned BIOS copies and is excluded from publication. Normal launch data uses `runtime/<mode>/user-tech-demo/<first 12 SHA-256 characters>/`.
+Use `cbios` instead for C-BIOS. `test.ps1` checks seven scenes, keys 1/3/0/W/Esc, VDP faults, banking, backgrounds, the header of every scene pixel by pixel, that the Scene 3 header rows move with the water, and that the R20 probe selected the byte this fork needs. Scene 6 is selected with its key rather than by waiting for the automatic cycle: interrupts are disabled while drawing, so the tick clock drifts behind real time by an amount that differs between Z80 and R800. `test-water.ps1` compares identity and normal water distortion against an independent reference. `test-output/` may contain owned BIOS copies and is excluded from publication. Normal launch data uses `runtime/<mode>/user-tech-demo/<first 12 SHA-256 characters>/`.
 
-See [development test results (JSON)](verification.json). Current octahedron tests and separate historical records are identified by ROM hash. See the OBJ verification report for optional-model tests. Physical hardware, other emulators, sizes beyond 4 MiB, playback beyond 18 minutes and audio quality are untested. The 16-bit clock wraps at about 18 minutes. CPU/font identification does not guarantee every feature.
+See [development test results (JSON)](verification.json). Current octahedron tests and separate historical records are identified by ROM hash. See the OBJ verification report for optional-model tests. Physical hardware, other emulators, sizes beyond 8 MiB, playback beyond 18 minutes and audio quality are untested. The 16-bit clock wraps at about 18 minutes. CPU/font identification does not guarantee every feature.
 
 W is keyboard matrix row 5, bit 4. Tests verify that Y has no effect, holding W does not toggle repeatedly, and releasing and pressing W again toggles back. At completed-frame boundaries, the rendered VRAM body must match the clean work surface when OFF and differ when ON. Input is injected into the emulator keyboard matrix; this is not a physical-keyboard test.
 
@@ -168,3 +159,13 @@ C outputs go to `build-c/`; default outputs go to `build/`. C builds do not over
 [OBJ validation results](obj-verification.json). Earlier C/ASM comparisons describe 0.7.1 ROMs; the new OBJ validation uses the default assembly build.
 
 Run `python test-obj-input.py` for OBJ parser, non-finite coordinate, continuation and failure-preservation regression checks. The test uses a temporary copy of the generator and assets; it does not modify repository assets.
+
+## Scene 7
+
+See [Shallow Water](SHALLOW.md) for generation, the mask cache, direct ROM deltas, four-level indexed lighting, Sprite mode3 reflections, capture tests and measurements.
+
+Scene 7 upload/delta streaming also supports `-CStream`; use `test-shallow.ps1 -CStream` to compare its output with the same Python reference.
+
+Scene 7 combines twenty staggered white glints, ten soft glare shoulders and eight translucent reflection ribbons. Python precomputes the shared wave motion and fixed-view specular approximation; the runtime only streams attributes. See [Shallow Water](SHALLOW.md).
+
+Central reflection streaks follow the same deformation as the caustics and fade using transparency and thinner patterns. [Details](SHALLOW.md).

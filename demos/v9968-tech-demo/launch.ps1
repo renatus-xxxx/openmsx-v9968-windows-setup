@@ -52,8 +52,8 @@ elseif (Test-Path -LiteralPath $shipped) {
 else {
     throw 'Demo ROM is missing. Extract the whole ZIP or rebuild. / デモ ROM がありません。ZIP全体を展開するか再ビルドしてください。'
 }
-if ((Get-Item -LiteralPath $rom).Length -ne 1048576) {
-    throw 'Expected a 1 MiB ASCII16 ROM. / ROM のサイズが不正です。ZIPを再展開するか再ビルドしてください。'
+if ((Get-Item -LiteralPath $rom).Length -ne 8388608) {
+    throw 'Expected an 8 MiB ASCII16-X ROM. / ROM のサイズが不正です。ZIPを再展開するか再ビルドしてください。'
 }
 Write-Host ('ROM / 使用 ROM: ' + $rom)
 
@@ -102,7 +102,7 @@ try {
     $arg = @(
         '-machine', $cfg.machine,
         '-cart', ($workRelative + '/' + $romName),
-        '-romtype', 'ASCII16'
+        '-romtype', 'ASCII16-X'
     )
     $p = Start-Process -FilePath $exe -ArgumentList $arg -WorkingDirectory $Runtime -WindowStyle Normal -PassThru
     $null = $p.Handle

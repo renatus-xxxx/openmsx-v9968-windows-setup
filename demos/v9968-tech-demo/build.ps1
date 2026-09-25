@@ -12,6 +12,11 @@ python @meshArgs
 if($LASTEXITCODE -ne 0){throw 'ROM data generation failed'}
 python "$PSScriptRoot/verify-water-model.py"
 if($LASTEXITCODE -ne 0){throw 'Water model verification failed'}
+python "$PSScriptRoot/verify-shallow.py"
+if($LASTEXITCODE -ne 0){throw 'Shallow model verification failed'}
+$layout=Get-Content -LiteralPath "$PSScriptRoot/assets/bank-layout.json" -Raw | ConvertFrom-Json
+$romBytes=[int]$layout.summary.rom_bytes
+$signatureBank=[int]$layout.summary.rom_banks-1
 $out=Join-Path $PSScriptRoot $(if($CStream){'build-c'}else{'build'})
 [IO.Directory]::CreateDirectory($out)|Out-Null
 Copy-Item -Path (Join-Path $PSScriptRoot '*.c'),(Join-Path $PSScriptRoot '*.h') -Destination $out -Force
@@ -23,7 +28,7 @@ try{
  foreach($profile in $profiles){
   $name=if($Diagnostic){"V9968-TECH-DEMO-$profile-DIAGNOSTIC"}else{"V9968-TECH-DEMO-$profile"}
   $extra=@($(if($profile -eq 'external-0x88'){'-DVDP_BASE=136'}else{'-DVDP_BASE=152'}));if($CStream){$extra+='-DV9968_SCENE3_C_STREAM'};if($Diagnostic){$extra+='-DV9968_DEMO_DIAGNOSTIC'}
-  & "$Z88dk/bin/zcc.exe" +msx -subtype=rom -compiler=sdcc -SO3 --max-allocs-per-node20000 @extra -create-app main.c v9968.c music.c runtime-math.asm mapper.c platform.c -o $name -m
+  & "$Z88dk/bin/zcc.exe" +msx -subtype=rom -compiler=sdcc -SO3 --max-allocs-per-node20000 @extra "-DDEMO_SIGNATURE_BANK=$signatureBank" -create-app main.c v9968.c music.c runtime-math.asm mapper.c platform.c -o $name -m
   if($LASTEXITCODE -ne 0){throw 'Demo compilation failed'}
   $map=Get-Content "$name.map" -Raw
   if($map -notmatch '__BSS_END_tail\s*=\s*\$([0-9A-Fa-f]+)'){throw 'BSS bound missing'}
@@ -31,8 +36,8 @@ try{
   $fixed=[IO.File]::ReadAllBytes((Join-Path $out "$name.rom"))
   if($fixed.Length -gt 16384){throw 'Fixed bank exceeds 16 KiB'}
   $payload=[IO.File]::ReadAllBytes((Join-Path $PSScriptRoot 'assets/megarom-data.bin'))
-  if($payload.Length -ne 1032192){throw 'Wrong payload size'}
-  $rom=New-Object byte[] 1048576
+  if($payload.Length -ne ($romBytes-16384)){throw 'Wrong payload size'}
+  $rom=New-Object byte[] $romBytes
   [Array]::Copy($fixed,0,$rom,0,$fixed.Length)
   [Array]::Copy($payload,0,$rom,16384,$payload.Length)
   [IO.File]::WriteAllBytes((Join-Path $out "$name.rom"),$rom)

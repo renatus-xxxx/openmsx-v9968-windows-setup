@@ -4,7 +4,7 @@
 
 The Release ZIP also includes `V9968-TECH-DEMO-external-0x88.rom` for the external HRA! V9968 cartridge. Use the canonical `V9968-TECH-DEMO.rom` for openMSX. See [profiles and hardware test scope](DEVELOPMENT.md).
 
-A C technical demo for V9968-enabled openMSX, supplied as a 1 MiB ASCII16 ROM. Six scenes show a solid, perspective-style floor, underwater distortion, large panels and feedback, repeating in roughly 90 seconds.
+A C technical demo for V9968-enabled openMSX, supplied as an 8 MiB ASCII16-X ROM. Seven scenes show a solid, perspective-style floor, underwater distortion, large panels, feedback and a shallow-water surface, repeating in roughly 105 seconds.
 
 After completing the corresponding setup at the repository root, run `launch-v9968-tech-demo-fsa1gt.bat` (FS-A1GT / R800) or `launch-v9968-tech-demo-cbios.bat` (C-BIOS / Z80). The ROM is `V9968-TECH-DEMO.rom`, using MSX 8x8 font. Normal launch requires neither z88dk nor Python.
 
@@ -16,7 +16,7 @@ The water GIF and raster below show the default octahedron generated from OBJ in
 
 | Key | Action |
 |---|---|
-| 1–6 | Select a scene |
+| 1–7 | Select a scene |
 | 0 | Return to automatic playback |
 | W | Toggle water distortion; compare it in scene 3 |
 | Esc | Stop picture and music; close and relaunch to replay |
@@ -29,6 +29,7 @@ The water GIF and raster below show the default octahedron generated from OBJ in
 | 4 VORTEX | LRMM rotation and zoom of a detailed large grid panel |
 | 5 RESONANCE | Metallic sphere, 3D orbits and 12 depth-ordered fragments |
 | 6 AFTERGLOW | Opens on a bare frame with no header. The solid is drawn flat white into a held page that one full-screen LMMV with the AND operation dims by exactly one step each frame, under a greyscale palette where brightness is the number of bits set in the colour index, so the trail fades evenly to black. The held page is also magnified slightly each frame, which walks the fading copies out from under the solid instead of leaving them hidden beneath it. After three seconds the header appears and the scene continues into recursive framebuffer feedback, where the previous frame stays in VRAM, is shifted with HMMM or transformed with LRMM, combined with the current LMMV-rendered solid, and captured back as the next history frame |
+| 7 SHALLOW WATER | Independent caustic masks over a stone floor, LRMM indexed lighting, weak refraction and surface glints |
 
 Projection, OBJ rasterization, solid scanlines and deformation parameters are precomputed into ROM. Orbits, fragments and water have 256 steps; the shared OBJ mesh and floor have 128. Water is a screen-refraction effect that vertically resamples horizontal strips, with a four-pixel amplitude and 64-pixel spatial period. Vertical source positions are clamped; horizontal motion is limited to two pixels each way, with outermost pixels repeated to fill the edges. The picture behind the header waves with everything else; the title and scene number are drawn over it afterwards and stay put. Scene 3 animates the solid with the same pose table and clock as Scene 1, applying distortion to a freshly rendered image each frame.
 
@@ -47,7 +48,7 @@ OBJ vertex positions and polygon faces are used; texture coordinates, supplied n
 
 Rendering uses SCREEN 5 at 256×192 with 16 colors, five-bit RGB components, HS and LRMM. Water strip transfers use HMMM: the technique is not exclusive to V9968, but benefits from its accelerated commands.
 
-The current source tree targets pinned `buppu3/openMSX 14215c7`; earlier measurements on d884c4b remain historical records. See the [emulator update record](../../docs/emulator-update-20260924.md). The launcher specifies `-romtype ASCII16`; select that type when opening the ROM separately. All bank numbers stay below 256, so the same ROM also runs unchanged on ASCII16-X hardware. Physical hardware and other emulators remain untested.
+The current source tree targets pinned `buppu3/openMSX 14215c7`; earlier measurements on d884c4b remain historical records. See the [emulator update record](../../docs/emulator-update-20260924.md). The launcher specifies `-romtype ASCII16-X`; select that type when opening the ROM separately. The 8 MiB ROM uses banks above 255 and requires compatible ASCII16-X mapping; plain ASCII16 is insufficient. Physical hardware and other emulators remain untested.
 
 The original three-voice PSG score is included. Timing results for earlier builds are not performance measurements of 0.7.2.
 
@@ -68,3 +69,11 @@ The new default is not pixel-identical to 0.7.1. The default radius is 88, prese
 The shipped benchmark ROMs and FPS/PDF records remain historical 0.7.1 artifacts. Rebuilding produces the current OBJ workload; do not attach the old measurements to that ROM. [OBJ build and validation results](obj-verification.json).
 
 The torus example uses up to 356 of 371 rectangles per pose (15 left); adding detail or increasing its radius can exceed capacity. Relative OBJ paths are resolved against the current working directory first, then the demo directory. Use an absolute path to select an unambiguous external file. Omitted `-MeshRadius` uses the generator default (88); explicit values still override it. OBJ backslash line continuations are supported; non-finite vertex coordinates are rejected with a line number.
+
+[Scene 7 drawing, memory layout and measurements](SHALLOW.md). Press **7** to view it.
+
+Scene 7 combines foreground-weighted, four-level caustics with translucent Sprite mode3 surface reflections. See [Shallow Water](SHALLOW.md) for visual trade-offs and measured performance.
+
+Scene 7 combines twenty staggered white glints, ten soft glare shoulders and eight translucent reflection ribbons. Python precomputes the shared wave motion and fixed-view specular approximation; the runtime only streams attributes. See [Shallow Water](SHALLOW.md).
+
+Central reflection streaks follow the same deformation as the caustics and fade using transparency and thinner patterns. [Details](SHALLOW.md).

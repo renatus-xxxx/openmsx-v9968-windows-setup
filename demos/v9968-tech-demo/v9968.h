@@ -34,6 +34,10 @@ void feedback_shift(int dx,int dy);
 void feedback_warp(int vx,int vy);
 void feedback_capture(void);
 void header_shadow(u8 scene);
+void shallow_enter(void);
+void shallow_leave(void);
+void shallow_draw(u16 now);
+void shallow_palette(void);
 void water_draw(const u8 *parameters);
 #endif
 

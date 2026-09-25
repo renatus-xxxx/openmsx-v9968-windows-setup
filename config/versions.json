@@ -1,5 +1,5 @@
 {
-  "release": "0.7.4",
+  "release": "0.7.5",
   "checked": "2026-09-24",
   "hashOrigin": "Official ZIP: GitHub release API asset digest, matched locally. Fork ZIP/executables/probe: local SHA-256 measurements (no publisher checksum found for fork). BIOS SHA-1: official openMSX 21.0 machine XML.",
   "downloads": [
@@ -40,12 +40,12 @@
   ],
   "demo": {
     "file": "demos/v9968-tech-demo/V9968-TECH-DEMO.rom",
-    "size": 1048576,
-    "sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa"
+    "size": 8388608,
+    "sha256": "4a46c20e3a58572ae350fc81c5decad07797a4fe26fd1d6b0b6fc6d3f1ed3499"
   },
   "demoExternal": {
     "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
-    "size": 1048576,
-    "sha256": "6c96dafaf4a76e946ce70791bd55b68c386f68f61c8de3ff4ae4ceda3097848f"
+    "size": 8388608,
+    "sha256": "50c94bcbf98fbcc1b0646ef22135a40c6adfbeaf1f99b08c120c2942b04a5dfb"
   }
 }

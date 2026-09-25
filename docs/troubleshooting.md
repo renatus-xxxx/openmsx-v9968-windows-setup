@@ -50,7 +50,7 @@ Find your situation below. Setup and launch write a log, and the message on scre
 ## Update and rollback
 
 1. Close the old openMSX and keep its entire folder. You do not need to move or delete BIOS, settings or saves.
-2. Extract the complete 0.7.4 Release ZIP into a **different, new folder** outside synced locations.
+2. Extract the complete 0.7.5 Release ZIP into a **different, new folder** outside synced locations.
 3. Run the setup BAT there. For FS-A1GT, select your original owned BIOS directory. Create fresh runtime/cache directories instead of copying the old ones.
 4. Test with the new folder's launch BAT. Compatibility of old save states is untested; do not copy the entire old user configuration into the new environment.
 5. To roll back, close the new openMSX and use the launch BAT in the retained old folder. Do not copy new files over it.
@@ -69,6 +69,6 @@ Failed staging directories and lock/part files can also be deleted once all rela
 
 - `Run setup-... first`: run the matching root setup BAT.
 - `Emulator hash mismatch`: the emulator differs from the verified version. Extract the entire ZIP into another folder and set it up again.
-- `Demo ROM is missing` / `Expected a 1 MiB ASCII16 ROM`: extract the whole ZIP. Developers can rebuild the demo and launch that build with `-UseBuild`.
+- `Demo ROM is missing` / `Expected a 8 MiB ASCII16-X ROM`: extract the whole ZIP. Developers can rebuild the demo and launch that build with `-UseBuild`.
 - `Cached demo ROM hash mismatch` / `Local BIOS copy differs`: an existing demo copy differs from its source. Back up and rename the affected folder under `runtime/<mode>/user-tech-demo/`, then relaunch. Do not delete the original owned BIOS or the entire runtime.
 - If the path is too long, extract the entire ZIP into a shorter writable location.

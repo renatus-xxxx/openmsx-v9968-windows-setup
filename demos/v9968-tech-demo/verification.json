@@ -1,403 +1,2938 @@
 {
-  "release": "0.7.3",
-  "distribution_release": "0.7.4",
-  "date": "2026-09-18",
-  "rom_sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
-  "status": "Final internal ROM; Windows/WSL reproducible profiles; final external hardware retest not run",
+  "release": "0.7.5",
+  "distribution_release": "0.7.5",
+  "date": "2026-09-25",
+  "status": "Scene 7 dense sun-glitter path with streamed sprite attributes",
+  "rom_sha256": "4a46c20e3a58572ae350fc81c5decad07797a4fe26fd1d6b0b6fc6d3f1ed3499",
   "tests_current_rom": true,
   "tests": {
     "cbios": {
-      "six_scenes_controls_headers": "PASS",
-      "water_identity_wave": "PASS",
-      "all_128_mesh_poses_cache_reentry": "PASS",
-      "all_128_glow_poses_pages_0_1": "PASS",
       "SCENES_AND_ESCAPE": "PASS",
       "R20_OK": 1,
+      "R20_SELECTED": "0x11",
       "FAULT": 0,
-      "R20_SELECTED": "0x31",
-      "cpu": "Z80"
+      "automatic_loops": 2,
+      "controlled_time": true,
+      "rendered_frames": 272,
+      "pixel_results": {
+        "stream": {
+          "sprite_phases": 128,
+          "cpu": "see emulator telemetry",
+          "wave_phases": 128,
+          "mask_frames": 128,
+          "frames": 264,
+          "mismatches": [],
+          "full_cross_product": false
+        },
+        "c": {
+          "sprite_phases": 128,
+          "cpu": "see emulator telemetry",
+          "wave_phases": 128,
+          "mask_frames": 128,
+          "frames": 264,
+          "mismatches": [],
+          "full_cross_product": false
+        }
+      },
+      "surface_rgb": {
+        "pass_surface": true,
+        "pure_white_sparkle_pixels": 120,
+        "pixels": 3820,
+        "alpha_mismatches": 0,
+        "phase": 78,
+        "scope": "one frozen phase; independent opaque/background RGB reference"
+      }
     },
     "fsa1gt": {
-      "six_scenes_controls_headers": "PASS",
-      "water_identity_wave": "PASS",
-      "all_128_mesh_poses_cache_reentry": "PASS",
-      "all_128_glow_poses_pages_0_1": "PASS",
       "SCENES_AND_ESCAPE": "PASS",
       "R20_OK": 1,
+      "R20_SELECTED": "0x11",
       "FAULT": 0,
-      "R20_SELECTED": "0x31",
-      "cpu": "R800"
+      "automatic_loops": 2,
+      "controlled_time": true,
+      "rendered_frames": 272,
+      "pixel_results": {
+        "stream": {
+          "sprite_phases": 128,
+          "cpu": "see emulator telemetry",
+          "wave_phases": 128,
+          "mask_frames": 128,
+          "frames": 264,
+          "mismatches": [],
+          "full_cross_product": false
+        },
+        "c": {
+          "sprite_phases": 128,
+          "cpu": "see emulator telemetry",
+          "wave_phases": 128,
+          "mask_frames": 128,
+          "frames": 264,
+          "mismatches": [],
+          "full_cross_product": false
+        }
+      },
+      "surface_rgb": {
+        "pass_surface": true,
+        "pure_white_sparkle_pixels": 127,
+        "pixels": 3993,
+        "alpha_mismatches": 0,
+        "phase": 68,
+        "scope": "one frozen phase; independent opaque/background RGB reference"
+      }
     }
   },
+  "measurements": {
+    "cbios": [
+      {
+        "frames": 135,
+        "seconds": 14.999998323809312,
+        "fps": 9.000001005714525
+      },
+      {
+        "frames": 135,
+        "seconds": 14.999998323809312,
+        "fps": 9.000001005714525
+      },
+      {
+        "frames": 135,
+        "seconds": 14.999998323809312,
+        "fps": 9.000001005714525
+      }
+    ],
+    "fsa1gt": [
+      {
+        "frames": 168,
+        "seconds": 14.999999999999998,
+        "fps": 11.200000000000001
+      },
+      {
+        "frames": 168,
+        "seconds": 14.999999999999998,
+        "fps": 11.200000000000001
+      },
+      {
+        "frames": 168,
+        "seconds": 14.999999999999998,
+        "fps": 11.200000000000001
+      }
+    ]
+  },
+  "historical_before_sunglare": {
+    "release": "0.7.4",
+    "distribution_release": "0.7.4",
+    "date": "2026-09-25",
+    "status": "Scene 7 central glare coupled to caustic deformation",
+    "rom_sha256": "bdd611eb4f7a44ab0dcf82da102d61c018ea52d384b05f8097b7443a11dcf34a",
+    "tests_current_rom": true,
+    "tests": {
+      "cbios": {
+        "SCENES_AND_ESCAPE": "PASS",
+        "R20_OK": 1,
+        "R20_SELECTED": "0x11",
+        "FAULT": 0,
+        "automatic_loops": 2,
+        "controlled_time": true,
+        "rendered_frames": 272,
+        "pixel_results": {
+          "stream": {
+            "sprite_phases": 128,
+            "cpu": "see emulator telemetry",
+            "wave_phases": 128,
+            "mask_frames": 128,
+            "frames": 264,
+            "mismatches": [],
+            "full_cross_product": false
+          },
+          "c": {
+            "sprite_phases": 128,
+            "cpu": "see emulator telemetry",
+            "wave_phases": 128,
+            "mask_frames": 128,
+            "frames": 264,
+            "mismatches": [],
+            "full_cross_product": false
+          }
+        },
+        "surface_rgb": {
+          "pass_surface": true,
+          "pure_white_sparkle_pixels": 13,
+          "pixels": 1998,
+          "alpha_mismatches": 0,
+          "phase": 79,
+          "scope": "one frozen phase; independent opaque/background RGB reference"
+        }
+      },
+      "fsa1gt": {
+        "SCENES_AND_ESCAPE": "PASS",
+        "R20_OK": 1,
+        "R20_SELECTED": "0x11",
+        "FAULT": 0,
+        "automatic_loops": 2,
+        "controlled_time": true,
+        "rendered_frames": 272,
+        "pixel_results": {
+          "stream": {
+            "sprite_phases": 128,
+            "cpu": "see emulator telemetry",
+            "wave_phases": 128,
+            "mask_frames": 128,
+            "frames": 264,
+            "mismatches": [],
+            "full_cross_product": false
+          },
+          "c": {
+            "sprite_phases": 128,
+            "cpu": "see emulator telemetry",
+            "wave_phases": 128,
+            "mask_frames": 128,
+            "frames": 264,
+            "mismatches": [],
+            "full_cross_product": false
+          }
+        },
+        "surface_rgb": {
+          "pass_surface": true,
+          "pure_white_sparkle_pixels": 16,
+          "pixels": 2050,
+          "alpha_mismatches": 0,
+          "phase": 68,
+          "scope": "one frozen phase; independent opaque/background RGB reference"
+        }
+      }
+    },
+    "measurements": {
+      "cbios": [
+        {
+          "frames": 131,
+          "seconds": 15.000000838095342,
+          "fps": 8.733332845375628
+        },
+        {
+          "frames": 131,
+          "seconds": 15.000000838095342,
+          "fps": 8.733332845375628
+        },
+        {
+          "frames": 131,
+          "seconds": 15.000000838095342,
+          "fps": 8.733332845375628
+        }
+      ],
+      "fsa1gt": [
+        {
+          "frames": 168,
+          "seconds": 14.999999580952325,
+          "fps": 11.200000312888939
+        },
+        {
+          "frames": 168,
+          "seconds": 14.999999580952325,
+          "fps": 11.200000312888939
+        },
+        {
+          "frames": 168,
+          "seconds": 14.999999580952325,
+          "fps": 11.200000312888939
+        }
+      ]
+    },
+    "historical_before_central_glare": {
+      "release": "0.7.4",
+      "distribution_release": "0.7.4",
+      "date": "2026-09-25",
+      "status": "Scene 7 full-white wave-driven sparkles",
+      "rom_sha256": "d1ec2dc715fb8296d81d7e8246a3afdef3ee07e254749364d2ac940b151ca411",
+      "tests_current_rom": true,
+      "tests": {
+        "cbios": {
+          "SCENES_AND_ESCAPE": "PASS",
+          "R20_OK": 1,
+          "R20_SELECTED": "0x11",
+          "FAULT": 0,
+          "automatic_loops": 2,
+          "controlled_time": true,
+          "rendered_frames": 272,
+          "pixel_results": {
+            "stream": {
+              "sprite_phases": 128,
+              "cpu": "see emulator telemetry",
+              "wave_phases": 128,
+              "mask_frames": 128,
+              "frames": 264,
+              "mismatches": [],
+              "full_cross_product": false
+            },
+            "c": {
+              "sprite_phases": 128,
+              "cpu": "see emulator telemetry",
+              "wave_phases": 128,
+              "mask_frames": 128,
+              "frames": 264,
+              "mismatches": [],
+              "full_cross_product": false
+            }
+          },
+          "surface_rgb": {
+            "pass_surface": true,
+            "pure_white_sparkle_pixels": 93,
+            "pixels": 1823,
+            "alpha_mismatches": 0,
+            "phase": 79,
+            "scope": "one frozen phase; independent opaque/background RGB reference"
+          }
+        },
+        "fsa1gt": {
+          "SCENES_AND_ESCAPE": "PASS",
+          "R20_OK": 1,
+          "R20_SELECTED": "0x11",
+          "FAULT": 0,
+          "automatic_loops": 2,
+          "controlled_time": true,
+          "rendered_frames": 272,
+          "pixel_results": {
+            "stream": {
+              "sprite_phases": 128,
+              "cpu": "see emulator telemetry",
+              "wave_phases": 128,
+              "mask_frames": 128,
+              "frames": 264,
+              "mismatches": [],
+              "full_cross_product": false
+            },
+            "c": {
+              "sprite_phases": 128,
+              "cpu": "see emulator telemetry",
+              "wave_phases": 128,
+              "mask_frames": 128,
+              "frames": 264,
+              "mismatches": [],
+              "full_cross_product": false
+            }
+          },
+          "surface_rgb": {
+            "pass_surface": true,
+            "pure_white_sparkle_pixels": 64,
+            "pixels": 1962,
+            "alpha_mismatches": 0,
+            "phase": 68,
+            "scope": "one frozen phase; independent opaque/background RGB reference"
+          }
+        }
+      },
+      "measurements": {
+        "cbios": [
+          {
+            "frames": 131,
+            "seconds": 15.000000838095342,
+            "fps": 8.733332845375628
+          },
+          {
+            "frames": 131,
+            "seconds": 15.000000838095342,
+            "fps": 8.733332845375628
+          },
+          {
+            "frames": 131,
+            "seconds": 15.000000838095342,
+            "fps": 8.733332845375628
+          }
+        ],
+        "fsa1gt": [
+          {
+            "frames": 168,
+            "seconds": 14.999999580952325,
+            "fps": 11.200000312888939
+          },
+          {
+            "frames": 168,
+            "seconds": 14.999999580952325,
+            "fps": 11.200000312888939
+          },
+          {
+            "frames": 168,
+            "seconds": 14.999999580952325,
+            "fps": 11.200000312888939
+          }
+        ]
+      },
+      "historical_before_sparkles": {
+        "release": "0.7.4",
+        "distribution_release": "0.7.4",
+        "date": "2026-09-25",
+        "status": "Scene 7 wave-normal-driven reflection ribbons and moving white glints",
+        "rom_sha256": "15073e47d6a5fceb900e5ae918679b68077de6b683eabbaa5c5faf49a82f742d",
+        "tests_current_rom": true,
+        "tests": {
+          "cbios": {
+            "SCENES_AND_ESCAPE": "PASS",
+            "R20_OK": 1,
+            "R20_SELECTED": "0x11",
+            "FAULT": 0,
+            "automatic_loops": 2,
+            "controlled_time": true,
+            "rendered_frames": 272,
+            "pixel_results": {
+              "stream": {
+                "sprite_phases": 128,
+                "cpu": "see emulator telemetry",
+                "wave_phases": 128,
+                "mask_frames": 128,
+                "frames": 264,
+                "mismatches": [],
+                "full_cross_product": false
+              },
+              "c": {
+                "sprite_phases": 128,
+                "cpu": "see emulator telemetry",
+                "wave_phases": 128,
+                "mask_frames": 128,
+                "frames": 264,
+                "mismatches": [],
+                "full_cross_product": false
+              }
+            },
+            "surface_rgb": {
+              "pass_surface": true,
+              "pixels": 1730,
+              "alpha_mismatches": 0,
+              "phase": 79,
+              "scope": "one frozen phase; independent opaque/background RGB reference"
+            }
+          },
+          "fsa1gt": {
+            "SCENES_AND_ESCAPE": "PASS",
+            "R20_OK": 1,
+            "R20_SELECTED": "0x11",
+            "FAULT": 0,
+            "automatic_loops": 2,
+            "controlled_time": true,
+            "rendered_frames": 272,
+            "pixel_results": {
+              "stream": {
+                "sprite_phases": 128,
+                "cpu": "see emulator telemetry",
+                "wave_phases": 128,
+                "mask_frames": 128,
+                "frames": 264,
+                "mismatches": [],
+                "full_cross_product": false
+              },
+              "c": {
+                "sprite_phases": 128,
+                "cpu": "see emulator telemetry",
+                "wave_phases": 128,
+                "mask_frames": 128,
+                "frames": 264,
+                "mismatches": [],
+                "full_cross_product": false
+              }
+            },
+            "surface_rgb": {
+              "pass_surface": true,
+              "pixels": 1830,
+              "alpha_mismatches": 0,
+              "phase": 69,
+              "scope": "one frozen phase; independent opaque/background RGB reference"
+            }
+          }
+        },
+        "measurements": {
+          "cbios": [
+            {
+              "frames": 135,
+              "seconds": 15.000001676190688,
+              "fps": 8.999998994285699
+            },
+            {
+              "frames": 135,
+              "seconds": 15.000001676190688,
+              "fps": 8.999998994285699
+            },
+            {
+              "frames": 135,
+              "seconds": 15.000001676190688,
+              "fps": 8.999998994285699
+            }
+          ],
+          "fsa1gt": [
+            {
+              "frames": 168,
+              "seconds": 14.999999022222099,
+              "fps": 11.200000730074214
+            },
+            {
+              "frames": 168,
+              "seconds": 14.999999022222099,
+              "fps": 11.200000730074214
+            },
+            {
+              "frames": 168,
+              "seconds": 14.999999022222099,
+              "fps": 11.200000730074214
+            }
+          ]
+        },
+        "historical_before_wave_glints": {
+          "release": "0.7.4",
+          "distribution_release": "0.7.4",
+          "date": "2026-09-25",
+          "status": "Scene 7 coherent reflection ribbons and subdued distant caustics",
+          "rom_sha256": "c9eaa7fe0710dcde614d84f2f0727e94bc7ee4cfdab3cfe51dcd25991ac3c2f8",
+          "tests_current_rom": true,
+          "tests": {
+            "cbios": {
+              "SCENES_AND_ESCAPE": "PASS",
+              "R20_OK": 1,
+              "R20_SELECTED": "0x11",
+              "FAULT": 0,
+              "automatic_loops": 2,
+              "controlled_time": true,
+              "rendered_frames": 272,
+              "pixel_results": {
+                "stream": {
+                  "sprite_phases": 128,
+                  "cpu": "see emulator telemetry",
+                  "wave_phases": 128,
+                  "mask_frames": 128,
+                  "frames": 264,
+                  "mismatches": [],
+                  "full_cross_product": false
+                },
+                "c": {
+                  "sprite_phases": 128,
+                  "cpu": "see emulator telemetry",
+                  "wave_phases": 128,
+                  "mask_frames": 128,
+                  "frames": 264,
+                  "mismatches": [],
+                  "full_cross_product": false
+                }
+              },
+              "surface_rgb": {
+                "pass_surface": true,
+                "pixels": 4425,
+                "alpha_mismatches": 0,
+                "phase": 79,
+                "scope": "one frozen phase; independent opaque/background RGB reference"
+              }
+            },
+            "fsa1gt": {
+              "SCENES_AND_ESCAPE": "PASS",
+              "R20_OK": 1,
+              "R20_SELECTED": "0x11",
+              "FAULT": 0,
+              "automatic_loops": 2,
+              "controlled_time": true,
+              "rendered_frames": 272,
+              "pixel_results": {
+                "stream": {
+                  "sprite_phases": 128,
+                  "cpu": "see emulator telemetry",
+                  "wave_phases": 128,
+                  "mask_frames": 128,
+                  "frames": 264,
+                  "mismatches": [],
+                  "full_cross_product": false
+                },
+                "c": {
+                  "sprite_phases": 128,
+                  "cpu": "see emulator telemetry",
+                  "wave_phases": 128,
+                  "mask_frames": 128,
+                  "frames": 264,
+                  "mismatches": [],
+                  "full_cross_product": false
+                }
+              },
+              "surface_rgb": {
+                "pass_surface": true,
+                "pixels": 4448,
+                "alpha_mismatches": 0,
+                "phase": 69,
+                "scope": "one frozen phase; independent opaque/background RGB reference"
+              }
+            }
+          },
+          "measurements": {
+            "cbios": [
+              {
+                "frames": 135,
+                "seconds": 15.00000167619069,
+                "fps": 8.999998994285699
+              },
+              {
+                "frames": 135,
+                "seconds": 15.00000167619069,
+                "fps": 8.999998994285699
+              },
+              {
+                "frames": 135,
+                "seconds": 15.00000167619069,
+                "fps": 8.999998994285699
+              }
+            ],
+            "fsa1gt": [
+              {
+                "frames": 168,
+                "seconds": 15.000000698412785,
+                "fps": 11.199999478518478
+              },
+              {
+                "frames": 168,
+                "seconds": 15.000000698412785,
+                "fps": 11.199999478518478
+              },
+              {
+                "frames": 168,
+                "seconds": 15.000000698412785,
+                "fps": 11.199999478518478
+              }
+            ]
+          },
+          "historical_before_ribbons": {
+            "release": "0.7.4",
+            "distribution_release": "0.7.4",
+            "date": "2026-09-25",
+            "status": "Scene 7 graded caustics and translucent surface reflection",
+            "rom_sha256": "50df3ff26adc7976d40a7709eff464688cdfa0d6ff6f1110baf69632daf0ef6d",
+            "tests_current_rom": true,
+            "tests": {
+              "cbios": {
+                "SCENES_AND_ESCAPE": "PASS",
+                "R20_OK": 1,
+                "R20_SELECTED": "0x11",
+                "FAULT": 0,
+                "automatic_loops": 2,
+                "controlled_time": true,
+                "rendered_frames": 272,
+                "pixel_results": {
+                  "stream": {
+                    "sprite_phases": 128,
+                    "cpu": "see emulator telemetry",
+                    "wave_phases": 128,
+                    "mask_frames": 128,
+                    "frames": 264,
+                    "mismatches": [],
+                    "full_cross_product": false
+                  },
+                  "c": {
+                    "sprite_phases": 128,
+                    "cpu": "see emulator telemetry",
+                    "wave_phases": 128,
+                    "mask_frames": 128,
+                    "frames": 264,
+                    "mismatches": [],
+                    "full_cross_product": false
+                  }
+                },
+                "surface_rgb": {
+                  "pass_surface": true,
+                  "pixels": 1235,
+                  "alpha_mismatches": 0,
+                  "phase": 79,
+                  "scope": "one frozen phase; independent opaque/background RGB reference"
+                }
+              },
+              "fsa1gt": {
+                "SCENES_AND_ESCAPE": "PASS",
+                "R20_OK": 1,
+                "R20_SELECTED": "0x11",
+                "FAULT": 0,
+                "automatic_loops": 2,
+                "controlled_time": true,
+                "rendered_frames": 272,
+                "pixel_results": {
+                  "stream": {
+                    "sprite_phases": 128,
+                    "cpu": "see emulator telemetry",
+                    "wave_phases": 128,
+                    "mask_frames": 128,
+                    "frames": 264,
+                    "mismatches": [],
+                    "full_cross_product": false
+                  },
+                  "c": {
+                    "sprite_phases": 128,
+                    "cpu": "see emulator telemetry",
+                    "wave_phases": 128,
+                    "mask_frames": 128,
+                    "frames": 264,
+                    "mismatches": [],
+                    "full_cross_product": false
+                  }
+                },
+                "surface_rgb": {
+                  "pass_surface": true,
+                  "pixels": 1252,
+                  "alpha_mismatches": 0,
+                  "phase": 68,
+                  "scope": "one frozen phase; independent opaque/background RGB reference"
+                }
+              }
+            },
+            "measurements": {
+              "cbios": [
+                {
+                  "frames": 113,
+                  "seconds": 15.000002234920919,
+                  "fps": 7.533332210906551
+                },
+                {
+                  "frames": 113,
+                  "seconds": 15.000002234920919,
+                  "fps": 7.533332210906551
+                },
+                {
+                  "frames": 113,
+                  "seconds": 15.000002234920919,
+                  "fps": 7.533332210906551
+                }
+              ],
+              "fsa1gt": [
+                {
+                  "frames": 136,
+                  "seconds": 15.000000419047673,
+                  "fps": 9.066666413375636
+                },
+                {
+                  "frames": 136,
+                  "seconds": 15.000000419047673,
+                  "fps": 9.066666413375636
+                },
+                {
+                  "frames": 136,
+                  "seconds": 15.000000419047673,
+                  "fps": 9.066666413375636
+                }
+              ]
+            },
+            "historical_before_surface": {
+              "release": "0.7.4",
+              "distribution_release": "0.7.4",
+              "date": "2026-09-25",
+              "status": "Scene 7 fixed-view perspective floor and caustics",
+              "rom_sha256": "3215fed7482c1893432db0b2591c1ac458e468caa1b4229a7f3ebff6e59078a7",
+              "tests_current_rom": true,
+              "tests": {
+                "cbios": {
+                  "SCENES_AND_ESCAPE": "PASS",
+                  "R20_OK": 1,
+                  "R20_SELECTED": "0x11",
+                  "FAULT": 0,
+                  "automatic_loops": 2,
+                  "controlled_time": true,
+                  "rendered_frames": 272,
+                  "pixel_results": {
+                    "stream": {
+                      "cpu": "see emulator telemetry",
+                      "wave_phases": 128,
+                      "mask_frames": 128,
+                      "frames": 264,
+                      "mismatches": [],
+                      "full_cross_product": false
+                    },
+                    "c": {
+                      "cpu": "see emulator telemetry",
+                      "wave_phases": 128,
+                      "mask_frames": 128,
+                      "frames": 264,
+                      "mismatches": [],
+                      "full_cross_product": false
+                    }
+                  }
+                },
+                "fsa1gt": {
+                  "SCENES_AND_ESCAPE": "PASS",
+                  "R20_OK": 1,
+                  "R20_SELECTED": "0x11",
+                  "FAULT": 0,
+                  "automatic_loops": 2,
+                  "controlled_time": true,
+                  "rendered_frames": 272,
+                  "pixel_results": {
+                    "stream": {
+                      "cpu": "see emulator telemetry",
+                      "wave_phases": 128,
+                      "mask_frames": 128,
+                      "frames": 264,
+                      "mismatches": [],
+                      "full_cross_product": false
+                    },
+                    "c": {
+                      "cpu": "see emulator telemetry",
+                      "wave_phases": 128,
+                      "mask_frames": 128,
+                      "frames": 264,
+                      "mismatches": [],
+                      "full_cross_product": false
+                    }
+                  }
+                }
+              },
+              "measurements": {
+                "cbios": [
+                  {
+                    "frames": 203,
+                    "seconds": 14.999998603174426,
+                    "fps": 13.533334593580525
+                  },
+                  {
+                    "frames": 203,
+                    "seconds": 14.999998603174426,
+                    "fps": 13.533334593580525
+                  },
+                  {
+                    "frames": 203,
+                    "seconds": 14.999998603174426,
+                    "fps": 13.533334593580525
+                  }
+                ],
+                "fsa1gt": [
+                  {
+                    "frames": 328,
+                    "seconds": 14.999995250793049,
+                    "fps": 21.866673589957216
+                  },
+                  {
+                    "frames": 328,
+                    "seconds": 14.999995250793049,
+                    "fps": 21.866673589957216
+                  },
+                  {
+                    "frames": 328,
+                    "seconds": 14.999995250793049,
+                    "fps": 21.866673589957216
+                  }
+                ]
+              },
+              "historical_before_perspective": {
+                "release": "0.7.4",
+                "distribution_release": "0.7.4",
+                "date": "2026-09-25",
+                "status": "Scene 7 native-pixel caustics and finer angular stones",
+                "rom_sha256": "3dbcb5a68399262169faaae4818f6fa149f4f5e2290d60f350f854782c2f8574",
+                "tests_current_rom": true,
+                "tests": {
+                  "cbios": {
+                    "SCENES_AND_ESCAPE": "PASS",
+                    "R20_OK": 1,
+                    "R20_SELECTED": "0x11",
+                    "FAULT": 0,
+                    "automatic_loops": 2,
+                    "controlled_time": true,
+                    "rendered_frames": 272,
+                    "pixel_results": {
+                      "stream": {
+                        "cpu": "see emulator telemetry",
+                        "wave_phases": 128,
+                        "mask_frames": 128,
+                        "frames": 264,
+                        "mismatches": [],
+                        "full_cross_product": false
+                      },
+                      "c": {
+                        "cpu": "see emulator telemetry",
+                        "wave_phases": 128,
+                        "mask_frames": 128,
+                        "frames": 264,
+                        "mismatches": [],
+                        "full_cross_product": false
+                      }
+                    }
+                  },
+                  "fsa1gt": {
+                    "SCENES_AND_ESCAPE": "PASS",
+                    "R20_OK": 1,
+                    "R20_SELECTED": "0x11",
+                    "FAULT": 0,
+                    "automatic_loops": 2,
+                    "controlled_time": true,
+                    "rendered_frames": 272,
+                    "pixel_results": {
+                      "stream": {
+                        "cpu": "see emulator telemetry",
+                        "wave_phases": 128,
+                        "mask_frames": 128,
+                        "frames": 264,
+                        "mismatches": [],
+                        "full_cross_product": false
+                      },
+                      "c": {
+                        "cpu": "see emulator telemetry",
+                        "wave_phases": 128,
+                        "mask_frames": 128,
+                        "frames": 264,
+                        "mismatches": [],
+                        "full_cross_product": false
+                      }
+                    }
+                  }
+                },
+                "measurements": {
+                  "cbios": [
+                    {
+                      "frames": 225,
+                      "seconds": 14.999999999999998,
+                      "fps": 15.000000000000002
+                    },
+                    {
+                      "frames": 225,
+                      "seconds": 14.999999999999998,
+                      "fps": 15.000000000000002
+                    },
+                    {
+                      "frames": 225,
+                      "seconds": 14.999999999999998,
+                      "fps": 15.000000000000002
+                    }
+                  ],
+                  "fsa1gt": [
+                    {
+                      "frames": 337,
+                      "seconds": 14.999992596824457,
+                      "fps": 22.46667775498395
+                    },
+                    {
+                      "frames": 337,
+                      "seconds": 14.999992596824457,
+                      "fps": 22.46667775498395
+                    },
+                    {
+                      "frames": 337,
+                      "seconds": 14.999992596824457,
+                      "fps": 22.46667775498395
+                    }
+                  ]
+                },
+                "historical_before_native_light": {
+                  "release": "0.7.4",
+                  "distribution_release": "0.7.4",
+                  "date": "2026-09-25",
+                  "status": "Unreleased angular-floor and connected-caustics correction",
+                  "rom_sha256": "e3f26591900de164e92c126b43b3dfba87057944c0e4bcf6cd4592862401350d",
+                  "tests_current_rom": true,
+                  "tests": {
+                    "cbios": {
+                      "SCENES_AND_ESCAPE": "PASS",
+                      "R20_OK": 1,
+                      "R20_SELECTED": "0x11",
+                      "FAULT": 0,
+                      "automatic_loops": 2,
+                      "controlled_time": true,
+                      "rendered_frames": 144,
+                      "pixel_results": {
+                        "stream": {
+                          "cpu": "see emulator telemetry",
+                          "wave_phases": 128,
+                          "mask_frames": 64,
+                          "frames": 136,
+                          "mismatches": [],
+                          "full_cross_product": false
+                        },
+                        "c": {
+                          "cpu": "see emulator telemetry",
+                          "wave_phases": 128,
+                          "mask_frames": 64,
+                          "frames": 136,
+                          "mismatches": [],
+                          "full_cross_product": false
+                        }
+                      }
+                    },
+                    "fsa1gt": {
+                      "SCENES_AND_ESCAPE": "PASS",
+                      "R20_OK": 1,
+                      "R20_SELECTED": "0x11",
+                      "FAULT": 0,
+                      "automatic_loops": 2,
+                      "controlled_time": true,
+                      "rendered_frames": 144,
+                      "pixel_results": {
+                        "stream": {
+                          "cpu": "see emulator telemetry",
+                          "wave_phases": 128,
+                          "mask_frames": 64,
+                          "frames": 136,
+                          "mismatches": [],
+                          "full_cross_product": false
+                        },
+                        "c": {
+                          "cpu": "see emulator telemetry",
+                          "wave_phases": 128,
+                          "mask_frames": 64,
+                          "frames": 136,
+                          "mismatches": [],
+                          "full_cross_product": false
+                        }
+                      }
+                    }
+                  },
+                  "measurements": {
+                    "cbios": [
+                      {
+                        "frames": 225,
+                        "seconds": 15.000002234920917,
+                        "fps": 14.999997765079415
+                      },
+                      {
+                        "frames": 225,
+                        "seconds": 15.000002234920917,
+                        "fps": 14.999997765079415
+                      },
+                      {
+                        "frames": 225,
+                        "seconds": 15.000002234920917,
+                        "fps": 14.999997765079415
+                      }
+                    ],
+                    "fsa1gt": [
+                      {
+                        "frames": 337,
+                        "seconds": 14.99999399365003,
+                        "fps": 22.46667566284778
+                      },
+                      {
+                        "frames": 337,
+                        "seconds": 14.99999399365003,
+                        "fps": 22.46667566284778
+                      },
+                      {
+                        "frames": 337,
+                        "seconds": 14.99999399365003,
+                        "fps": 22.46667566284778
+                      }
+                    ]
+                  },
+                  "historical_pre_caustic_correction": {
+                    "release": "0.7.4",
+                    "distribution_release": "0.7.4",
+                    "date": "2026-09-25",
+                    "status": "Unreleased Scene 7 visual refinement; published release unchanged",
+                    "rom_sha256": "a2e8a5f62b5facf7ae30dd5e121b3aa89aa0558556e6b33f52f20410833836cb",
+                    "tests_current_rom": true,
+                    "tests": {
+                      "cbios": {
+                        "seven_scenes_controls_headers": "PASS",
+                        "SCENES_AND_ESCAPE": "PASS",
+                        "R20_OK": 1,
+                        "R20_SELECTED": "0x11",
+                        "FAULT": 0,
+                        "shallow_pixels": {
+                          "cpu": "see emulator telemetry",
+                          "wave_phases": 128,
+                          "mask_frames": 8,
+                          "frames": 128,
+                          "mismatches": [],
+                          "full_cross_product": false
+                        },
+                        "automatic_loops": 2
+                      },
+                      "fsa1gt": {
+                        "seven_scenes_controls_headers": "PASS",
+                        "SCENES_AND_ESCAPE": "PASS",
+                        "R20_OK": 1,
+                        "R20_SELECTED": "0x11",
+                        "FAULT": 0,
+                        "shallow_pixels": {
+                          "cpu": "see emulator telemetry",
+                          "wave_phases": 128,
+                          "mask_frames": 8,
+                          "frames": 128,
+                          "mismatches": [],
+                          "full_cross_product": false
+                        },
+                        "automatic_loops": 2
+                      }
+                    },
+                    "measurements": {
+                      "before": {
+                        "cbios": {
+                          "runs": [
+                            {
+                              "frames": 300,
+                              "seconds": 14.999999161904654,
+                              "fps": 20.000001117460524
+                            },
+                            {
+                              "frames": 300,
+                              "seconds": 14.999999161904654,
+                              "fps": 20.000001117460524
+                            },
+                            {
+                              "frames": 300,
+                              "seconds": 14.999999161904654,
+                              "fps": 20.000001117460524
+                            }
+                          ],
+                          "fps": 20.000001117460524,
+                          "drawing_mean_ms": 32.6390186798605,
+                          "drawing_p95_ms": 33.50202330184455,
+                          "sync_mean_ms": 15.219867516373327
+                        },
+                        "fsa1gt": {
+                          "runs": [
+                            {
+                              "frames": 449,
+                              "seconds": 15.000002095238361,
+                              "fps": 29.933329152169364
+                            },
+                            {
+                              "frames": 449,
+                              "seconds": 15.000002095238361,
+                              "fps": 29.933329152169364
+                            },
+                            {
+                              "frames": 449,
+                              "seconds": 15.000002095238361,
+                              "fps": 29.933329152169364
+                            }
+                          ],
+                          "fps": 29.933329152169364,
+                          "drawing_mean_ms": 27.016000936272096,
+                          "drawing_p95_ms": 27.801005435046555,
+                          "sync_mean_ms": 5.330061277740197
+                        },
+                        "rom_sha256": "3ecad8e9ac1cd567265087f5102c2e7341efc892153f8daeee50628913d8f515",
+                        "rom_bytes": 1048576
+                      },
+                      "A": {
+                        "cbios": {
+                          "runs": [
+                            {
+                              "frames": 300,
+                              "seconds": 14.999999161904654,
+                              "fps": 20.000001117460524
+                            },
+                            {
+                              "frames": 300,
+                              "seconds": 14.999999161904654,
+                              "fps": 20.000001117460524
+                            },
+                            {
+                              "frames": 300,
+                              "seconds": 14.999999161904654,
+                              "fps": 20.000001117460524
+                            }
+                          ],
+                          "fps": 20.000001117460524,
+                          "drawing_mean_ms": 32.6390186798605,
+                          "drawing_p95_ms": 33.50202330184455,
+                          "sync_mean_ms": 15.219867516373327
+                        },
+                        "fsa1gt": {
+                          "runs": [
+                            {
+                              "frames": 449,
+                              "seconds": 15.000002095238361,
+                              "fps": 29.933329152169364
+                            },
+                            {
+                              "frames": 449,
+                              "seconds": 15.000002095238361,
+                              "fps": 29.933329152169364
+                            },
+                            {
+                              "frames": 449,
+                              "seconds": 15.000002095238361,
+                              "fps": 29.933329152169364
+                            }
+                          ],
+                          "fps": 29.933329152169364,
+                          "drawing_mean_ms": 27.016000936272096,
+                          "drawing_p95_ms": 27.801005435046555,
+                          "sync_mean_ms": 5.330061277740197
+                        },
+                        "rom_sha256": "60c60467c12ac5c9848d2bd9cd257cc5bdab0c08bbc22093e9fafa5973452292",
+                        "rom_bytes": 1048576
+                      },
+                      "B": {
+                        "cbios": {
+                          "runs": [
+                            {
+                              "frames": 300,
+                              "seconds": 15.000000279365114,
+                              "fps": 19.999999627513187
+                            },
+                            {
+                              "frames": 300,
+                              "seconds": 15.000000279365114,
+                              "fps": 19.999999627513187
+                            },
+                            {
+                              "frames": 300,
+                              "seconds": 15.000000279365114,
+                              "fps": 19.999999627513187
+                            }
+                          ],
+                          "fps": 19.999999627513187,
+                          "drawing_mean_ms": 33.14393328450854,
+                          "drawing_p95_ms": 34.711981550728055,
+                          "sync_mean_ms": 14.714969729691981
+                        },
+                        "fsa1gt": {
+                          "runs": [
+                            {
+                              "frames": 450,
+                              "seconds": 14.999999860317441,
+                              "fps": 30.00000027936512
+                            },
+                            {
+                              "frames": 450,
+                              "seconds": 14.999999860317441,
+                              "fps": 30.00000027936512
+                            },
+                            {
+                              "frames": 450,
+                              "seconds": 14.999999860317441,
+                              "fps": 30.00000027936512
+                            }
+                          ],
+                          "fps": 30.00000027936512,
+                          "drawing_mean_ms": 24.890270407107568,
+                          "drawing_p95_ms": 25.183843197948264,
+                          "sync_mean_ms": 7.455614677433713
+                        },
+                        "rom_sha256": "7c3179f46c7875f95bcd31ed538a4fd5fbc179ccb9b5c17141f3b5120b4bc745",
+                        "rom_bytes": 2097152
+                      },
+                      "C": {
+                        "cbios": {
+                          "runs": [
+                            {
+                              "frames": 299,
+                              "seconds": 15.00000055873023,
+                              "fps": 19.933332590842966
+                            },
+                            {
+                              "frames": 299,
+                              "seconds": 15.00000055873023,
+                              "fps": 19.933332590842966
+                            },
+                            {
+                              "frames": 299,
+                              "seconds": 15.00000055873023,
+                              "fps": 19.933332590842966
+                            }
+                          ],
+                          "fps": 19.933332590842966,
+                          "drawing_mean_ms": 40.40409376389486,
+                          "drawing_p95_ms": 41.83161547068028,
+                          "sync_mean_ms": 7.454780279759032
+                        },
+                        "fsa1gt": {
+                          "runs": [
+                            {
+                              "frames": 382,
+                              "seconds": 15.000000139682557,
+                              "fps": 25.466666429516728
+                            },
+                            {
+                              "frames": 382,
+                              "seconds": 15.000000139682557,
+                              "fps": 25.466666429516728
+                            },
+                            {
+                              "frames": 382,
+                              "seconds": 15.000000139682557,
+                              "fps": 25.466666429516728
+                            }
+                          ],
+                          "fps": 25.466666429516728,
+                          "drawing_mean_ms": 32.01025135054976,
+                          "drawing_p95_ms": 32.38232792156737,
+                          "sync_mean_ms": 6.292587759022098
+                        },
+                        "rom_sha256": "a2e8a5f62b5facf7ae30dd5e121b3aa89aa0558556e6b33f52f20410833836cb",
+                        "rom_bytes": 2097152
+                      },
+                      "conditions": {
+                        "emulator": "buppu3/openMSX 14215c7",
+                        "warmup_seconds": 5,
+                        "measure_seconds": 15,
+                        "independent_runs": 3,
+                        "timing_trace_separate": true,
+                        "recording_separate": true,
+                        "hardware_tested": false,
+                        "full_cross_product": false
+                      }
+                    },
+                    "historical_pre_refinement": {
+                      "release": "0.7.4",
+                      "distribution_release": "0.7.4",
+                      "date": "2026-09-25",
+                      "status": "Unreleased working-tree Scene 7 addition; published release unchanged",
+                      "rom_sha256": "3ecad8e9ac1cd567265087f5102c2e7341efc892153f8daeee50628913d8f515",
+                      "tests_current_rom": true,
+                      "tests": {
+                        "cbios": {
+                          "seven_scenes_controls_headers": "PASS",
+                          "SCENES_AND_ESCAPE": "PASS",
+                          "R20_OK": 1,
+                          "R20_SELECTED": "0x11",
+                          "FAULT": 0,
+                          "shallow_pixels": {
+                            "cpu": "cbios",
+                            "wave_phases": 128,
+                            "mask_frames": 8,
+                            "frames": 128,
+                            "mismatches": [],
+                            "full_cross_product": false
+                          },
+                          "automatic_loops": 2
+                        },
+                        "fsa1gt": {
+                          "seven_scenes_controls_headers": "PASS",
+                          "SCENES_AND_ESCAPE": "PASS",
+                          "R20_OK": 1,
+                          "R20_SELECTED": "0x11",
+                          "FAULT": 0,
+                          "shallow_pixels": {
+                            "cpu": "fsa1gt",
+                            "wave_phases": 128,
+                            "mask_frames": 8,
+                            "frames": 128,
+                            "mismatches": [],
+                            "full_cross_product": false
+                          },
+                          "automatic_loops": 2
+                        }
+                      },
+                      "teaser": {
+                        "file": "water-preview.gif",
+                        "rom_sha256": "3ecad8e9ac1cd567265087f5102c2e7341efc892153f8daeee50628913d8f515",
+                        "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+                        "width": 640,
+                        "height": 480,
+                        "frames": 60,
+                        "duration_ms": 3990,
+                        "loop": 0,
+                        "source": "FS-A1GT/R800 current Scene 3 capture",
+                        "capture": "PASS",
+                        "synthetic_frames": false
+                      },
+                      "external": {
+                        "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+                        "size": 1048576,
+                        "sha256": "6917bbe36373d806dd1f4fc20c37348d31758d9536c5a6f5e599f9a3aad7d9a4",
+                        "profile": "external-0x88",
+                        "vdp_base": "0x88",
+                        "build": "PASS",
+                        "hardware": "not tested"
+                      },
+                      "historical_pre_shallow": {
+                        "release": "0.7.3",
+                        "distribution_release": "0.7.4",
+                        "date": "2026-09-18",
+                        "rom_sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
+                        "status": "Final internal ROM; Windows/WSL reproducible profiles; final external hardware retest not run",
+                        "tests_current_rom": true,
+                        "tests": {
+                          "cbios": {
+                            "six_scenes_controls_headers": "PASS",
+                            "water_identity_wave": "PASS",
+                            "all_128_mesh_poses_cache_reentry": "PASS",
+                            "all_128_glow_poses_pages_0_1": "PASS",
+                            "SCENES_AND_ESCAPE": "PASS",
+                            "R20_OK": 1,
+                            "FAULT": 0,
+                            "R20_SELECTED": "0x31",
+                            "cpu": "Z80"
+                          },
+                          "fsa1gt": {
+                            "six_scenes_controls_headers": "PASS",
+                            "water_identity_wave": "PASS",
+                            "all_128_mesh_poses_cache_reentry": "PASS",
+                            "all_128_glow_poses_pages_0_1": "PASS",
+                            "SCENES_AND_ESCAPE": "PASS",
+                            "R20_OK": 1,
+                            "FAULT": 0,
+                            "R20_SELECTED": "0x31",
+                            "cpu": "R800"
+                          }
+                        },
+                        "teaser": {
+                          "file": "water-preview.gif",
+                          "rom_sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
+                          "sha256": "54e1ce1f82426aa48960491b905a12f166d1a931e06f4a349a1f13820dbf37ea",
+                          "width": 640,
+                          "height": 480,
+                          "frames": 60,
+                          "duration_ms": 3990,
+                          "loop": 0,
+                          "source": "FS-A1GT / R800; current Scene 3 emulator capture",
+                          "capture": "PASS",
+                          "synthetic_frames": false
+                        },
+                        "unverified": [
+                          "FPGA",
+                          "CStream build with new OBJ",
+                          "performance remeasurement"
+                        ],
+                        "historical_pre_obj_and_torus": {
+                          "release": "0.7.1",
+                          "status": "Torus OBJ asset payload generated; detailed openMSX records below are historical from the immediately preceding octahedron-payload ROM.",
+                          "date": "2026-09-15",
+                          "rom_sha256": "f80476bdc7499963a3cb90d1ccb76dc373a82036f8217c9ff9fc1ebd1c7f223c",
+                          "tests": {
+                            "cbios": {
+                              "cpu": "z80",
+                              "six_scenes_controls_headers": "PASS",
+                              "water_identity_and_wave": [
+                                {
+                                  "mode": "identity",
+                                  "pass": true,
+                                  "edgeFixture": false,
+                                  "mismatchedBytes": 0,
+                                  "sourceSha256": "9B91AA7A7EBD9C38D8B444BFE00D85674FEEA27EE3345D9AB0BBD3B3FAD47D4B",
+                                  "actualSha256": "9B91AA7A7EBD9C38D8B444BFE00D85674FEEA27EE3345D9AB0BBD3B3FAD47D4B"
+                                },
+                                {
+                                  "mode": "wave",
+                                  "pass": true,
+                                  "edgeFixture": true,
+                                  "mismatchedBytes": 0,
+                                  "sourceSha256": "68A4C37BC75467FC7E41A6397BD2001D070A383DCFD8CEB05D4D3D51CB48E0AD",
+                                  "actualSha256": "49C2BF961000567BC61B19FD445200D52D94AEEF954326282FC97543D005B379"
+                                }
+                              ],
+                              "work_surface": "PASS: 130 full VRAM captures; 128 poses, masked indices, cache and Scene 6 re-entry",
+                              "benchmark_modes_F_P_Esc": "PASS",
+                              "standard_V9958_COMPAT": "PASS"
+                            },
+                            "fsa1gt": {
+                              "cpu": "r800",
+                              "six_scenes_controls_headers": "PASS",
+                              "water_identity_and_wave": [
+                                {
+                                  "mode": "identity",
+                                  "pass": true,
+                                  "edgeFixture": false,
+                                  "mismatchedBytes": 0,
+                                  "sourceSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449",
+                                  "actualSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449"
+                                },
+                                {
+                                  "mode": "wave",
+                                  "pass": true,
+                                  "edgeFixture": true,
+                                  "mismatchedBytes": 0,
+                                  "sourceSha256": "EFDB3F3566CF5427E2B5D4D43ABA195FE993FA6FF3566E9EAADE7543C9F14552",
+                                  "actualSha256": "D3CA2E951850176F951F156EC01FDC888361C0250F0458CB5E5ABA9BC93B0015"
+                                }
+                              ],
+                              "work_surface": "PASS: 130 full VRAM captures; 128 poses, masked indices, cache and Scene 6 re-entry",
+                              "benchmark_modes_F_P_Esc": "PASS",
+                              "standard_V9958_COMPAT": "PASS"
+                            }
+                          },
+                          "unverified": [
+                            "physical hardware / FPGA",
+                            "audio quality",
+                            "long playback"
+                          ],
+                          "teaser": {
+                            "file": "water-preview.gif",
+                            "width": 640,
+                            "height": 480,
+                            "frames": 16,
+                            "duration_ms": 2080,
+                            "loop": 0,
+                            "source": "FS-A1GT / R800 emulator, Scene 3; recaptured after exact optimization on 2026-09-14.",
+                            "capture": "PASS",
+                            "synthetic_frames": false,
+                            "rom_sha256": "5f9577cf30c8dedbcf2ceffc70077beeabe002771726a7d944b6655d5bca8021",
+                            "sha256": "083e5b910622889ef566a33b15f82ff61b7f51aeaa15e5df839a0c4c969e4583"
+                          },
+                          "historical_0_7_0": {
+                            "release": "0.7.0",
+                            "date": "2026-09-12",
+                            "host": "Windows 10 x64 / Windows PowerShell 5.1",
+                            "emulator": "buppu3/openMSX d884c4b",
+                            "rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6",
+                            "romtype": "ASCII16",
+                            "tests": {
+                              "cbios": {
+                                "cpu": "z80",
+                                "six_scenes_controls_labels": "PASS",
+                                "water_identity_and_wave": [
+                                  {
+                                    "mode": "identity",
+                                    "pass": true,
+                                    "edgeFixture": false,
+                                    "mismatchedBytes": 0,
+                                    "sourceSha256": "6F59CF811DD8DD7781F414231D7E3FB1870EB9AA10E77FB87470DEB44FA71F43",
+                                    "actualSha256": "6F59CF811DD8DD7781F414231D7E3FB1870EB9AA10E77FB87470DEB44FA71F43"
+                                  },
+                                  {
+                                    "mode": "wave",
+                                    "pass": true,
+                                    "edgeFixture": true,
+                                    "mismatchedBytes": 0,
+                                    "sourceSha256": "2169AE4CA2A6D2EED6AC3E58F0A8C5146C48D79E570C4B6DADFB9CBE621FB32E",
+                                    "actualSha256": "397FDE092C89BDBFDA27330E23083DB136F37C43404F7510D52E84DC9B317A51"
+                                  }
+                                ],
+                                "actual_root_bat": "Carried forward from 0.6.1; the launcher scripts are unchanged in 0.7.0",
+                                "extracted_zip": {
+                                  "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
+                                  "result": {
+                                    "path_condition": "Japanese characters and spaces",
+                                    "fresh_setup": "PASS (verified download cache reused)",
+                                    "vdp_id": 3,
+                                    "actual_root_bat": "PASS: correct emulator window opened, normal close, exit 0",
+                                    "repeat_setup": "PASS: managed files verified, existing settings retained"
+                                  },
+                                  "status": "Carried forward; launcher code unchanged"
+                                },
+                                "keyboard_toggle": {
+                                  "result": "PASS",
+                                  "keys": "W (row 5, bit 4); Y is ignored",
+                                  "hold": "One toggle per press; release and re-press toggles back",
+                                  "display": "OFF body matches captured source VRAM; ON differs at completed-frame boundary",
+                                  "method": "Emulator key matrix injection, not physical keyboard input"
+                                },
+                                "water_identity_and_wave_origin_rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6"
+                              },
+                              "fsa1gt": {
+                                "cpu": "r800",
+                                "six_scenes_controls_labels": "PASS",
+                                "water_identity_and_wave": [
+                                  {
+                                    "mode": "identity",
+                                    "pass": true,
+                                    "edgeFixture": false,
+                                    "mismatchedBytes": 0,
+                                    "sourceSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449",
+                                    "actualSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449"
+                                  },
+                                  {
+                                    "mode": "wave",
+                                    "pass": true,
+                                    "edgeFixture": true,
+                                    "mismatchedBytes": 0,
+                                    "sourceSha256": "EFDB3F3566CF5427E2B5D4D43ABA195FE993FA6FF3566E9EAADE7543C9F14552",
+                                    "actualSha256": "1EDC51099C36DE3A9CFA6A4D3537B22435779CDB78A79DE86C65F2B4406AE2AD"
+                                  }
+                                ],
+                                "actual_root_bat": "Carried forward from 0.6.1; the launcher scripts are unchanged in 0.7.0",
+                                "extracted_zip": {
+                                  "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
+                                  "result": {
+                                    "path_condition": "Japanese characters and spaces",
+                                    "fresh_setup": "PASS (verified download cache reused)",
+                                    "vdp_id": 3,
+                                    "actual_root_bat": "PASS: correct emulator window opened, normal close, exit 0",
+                                    "repeat_setup": "PASS: managed files verified, existing settings retained"
+                                  },
+                                  "status": "Carried forward; launcher code unchanged"
+                                },
+                                "keyboard_toggle": {
+                                  "result": "PASS",
+                                  "keys": "W (row 5, bit 4); Y is ignored",
+                                  "hold": "One toggle per press; release and re-press toggles back",
+                                  "display": "OFF body matches captured source VRAM; ON differs at completed-frame boundary",
+                                  "method": "Emulator key matrix injection, not physical keyboard input"
+                                },
+                                "water_identity_and_wave_origin_rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6"
+                              }
+                            },
+                            "unverified": [
+                              "physical hardware",
+                              "Windows 11",
+                              "clean OS VM",
+                              "audio quality",
+                              "long playback beyond 18 minutes"
+                            ],
+                            "notes": [
+                              "All scene/control checks use emulator Tcl automation, not manual physical keyboard input.",
+                              "CPU and keyboard code are independent implementations; scene timings remain tick based.",
+                              "The demo declares -romtype ASCII16. Bank numbers stay below 256, so the same ROM also runs unchanged on ASCII16-X hardware; standard ASCII16 was chosen for wider cartridge and emulator support.",
+                              "The scene-6 sample selects the scene with key 6 rather than relying on the automatic cycle: interrupts are disabled while drawing, so the tick clock drifts behind real time by a machine-dependent amount.",
+                              "Scene 6 runs the decay trail and the recursive feedback as one scene. Its first 180 ticks deliberately draw no header, scene label or top rule; the header appears at tick 180 and stays, and the capture test samples well after that point.",
+                              "The Scene 6 opening runs a greyscale popcount palette. Indices 5 and 10 are unreachable by its decay, so the bottom rule and the active indicator keep the ordinary colours and the bottom HUD is identical to every other scene; the indicator is drawn at index 10 there rather than 15.",
+                              "Frame rate measured per scene against a build whose header is the single opaque blit it used to be. Composited strip, one blit: Scene 1 16.74 -> 16.69, Scene 3 7.77 -> 7.78, Scene 5 4.17 -> 4.16, Scene 6 15.05 -> 15.00, Scenes 2 and 4 unchanged. The earlier four-blit version, with an inverse mask for a true black shadow, cost up to 3% (Scene 1 16.25).",
+                              "Every scene draws its header onto the picture with one transparent blit from a 186x9 strip holding the drop shadow behind the text. Nothing is restored behind a header any more, Scene 3 included: its header band is part of the water distortion now. TITLE_STABLE is gone with the restored strips it checked. SCENE_LABELS is the whole header check, verifying per pixel that every non-zero pixel of the strip appears on the back page; it was confirmed to fail on a one-dot displacement in each of the four directions. WATER_HEADER_OFF/ON check that rows 0-4 match the clean source under the identity table and differ from it under the wave, the same test the body rows get.",
+                              "Bit 5 of R20 is chosen at boot rather than hard coded: r20_select() writes 0x11, runs one 1:1 LRMM between two small rectangles on page 0 and reads the destination back, adding the bit only if the transfer did not happen. On the pinned fork the read-back is 0x00 under 0x11 and 0xff under 0x31, so the probe was confirmed to discriminate in both directions; it selects 0x31 and the rendered frames are pixel-identical to the build that wrote 0x31 unconditionally, in the opening and in both LRMM phases. R20_SELECTED/R20_LIVE/R20_OK in capture.tcl assert this. The 0x11 branch exists for FPGA builds whose map uses bit 5 for flat interlace and has not been run on hardware here.",
+                              "Re-verified for 0.7.0 on the current ROM: SCENES_AND_ESCAPE=PASS with MAPPER=1 and R20_OK=1 on both C-BIOS/Z80 and FS-A1GT/R800, and test-water.ps1 PASS on both.",
+                              "The probe waits for CE in S#2 to rise and then clear before reading the destination back, rather than only checking that it is clear. On the fork the transfer is immediate so the distinction does not show, but on FPGA hardware LRMM takes real time and a read that beat CE going high would report that nothing moved and set bit 5, which that map uses for flat interlace. Raised by MSX Barcelona from testing on a MSXimus. The probe is run a second time under the byte it selected and the outcome is reported at 0xcf0a, so a wrong choice fails the capture test instead of silently costing Scene 6 its feedback. The spin count is a bound, not a guarantee that CE has been seen; the confirmation is what makes the result trustworthy.",
+                              "The Scene 6 opening magnifies the held page about 5% per frame before the decay, so the fading copies move out from under the solid rather than being redrawn over. Measured in the opening: 18.17 frames per second before, 15.96 after, on FS-A1GT/R800. The destination is cleared first because the transform is issued as a transparent copy, so destination pixels whose source is colour 0 are never written and would keep what the back page held two frames ago. An opaque copy removes the need for the clear; measured in the opening at 16.3 against 16.2 frames per second, inside the resolution of the measurement, so both halves keep the same transform.",
+                              "trail_present() was removed when the opening moved onto the capture path; it had no callers left."
+                            ],
+                            "teaser": {
+                              "file": "water-preview.gif",
+                              "width": 640,
+                              "height": 480,
+                              "frames": 16,
+                              "duration_ms": 2080,
+                              "loop": 0,
+                              "source": "FS-A1GT / R800 emulator, Scene 3. Recaptured for 0.7.0: the header is drawn onto the picture now, so the earlier capture no longer matched what the demo renders.",
+                              "capture": "PASS",
+                              "synthetic_frames": false,
+                              "rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6",
+                              "sha256": "bd3c7d7123866972277fbf1d9e6cd0a420605b7972874d8a08f442cac4853bee"
+                            },
+                            "review": {
+                              "reviewer": "Codex",
+                              "scope": "Static review of the uncommitted 0.7.0 diff, then a second pass over v9968.c as a whole, the shared benchmark assets, the public checks and the bilingual documents. No emulator runs, measurements or rebuilds.",
+                              "blocking_findings": 0,
+                              "resolution": "The Scene 6 clear is explained by the transparent LRMM and the documents were corrected; the header check now also tests that the strip is present and that the picture under it survives; the R20 probe confirms its own choice and its wait is no longer described as sufficient; validate-public.ps1 checks results.json against the shipped benchmark ROM and that BAT targets are published; package.ps1 builds under a working name. Documented errors about the LRMM step order, index 8 under the decay masks, the AND preserving brightness order, the unchanged setup tooling and the OneDrive wording were corrected."
+                            },
+                            "keyboard_regression": {
+                              "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
+                              "previous_rom_corrected_keyboard_test": "FAIL (CONTROLS=0), reproduced on C-BIOS",
+                              "current_rom": "PASS on both machines",
+                              "note": "Earlier keyboard checks injected Y and did not establish W-key behavior; superseded by these checks."
+                            }
+                          },
+                          "watchdog_fault_injection": {
+                            "result": "PASS",
+                            "method": "Emulator breakpoint forces busy status and remaining budget 1 before the hot wait AND; CF06=1 and display disabled confirmed. This validates the fault path, not hardware timeout duration."
+                          },
+                          "CStream_diagnostic": {
+                            "rom_sha256": "4047e39e2db76531789fc46c435a9dcbb59c92626f72cf0204b790dc2a163001",
+                            "test": "C-BIOS water identity/edge byte comparison PASS; default binary rebuilt afterwards."
+                          },
+                          "tests_current_rom": false,
+                          "test_results_origin_rom_sha256": "5f9577cf30c8dedbcf2ceffc70077beeabe002771726a7d944b6655d5bca8021",
+                          "current_rom_note": "The distributed ROM was rebuilt on 2026-09-15 by replacing only the banked asset payload with the default torus OBJ output. The fixed 16 KiB program bank is unchanged. The emulator test records below predate this asset swap and were not rerun in this environment."
+                        },
+                        "historical_radius74": {
+                          "rom_sha256": "6f45abc6ab83ce92549234364a2ba4b6f4b8577ddd3b3c32f28dfeef3125b7de",
+                          "tests": {
+                            "cbios": {
+                              "six_scenes_controls_headers": "PASS",
+                              "water_identity_wave": "PASS",
+                              "all_128_mesh_poses_cache_reentry": "PASS",
+                              "all_128_glow_poses_pages_0_1": "PASS"
+                            },
+                            "fsa1gt": {
+                              "six_scenes_controls_headers": "PASS",
+                              "water_identity_wave": "PASS",
+                              "all_128_mesh_poses_cache_reentry": "PASS",
+                              "all_128_glow_poses_pages_0_1": "PASS"
+                            }
+                          },
+                          "teaser": {
+                            "file": "water-preview.gif",
+                            "rom_sha256": "6f45abc6ab83ce92549234364a2ba4b6f4b8577ddd3b3c32f28dfeef3125b7de",
+                            "sha256": "ffde9c19be65bf0dfc41b7137125255d3d6ba5d2a0d48be0dfda5b7f705987f8",
+                            "width": 640,
+                            "height": 480,
+                            "frames": 60,
+                            "duration_ms": 3990,
+                            "loop": 0,
+                            "source": "FS-A1GT / R800; current Scene 3 emulator capture",
+                            "capture": "PASS",
+                            "synthetic_frames": false
+                          }
+                        },
+                        "historical_0_7_2": {
+                          "release": "0.7.2",
+                          "date": "2026-09-15",
+                          "rom_sha256": "0b51479522fc4b76cb5b396f15dbfc6b798aaa4d7210b804bcd0604960c54a83",
+                          "status": "Default octahedron radius88; both CPUs retested on 2026-09-15",
+                          "tests_current_rom": true,
+                          "tests": {
+                            "cbios": {
+                              "six_scenes_controls_headers": "PASS",
+                              "water_identity_wave": "PASS",
+                              "all_128_mesh_poses_cache_reentry": "PASS",
+                              "all_128_glow_poses_pages_0_1": "PASS"
+                            },
+                            "fsa1gt": {
+                              "six_scenes_controls_headers": "PASS",
+                              "water_identity_wave": "PASS",
+                              "all_128_mesh_poses_cache_reentry": "PASS",
+                              "all_128_glow_poses_pages_0_1": "PASS"
+                            }
+                          },
+                          "teaser": {
+                            "file": "water-preview.gif",
+                            "rom_sha256": "0b51479522fc4b76cb5b396f15dbfc6b798aaa4d7210b804bcd0604960c54a83",
+                            "sha256": "96f649b4499b4fc5fb4fcfc43701ff2ca00953c1d0a5caba6c2fb69376851176",
+                            "width": 640,
+                            "height": 480,
+                            "frames": 60,
+                            "duration_ms": 3990,
+                            "loop": 0,
+                            "source": "FS-A1GT / R800; current Scene 3 emulator capture",
+                            "capture": "PASS",
+                            "synthetic_frames": false
+                          },
+                          "unverified": [
+                            "FPGA",
+                            "CStream build with new OBJ",
+                            "performance remeasurement"
+                          ]
+                        },
+                        "external": {
+                          "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+                          "size": 1048576,
+                          "sha256": "6c96dafaf4a76e946ce70791bd55b68c386f68f61c8de3ff4ae4ceda3097848f",
+                          "profile": "external-0x88",
+                          "vdp_base": "0x88",
+                          "hardware_pre_release_retest": "NOT REQUIRED / NOT RUN",
+                          "contributor_tested_bitstream": {
+                            "commit": "ceeecd7e3c2d25c20045f797617af0f70ca228c1",
+                            "path": "fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs",
+                            "sha256": "9ba903e7929bd9a6ef4b13fc6b1b49676015af05a52d97d8fa02c143643c6511",
+                            "scope": "Contributor reports on earlier builds; not a final 0.7.3 ROM hardware PASS"
+                          }
+                        },
+                        "reproducibility": {
+                          "source_commit": "93ed3a328dd2b3bbac9f71db8f8093c32774868b",
+                          "z88dk": "26008-578fd73267-20260917",
+                          "z88dk_source_revision": "578fd732677dec9b15262bc9858092edb6973dc2",
+                          "zsdcc": "4.6.0 #16639",
+                          "windows": {
+                            "python": "3.11.9",
+                            "pillow": "12.1.1",
+                            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File demos/v9968-tech-demo/build.ps1 -Z88dk C:/z88dk"
+                          },
+                          "wsl": {
+                            "distribution": "Ubuntu 24.04",
+                            "python": "3.12.3",
+                            "pillow": "10.2.0",
+                            "command": "python3 demos/v9968-tech-demo/build.py --z88dk ~/z88dk"
+                          },
+                          "profiles": {
+                            "internal-0x98": {
+                              "size": 1048576,
+                              "sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
+                              "windows_wsl_byte_for_byte": "PASS"
+                            },
+                            "external-0x88": {
+                              "size": 1048576,
+                              "sha256": "6c96dafaf4a76e946ce70791bd55b68c386f68f61c8de3ff4ae4ceda3097848f",
+                              "windows_wsl_byte_for_byte": "PASS"
+                            }
+                          }
+                        },
+                        "test_commands": [
+                          "test.ps1 -Runtime <runtime>",
+                          "test-water.ps1 -Runtime <runtime>",
+                          "test-water-work.ps1 -Runtime <runtime>",
+                          "test-glow-stream.ps1 -Runtime <runtime>"
+                        ],
+                        "emulator": {
+                          "executable_sha256": "B5DE3932C0E486002C2CA1FB0D858AD27FC10E97BC5A6B1B277F988F7B7454B9",
+                          "configurations": [
+                            "C-BIOS / Z80",
+                            "FS-A1GT / R800"
+                          ]
+                        }
+                      },
+                      "measurements": [
+                        {
+                          "cpu": "cbios",
+                          "run": 0,
+                          "frames": 300,
+                          "seconds": 14.999999161904654,
+                          "fps": 20.000001117460524,
+                          "display_frame_ms": 49.999997206348844
+                        },
+                        {
+                          "cpu": "cbios",
+                          "run": 1,
+                          "frames": 300,
+                          "seconds": 14.999999161904654,
+                          "fps": 20.000001117460524,
+                          "display_frame_ms": 49.999997206348844
+                        },
+                        {
+                          "cpu": "cbios",
+                          "run": 2,
+                          "frames": 300,
+                          "seconds": 14.999999161904654,
+                          "fps": 20.000001117460524,
+                          "display_frame_ms": 49.999997206348844
+                        },
+                        {
+                          "cpu": "fsa1gt",
+                          "run": 0,
+                          "frames": 449,
+                          "seconds": 15.000002095238361,
+                          "fps": 29.933329152169364,
+                          "display_frame_ms": 33.40757704952865
+                        },
+                        {
+                          "cpu": "fsa1gt",
+                          "run": 1,
+                          "frames": 449,
+                          "seconds": 15.000002095238361,
+                          "fps": 29.933329152169364,
+                          "display_frame_ms": 33.40757704952865
+                        },
+                        {
+                          "cpu": "fsa1gt",
+                          "run": 2,
+                          "frames": 449,
+                          "seconds": 15.000002095238361,
+                          "fps": 29.933329152169364,
+                          "display_frame_ms": 33.40757704952865
+                        }
+                      ],
+                      "emulator": {
+                        "commit": "14215c7395649c3981fcc56733d0720acc11c1fd",
+                        "exe_sha256": "d6d451a3311528b61c928fa11420ce65979dbee7c2543ca52368bac682f53e88"
+                      },
+                      "unverified": [
+                        "FPGA/external-port runtime",
+                        "new ROM WSL reproducibility",
+                        "all combinations of wave/mask/glint clocks",
+                        "fault injection",
+                        "isolated CPU versus CE cost",
+                        "listening review of audio"
+                      ]
+                    },
+                    "external": {
+                      "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+                      "size": 2097152,
+                      "sha256": "82220bd5d592be6703347b1ddb722f353e6a2c5fc948fcb745f63cb1af7b741c",
+                      "profile": "external-0x88",
+                      "vdp_base": "0x88",
+                      "build": "PASS",
+                      "hardware": "not tested"
+                    },
+                    "teaser": {
+                      "file": "water-preview.gif",
+                      "rom_sha256": "a2e8a5f62b5facf7ae30dd5e121b3aa89aa0558556e6b33f52f20410833836cb",
+                      "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+                      "width": 640,
+                      "height": 480,
+                      "frames": 60,
+                      "duration_ms": 3990,
+                      "loop": 0,
+                      "source": "FS-A1GT/R800 current Scene 3 capture",
+                      "capture": "PASS",
+                      "synthetic_frames": false
+                    },
+                    "unverified": [
+                      "FPGA/physical hardware",
+                      "Windows/WSL reproducibility",
+                      "new CStream binary",
+                      "full Cartesian phase combinations",
+                      "fault injection/timeout",
+                      "audio listening test"
+                    ]
+                  },
+                  "c_reference_rom_sha256": "10c970ddb11a1e9061be9cce87f1e4f0c714793f85902893c597b41a08dffad7",
+                  "teaser": {
+                    "file": "water-preview.gif",
+                    "rom_sha256": "e3f26591900de164e92c126b43b3dfba87057944c0e4bcf6cd4592862401350d",
+                    "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+                    "width": 640,
+                    "height": 480,
+                    "frames": 60,
+                    "duration_ms": 3990,
+                    "loop": 0,
+                    "source": "FS-A1GT/R800 current Scene 3 capture",
+                    "capture": "PASS",
+                    "synthetic_frames": false
+                  },
+                  "external": {
+                    "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+                    "size": 2097152,
+                    "sha256": "53143bb66df0cd3dee10b7535bcecd395d8baae792d68d6a73a1fa0c553d1ac0",
+                    "profile": "external-0x88",
+                    "vdp_base": "0x88",
+                    "build": "PASS",
+                    "hardware": "not tested"
+                  },
+                  "unverified": [
+                    "physical hardware/FPGA",
+                    "full Cartesian phase combinations",
+                    "fault injection",
+                    "Windows/WSL reproducibility",
+                    "audio listening"
+                  ],
+                  "caustics": {
+                    "mask_frames": 64,
+                    "phase_ticks": 4,
+                    "record_stride": 8192,
+                    "delta_stride": 4096,
+                    "cache_bytes": 6144,
+                    "allocated_rom_bytes": 1818624,
+                    "connectivity": {
+                      "old": [
+                        {
+                          "components": 241,
+                          "tiny_components": 190,
+                          "largest": 29,
+                          "lit": 690
+                        },
+                        {
+                          "components": 243,
+                          "tiny_components": 188,
+                          "largest": 19,
+                          "lit": 694
+                        },
+                        {
+                          "components": 232,
+                          "tiny_components": 183,
+                          "largest": 36,
+                          "lit": 696
+                        },
+                        {
+                          "components": 241,
+                          "tiny_components": 189,
+                          "largest": 21,
+                          "lit": 668
+                        },
+                        {
+                          "components": 238,
+                          "tiny_components": 189,
+                          "largest": 24,
+                          "lit": 669
+                        },
+                        {
+                          "components": 233,
+                          "tiny_components": 182,
+                          "largest": 24,
+                          "lit": 661
+                        },
+                        {
+                          "components": 254,
+                          "tiny_components": 208,
+                          "largest": 16,
+                          "lit": 647
+                        },
+                        {
+                          "components": 254,
+                          "tiny_components": 207,
+                          "largest": 19,
+                          "lit": 662
+                        }
+                      ],
+                      "new": [
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1350,
+                          "lit": 1350
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1347,
+                          "lit": 1347
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1351,
+                          "lit": 1351
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1350,
+                          "lit": 1350
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1350,
+                          "lit": 1350
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1348,
+                          "lit": 1348
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1343,
+                          "lit": 1343
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1346,
+                          "lit": 1346
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1342,
+                          "lit": 1342
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1341,
+                          "lit": 1341
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1342,
+                          "lit": 1342
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1338,
+                          "lit": 1338
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1336,
+                          "lit": 1343
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1339,
+                          "lit": 1339
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1337,
+                          "lit": 1337
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1330,
+                          "lit": 1330
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1329,
+                          "lit": 1329
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1330,
+                          "lit": 1330
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1328,
+                          "lit": 1328
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1327,
+                          "lit": 1327
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1325,
+                          "lit": 1325
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1327,
+                          "lit": 1327
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1332,
+                          "lit": 1332
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1337,
+                          "lit": 1337
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1328,
+                          "lit": 1340
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1331,
+                          "lit": 1343
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1332,
+                          "lit": 1343
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1331,
+                          "lit": 1341
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1335,
+                          "lit": 1345
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1340,
+                          "lit": 1349
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1338,
+                          "lit": 1346
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1342,
+                          "lit": 1349
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1345,
+                          "lit": 1351
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1348,
+                          "lit": 1353
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1350,
+                          "lit": 1354
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 1,
+                          "largest": 1352,
+                          "lit": 1355
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 1,
+                          "largest": 1350,
+                          "lit": 1352
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 1,
+                          "largest": 1346,
+                          "lit": 1347
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1343,
+                          "lit": 1343
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1344,
+                          "lit": 1344
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1340,
+                          "lit": 1340
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1335,
+                          "lit": 1335
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 1,
+                          "largest": 1336,
+                          "lit": 1337
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 1,
+                          "largest": 1334,
+                          "lit": 1336
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 1,
+                          "largest": 1334,
+                          "lit": 1337
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1326,
+                          "lit": 1330
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1326,
+                          "lit": 1331
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1323,
+                          "lit": 1329
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1318,
+                          "lit": 1324
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1319,
+                          "lit": 1326
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1321,
+                          "lit": 1329
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1320,
+                          "lit": 1329
+                        },
+                        {
+                          "components": 2,
+                          "tiny_components": 0,
+                          "largest": 1316,
+                          "lit": 1327
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1324,
+                          "lit": 1324
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1329,
+                          "lit": 1329
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1327,
+                          "lit": 1327
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1331,
+                          "lit": 1331
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1329,
+                          "lit": 1329
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1334,
+                          "lit": 1334
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1335,
+                          "lit": 1335
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1339,
+                          "lit": 1339
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1344,
+                          "lit": 1344
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1345,
+                          "lit": 1345
+                        },
+                        {
+                          "components": 1,
+                          "tiny_components": 0,
+                          "largest": 1352,
+                          "lit": 1352
+                        }
+                      ]
+                    }
+                  }
+                },
+                "c_reference_rom_sha256": "c6761f236378910df5adf26a7ae849dd095159e51d3fc437dacc4ffcbcca9018",
+                "teaser": {
+                  "file": "water-preview.gif",
+                  "rom_sha256": "3dbcb5a68399262169faaae4818f6fa149f4f5e2290d60f350f854782c2f8574",
+                  "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+                  "width": 640,
+                  "height": 480,
+                  "frames": 60,
+                  "duration_ms": 3990,
+                  "loop": 0,
+                  "source": "FS-A1GT/R800 current Scene 3 capture",
+                  "capture": "PASS",
+                  "synthetic_frames": false
+                },
+                "external": {
+                  "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+                  "size": 4194304,
+                  "sha256": "cfe22d6b5e46fb7bac54c22aca01b24206ebb40cf017e358f8bff8cd45fe03a2",
+                  "profile": "external-0x88",
+                  "vdp_base": "0x88",
+                  "build": "PASS",
+                  "hardware": "not tested"
+                },
+                "unverified": [
+                  "physical hardware/FPGA",
+                  "full Cartesian phase combinations",
+                  "fault injection",
+                  "Windows/WSL reproducibility",
+                  "audio listening"
+                ],
+                "caustics": {
+                  "mask_frames": 128,
+                  "mask_size": [
+                    256,
+                    128
+                  ],
+                  "phase_ticks": 4,
+                  "record_stride": 16384,
+                  "delta_stride": 4096,
+                  "cache_bytes": 16384,
+                  "allocated_rom_bytes": 3653632,
+                  "mean_delta_bytes": 2738.9453125,
+                  "mean_refraction_commands": 30.265625,
+                  "refraction_row_precision": 1,
+                  "render_mode": "native-scale LMMM OR",
+                  "R14_reset_each_delta": true
+                }
+              },
+              "c_reference_rom_sha256": "52ff9c6ef755d01c9fce3fbb52c7d1a0f06053f9bbb82c5f6fc6eefc6557e561",
+              "teaser": {
+                "file": "water-preview.gif",
+                "rom_sha256": "3215fed7482c1893432db0b2591c1ac458e468caa1b4229a7f3ebff6e59078a7",
+                "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+                "width": 640,
+                "height": 480,
+                "frames": 60,
+                "duration_ms": 3990,
+                "loop": 0,
+                "source": "FS-A1GT/R800 current Scene 3 capture",
+                "capture": "PASS",
+                "synthetic_frames": false
+              },
+              "external": {
+                "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+                "size": 8388608,
+                "sha256": "e7e43ea7323d8d567f65ff7a22c1283137d84c9681eca10341f373f58282f2f2",
+                "profile": "external-0x88",
+                "vdp_base": "0x88",
+                "build": "PASS",
+                "hardware": "not tested"
+              },
+              "unverified": [
+                "physical hardware/FPGA",
+                "full Cartesian phase combinations",
+                "fault injection",
+                "Windows/WSL reproducibility",
+                "audio listening"
+              ],
+              "caustics": {
+                "mask_frames": 128,
+                "mask_size": [
+                  256,
+                  160
+                ],
+                "phase_ticks": 4,
+                "record_stride": 32768,
+                "delta_stride": 16384,
+                "cache_bytes": 20480,
+                "allocated_rom_bytes": 7323648,
+                "mean_delta_bytes": 3642.703125,
+                "mean_refraction_commands": 15.5234375,
+                "refraction_row_precision": 1,
+                "render_mode": "full projected surface, one LMMM OR",
+                "R14_reset_each_delta": true
+              }
+            },
+            "c_reference_rom_sha256": "a7ca3a9011381c0fa1aedcbef7b25a3382ff406f13bc13bb1985be665087a8de",
+            "teaser": {
+              "file": "water-preview.gif",
+              "rom_sha256": "50df3ff26adc7976d40a7709eff464688cdfa0d6ff6f1110baf69632daf0ef6d",
+              "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+              "width": 640,
+              "height": 480,
+              "frames": 60,
+              "duration_ms": 3990,
+              "loop": 0,
+              "source": "FS-A1GT/R800 current Scene 3 capture",
+              "capture": "PASS",
+              "synthetic_frames": false
+            },
+            "external": {
+              "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+              "size": 8388608,
+              "sha256": "0b3438072146f96f4528f770bbff3b94b6e1d2090c8eb88521e1b27cefa164bf",
+              "profile": "external-0x88",
+              "vdp_base": "0x88",
+              "build": "PASS",
+              "hardware": "not tested"
+            },
+            "unverified": [
+              "physical hardware/FPGA",
+              "full Cartesian phase combinations",
+              "all sprite phases in RGB screenshots",
+              "fault injection",
+              "Windows/WSL reproducibility",
+              "audio listening"
+            ],
+            "caustics": {
+              "mask_frames": 128,
+              "mask_size": [
+                256,
+                160
+              ],
+              "phase_ticks": 4,
+              "key_frames": 16,
+              "key_step": 8,
+              "delta_distances": [
+                1,
+                2,
+                3
+              ],
+              "delta_stride": 16384,
+              "cache_bytes": 20480,
+              "allocated_rom_bytes": 7897088,
+              "render_mode": "four floor tones and four light levels, LMMM OR",
+              "surface_mode": "Sprite mode3 RGB5 transparency",
+              "surface_sprites": 24,
+              "surface_patterns_bytes": 2048
+            },
+            "scene1_to_6_asset_banks_1_to_58_unchanged": true
+          },
+          "c_reference_rom_sha256": "4b318430f84feba3a483b394c4ddea652c4f3dff1cb66f752b0d7445afd40802",
+          "teaser": {
+            "file": "water-preview.gif",
+            "rom_sha256": "c9eaa7fe0710dcde614d84f2f0727e94bc7ee4cfdab3cfe51dcd25991ac3c2f8",
+            "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+            "width": 640,
+            "height": 480,
+            "frames": 60,
+            "duration_ms": 3990,
+            "loop": 0,
+            "source": "FS-A1GT/R800 current Scene 3 capture",
+            "capture": "PASS",
+            "synthetic_frames": false
+          },
+          "external": {
+            "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+            "size": 8388608,
+            "sha256": "4be12f7a44fbe46be77bf19de681467b680641026b3f4fdeb9457481f19e383b",
+            "profile": "external-0x88",
+            "vdp_base": "0x88",
+            "build": "PASS",
+            "hardware": "not tested"
+          },
+          "unverified": [
+            "physical hardware/FPGA",
+            "full Cartesian phase combinations",
+            "all sprite phases in RGB screenshots",
+            "fault injection",
+            "Windows/WSL reproducibility",
+            "audio listening"
+          ],
+          "caustics": {
+            "mask_frames": 128,
+            "mask_size": [
+              256,
+              160
+            ],
+            "phase_ticks": 4,
+            "key_frames": 16,
+            "key_step": 8,
+            "delta_distances": [
+              1,
+              2,
+              3
+            ],
+            "delta_stride": 16384,
+            "cache_bytes": 20480,
+            "allocated_rom_bytes": 7929856,
+            "render_mode": "four floor tones and four light levels, LMMM OR",
+            "surface_mode": "Sprite mode3 RGB5 transparency",
+            "surface_sprites": 40,
+            "surface_patterns_bytes": 2048
+          },
+          "scene1_to_6_asset_banks_1_to_58_unchanged": true
+        },
+        "c_reference_rom_sha256": "b17c79cc6b95b04ba986a85480c4a7bc2a1d7e8e5162703d793a500146a621e6",
+        "teaser": {
+          "file": "water-preview.gif",
+          "rom_sha256": "15073e47d6a5fceb900e5ae918679b68077de6b683eabbaa5c5faf49a82f742d",
+          "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+          "width": 640,
+          "height": 480,
+          "frames": 60,
+          "duration_ms": 3990,
+          "loop": 0,
+          "source": "FS-A1GT/R800 current Scene 3 capture",
+          "capture": "PASS",
+          "synthetic_frames": false
+        },
+        "external": {
+          "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+          "size": 8388608,
+          "sha256": "da58dc6abd2b022a395bc24512b7f292a95f40fa17851a4ccaf3380402eef757",
+          "profile": "external-0x88",
+          "vdp_base": "0x88",
+          "build": "PASS",
+          "hardware": "not tested"
+        },
+        "unverified": [
+          "physical hardware/FPGA",
+          "full Cartesian phase combinations",
+          "all sprite phases in RGB screenshots",
+          "fault injection",
+          "Windows/WSL reproducibility",
+          "audio listening"
+        ],
+        "wave_reflections": {
+          "phases": 128,
+          "sprites": 40,
+          "ribbons": 8,
+          "segments_per_ribbon": 4,
+          "cores": 8,
+          "max_planes_per_scanline": 5,
+          "opacity_values": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "max_adjacent_position_step": 4,
+          "pattern_bytes": 2048,
+          "attribute_bytes": 65536,
+          "wrap_included": true,
+          "all_cartesian_combinations": false
+        },
+        "caustics": {
+          "mask_frames": 128,
+          "mask_size": [
+            256,
+            160
+          ],
+          "phase_ticks": 4,
+          "key_frames": 16,
+          "key_step": 8,
+          "delta_distances": [
+            1,
+            2,
+            3
+          ],
+          "delta_stride": 16384,
+          "cache_bytes": 20480,
+          "allocated_rom_bytes": 7929856,
+          "render_mode": "four floor tones and four light levels, LMMM OR",
+          "surface_mode": "Sprite mode3 RGB5 transparency",
+          "surface_sprites": 40,
+          "surface_patterns_bytes": 2048,
+          "reflection_ribbons": 8,
+          "white_glints": 8
+        },
+        "scene1_to_6_asset_banks_1_to_58_unchanged": true
+      },
+      "c_reference_rom_sha256": "1bf57278d619e5779cf724344c26a14b08c595f1614bad2af2b1bb67e2e54c2c",
+      "teaser": {
+        "file": "water-preview.gif",
+        "rom_sha256": "d1ec2dc715fb8296d81d7e8246a3afdef3ee07e254749364d2ac940b151ca411",
+        "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+        "width": 640,
+        "height": 480,
+        "frames": 60,
+        "duration_ms": 3990,
+        "loop": 0,
+        "source": "FS-A1GT/R800 current Scene 3 capture",
+        "capture": "PASS",
+        "synthetic_frames": false
+      },
+      "external": {
+        "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+        "size": 8388608,
+        "sha256": "ea595cd376993b5fc7cd9884b481af92cbb3ac7f7b7ae52189eb14d373401bb4",
+        "profile": "external-0x88",
+        "vdp_base": "0x88",
+        "build": "PASS",
+        "hardware": "not tested"
+      },
+      "unverified": [
+        "physical hardware/FPGA",
+        "full Cartesian phase combinations",
+        "all sprite phases in RGB screenshots",
+        "fault injection",
+        "Windows/WSL reproducibility",
+        "audio listening"
+      ],
+      "wave_reflections": {
+        "phases": 128,
+        "sprites": 52,
+        "sparkles": 12,
+        "max_planes_per_scanline": 8,
+        "max_adjacent_position_step": 4,
+        "old_40_sprites_byte_identical": true,
+        "pattern_bytes": 4096,
+        "attribute_bytes": 65536,
+        "white_pixels_per_phase": [
+          40,
+          40,
+          36,
+          28,
+          32,
+          40,
+          40,
+          39,
+          39,
+          39,
+          39,
+          38,
+          38,
+          38,
+          37,
+          33,
+          32,
+          34,
+          31,
+          30,
+          34,
+          41,
+          41,
+          43,
+          53,
+          63,
+          70,
+          66,
+          63,
+          73,
+          76,
+          84,
+          78,
+          74,
+          73,
+          67,
+          68,
+          68,
+          65,
+          57,
+          49,
+          50,
+          50,
+          52,
+          62,
+          63,
+          77,
+          79,
+          85,
+          87,
+          99,
+          102,
+          102,
+          102,
+          97,
+          98,
+          95,
+          86,
+          85,
+          75,
+          73,
+          64,
+          63,
+          61,
+          60,
+          56,
+          59,
+          60,
+          64,
+          74,
+          88,
+          90,
+          100,
+          100,
+          109,
+          107,
+          106,
+          105,
+          96,
+          93,
+          91,
+          81,
+          77,
+          71,
+          66,
+          66,
+          60,
+          56,
+          55,
+          55,
+          50,
+          50,
+          52,
+          52,
+          53,
+          53,
+          52,
+          51,
+          54,
+          52,
+          58,
+          58,
+          56,
+          50,
+          43,
+          48,
+          48,
+          42,
+          41,
+          41,
+          41,
+          48,
+          51,
+          49,
+          52,
+          52,
+          55,
+          56,
+          56,
+          56,
+          57,
+          57,
+          57,
+          57,
+          53,
+          52,
+          46,
+          42
+        ],
+        "wrap_included": true,
+        "full_cross_product": false
+      },
+      "caustics": {
+        "mask_frames": 128,
+        "mask_size": [
+          256,
+          160
+        ],
+        "phase_ticks": 4,
+        "key_frames": 16,
+        "key_step": 8,
+        "delta_distances": [
+          1,
+          2,
+          3
+        ],
+        "delta_stride": 16384,
+        "cache_bytes": 20480,
+        "allocated_rom_bytes": 7929856,
+        "render_mode": "four floor tones and four light levels, LMMM OR",
+        "surface_mode": "Sprite mode3 RGB5 transparency",
+        "surface_sprites": 52,
+        "surface_patterns_bytes": 4096,
+        "reflection_ribbons": 8,
+        "white_glints": 8,
+        "sparkles": 12
+      },
+      "scene1_to_6_asset_banks_1_to_58_unchanged": true
+    },
+    "c_reference_rom_sha256": "ee46b0c54f2bd12fa2ab971ba86e3216540348527b891eedeb8a856aa63acc18",
+    "teaser": {
+      "file": "water-preview.gif",
+      "rom_sha256": "bdd611eb4f7a44ab0dcf82da102d61c018ea52d384b05f8097b7443a11dcf34a",
+      "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
+      "width": 640,
+      "height": 480,
+      "frames": 60,
+      "duration_ms": 3990,
+      "loop": 0,
+      "source": "FS-A1GT/R800 current Scene 3 capture",
+      "capture": "PASS",
+      "synthetic_frames": false
+    },
+    "external": {
+      "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
+      "size": 8388608,
+      "sha256": "dc576ffaa17d1deb132ff8850e67833d92cad3e18812fb606ad0d39c3f6c3590",
+      "profile": "external-0x88",
+      "vdp_base": "0x88",
+      "build": "PASS",
+      "hardware": "not tested"
+    },
+    "unverified": [
+      "physical hardware/FPGA",
+      "full Cartesian phase combinations",
+      "all sprite phases in RGB screenshots",
+      "fault injection",
+      "Windows/WSL reproducibility",
+      "audio listening"
+    ],
+    "wave_reflections": {
+      "phases": 128,
+      "sprites": 52,
+      "central_segments": 12,
+      "glare_x_bounds": [
+        110,
+        153
+      ],
+      "max_planes_per_scanline": 10,
+      "max_adjacent_position_step": 4,
+      "glare_transparency": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "inverse_flow_residual": 9.784077770191857e-09,
+      "pattern_bytes": 4096,
+      "attribute_bytes": 65536,
+      "wrap_included": true,
+      "full_cross_product": false
+    },
+    "caustics": {
+      "mask_frames": 128,
+      "mask_size": [
+        256,
+        160
+      ],
+      "phase_ticks": 4,
+      "key_frames": 16,
+      "key_step": 8,
+      "delta_distances": [
+        1,
+        2,
+        3
+      ],
+      "delta_stride": 16384,
+      "cache_bytes": 20480,
+      "allocated_rom_bytes": 7929856,
+      "render_mode": "four floor tones and four light levels, LMMM OR",
+      "surface_mode": "Sprite mode3 RGB5 transparency",
+      "surface_sprites": 52,
+      "surface_patterns_bytes": 4096,
+      "reflection_ribbons": 8,
+      "white_glints": 8,
+      "central_glare_segments": 12
+    },
+    "scene1_to_6_asset_banks_1_to_58_unchanged": true
+  },
+  "c_reference_rom_sha256": "2d04393b9a979d01972be4f8c2bd18ca63666c074f798175f36b6c7922dedd96",
   "teaser": {
     "file": "water-preview.gif",
-    "rom_sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
-    "sha256": "54e1ce1f82426aa48960491b905a12f166d1a931e06f4a349a1f13820dbf37ea",
+    "rom_sha256": "4a46c20e3a58572ae350fc81c5decad07797a4fe26fd1d6b0b6fc6d3f1ed3499",
+    "sha256": "90bd522c86218512de07889ab98e164e7e42f7c60310d2ec6af9f4a044317306",
     "width": 640,
     "height": 480,
     "frames": 60,
     "duration_ms": 3990,
     "loop": 0,
-    "source": "FS-A1GT / R800; current Scene 3 emulator capture",
+    "source": "FS-A1GT/R800 current Scene 3 capture",
     "capture": "PASS",
     "synthetic_frames": false
   },
-  "unverified": [
-    "FPGA",
-    "CStream build with new OBJ",
-    "performance remeasurement"
-  ],
-  "historical_pre_obj_and_torus": {
-    "release": "0.7.1",
-    "status": "Torus OBJ asset payload generated; detailed openMSX records below are historical from the immediately preceding octahedron-payload ROM.",
-    "date": "2026-09-15",
-    "rom_sha256": "f80476bdc7499963a3cb90d1ccb76dc373a82036f8217c9ff9fc1ebd1c7f223c",
-    "tests": {
-      "cbios": {
-        "cpu": "z80",
-        "six_scenes_controls_headers": "PASS",
-        "water_identity_and_wave": [
-          {
-            "mode": "identity",
-            "pass": true,
-            "edgeFixture": false,
-            "mismatchedBytes": 0,
-            "sourceSha256": "9B91AA7A7EBD9C38D8B444BFE00D85674FEEA27EE3345D9AB0BBD3B3FAD47D4B",
-            "actualSha256": "9B91AA7A7EBD9C38D8B444BFE00D85674FEEA27EE3345D9AB0BBD3B3FAD47D4B"
-          },
-          {
-            "mode": "wave",
-            "pass": true,
-            "edgeFixture": true,
-            "mismatchedBytes": 0,
-            "sourceSha256": "68A4C37BC75467FC7E41A6397BD2001D070A383DCFD8CEB05D4D3D51CB48E0AD",
-            "actualSha256": "49C2BF961000567BC61B19FD445200D52D94AEEF954326282FC97543D005B379"
-          }
-        ],
-        "work_surface": "PASS: 130 full VRAM captures; 128 poses, masked indices, cache and Scene 6 re-entry",
-        "benchmark_modes_F_P_Esc": "PASS",
-        "standard_V9958_COMPAT": "PASS"
-      },
-      "fsa1gt": {
-        "cpu": "r800",
-        "six_scenes_controls_headers": "PASS",
-        "water_identity_and_wave": [
-          {
-            "mode": "identity",
-            "pass": true,
-            "edgeFixture": false,
-            "mismatchedBytes": 0,
-            "sourceSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449",
-            "actualSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449"
-          },
-          {
-            "mode": "wave",
-            "pass": true,
-            "edgeFixture": true,
-            "mismatchedBytes": 0,
-            "sourceSha256": "EFDB3F3566CF5427E2B5D4D43ABA195FE993FA6FF3566E9EAADE7543C9F14552",
-            "actualSha256": "D3CA2E951850176F951F156EC01FDC888361C0250F0458CB5E5ABA9BC93B0015"
-          }
-        ],
-        "work_surface": "PASS: 130 full VRAM captures; 128 poses, masked indices, cache and Scene 6 re-entry",
-        "benchmark_modes_F_P_Esc": "PASS",
-        "standard_V9958_COMPAT": "PASS"
-      }
-    },
-    "unverified": [
-      "physical hardware / FPGA",
-      "audio quality",
-      "long playback"
-    ],
-    "teaser": {
-      "file": "water-preview.gif",
-      "width": 640,
-      "height": 480,
-      "frames": 16,
-      "duration_ms": 2080,
-      "loop": 0,
-      "source": "FS-A1GT / R800 emulator, Scene 3; recaptured after exact optimization on 2026-09-14.",
-      "capture": "PASS",
-      "synthetic_frames": false,
-      "rom_sha256": "5f9577cf30c8dedbcf2ceffc70077beeabe002771726a7d944b6655d5bca8021",
-      "sha256": "083e5b910622889ef566a33b15f82ff61b7f51aeaa15e5df839a0c4c969e4583"
-    },
-    "historical_0_7_0": {
-      "release": "0.7.0",
-      "date": "2026-09-12",
-      "host": "Windows 10 x64 / Windows PowerShell 5.1",
-      "emulator": "buppu3/openMSX d884c4b",
-      "rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6",
-      "romtype": "ASCII16",
-      "tests": {
-        "cbios": {
-          "cpu": "z80",
-          "six_scenes_controls_labels": "PASS",
-          "water_identity_and_wave": [
-            {
-              "mode": "identity",
-              "pass": true,
-              "edgeFixture": false,
-              "mismatchedBytes": 0,
-              "sourceSha256": "6F59CF811DD8DD7781F414231D7E3FB1870EB9AA10E77FB87470DEB44FA71F43",
-              "actualSha256": "6F59CF811DD8DD7781F414231D7E3FB1870EB9AA10E77FB87470DEB44FA71F43"
-            },
-            {
-              "mode": "wave",
-              "pass": true,
-              "edgeFixture": true,
-              "mismatchedBytes": 0,
-              "sourceSha256": "2169AE4CA2A6D2EED6AC3E58F0A8C5146C48D79E570C4B6DADFB9CBE621FB32E",
-              "actualSha256": "397FDE092C89BDBFDA27330E23083DB136F37C43404F7510D52E84DC9B317A51"
-            }
-          ],
-          "actual_root_bat": "Carried forward from 0.6.1; the launcher scripts are unchanged in 0.7.0",
-          "extracted_zip": {
-            "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
-            "result": {
-              "path_condition": "Japanese characters and spaces",
-              "fresh_setup": "PASS (verified download cache reused)",
-              "vdp_id": 3,
-              "actual_root_bat": "PASS: correct emulator window opened, normal close, exit 0",
-              "repeat_setup": "PASS: managed files verified, existing settings retained"
-            },
-            "status": "Carried forward; launcher code unchanged"
-          },
-          "keyboard_toggle": {
-            "result": "PASS",
-            "keys": "W (row 5, bit 4); Y is ignored",
-            "hold": "One toggle per press; release and re-press toggles back",
-            "display": "OFF body matches captured source VRAM; ON differs at completed-frame boundary",
-            "method": "Emulator key matrix injection, not physical keyboard input"
-          },
-          "water_identity_and_wave_origin_rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6"
-        },
-        "fsa1gt": {
-          "cpu": "r800",
-          "six_scenes_controls_labels": "PASS",
-          "water_identity_and_wave": [
-            {
-              "mode": "identity",
-              "pass": true,
-              "edgeFixture": false,
-              "mismatchedBytes": 0,
-              "sourceSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449",
-              "actualSha256": "690340E106FA6BAD6DE92C2A7D32E121C8AE338BA5A9569ABF1432C628DF9449"
-            },
-            {
-              "mode": "wave",
-              "pass": true,
-              "edgeFixture": true,
-              "mismatchedBytes": 0,
-              "sourceSha256": "EFDB3F3566CF5427E2B5D4D43ABA195FE993FA6FF3566E9EAADE7543C9F14552",
-              "actualSha256": "1EDC51099C36DE3A9CFA6A4D3537B22435779CDB78A79DE86C65F2B4406AE2AD"
-            }
-          ],
-          "actual_root_bat": "Carried forward from 0.6.1; the launcher scripts are unchanged in 0.7.0",
-          "extracted_zip": {
-            "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
-            "result": {
-              "path_condition": "Japanese characters and spaces",
-              "fresh_setup": "PASS (verified download cache reused)",
-              "vdp_id": 3,
-              "actual_root_bat": "PASS: correct emulator window opened, normal close, exit 0",
-              "repeat_setup": "PASS: managed files verified, existing settings retained"
-            },
-            "status": "Carried forward; launcher code unchanged"
-          },
-          "keyboard_toggle": {
-            "result": "PASS",
-            "keys": "W (row 5, bit 4); Y is ignored",
-            "hold": "One toggle per press; release and re-press toggles back",
-            "display": "OFF body matches captured source VRAM; ON differs at completed-frame boundary",
-            "method": "Emulator key matrix injection, not physical keyboard input"
-          },
-          "water_identity_and_wave_origin_rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6"
-        }
-      },
-      "unverified": [
-        "physical hardware",
-        "Windows 11",
-        "clean OS VM",
-        "audio quality",
-        "long playback beyond 18 minutes"
-      ],
-      "notes": [
-        "All scene/control checks use emulator Tcl automation, not manual physical keyboard input.",
-        "CPU and keyboard code are independent implementations; scene timings remain tick based.",
-        "The demo declares -romtype ASCII16. Bank numbers stay below 256, so the same ROM also runs unchanged on ASCII16-X hardware; standard ASCII16 was chosen for wider cartridge and emulator support.",
-        "The scene-6 sample selects the scene with key 6 rather than relying on the automatic cycle: interrupts are disabled while drawing, so the tick clock drifts behind real time by a machine-dependent amount.",
-        "Scene 6 runs the decay trail and the recursive feedback as one scene. Its first 180 ticks deliberately draw no header, scene label or top rule; the header appears at tick 180 and stays, and the capture test samples well after that point.",
-        "The Scene 6 opening runs a greyscale popcount palette. Indices 5 and 10 are unreachable by its decay, so the bottom rule and the active indicator keep the ordinary colours and the bottom HUD is identical to every other scene; the indicator is drawn at index 10 there rather than 15.",
-        "Frame rate measured per scene against a build whose header is the single opaque blit it used to be. Composited strip, one blit: Scene 1 16.74 -> 16.69, Scene 3 7.77 -> 7.78, Scene 5 4.17 -> 4.16, Scene 6 15.05 -> 15.00, Scenes 2 and 4 unchanged. The earlier four-blit version, with an inverse mask for a true black shadow, cost up to 3% (Scene 1 16.25).",
-        "Every scene draws its header onto the picture with one transparent blit from a 186x9 strip holding the drop shadow behind the text. Nothing is restored behind a header any more, Scene 3 included: its header band is part of the water distortion now. TITLE_STABLE is gone with the restored strips it checked. SCENE_LABELS is the whole header check, verifying per pixel that every non-zero pixel of the strip appears on the back page; it was confirmed to fail on a one-dot displacement in each of the four directions. WATER_HEADER_OFF/ON check that rows 0-4 match the clean source under the identity table and differ from it under the wave, the same test the body rows get.",
-        "Bit 5 of R20 is chosen at boot rather than hard coded: r20_select() writes 0x11, runs one 1:1 LRMM between two small rectangles on page 0 and reads the destination back, adding the bit only if the transfer did not happen. On the pinned fork the read-back is 0x00 under 0x11 and 0xff under 0x31, so the probe was confirmed to discriminate in both directions; it selects 0x31 and the rendered frames are pixel-identical to the build that wrote 0x31 unconditionally, in the opening and in both LRMM phases. R20_SELECTED/R20_LIVE/R20_OK in capture.tcl assert this. The 0x11 branch exists for FPGA builds whose map uses bit 5 for flat interlace and has not been run on hardware here.",
-        "Re-verified for 0.7.0 on the current ROM: SCENES_AND_ESCAPE=PASS with MAPPER=1 and R20_OK=1 on both C-BIOS/Z80 and FS-A1GT/R800, and test-water.ps1 PASS on both.",
-        "The probe waits for CE in S#2 to rise and then clear before reading the destination back, rather than only checking that it is clear. On the fork the transfer is immediate so the distinction does not show, but on FPGA hardware LRMM takes real time and a read that beat CE going high would report that nothing moved and set bit 5, which that map uses for flat interlace. Raised by MSX Barcelona from testing on a MSXimus. The probe is run a second time under the byte it selected and the outcome is reported at 0xcf0a, so a wrong choice fails the capture test instead of silently costing Scene 6 its feedback. The spin count is a bound, not a guarantee that CE has been seen; the confirmation is what makes the result trustworthy.",
-        "The Scene 6 opening magnifies the held page about 5% per frame before the decay, so the fading copies move out from under the solid rather than being redrawn over. Measured in the opening: 18.17 frames per second before, 15.96 after, on FS-A1GT/R800. The destination is cleared first because the transform is issued as a transparent copy, so destination pixels whose source is colour 0 are never written and would keep what the back page held two frames ago. An opaque copy removes the need for the clear; measured in the opening at 16.3 against 16.2 frames per second, inside the resolution of the measurement, so both halves keep the same transform.",
-        "trail_present() was removed when the opening moved onto the capture path; it had no callers left."
-      ],
-      "teaser": {
-        "file": "water-preview.gif",
-        "width": 640,
-        "height": 480,
-        "frames": 16,
-        "duration_ms": 2080,
-        "loop": 0,
-        "source": "FS-A1GT / R800 emulator, Scene 3. Recaptured for 0.7.0: the header is drawn onto the picture now, so the earlier capture no longer matched what the demo renders.",
-        "capture": "PASS",
-        "synthetic_frames": false,
-        "rom_sha256": "3ccfb3935ace118847855594754205fc6e471470a1aef682243b330107746bc6",
-        "sha256": "bd3c7d7123866972277fbf1d9e6cd0a420605b7972874d8a08f442cac4853bee"
-      },
-      "review": {
-        "reviewer": "Codex",
-        "scope": "Static review of the uncommitted 0.7.0 diff, then a second pass over v9968.c as a whole, the shared benchmark assets, the public checks and the bilingual documents. No emulator runs, measurements or rebuilds.",
-        "blocking_findings": 0,
-        "resolution": "The Scene 6 clear is explained by the transparent LRMM and the documents were corrected; the header check now also tests that the strip is present and that the picture under it survives; the R20 probe confirms its own choice and its wait is no longer described as sufficient; validate-public.ps1 checks results.json against the shipped benchmark ROM and that BAT targets are published; package.ps1 builds under a working name. Documented errors about the LRMM step order, index 8 under the decay masks, the AND preserving brightness order, the unchanged setup tooling and the OneDrive wording were corrected."
-      },
-      "keyboard_regression": {
-        "previous_rom_sha256": "6db244509d3bb5dce9da8f0b7ffea66b86fe2139031058070829639e602e572e",
-        "previous_rom_corrected_keyboard_test": "FAIL (CONTROLS=0), reproduced on C-BIOS",
-        "current_rom": "PASS on both machines",
-        "note": "Earlier keyboard checks injected Y and did not establish W-key behavior; superseded by these checks."
-      }
-    },
-    "watchdog_fault_injection": {
-      "result": "PASS",
-      "method": "Emulator breakpoint forces busy status and remaining budget 1 before the hot wait AND; CF06=1 and display disabled confirmed. This validates the fault path, not hardware timeout duration."
-    },
-    "CStream_diagnostic": {
-      "rom_sha256": "4047e39e2db76531789fc46c435a9dcbb59c92626f72cf0204b790dc2a163001",
-      "test": "C-BIOS water identity/edge byte comparison PASS; default binary rebuilt afterwards."
-    },
-    "tests_current_rom": false,
-    "test_results_origin_rom_sha256": "5f9577cf30c8dedbcf2ceffc70077beeabe002771726a7d944b6655d5bca8021",
-    "current_rom_note": "The distributed ROM was rebuilt on 2026-09-15 by replacing only the banked asset payload with the default torus OBJ output. The fixed 16 KiB program bank is unchanged. The emulator test records below predate this asset swap and were not rerun in this environment."
-  },
-  "historical_radius74": {
-    "rom_sha256": "6f45abc6ab83ce92549234364a2ba4b6f4b8577ddd3b3c32f28dfeef3125b7de",
-    "tests": {
-      "cbios": {
-        "six_scenes_controls_headers": "PASS",
-        "water_identity_wave": "PASS",
-        "all_128_mesh_poses_cache_reentry": "PASS",
-        "all_128_glow_poses_pages_0_1": "PASS"
-      },
-      "fsa1gt": {
-        "six_scenes_controls_headers": "PASS",
-        "water_identity_wave": "PASS",
-        "all_128_mesh_poses_cache_reentry": "PASS",
-        "all_128_glow_poses_pages_0_1": "PASS"
-      }
-    },
-    "teaser": {
-      "file": "water-preview.gif",
-      "rom_sha256": "6f45abc6ab83ce92549234364a2ba4b6f4b8577ddd3b3c32f28dfeef3125b7de",
-      "sha256": "ffde9c19be65bf0dfc41b7137125255d3d6ba5d2a0d48be0dfda5b7f705987f8",
-      "width": 640,
-      "height": 480,
-      "frames": 60,
-      "duration_ms": 3990,
-      "loop": 0,
-      "source": "FS-A1GT / R800; current Scene 3 emulator capture",
-      "capture": "PASS",
-      "synthetic_frames": false
-    }
-  },
-  "historical_0_7_2": {
-    "release": "0.7.2",
-    "date": "2026-09-15",
-    "rom_sha256": "0b51479522fc4b76cb5b396f15dbfc6b798aaa4d7210b804bcd0604960c54a83",
-    "status": "Default octahedron radius88; both CPUs retested on 2026-09-15",
-    "tests_current_rom": true,
-    "tests": {
-      "cbios": {
-        "six_scenes_controls_headers": "PASS",
-        "water_identity_wave": "PASS",
-        "all_128_mesh_poses_cache_reentry": "PASS",
-        "all_128_glow_poses_pages_0_1": "PASS"
-      },
-      "fsa1gt": {
-        "six_scenes_controls_headers": "PASS",
-        "water_identity_wave": "PASS",
-        "all_128_mesh_poses_cache_reentry": "PASS",
-        "all_128_glow_poses_pages_0_1": "PASS"
-      }
-    },
-    "teaser": {
-      "file": "water-preview.gif",
-      "rom_sha256": "0b51479522fc4b76cb5b396f15dbfc6b798aaa4d7210b804bcd0604960c54a83",
-      "sha256": "96f649b4499b4fc5fb4fcfc43701ff2ca00953c1d0a5caba6c2fb69376851176",
-      "width": 640,
-      "height": 480,
-      "frames": 60,
-      "duration_ms": 3990,
-      "loop": 0,
-      "source": "FS-A1GT / R800; current Scene 3 emulator capture",
-      "capture": "PASS",
-      "synthetic_frames": false
-    },
-    "unverified": [
-      "FPGA",
-      "CStream build with new OBJ",
-      "performance remeasurement"
-    ]
-  },
   "external": {
     "file": "demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom",
-    "size": 1048576,
-    "sha256": "6c96dafaf4a76e946ce70791bd55b68c386f68f61c8de3ff4ae4ceda3097848f",
+    "size": 8388608,
+    "sha256": "50c94bcbf98fbcc1b0646ef22135a40c6adfbeaf1f99b08c120c2942b04a5dfb",
     "profile": "external-0x88",
     "vdp_base": "0x88",
-    "hardware_pre_release_retest": "NOT REQUIRED / NOT RUN",
-    "contributor_tested_bitstream": {
-      "commit": "ceeecd7e3c2d25c20045f797617af0f70ca228c1",
-      "path": "fpga/V9968_Cartridge_TangNano20K/impl/pnr/tangnano20k_vdp_cartridge.fs",
-      "sha256": "9ba903e7929bd9a6ef4b13fc6b1b49676015af05a52d97d8fa02c143643c6511",
-      "scope": "Contributor reports on earlier builds; not a final 0.7.3 ROM hardware PASS"
-    }
+    "build": "PASS",
+    "hardware": "not tested"
   },
-  "reproducibility": {
-    "source_commit": "93ed3a328dd2b3bbac9f71db8f8093c32774868b",
-    "z88dk": "26008-578fd73267-20260917",
-    "z88dk_source_revision": "578fd732677dec9b15262bc9858092edb6973dc2",
-    "zsdcc": "4.6.0 #16639",
-    "windows": {
-      "python": "3.11.9",
-      "pillow": "12.1.1",
-      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File demos/v9968-tech-demo/build.ps1 -Z88dk C:/z88dk"
-    },
-    "wsl": {
-      "distribution": "Ubuntu 24.04",
-      "python": "3.12.3",
-      "pillow": "10.2.0",
-      "command": "python3 demos/v9968-tech-demo/build.py --z88dk ~/z88dk"
-    },
-    "profiles": {
-      "internal-0x98": {
-        "size": 1048576,
-        "sha256": "c5907d189aaa4e04909f7a8575fba6fc4e852cf7fa9fa08c9a92f8b6735aebfa",
-        "windows_wsl_byte_for_byte": "PASS"
-      },
-      "external-0x88": {
-        "size": 1048576,
-        "sha256": "6c96dafaf4a76e946ce70791bd55b68c386f68f61c8de3ff4ae4ceda3097848f",
-        "windows_wsl_byte_for_byte": "PASS"
-      }
-    }
-  },
-  "test_commands": [
-    "test.ps1 -Runtime <runtime>",
-    "test-water.ps1 -Runtime <runtime>",
-    "test-water-work.ps1 -Runtime <runtime>",
-    "test-glow-stream.ps1 -Runtime <runtime>"
+  "unverified": [
+    "physical hardware/FPGA",
+    "full Cartesian phase combinations",
+    "all sprite phases in RGB screenshots",
+    "fault injection",
+    "Windows/WSL reproducibility",
+    "audio listening"
   ],
-  "emulator": {
-    "executable_sha256": "B5DE3932C0E486002C2CA1FB0D858AD27FC10E97BC5A6B1B277F988F7B7454B9",
-    "configurations": [
-      "C-BIOS / Z80",
-      "FS-A1GT / R800"
-    ]
-  }
+  "wave_reflections": {
+    "rom_sha256": "4a46c20e3a58572ae350fc81c5decad07797a4fe26fd1d6b0b6fc6d3f1ed3499",
+    "sprites": 62,
+    "max_scanline": 11,
+    "max_adjacent_position_step": 2,
+    "glare_x_bounds": [
+      102,
+      157
+    ],
+    "transparency": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "pure_white_pixels_mean": 116.1328125,
+    "pure_white_pixels_range": [
+      52,
+      192
+    ],
+    "bright_pixels_mean": 178.703125,
+    "scope": "all 128 generated phases; host priority/RGB5 model on constant dark background, not emulator screenshots"
+  },
+  "caustics": {
+    "mask_frames": 128,
+    "mask_size": [
+      256,
+      160
+    ],
+    "phase_ticks": 4,
+    "key_frames": 16,
+    "key_step": 8,
+    "delta_distances": [
+      1,
+      2,
+      3
+    ],
+    "delta_stride": 16384,
+    "cache_bytes": 20480,
+    "allocated_rom_bytes": 7929856,
+    "render_mode": "four floor tones and four light levels, LMMM OR",
+    "surface_mode": "Sprite mode3 RGB5 transparency",
+    "surface_sprites": 62,
+    "surface_patterns_bytes": 4096,
+    "reflection_ribbons": 8,
+    "white_glints": 20,
+    "glare_shoulders": 10
+  },
+  "scene1_to_6_asset_banks_1_to_58_unchanged": true
 }

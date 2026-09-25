@@ -93,7 +93,8 @@ int main(void){
     flip();for(;;){inp(0xa9);}
 #endif
     for(;;){
-        now=clock_ticks();angle=now/2;scene=manual?manual-1:(now/900)%6;
+        now=clock_ticks();angle=now/2;scene=manual?manual-1:(now/900)%7;
+        if(previous==6 && scene!=6){shallow_leave();textures_load();background_load(scene==2?BANK_SEABED:BANK_BACKGROUND);}
         if(previous==2 && scene!=2){textures_load();background_load(BANK_BACKGROUND);}
         if(previous!=2 && scene==2)background_load(BANK_SEABED);
         /* Scene 6 borrows page 2 as Scene 3 does: cleared on entry, textures
@@ -102,7 +103,9 @@ int main(void){
            running clock happens to be when the scene is selected by hand. */
         if(previous==5 && scene!=5)textures_load();
         if(previous!=5 && scene==5){trail_clear();scene_entry=now;revealed=0;}
-        if(scene!=2 && scene!=5)background();
+        if(previous!=6 && scene==6)shallow_enter();
+        if(scene!=2 && scene!=5 && scene!=6)background();
+        if(scene==6)shallow_draw(now);
         if(scene==0)mesh((u8)(now>>1));
         if(scene==1){floor_draw((const int*)bank_record(BANK_FLOOR,(now>>1)&(FRAMES_FLOOR-1),512));core(angle);}
         if(scene==2){
@@ -176,7 +179,7 @@ int main(void){
            solid and cannot also be the indicator colour. It borrows index 10,
            which the decay can never produce, and the palette gives 10 the
            ordinary indicator colour for the duration. */
-        for(row=0;row<6;++row)rect(101+row*10,182,6,2,row==scene?(top_hud?15:10):4);
+        for(row=0;row<7;++row)rect(101+row*10,182,6,2,row==scene?(top_hud?15:10):4);
         if(top_hud)header_shadow(scene);
         flip();++frame;
         /* One palette upload per frame, and only once flip() has waited for
@@ -187,7 +190,7 @@ int main(void){
            15 and 15 is orange in the ordinary palette. Doing it after the page
            swap also guarantees each frame is shown under its own palette.
            video_init() seeds the palette before enabling display. */
-        if(scene==5 && !top_hud)palette_glow();else palette(angle);
+        if(scene==5 && !top_hud)palette_glow();else if(scene==6)shallow_palette();else palette(angle);
         /* Runtime telemetry for emulator tests, ordinary MSX RAM. */
         *((volatile u16*)0xcf00)=frame;*((volatile u16*)0xcf02)=ticks;
         *((volatile u8*)0xcf04)=scene;
@@ -196,7 +199,7 @@ int main(void){
         key=platform_keyboard_row(7);
         if(!(key&4)){video_stop();for(;;){inp(0xa9);}}
         key=platform_keyboard_row(0);
-        for(row=0;row<7;++row)if(!(key&(1<<row)))manual=row;
+        for(row=0;row<8;++row)if(!(key&(1<<row)))manual=row;
         key=!(platform_keyboard_row(5)&0x10);if(key&&!was_w)wave^=1;was_w=key;
     }
 }

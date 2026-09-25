@@ -1,4 +1,4 @@
-param([string]$Root=(Split-Path -Parent $PSScriptRoot),[string]$ZipPath)
+﻿param([string]$Root=(Split-Path -Parent $PSScriptRoot),[string]$ZipPath)
 $ErrorActionPreference='Stop'
 Import-Module (Join-Path $PSHOME 'Modules/Microsoft.PowerShell.Utility/Microsoft.PowerShell.Utility.psd1') -ErrorAction Stop
 $Root=[IO.Path]::GetFullPath($Root)
@@ -55,13 +55,13 @@ $optResults=Get-Content -LiteralPath (Join-Path $Root 'demos/scene3-benchmark/re
 if((Get-Item $optPath).Length -ne $optInfo.size -or (Get-FileHash $optPath).Hash -ne $optInfo.sha256 -or $optResults.rom_sha256 -ne $optInfo.sha256 -or $optResults.stages[-1].rom_sha256 -ne $optInfo.sha256 -or $optInfo.size -ne 1048576){throw 'Optimized benchmark ROM/results mismatch'}
 $expectedRoot=@('setup-cbios-v9968.bat','setup-fsa1gt-v9968.bat','launch-v9968-tech-demo-cbios.bat','launch-v9968-tech-demo-fsa1gt.bat')
 $demoPath=Join-Path $Root 'demos/v9968-tech-demo/V9968-TECH-DEMO.rom'
-if((Get-Item -LiteralPath $demoPath).Length -ne 1048576 -or (Get-FileHash -LiteralPath $demoPath).Hash -ne $manifest.demo.sha256){throw 'Demo ROM size/hash mismatch'}
+if((Get-Item -LiteralPath $demoPath).Length -ne 8388608 -or (Get-FileHash -LiteralPath $demoPath).Hash -ne $manifest.demo.sha256){throw 'Demo ROM size/hash mismatch'}
 $demoResults=Get-Content -LiteralPath (Join-Path $Root 'demos/v9968-tech-demo/verification.json') -Raw | ConvertFrom-Json
 if($demoResults.rom_sha256 -ne $manifest.demo.sha256 -or $demoResults.teaser.rom_sha256 -ne $manifest.demo.sha256){throw 'Current demo verification/teaser names a different ROM'}
 $externalRel='demos/v9968-tech-demo/V9968-TECH-DEMO-external-0x88.rom'
 if($list -cnotcontains $externalRel -or $manifest.demoExternal.file -cne $externalRel -or $demoResults.external.file -cne $externalRel){throw 'External demo path/allowlist mismatch'}
 $externalPath=Join-Path $Root $externalRel
-if($manifest.demoExternal.size -ne 1048576 -or $demoResults.external.size -ne 1048576 -or (Get-Item -LiteralPath $externalPath).Length -ne 1048576 -or (Get-FileHash -LiteralPath $externalPath).Hash -ne $manifest.demoExternal.sha256 -or $demoResults.external.sha256 -ne $manifest.demoExternal.sha256){throw 'External demo ROM size/hash/verification mismatch'}
+if($manifest.demoExternal.size -ne 8388608 -or $demoResults.external.size -ne 8388608 -or (Get-Item -LiteralPath $externalPath).Length -ne 8388608 -or (Get-FileHash -LiteralPath $externalPath).Hash -ne $manifest.demoExternal.sha256 -or $demoResults.external.sha256 -ne $manifest.demoExternal.sha256){throw 'External demo ROM size/hash/verification mismatch'}
 if($demoResults.external.profile -cne 'external-0x88' -or $demoResults.external.vdp_base -cne '0x88'){throw 'External demo profile mismatch'}
 # Retain the original verification release when shipping unchanged ROMs again.
 $distributionRelease=if($demoResults.PSObject.Properties.Name -contains 'distribution_release'){$demoResults.distribution_release}else{$demoResults.release}

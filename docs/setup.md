@@ -15,7 +15,7 @@ Run `setup-cbios-v9968.bat`. It downloads the official openMSX 21.0 Windows x64 
 The generated C-BIOS_MSX2+_JP derivative uses an internal V9968 and a Japanese 60 Hz configuration. It runs cartridge images; it supplies no BASIC or disk environment.
 
 
-Version 0.7.4 pins the updated fork. Install in a separate folder using the [update and rollback steps](troubleshooting.md#update-and-rollback), without overwriting an existing environment. See [changes and validation](emulator-update-20260924.md).
+Version 0.7.5 pins the updated fork. Install in a separate folder using the [update and rollback steps](troubleshooting.md#update-and-rollback), without overwriting an existing environment. See [changes and validation](emulator-update-20260924.md).
 
 ## FS-A1GT
 

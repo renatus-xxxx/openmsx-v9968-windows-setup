@@ -50,7 +50,7 @@
 ## 更新と復旧
 
 1. 旧環境の openMSX を終了し、そのフォルダ全体を保持してください。BIOS、設定、セーブデータを移動・削除する必要はありません。
-2. 0.7.4 の Release ZIP 全体を、同期対象外の**別の新しいフォルダ**へ展開します。
+2. 0.7.5 の Release ZIP 全体を、同期対象外の**別の新しいフォルダ**へ展開します。
 3. 新しいフォルダの setup BAT を実行します。FS-A1GT では元の所有 BIOS フォルダを指定します。旧 runtime や cache はコピーせず、新規生成してください。
 4. 新しいフォルダの launch BAT で動作を確認してください。旧セーブステートの互換性は未検証です。旧環境のユーザー設定を一括移植しないでください。
 5. 戻す場合は新しい openMSX を終了し、保持した旧フォルダの launch BAT を使います。新環境のファイルを旧環境へコピーする必要はありません。
@@ -69,6 +69,6 @@
 
 - `Run setup-... first`：対応するルートの setup BAT を実行してください。
 - `Emulator hash mismatch`：エミュレーターが検証済みのものと異なります。別フォルダに全体を展開してセットアップし直してください。
-- `Demo ROM is missing` / `Expected a 1 MiB ASCII16 ROM`：ZIP 全体を展開してください。開発者はデモを再ビルドし、`-UseBuild` を付けてそのビルドを起動できます。
+- `Demo ROM is missing` / `Expected a 8 MiB ASCII16-X ROM`：ZIP 全体を展開してください。開発者はデモを再ビルドし、`-UseBuild` を付けてそのビルドを起動できます。
 - `Cached demo ROM hash mismatch` / `Local BIOS copy differs`：既存のデモ用コピーと元データが一致しません。`runtime/<mode>/user-tech-demo/` の該当フォルダをバックアップしてから別名へ変更し、再起動してください。所有BIOSの元ファイルや runtime 全体は削除しないでください。
 - パスが長すぎる場合は、短い書き込み可能な場所へZIP全体を展開してください。

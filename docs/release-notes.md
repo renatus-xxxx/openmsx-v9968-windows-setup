@@ -1,14 +1,15 @@
 [日本語](release-notes.ja.md) | English
 
-# Release notes — 0.7.4
+# Release notes — 0.7.5
 
-Update V9968-enabled openMSX to **14215c7 (2026-09-24)** with pinned archive and executable hashes. Official openMSX 21.0 and C-BIOS 0.29 remain unchanged.
+Add **Scene 7 — Shallow Water** to V9968 TECH DEMO. Press **7** to view it, or **0** for the seven-scene automatic sequence.
 
-- Existing demo and probe ROMs are unchanged. Automatic detection selects R20=0x11 on the new register map.
-- Validate scenes, water, headers and probes on both machines; strengthen R20/LRMM regression checks. See [changes and validation](emulator-update-20260924.md).
-- Add Scene 3 V9968/V9990 comparison sources and measurement records to the repository. Comparison ROMs and the comparison directory are excluded from the distribution ZIP.
-- Clarify register differences, historical measurements, and update/rollback instructions in both languages.
+- Perspective stone floor, independently animated caustics, refraction and RGB5 Sprite mode3 reflections.
+- A central sun-glitter path combines 20 white glints, 10 soft glare shoulders and eight translucent ribbons. Wave motion and lighting approximations are precomputed in Python; the MSX combines the assets at runtime.
+- Stream sprite attributes with OTIR; retain an equivalent C-language implementation for validation.
+- Expand the demo to an **8 MiB ASCII16-X ROM**. The launcher, mapper, build scripts and checks support the larger image. Plain ASCII16 mapping is insufficient. Existing benchmark ROMs remain unchanged.
+- Keep pinned V9968 openMSX **14215c7**, openMSX 21.0 and C-BIOS 0.29 unchanged.
 
-Extract the entire ZIP into a separate folder and run setup; do not overwrite the old environment or reuse its runtime/cache. See [update and rollback](troubleshooting.md#update-and-rollback).
+Scene 7 measures **9.00 fps on C-BIOS/Z80** and **11.20 fps on FS-A1GT/R800** in the pinned emulator (5-second warm-up, 15-second samples, three independent runs). These are emulator results, not hardware measurements. Both CPUs pass scene/pixel regression checks; external 0x88 and physical FPGA operation are not verified for this build. Transparency and glare are approximations, not additive HDR or a full fluid simulation.
 
-Physical FPGA hardware, the external 0x88 profile, clean OS installations and old save-state compatibility were not retested for this update. The external ROM remains byte-identical to 0.7.3. Performance measurements describe emulation, not physical VDP performance.
+See [Scene 7 details](../demos/v9968-tech-demo/SHALLOW.md). Extract the entire ZIP into a new folder and run the matching setup BAT. Keep your existing environment and BIOS separate; no proprietary BIOS is included.

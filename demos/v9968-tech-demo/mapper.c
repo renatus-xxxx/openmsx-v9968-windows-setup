@@ -16,15 +16,18 @@ void bank_select(unsigned int bank) __z88dk_fastcall __naked {
     ret
 #endasm
 }
-const unsigned char *bank_record(unsigned char first,unsigned char frame,unsigned int stride){
+const unsigned char *bank_record(unsigned int first,unsigned char frame,unsigned int stride){
     unsigned int offset=(unsigned int)(frame % (16384/stride))*stride;
     bank_select(first+frame/(16384/stride));
     return (const unsigned char *)(0x8000+offset);
 }
 /* A known signature in the last data bank tests switching beyond startup banks. */
+#ifndef DEMO_SIGNATURE_BANK
+#define DEMO_SIGNATURE_BANK 63
+#endif
 unsigned char mapper_check(void){
     const unsigned char *p=(const unsigned char *)0xbff0;
-    bank_select(63);
+    bank_select(DEMO_SIGNATURE_BANK);
     if(p[0]!='M'||p[1]!='C'||p[2]!='X'||p[3]!='2')return 0;
     bank_select(1);
     return 1;

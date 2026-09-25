@@ -57,12 +57,12 @@
   },
   "HUDLINE": {
     "bank": 55,
-    "bytes": 5022,
+    "bytes": 5859,
     "stride": 0
   },
   "LABELS": {
     "bank": 56,
-    "bytes": 1344,
+    "bytes": 1568,
     "stride": 0
   },
   "SEABED": {
@@ -70,11 +70,58 @@
     "bytes": 24576,
     "stride": 0
   },
+  "SHALLOW": {
+    "bank": 59,
+    "bytes": 24576,
+    "stride": 0
+  },
+  "CAUSTICS": {
+    "bank": 61,
+    "bytes": 524288,
+    "stride": 32768,
+    "frames": 16,
+    "key_step": 8,
+    "logical_frames": 128,
+    "banks_per_frame": 2
+  },
+  "CAUSTIC_DELTA": {
+    "bank": 93,
+    "bytes": 2097152,
+    "stride": 16384,
+    "frames": 128
+  },
+  "SHALLOW_WAVE": {
+    "bank": 221,
+    "bytes": 32768,
+    "stride": 256,
+    "frames": 128
+  },
+  "SURFACE_PATTERN": {
+    "bank": 223,
+    "bytes": 4096,
+    "stride": 0
+  },
+  "SURFACE_ATTRS": {
+    "bank": 224,
+    "bytes": 65536,
+    "stride": 512,
+    "frames": 128
+  },
+  "CAUSTIC_JUMP2": {
+    "bank": 228,
+    "bytes": 2097152,
+    "stride": 0
+  },
+  "CAUSTIC_JUMP3": {
+    "bank": 356,
+    "bytes": 2097152,
+    "stride": 0
+  },
   "summary": {
-    "rom_bytes": 1048576,
-    "allocated_bytes": 966656,
-    "mapper": "ASCII16",
-    "rom_banks": 64,
+    "rom_bytes": 8388608,
+    "allocated_bytes": 7929856,
+    "mapper": "ASCII16-X",
+    "rom_banks": 512,
     "mesh_obj": "octahedron.obj",
     "mesh_obj_sha256": "328de846fb1f6326863bd38dbd6682e41370c10682af94027a898701ba111b1e",
     "mesh_radius": 88.0,

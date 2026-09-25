@@ -11,10 +11,14 @@ Copy-Item "$PSScriptRoot/capture.tcl" $work
 $mapText=Get-Content "$PSScriptRoot/$buildDir/V9968-TECH-DEMO.map" -Raw
 if($mapText -notmatch '(?m)^_flip\s*=\s*\$([0-9A-Fa-f]+)'){throw 'Missing flip symbol'}
 ('set flip_address 0x'+$Matches[1]) | Set-Content "$work/test-symbols.tcl" -Encoding ascii
+if($mapText -notmatch '(?m)^_shallow_palette\s*=\s*\$([0-9A-Fa-f]+)'){throw 'Missing shallow palette symbol'}
+('set shallow_palette_address 0x'+$Matches[1]) | Add-Content "$work/test-symbols.tcl" -Encoding ascii
+if($mapText -notmatch '(?m)^_shallow_draw\s*=\s*\$([0-9A-Fa-f]+)'){throw 'Missing shallow draw symbol'}
+('set shallow_draw_address 0x'+$Matches[1]) | Add-Content "$work/test-symbols.tcl" -Encoding ascii
 ('set expected_r20 0x'+$ExpectedR20) | Add-Content "$work/test-symbols.tcl" -Encoding ascii
 $layout=Get-Content "$PSScriptRoot/assets/bank-layout.json" -Raw|ConvertFrom-Json
 $payload=[IO.File]::ReadAllBytes("$PSScriptRoot/assets/megarom-data.bin")
-foreach($name in @('BACKGROUND','SEABED')){
+foreach($name in @('BACKGROUND','SEABED','SHALLOW')){
  $expected=New-Object byte[] 22528
  [Array]::Copy($payload,($layout.$name.bank-1)*16384+2048,$expected,0,22528)
  [IO.File]::WriteAllBytes((Join-Path $work "$name.bin"),$expected)
@@ -72,7 +76,7 @@ try{
  $machine=if($Standard){$cfg.standardMachine}else{$cfg.machine}
  $expected=if($Standard){$cfg.standardSha256}else{$cfg.forkSha256}
  if((Get-FileHash -LiteralPath $exe).Hash -ne $expected){throw 'Emulator hash mismatch'}
- $p=Start-Process -FilePath $exe -ArgumentList @('-machine',$machine,'-cart','V9968-TECH-DEMO.rom','-romtype','ASCII16','-script','capture.tcl') -WorkingDirectory $work -WindowStyle Hidden -PassThru -RedirectStandardOutput "$work/stdout.log" -RedirectStandardError "$work/stderr.log"
+ $p=Start-Process -FilePath $exe -ArgumentList @('-machine',$machine,'-cart','V9968-TECH-DEMO.rom','-romtype','ASCII16-X','-script','capture.tcl') -WorkingDirectory $work -WindowStyle Hidden -PassThru -RedirectStandardOutput "$work/stdout.log" -RedirectStandardError "$work/stderr.log"
  $handle=$p.Handle
  if(!$p.WaitForExit($TimeoutSeconds*1000)){$p.Kill();throw 'Emulator test timed out'}
  if($p.ExitCode -ne 0){throw 'Emulator failed; inspect test logs'}

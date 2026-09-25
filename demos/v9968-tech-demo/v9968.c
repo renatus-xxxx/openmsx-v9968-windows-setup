@@ -370,10 +370,10 @@ u8 video_init(void){
     wait_cmd();back_page=1;rect(0,0,256,192,0);wait_cmd();
     textures_load();
     background_load(BANK_BACKGROUND);
-    /* Six nine-row header strips, shadow and text already composited, in the
-       VRAM above the background. 54 rows of the 64 that are free. */
+    /* Seven nine-row header strips, shadow and text already composited, in the
+       VRAM above the background. 63 rows of the 64 that are free. */
     bank_select(BANK_HUDLINE);p=(const u8*)0x8000;reg(14,7);
-    for(y=0;y<54;++y){
+    for(y=0;y<63;++y){
         vram_begin(0x2000+y*128);
         for(i=0;i<93;++i)vdata=*p++;
     }
@@ -388,7 +388,7 @@ void video_stop(void){
 #asm
     di
 #endasm
-    irq_live=0;reg(1,0);silence();
+    irq_live=0;reg(1,0);reg(8,10);silence();
 }
 void background(void){
     wait_cmd();reg(17,32);
@@ -816,3 +816,210 @@ void benchmark_text(u8 x,u8 y,const char *s){
     }
 }
 #endif
+
+/* Scene 7: a clean floor and independently animated indexed light mask.
+   Floor in page 3; one projected 256x160 mask in page 2, updated from a 128-phase
+   ROM animation using changed-byte runs. LMMM OR selects one of four indexed light levels, not alpha.
+   Sprite mode3 separately alpha-composites surface glare with the background.
+   Phase selection is C; upload/delta streaming have matching C and OTIR paths. */
+static const u8 shallow_rgb5[48]={
+  0,3,4, 1,5,6, 3,8,9, 5,11,12, 3,8,8, 5,11,11, 8,15,14, 11,19,17,
+  8,16,13, 12,21,17, 17,26,21, 23,29,25, 17,25,21, 22,29,25, 28,31,28, 31,31,30
+};
+static u8 shallow_surface_phase;
+/* R14 and VRAM write address are established by shallow_palette(). Both paths
+   send exactly 504 bytes: 62 Sprite mode3 entries and one end marker. The
+   record stays inside its 512-byte slot and the mapped 16 KiB ROM window. */
+#ifdef V9968_SCENE3_C_STREAM
+static void shallow_surface_upload(const u8 *p) __z88dk_fastcall {
+    u16 i;for(i=0;i<504;++i)vdata=*p++;
+}
+#else
+static void shallow_surface_upload(const u8 *p) __z88dk_fastcall __naked {
+#asm
+    ld c,_vdata
+    ld b,0
+    otir
+    ld b,248
+    otir
+    ret
+#endasm
+}
+#endif
+
+void shallow_palette(void){
+    u16 i;const u8 *p;
+    reg(16,0);for(i=0;i<48;++i)vpal=shallow_rgb5[i];
+    /* After the page flip: update the small SAT in vertical blank. Palette
+       set 1 is independent of the 16 background colours and stays resident. */
+    p=bank_record(BANK_SURFACE_ATTRS,shallow_surface_phase,512);
+    reg(14,5);vram_begin(0x3e00);shallow_surface_upload(p);
+    reg(20,*((volatile u8*)0xcf09)|8);reg(8,8);
+}
+void shallow_leave(void){reg(8,10);reg(20,*((volatile u8*)0xcf09));}
+/* Matching C and Z80 paths: write the same packed bytes at the same VRAM
+   addresses. R14=4 and command-idle are established by the caller. */
+#ifdef V9968_SCENE3_C_STREAM
+static void shallow_upload(const u8 *p) __z88dk_fastcall {
+    u16 i;for(i=0;i<16384;++i)vdata=*p++;
+}
+static void shallow_delta(const u8 *p) __z88dk_fastcall {
+    u16 count,address;u8 length;
+    count=*p++;count|=(u16)*p++<<8;
+    while(count--){
+        address=*p++;address|=(u16)*p++<<8;length=*p++;
+        vram_begin(address);while(length--)vdata=*p++;
+    }
+}
+#else
+static void shallow_upload(const u8 *p) __z88dk_fastcall __naked {
+#asm
+    ld d,64
+    ld c,_vdata
+shallow_upload_loop:
+    ld b,0
+    otir
+    dec d
+    jr nz,shallow_upload_loop
+    ret
+#endasm
+}
+static void shallow_delta(const u8 *p) __z88dk_fastcall __naked {
+#asm
+    ld e,(hl)
+    inc hl
+    ld d,(hl)
+    inc hl
+shallow_delta_loop:
+    ld a,d
+    or e
+    ret z
+    di
+    ld a,(hl)
+    inc hl
+    out (_vctrl),a
+    ld a,(hl)
+    inc hl
+    or 040h
+    out (_vctrl),a
+    ld b,(hl)
+    inc hl
+    ld a,(_irq_live)
+    or a
+    jr z,shallow_delta_irq_off
+    ei
+shallow_delta_irq_off:
+    ld c,_vdata
+    otir
+    dec de
+    jr shallow_delta_loop
+#endasm
+}
+#endif
+/* Final 32 rows occupy the next 4 KiB VRAM segment. Same bytes in both paths. */
+#ifdef V9968_SCENE3_C_STREAM
+static void shallow_tail_upload(const u8 *p) __z88dk_fastcall {
+    u16 i;for(i=0;i<4096;++i)vdata=*p++;
+}
+#else
+static void shallow_tail_upload(const u8 *p) __z88dk_fastcall __naked {
+#asm
+    ld d,16
+    ld c,_vdata
+shallow_tail_loop:
+    ld b,0
+    otir
+    dec d
+    jr nz,shallow_tail_loop
+    ret
+#endasm
+}
+#endif
+static u8 shallow_mask;
+static void shallow_step(u8 frame,u8 distance){
+    const u8 *p;u16 tail;
+    wait_cmd();
+    if(distance==1){
+        p=bank_record(BANK_CAUSTIC_DELTA,frame,16384);
+        reg(14,4);shallow_delta(p);reg(14,5);shallow_delta(p+8192);
+    }else{
+        p=bank_record(distance==2?BANK_CAUSTIC_JUMP2:BANK_CAUSTIC_JUMP3,frame,16384);
+        tail=(u16)p[0]|((u16)p[1]<<8);
+        reg(14,4);shallow_delta(p+2);reg(14,5);shallow_delta(p+tail);
+    }
+    shallow_mask=frame;
+}
+static void shallow_full(u8 frame){
+    u8 step;u16 bank=(u16)BANK_CAUSTICS+(u16)(frame>>3)*2;
+    /* Key masks every eight phases save ROM; direct 1/2/3-step differences
+       reconstruct the exact target, at most three steps after a time jump. */
+    wait_cmd();bank_select(bank);reg(14,4);vram_begin(0);
+    shallow_upload((const u8*)0x8000);
+    bank_select(bank+1);reg(14,5);vram_begin(0);
+    shallow_tail_upload((const u8*)0x8000);
+    shallow_mask=frame&120;
+    while(shallow_mask!=frame){
+        step=frame-shallow_mask;if(step>3)step=3;
+        shallow_step(shallow_mask+step,step);
+    }
+}
+static void shallow_update(u8 frame){
+    u8 step,distance=(frame-shallow_mask)&127;
+    if(!distance)return;
+    /* Update a skipped shape directly instead of replaying every phase.
+       Large jumps reconstruct from a nearby key mask with bounded work. */
+    if(distance>9){shallow_full(frame);return;}
+    while(distance){
+        step=distance>3?3:distance;
+        shallow_step((shallow_mask+step)&127,step);distance-=step;
+    }
+}
+void shallow_enter(void){
+    u16 i;u8 c;const u8 *p;
+    reg(8,10);background_load(BANK_SHALLOW);shallow_full(0);
+    /* 0x15000..0x15fff: patterns; 0x17e00..0x17fff: 64-entry SAT.
+       Neither overlaps the 20 KiB light cache, background, or header. */
+    bank_select(BANK_SURFACE_PATTERN);p=(const u8*)0x8000;
+    reg(14,5);vram_begin(0x1000);for(i=0;i<4096;++i)vdata=*p++;
+    /* Enable SP3 before refreshing table registers. The pinned emulator's
+       SP3-only transition does not refresh its cached table masks. Force
+       harmless value transitions while sprites remain disabled; also correct
+       on re-entry when the register values are unchanged. */
+    reg(20,*((volatile u8*)0xcf09)|8);
+    reg(5,248);reg(5,252);reg(11,2);reg(6,1);reg(6,0);
+    reg(16,16);
+    /* Dark, water-tinted shoulders and a white peak. Index zero is transparent.
+       Python generates wave-normal-driven width, opacity and glint positions;
+       runtime only selects/upload attributes (no trigonometry or lighting). */
+    for(i=0;i<16;++i){
+        c=(28*i*i)/225;vpal=3+c;
+        c=(23*i*i)/225;vpal=8+c;
+        c=(22*i*i)/225;vpal=9+c;
+    }
+    shallow_surface_phase=0;
+}
+void shallow_draw(u16 now){
+    u8 y,sx,sy,h,count,m=(now>>2)&127;
+    const u8 *p;
+    *((volatile u16*)0xcf10)=now;
+    shallow_surface_phase=(now>>2)&127;
+    shallow_update(m);
+    /* Refract the clean page-3 floor directly into the display back page.
+       Page 2 is now a mask cache. Indexed light is composed afterwards. */
+    background();
+    p=bank_record(BANK_SHALLOW_WAVE,(now>>1)&127,256);
+    count=*p++;
+    while(count--){
+        sx=*p++;sy=*p++;y=*p++;h=*p++;
+        wait_cmd();reg(17,32);
+        vcmd=sx;vcmd=0;vcmd=sy;vcmd=3;
+        vcmd=8;vcmd=0;vcmd=y;vcmd=back_page;
+        vcmd=240;vcmd=0;vcmd=h;vcmd=0;vcmd=0;vcmd=0;vcmd=0xd0;
+    }
+    /* One full projected surface, no screen-space tile repetition. */
+    wait_cmd();reg(17,32);
+    vcmd=8;vcmd=0;vcmd=0;vcmd=2;
+    vcmd=8;vcmd=0;vcmd=20;vcmd=back_page;
+    vcmd=240;vcmd=0;vcmd=160;vcmd=0;
+    vcmd=0;vcmd=0;vcmd=0x92;
+}

@@ -27,9 +27,13 @@ try{
  $fixed=[IO.File]::ReadAllBytes("$out/SCENE3-BENCHMARK-OPTIMIZED.rom")
  if($fixed.Length -gt 16384){throw 'Fixed bank exceeds 16 KiB'}
  $data=[IO.File]::ReadAllBytes("$shared/assets/megarom-data.bin")
- if($data.Length -ne 1032192){throw 'Invalid data size'}
+ $layout=Get-Content "$shared/assets/bank-layout.json" -Raw | ConvertFrom-Json
+ if($data.Length -lt 1032192 -or $layout.SEABED.bank+2 -gt 63){throw 'Benchmark assets exceed its 1 MiB layout'}
  $rom=New-Object byte[] 1048576
- [Array]::Copy($fixed,0,$rom,0,$fixed.Length);[Array]::Copy($data,0,$rom,16384,$data.Length)
+ [Array]::Copy($fixed,0,$rom,0,$fixed.Length);[Array]::Copy($data,0,$rom,16384,1032192)
+ # Scene 7 assets above this boundary are unused; keep the benchmark signature.
+ [Array]::Clear($rom,1048560,16)
+ [Array]::Copy([Text.Encoding]::ASCII.GetBytes('MCX2'),0,$rom,1048560,4)
  [IO.File]::WriteAllBytes("$out/SCENE3-BENCHMARK-OPTIMIZED.rom",$rom)
  python "$PSScriptRoot/font-atlas.py" "$out/SCENE3-BENCHMARK-OPTIMIZED.rom"
  if($LASTEXITCODE -ne 0){throw 'Font atlas generation failed'}
